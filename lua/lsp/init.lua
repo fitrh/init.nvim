@@ -18,8 +18,7 @@ M.handlers = {
   ),
   ["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help, {
-      -- FIXME: html character (&nbsp) shown when use rounded border
-      border = "single"
+      border = "rounded"
     }
   ),
   ["textDocument/hover"] = vim.lsp.with(
