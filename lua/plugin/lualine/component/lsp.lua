@@ -29,6 +29,7 @@ function M.setup(arg)
         return lsp.status()
       end,
       color = { fg = foreground, gui = "BOLD" },
+      padding = 0,
     }
   }
 end
