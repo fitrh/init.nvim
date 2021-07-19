@@ -99,10 +99,10 @@ keymap.bind({
   -- move Line
   on("<C-j>", "n"):exec("m .+1"):with(opt():noremap()),
   on("<C-j>", "i"):exec("m .+1"):with(opt():noremap()),
-  on("<C-j>", "v"):run(":m '>+1<CR>gv=gv"):with(opt():noremap():silent()),
+  on("J", "v"):run(":m '>+1<CR>gv=gv"):with(opt():noremap():silent()),
   on("<C-k>", "n"):exec("m .-2"):with(opt():noremap()),
   on("<C-k>", "i"):exec("m .-2"):with(opt():noremap()),
-  on("<C-k>", "v"):run(":m '<-2<CR>gv=gv"):with(opt():noremap():silent()),
+  on("K", "v"):run(":m '<-2<CR>gv=gv"):with(opt():noremap():silent()),
 
   -- easy select-all
   on("<C-a>", "n"):run("ggVG"):with(opt():noremap():silent()),
