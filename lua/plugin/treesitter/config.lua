@@ -8,7 +8,7 @@ conf.setup({
     enable = true,
     keymaps = {
       init_selection = "<C-n>",
-      node_incremental = "K",
+      node_incremental = "<Enter>",
       scope_incremental = "<A-Enter>",
       node_decremental = "<BS>",
     },
