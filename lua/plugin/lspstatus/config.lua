@@ -1,7 +1,7 @@
 local sign = require("lsp.diagnostic").sign
 
 return {
-  kind_labels = require("lsp.completion").kind({ icon = "codicon" }),
+  kind_labels = require("lsp.completion").kind({ icon = "default" }),
   current_function = true,
   diagnostics = false,
   indicator_separator = " ",

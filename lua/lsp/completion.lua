@@ -20,11 +20,11 @@ local maps = {
   { text = "File", icon = { default = "", codicon = "" } },
   { text = "Reference", icon = { default = "", codicon = "", } },
   { text = "Folder", icon = { default = "", codicon = "", } },
-  { text = "EnumMember", icon = { default = "", codicon = "", } },
+  { text = "EnumMember", icon = { default = "", codicon = "", } },
   { text = "Constant", icon = { default = "ﲀ", codicon = "", } },
-  { text = "Struct", icon = { default = "ﳤ", codicon = "", } },
-  { text = "Event", icon = { default = "", codicon = "", } },
-  { text = "Operator", icon = { default = "", codicon = "", } },
+  { text = "Struct", icon = { default = "", codicon = "", } },
+  { text = "Event", icon = { default = "ﯓ", codicon = "", } },
+  { text = "Operator", icon = { default = "璉", codicon = "", } },
   { text = "TypeParameter", icon = { default = "", codicon = "", } },
 }
 

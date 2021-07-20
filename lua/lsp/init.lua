@@ -5,7 +5,7 @@ M.on_attach = function(client, bufnr)
   require("lsp_signature").on_attach(require("plugin.lspsignature.config"))
   require("lsp-status").on_attach(client)
   require("keymap.lsp").on_attach(client, bufnr)
-  require("lsp.completion").with({ text = true, icon = "codicon" })
+  require("lsp.completion").with({ text = true, icon = "default" })
   require("lsp.diagnostic").with({ e = "", w = "", i = "", h = ""})
   require("lsp.event")
 end
