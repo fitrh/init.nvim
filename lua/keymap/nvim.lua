@@ -89,8 +89,8 @@ keymap.bind({
   -- Map // to Search current selected text
   on("//", "v"):run('y/<c-r>"<CR>'):with(opt():noremap()),
   -- centering window when hit n/N
-  on("n", "n"):run("nzz"):with(opt():noremap()),
-  on("N", "n"):run("Nzz"):with(opt():noremap()),
+  on("n", "n"):run("mnnzz"):with(opt():noremap()),
+  on("N", "n"):run("mnNzz"):with(opt():noremap()),
   -- if hlsearch is active, <CR> to clear it, otherwise <CR> is <CR>
   on("<CR>"):run(
     'v:hlsearch ? "<Cmd>nohlsearch<CR>" : "<CR>"'
