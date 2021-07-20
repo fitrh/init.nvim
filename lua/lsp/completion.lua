@@ -6,7 +6,7 @@ local maps = {
   { text = "Function", icon = { default = "", codicon = "", } },
   { text = "Constructor", icon = { default = "", codicon = "", } },
   { text = "Field", icon = { default = "ﴲ", codicon = "", } },
-  { text = "Variable", icon = { default = "", codicon = "", } },
+  { text = "Variable", icon = { default = "", codicon = "", } },
   { text = "Class", icon = { default = "", codicon = "", } },
   { text = "Interface", icon = { default = "ﰮ", codicon = "", } },
   { text = "Module", icon = { default = "", codicon = "", } },
