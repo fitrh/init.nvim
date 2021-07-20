@@ -135,8 +135,6 @@ keymap.bind({
   lead("y", "v"):run('"+y'):with(opt():noremap()),
   lead("Y", "n"):run('"+y$'):with(opt():noremap()),
   lead("d", "v"):run('"+d'):with(opt():noremap()),
-  -- yank current line and leave it as empty line
-  lead("d", "n"):run("O<Esc>jddk"):with(opt():noremap()),
 
   -- reselect indented line
   on("<", "v"):run("<gv"):with(opt():noremap()),

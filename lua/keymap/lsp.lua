@@ -20,7 +20,7 @@ function M.on_attach(client, nr)
     lead("D", "n"):buf(nr):lua("vim.lsp.buf.type_definition()"):with(opt():noremap()),
     lead("rn", "n"):buf(nr):lua("vim.lsp.buf.rename()"):with(opt():noremap()),
     lead("ca", "n"):buf(nr):lua("vim.lsp.buf.code_action()"):with(opt():noremap()),
-    lead("e", "n"):buf(nr):lua("vim.lsp.diagnostic.show_line_diagnostics({ focusable = false, border = 'rounded' })"):with(opt():noremap()),
+    lead("d", "n"):buf(nr):lua("vim.lsp.diagnostic.show_line_diagnostics({ focusable = false, border = 'rounded' })"):with(opt():noremap()),
     on("[d", "n"):buf(nr):lua("vim.lsp.diagnostic.goto_prev({ popup_opts = { focusable = false, border='rounded' } })"):with(opt():noremap()),
     on("]d", "n"):buf(nr):lua("vim.lsp.diagnostic.goto_next({ popup_opts = { focusable = false, border='rounded' } })"):with(opt():noremap()),
     lead("ll", "n"):buf(nr):lua("vim.lsp.diagnostic.set_loclist()"):with(opt():noremap()),
