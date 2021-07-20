@@ -18,11 +18,11 @@ compe.setup({
     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   },
   source = {
-    nvim_lsp = true, -- { priority = 1005 },
-    nvim_lua = { filetype = "lua" }, -- { priority = 1004, filetype = "lua" },
-    luasnip = true, -- { priority = 1003 },
-    buffer = true, -- { priority = 1002 },
-    path = true, -- { priority = 1000 },
+    nvim_lsp = { kind = "  ", }, -- { priority = 1005 },
+    nvim_lua = { filetype = "lua", kind = "  ", }, -- { priority = 1004, },
+    luasnip = { kind = "  ", }, -- { priority = 1003 },
+    buffer = { kind = "  ", }, -- { priority = 1002 },
+    path = { kind = "  ", }, -- { priority = 1000 },
   },
 })
 
