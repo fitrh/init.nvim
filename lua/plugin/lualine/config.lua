@@ -1,6 +1,5 @@
 local line = require("lualine")
-local colors = require("tokyonight.colors").setup()
-local util = require("tokyonight.util")
+local colors = require("util.palette")
 local lsp = require("plugin.lualine.component.lsp").setup({ fg = colors.blue2 })
 local gitsigns = require("plugin.lualine.component.gitsigns")
 
@@ -34,7 +33,7 @@ local filename = {
 
 local modified = {
   function() return vim.bo.modified and "" or nil end, -- "ﴖ"
-  color = { fg = util.brighten(colors.red, 0.2) }, -- colors.blue5
+  color = { fg = colors.red_br_2 }, -- colors.blue5
   left_padding = 0,
 }
 
@@ -56,9 +55,9 @@ local blank = {
 local diff = {
   "diff",
   -- foreground color
-  color_added = colors.gitSigns.add, -- colors.teal
-  color_modified = colors.gitSigns.change, -- colors.cyan
-  color_removed = colors.gitSigns.delete, -- colors.red
+  color_added = colors.gitsigns.add, -- colors.teal
+  color_modified = colors.gitsigns.change, -- colors.cyan
+  color_removed = colors.gitsigns.delete, -- colors.red
   symbols = {
     added = " ",
     modified = " ",

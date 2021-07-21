@@ -6,14 +6,14 @@ local M = {
 
     local cmd = vim.cmd
     local status = vim.b.gitsigns_status_dict
-    local c = require("tokyonight.colors").setup()
+    local c = require("util.palette")
     local diff = ""
     local bg = c.bg_statusline
 
     local highlights = {
-      ("DiffAdd guifg=%s guibg=%s"):format(c.gitSigns.add, bg),
-      ("DiffChange guifg=%s guibg=%s"):format(c.gitSigns.change, bg),
-      ("DiffDelete guifg=%s guibg=%s"):format(c.gitSigns.delete, bg),
+      ("DiffAdd guifg=%s guibg=%s"):format(c.gitsigns.add, bg),
+      ("DiffChange guifg=%s guibg=%s"):format(c.gitsigns.change, bg),
+      ("DiffDelete guifg=%s guibg=%s"):format(c.gitsigns.delete, bg),
     }
 
     for _, highlight in ipairs(highlights) do
