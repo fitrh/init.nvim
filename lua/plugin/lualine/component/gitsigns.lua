@@ -1,19 +1,34 @@
 local M = {
   function()
-    if not vim.b.gitsigns_status or vim.b.gitsigns_status == "" then return nil end
+    if not vim.b.gitsigns_status or vim.b.gitsigns_status == "" then
+      return nil
+    end
 
-    local diff = ""
+    local cmd = vim.cmd
     local status = vim.b.gitsigns_status_dict
-    local symbols = {
-      added = "",
-      changed = "",
-      removed = ""
+    local c = require("tokyonight.colors").setup()
+    local diff = ""
+    local bg = c.bg_statusline
+
+    local highlights = {
+      ("DiffAdd guifg=%s guibg=%s"):format(c.gitSigns.add, bg),
+      ("DiffChange guifg=%s guibg=%s"):format(c.gitSigns.change, bg),
+      ("DiffDelete guifg=%s guibg=%s"):format(c.gitSigns.delete, bg),
     }
 
-    -- TODO: set color
-    diff = (status.added and status.added > 0) and diff .. ("%s %s "):format(symbols.added, status.added) or diff
-    diff = (status.changed and status.changed > 0) and diff .. ("%s %s "):format(symbols.changed, status.changed) or diff
-    diff = (status.removed and status.removed > 0) and diff .. ("%s %s"):format(symbols.removed, status.removed) or diff
+    for _, highlight in ipairs(highlights) do
+      cmd(("highlight %s"):format(highlight))
+    end
+
+    local state = {
+      Added = "%#DiffAdd#" .. (" %s "):format(status.added),
+      Changed = "%#DiffChange#" .. (" %s "):format(status.changed),
+      Removed = "%#DiffDelete#" .. (" %s"):format(status.removed),
+    }
+
+    diff = (status.added > 0) and diff .. state.Added or diff
+    diff = (status.changed > 0) and diff .. state.Changed or diff
+    diff = (status.removed > 0) and diff .. state.Removed or diff
 
     return diff:gsub('^%s*(.-)%s*$', '%1')
   end,
