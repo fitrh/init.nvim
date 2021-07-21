@@ -11,7 +11,6 @@ gitsigns.setup({
   keymaps = {
     -- Default keymap options
     noremap = true,
-    buffer = true,
 
     ['n ]c'] = {
       expr = true,
