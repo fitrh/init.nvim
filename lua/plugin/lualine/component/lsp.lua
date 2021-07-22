@@ -26,10 +26,9 @@ function M.setup(arg)
         local lsp = require("lsp-status")
         lsp.config(require("plugin.lspstatus.config"))
         lsp.register_progress()
-        return lsp.status()
+        return lsp.status() ~= " " and lsp.status() or nil
       end,
       color = { fg = foreground, gui = "BOLD" },
-      padding = 0,
     }
   }
 end
