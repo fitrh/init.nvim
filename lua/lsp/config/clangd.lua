@@ -1,6 +1,6 @@
-local lsp = require("lsp")
-local handlers_ext = require("lsp-status").extensions.clangd.setup()
-local handlers = vim.tbl_extend("error", lsp.handlers, handlers_ext)
+local handler = require("lsp.handler")
+local attach = require("lsp.attach")
+local clangd_ext_handler = require("lsp-status").extensions.clangd.setup()
 
 local M = {
   cmd = {
@@ -12,16 +12,20 @@ local M = {
     "--cross-file-rename",
     "--header-insertion=iwyu",
   },
-  on_attach = lsp.on_attach,
+  on_attach = attach.with_all_extensions,
   -- TODO: figure out what is this
   init_options = {
-    clangdFileStatus = true,
+    clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
     usePlaceholders = true,
     completeUnimported = true,
     semanticHighlighting = true,
   },
   capabilities = require("lsp.capability"),
-  handlers = handlers,
+  handlers = handler.with({
+    handler.on_publish_diagnostics,
+    handler.hover,
+    clangd_ext_handler,
+  }),
 }
 
 return M

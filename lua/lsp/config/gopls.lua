@@ -1,8 +1,9 @@
-local lsp = require("lsp")
+local handler = require("lsp.handler")
+local attach = require("lsp.attach")
 local capabilities = require("lsp.capability")
 
 return {
-  on_attach = lsp.on_attach,
+  on_attach = attach.with_all_extensions,
   capabilities = capabilities,
-  handlers = lsp.handlers,
+  handlers = handler.default(),
 }
