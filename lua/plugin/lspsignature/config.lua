@@ -1,7 +1,9 @@
 local M = {
   bind = true,
-  fix_pos = true,
-  hint_enable = true,
+  floating_window = false,
+  hint_prefix = " ",
+  hint_scheme = "LspDiagnosticsDefaultHint",
+  hi_parameter = "LspSignatureActiveParameter",
   extra_trigger_chars = { "(", "{", "," },
 }
 
