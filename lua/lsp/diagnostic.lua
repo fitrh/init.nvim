@@ -17,7 +17,7 @@ M.with = function(args)
   }
 
   for type, text in pairs(diagnostics) do
-    local diagnostic = "LspDiagnosticsSign" .. type
+    local diagnostic = ("LspDiagnosticsSign%s"):format(type)
     vim.fn.sign_define(
       diagnostic, {
         text = text,

@@ -74,7 +74,7 @@ local branch = {
 local location = {
   function()
     local len = #tostring(vim.fn.line("$"))
-    return "%"..len.."l,%3c"
+    return ("%%%sl,%%3c"):format(len)
   end,
   icon = "ﰙ",
 }

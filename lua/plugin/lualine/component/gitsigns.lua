@@ -21,14 +21,14 @@ local M = {
     end
 
     local state = {
-      Added = "%#DiffAdd#" .. (" %s "):format(status.added),
-      Changed = "%#DiffChange#" .. (" %s "):format(status.changed),
-      Removed = "%#DiffDelete#" .. (" %s"):format(status.removed),
+      Added = ("%%#DiffAdd# %s "):format(status.added),
+      Changed = ("%%#DiffChange# %s "):format(status.changed),
+      Removed = ("%%#DiffDelete# %s "):format(status.removed),
     }
 
-    diff = (status.added > 0) and diff .. state.Added or diff
-    diff = (status.changed > 0) and diff .. state.Changed or diff
-    diff = (status.removed > 0) and diff .. state.Removed or diff
+    diff = (status.added > 0) and ("%s%s"):format(diff, state.Added) or diff
+    diff = (status.changed > 0) and ("%s%s"):format(diff, state.Changed) or diff
+    diff = (status.removed > 0) and ("%s%s"):format(diff, state.Removed) or diff
 
     return diff:gsub('^%s*(.-)%s*$', '%1')
   end,

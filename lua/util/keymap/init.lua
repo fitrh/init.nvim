@@ -12,7 +12,7 @@ end
 
 function M.on_press_leader(key, in_mode)
   local map = require("util.keymap.map")
-  local _key = "<Leader>" .. key
+  local _key = ("<Leader>%s"):format(key)
   return map:new():on_press(_key, in_mode)
 end
 
