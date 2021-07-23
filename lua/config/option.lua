@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+opt.shell = "/usr/bin/bash"
 opt.pastetoggle = "<F2>" -- toggling paste mode when press this key
 opt.hidden = true -- enable switching unsaved buffer
 opt.wrap = false
