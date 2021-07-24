@@ -24,8 +24,6 @@ function M.setup(arg)
       function()
         if #vim.lsp.buf_get_clients() == 0 then return end
         local lsp = require("lsp-status")
-        lsp.config(require("plugin.lspstatus.config"))
-        lsp.register_progress()
         return lsp.status() ~= " " and lsp.status() or nil
       end,
       color = { fg = foreground, gui = "BOLD" },
