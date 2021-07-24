@@ -7,7 +7,7 @@ local M = {
     local cmd = vim.cmd
     local status = vim.b.gitsigns_status_dict
     local c = require("util.palette")
-    local diff = ""
+    local diff = {}
     local bg = c.bg_statusline
 
     local highlights = {
@@ -21,16 +21,16 @@ local M = {
     end
 
     local state = {
-      Added = ("%%#DiffAdd# %s "):format(status.added),
-      Changed = ("%%#DiffChange# %s "):format(status.changed),
-      Removed = ("%%#DiffDelete# %s "):format(status.removed),
+      Added = ("%%#DiffAdd# %s"):format(status.added),
+      Changed = ("%%#DiffChange# %s"):format(status.changed),
+      Removed = ("%%#DiffDelete# %s"):format(status.removed),
     }
 
-    diff = (status.added > 0) and ("%s%s"):format(diff, state.Added) or diff
-    diff = (status.changed > 0) and ("%s%s"):format(diff, state.Changed) or diff
-    diff = (status.removed > 0) and ("%s%s"):format(diff, state.Removed) or diff
+    if status.added > 0 then table.insert(diff, state.Added) end
+    if status.changed > 0 then table.insert(diff, state.Changed) end
+    if status.removed > 0 then table.insert(diff, state.Removed) end
 
-    return diff:gsub('^%s*(.-)%s*$', '%1')
+    return table.concat(diff, " ")
   end,
 }
 
