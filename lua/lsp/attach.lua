@@ -19,7 +19,10 @@ end
 
 function M.with_lsp_status(client)
   local status = require("lsp-status")
+  local config = require("plugin.lspstatus.config")
+  status.register_progress()
   status.on_attach(client)
+  status.config(config)
 end
 
 function M.with_lsp_signature()
