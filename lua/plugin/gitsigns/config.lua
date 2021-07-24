@@ -10,9 +10,12 @@ gitsigns.setup({
   },
   current_line_blame = true,
   current_line_blame_delay = 300, -- in ms
-  keymaps = {
-    -- Default keymap options
-    noremap = true,
+  keymaps = {}, -- disable default keymap
+  on_attach = function(bufnr)
+    local keymap = require("plugin.gitsigns.keymap")
+    keymap.on_attach(bufnr)
+  end
+})
 
     ['n ]c'] = {
       expr = true,
