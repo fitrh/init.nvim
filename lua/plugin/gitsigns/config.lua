@@ -8,8 +8,9 @@ gitsigns.setup({
     topdelete    = { text = "┃" },
     changedelete = { text = "┃" },
   },
-  current_line_blame = true,
-  current_line_blame_delay = 300, -- in ms
   keymaps = {}, -- disable default keymap
   on_attach = require("plugin.gitsigns.keymap").on_attach,
+  preview_config = { border = "rounded" },
+  current_line_blame = true,
+  current_line_blame_delay = 300, -- in ms
 })
