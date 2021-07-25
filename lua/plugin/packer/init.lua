@@ -21,9 +21,15 @@ packer.init({
 
 local plugins = {
   { "wbthomason/packer.nvim", opt = true },
+  { "nvim-lua/popup.nvim", module = "popup" },
+  { "nvim-lua/plenary.nvim", module = "plenary" },
+  { "nvim-lua/lsp-status.nvim", module = "lsp-status" },
+  { "ray-x/lsp_signature.nvim", module = "lsp_signature" },
+  { "L3MON4D3/LuaSnip", module = "luasnip" },
+  { "kyazdani42/nvim-web-devicons", module = "nvim-web-devicons" },
+  { "yamatsum/nvim-nonicons", module = "nvim-nonicons" },
   require("plugin.treesitter"),
   require("plugin.lspconfig"),
-  require("plugin.lspsignature"),
   require("plugin.sandwich"),
   require("plugin.kommentary"),
   require("plugin.hop"),
@@ -35,9 +41,7 @@ local plugins = {
   require("plugin.outline"),
   require("plugin.neoscroll"),
   require("plugin.tokyonight"),
-  require("plugin.icon").devicons,
   -- require("plugin.icon").nonicons, -- FIXME: use nerdfont key code
-  require("plugin.lspstatus"),
   require("plugin.lualine"),
   require("plugin.colorizer"),
   -- TODO: add TrueZen (https://github.com/Pocco81/TrueZen.nvim)
