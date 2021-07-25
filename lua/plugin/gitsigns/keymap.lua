@@ -1,8 +1,4 @@
 local M = {}
-local keymap = require("util.keymap")
-local on = keymap.on_press
-local lead = keymap.on_press_leader
-local opt = keymap.opt
 
 local hunk = {
   nex = "Gitsigns next_hunk",
@@ -23,6 +19,11 @@ local toggle = {
 }
 
 function M.on_attach(nr)
+  local keymap = require("util.keymap")
+  local on = keymap.on_press
+  local lead = keymap.on_press_leader
+  local opt = keymap.opt
+
   keymap.bind({
     on("]c", "n"):buf(nr):exec(hunk.nex):with(opt():noremap()),
     on("[c", "n"):buf(nr):exec(hunk.prev):with(opt():noremap()),
