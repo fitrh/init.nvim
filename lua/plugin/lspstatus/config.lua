@@ -1,5 +1,10 @@
 local sign = require("lsp.diagnostic").sign
 
+local spinners = {
+  full = {"⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷"},
+  small = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+}
+
 return {
   kind_labels = require("lsp.completion").kind({ icon = "default" }),
   current_function = true,
@@ -11,7 +16,7 @@ return {
   indicator_info = sign.Information,
   indicator_hint = sign.Hint,
   indicator_ok = "",
-  spinner_frames = {"⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷"},
+  spinner_frames = spinners.small,
   status_symbol = "",
   select_symbol = nil,
   update_interval = 100
