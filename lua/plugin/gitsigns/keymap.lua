@@ -15,7 +15,11 @@ local hunk = {
 
 local toggle = {
   sign = "Gitsigns toggle_signs",
+  numhl = "Gitsigns toggle_numhl",
+  linehl = "Gitsigns toggle_linehl",
+  word_diff = "Gitsigns toggle_word_diff",
   blame = "Gitsigns toggle_current_line_blame",
+  blame_win = "Gitsigns blame_line true",
 }
 
 function M.on_attach(nr)
@@ -36,8 +40,11 @@ function M.on_attach(nr)
     on("ghp", "n"):buf(nr):exec(hunk.preview):with(opt():noremap()),
     on("ih", "o"):buf(nr):exec(hunk.select):with(opt():noremap()),
     on("ih", "x"):buf(nr):exec(hunk.select):with(opt():noremap()),
-    on("gbl", "n"):buf(nr):exec("Gitsigns blame_line"):with(opt():noremap()),
-    on("gt", "n"):buf(nr):exec(toggle.signs):with(opt():noremap()),
+    on("gbl", "n"):buf(nr):exec(toggle.blame_win):with(opt():noremap()),
+    on("gt", "n"):buf(nr):exec(toggle.sign):with(opt():noremap()),
+    on("gnm", "n"):buf(nr):exec(toggle.numhl):with(opt():noremap()),
+    on("gll", "n"):buf(nr):exec(toggle.linehl):with(opt():noremap()),
+    on("gwd", "n"):buf(nr):exec(toggle.word_diff):with(opt():noremap()),
     lead("gl", "n"):buf(nr):exec(toggle.blame):with(opt():noremap()),
   })
 end
