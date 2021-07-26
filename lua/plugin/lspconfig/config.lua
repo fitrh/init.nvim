@@ -4,8 +4,8 @@ local servers = {
   clangd = require("lsp.config.clangd"), -- FIXME: properly configure clangd
   gopls = require("lsp.config.gopls"),
   pyright = require("lsp.config.pyright"),
-  bashls = {},
-  -- TODO: add php lsp
+  bashls = require("lsp.config.bashls"),
+  -- TODO: add null-ls for markdown and toml(?)
 }
 
 for name, conf in pairs(servers) do
