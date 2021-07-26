@@ -30,9 +30,9 @@ keymap.bind({
   on("<A-q>", "t"):run([[<C-\><C-n>]]):with(opt():noremap()),
 
   -- easy save & quit
-  lead(";"):exec("w!"):with(opt():noremap()),
+  lead("<Space>"):exec("w!"):with(opt():noremap()),
+  lead(";"):exec("wq"):with(opt():noremap()),
   lead("'"):exec("wall"):with(opt():noremap()),
-  lead("w"):exec("wq"):with(opt():noremap()),
   lead("qq"):exec("q"):with(opt():noremap()),
   lead("ql"):exec("wqall"):with(opt():noremap()),
   lead("x"):exec("x"):with(opt():noremap()),
