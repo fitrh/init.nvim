@@ -10,20 +10,20 @@ local M = {
     local diff = {}
     local bg = c.bg_statusline
 
-    local highlights = {
-      ("DiffAdd guifg=%s guibg=%s"):format(c.gitsigns.add, bg),
-      ("DiffChange guifg=%s guibg=%s"):format(c.gitsigns.change, bg),
-      ("DiffDelete guifg=%s guibg=%s"):format(c.gitsigns.delete, bg),
+    local hl_groups = {
+      ("Added guifg=%s guibg=%s"):format(c.gitsigns.add, bg),
+      ("Changed guifg=%s guibg=%s"):format(c.gitsigns.change, bg),
+      ("Removed guifg=%s guibg=%s"):format(c.gitsigns.delete, bg),
     }
 
-    for _, highlight in ipairs(highlights) do
-      cmd(("highlight %s"):format(highlight))
+    for _, group in ipairs(hl_groups) do
+      cmd(("highlight %s"):format(group))
     end
 
     local state = {
-      Added = ("%%#DiffAdd# %s"):format(status.added),
-      Changed = ("%%#DiffChange# %s"):format(status.changed),
-      Removed = ("%%#DiffDelete# %s"):format(status.removed),
+      Added = ("%%#Added# %s"):format(status.added),
+      Changed = ("%%#Changed# %s"):format(status.changed),
+      Removed = ("%%#Removed# %s"):format(status.removed),
     }
 
     if status.added > 0 then table.insert(diff, state.Added) end
