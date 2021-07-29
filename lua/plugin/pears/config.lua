@@ -1,7 +1,6 @@
 local pears = require("pears")
 
 pears.setup(function(conf)
-  -- FIXME: fix tag_matching
   conf.preset "tag_matching"
   conf.remove_pair_on_outer_backspace(false)
   conf.on_enter(function(pears_handle)
