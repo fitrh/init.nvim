@@ -118,11 +118,9 @@ keymap.bind({
 
   -- Paste-Yank behavior
   -- By default, in visual-line mode, the selected line will be yanked,
-  -- so it's replace the previous yanked line.
-  -- This map to prevent that behaviour, after paste, select all the yanked line,
-  -- and yank again
-  on("p", "v"):run("pgvy"):with(opt():noremap()),
-  -- on("y", "v"):exec("ygv"):with(opt():noremap()),
+  -- and replace the previous yanked line. This map to imporve that behaviour,
+  -- after paste, select the yanked line, so it's easy to yank that line again
+  on("p", "v"):run("pgv"):with(opt():noremap()),
   -- yank current line
   on("Y", "n"):run("yy"):with(opt():noremap()),
   -- yank-Paste from clipboard
