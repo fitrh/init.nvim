@@ -23,11 +23,11 @@ keymap.bind({
   -- on("<S-ScrollWheelDown>", "n"):disable(),
 
   -- easy escape
-  on("<A-q>"):run("<Esc>"):with(opt():noremap()),
-  on("<A-q>", "s"):run("<Esc>"):with(opt():noremap()),
-  on("<A-q>", "i"):run("<Esc>"):with(opt():noremap()),
-  on("<A-q>", "c"):run("<Esc>"):with(opt():noremap()),
-  on("<A-q>", "t"):run([[<C-\><C-n>]]):with(opt():noremap()),
+  on("<M-q>"):run("<Esc>"):with(opt():noremap()),
+  on("<M-q>", "s"):run("<Esc>"):with(opt():noremap()),
+  on("<M-q>", "i"):run("<Esc>"):with(opt():noremap()),
+  on("<M-q>", "c"):run("<Esc>"):with(opt():noremap()),
+  on("<M-q>", "t"):run([[<C-\><C-n>]]):with(opt():noremap()),
 
   -- easy save & quit
   lead("<Space>"):exec("w!"):with(opt():noremap()),
@@ -83,7 +83,7 @@ keymap.bind({
   lead("-", "n"):run("<C-w>-"):with(opt():noremap()),
 
   -- open terminal
-  on("<A-`>"):exec("split term://$SHELL"):with(opt():noremap()),
+  on("<M-`>"):exec("split term://$SHELL"):with(opt():noremap()),
 
   --- search Behaviour
   -- Map // to Search current selected text
