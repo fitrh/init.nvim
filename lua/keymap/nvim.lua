@@ -108,13 +108,12 @@ keymap.bind({
   on("<C-a>", "n"):run("ggVG"):with(opt():noremap():silent()),
   on("<C-a>", "i"):run("<Esc>ggVG"):with(opt():noremap():silent()),
 
-  -- tabs
+  -- tab page
   lead("t", "n"):exec("tabnew"):with(opt():noremap()),
-  on("<A-[>", "n"):exec("tabprevious"):with(opt():noremap()),
-  on("<A-]>", "n"):exec("tabnext"):with(opt():noremap()),
-  -- FIXME: figure out why Alt does not work here
-  on("<C-h>", "n"):exec("-tabmove"):with(opt():noremap()),
-  on("<C-l>", "n"):exec("+tabmove"):with(opt():noremap()),
+  on("<Leader>[", "n"):exec("tabprevious"):with(opt():noremap()),
+  on("<Leader>]", "n"):exec("tabnext"):with(opt():noremap()),
+  on("<M-[>", "n"):exec("-tabmove"):with(opt():noremap()),
+  on("<M-]>", "n"):exec("+tabmove"):with(opt():noremap()),
 
 
   -- Paste-Yank behavior
