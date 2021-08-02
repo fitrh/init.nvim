@@ -16,12 +16,6 @@ keymap.bind({
   on("<Right>"):disable(),
   on("<Right>", "i"):disable(),
 
-  -- FIXME: disable mouse wheele
-  -- on("<ScrollWheelUp>", "n"):disable(),
-  -- on("<S-ScrollWheelUp>", "n"):disable(),
-  -- on("<ScrollWheelDown>", "n"):disable(),
-  -- on("<S-ScrollWheelDown>", "n"):disable(),
-
   -- easy escape
   on("<M-q>"):run("<Esc>"):with(opt():noremap()),
   on("<M-q>", "s"):run("<Esc>"):with(opt():noremap()),

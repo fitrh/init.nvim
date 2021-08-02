@@ -78,7 +78,7 @@ opt.visualbell = true
 
 opt.termguicolors = true -- enable 24-bit RGB color in the TUI
 
--- TODO: Disable mouse scroll
+-- Disable mouse
 opt.mouse = ""
 
 -- line length
