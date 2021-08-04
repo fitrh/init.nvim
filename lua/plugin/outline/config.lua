@@ -9,10 +9,10 @@ outline.setup({
   show_relative_numbers = false,
   show_symbol_details = true,
   keymaps = {
-    close = "<Esc>",
-    goto_location = "<Cr>",
+    close = { "<Esc>", "q" },
+    goto_location = "<CR>",
     focus_location = "o",
-    hover_symbol = "<C-space>",
+    hover_symbol = "<C-Space>",
     rename_symbol = "r",
     code_actions = "a",
   },
