@@ -41,7 +41,6 @@ local plugins = {
   require("plugin.outline"),
   require("plugin.neoscroll"),
   require("plugin.tokyonight"),
-  -- require("plugin.icon").nonicons, -- FIXME: use nerdfont key code
   require("plugin.lualine"),
   require("plugin.colorizer"),
   -- TODO: add TrueZen (https://github.com/Pocco81/TrueZen.nvim)
