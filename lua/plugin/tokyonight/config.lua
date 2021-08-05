@@ -1,14 +1,22 @@
 local g = vim.g
 
-g.tokyonight_style = "night"
-g.tokyonight_lualine_bold = true
-g.tokyonight_dark_float = false
-g.tokyonight_dark_sidebar = false
-g.tokyonight_sidebars = { "Outline" }
+local config = {
+  style = "night",
+  lualineBold = false,
+  darkFloat = false,
+  darkSidebar = false,
+  sidebars = { "Outline" },
+}
+
+g.tokyonight_style = config.style
+g.tokyonight_lualine_bold = config.lualineBold
+g.tokyonight_dark_float = config.darkFloat
+g.tokyonight_dark_sidebar = config.darkSidebar
+g.tokyonight_sidebars = config.sidebars
 
 vim.cmd[[colorscheme tokyonight]]
 
-local c = require("tokyonight.colors").setup()
+local c = require("tokyonight.colors").setup(config)
 local hlgroups = {
   ["CursorLineNr"] = ("gui=BOLD guifg=%s"):format(c.blue),
   ["ColorColumn"] = ("guibg=%s"):format(c.bg_statusline),
