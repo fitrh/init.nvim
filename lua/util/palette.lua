@@ -1,4 +1,10 @@
-local scheme = require("tokyonight.colors").setup()
+local scheme = require("tokyonight.colors").setup({
+  style = "night",
+  lualineBold = false,
+  darkFloat = false,
+  darkSidebar = false,
+  sidebars = { "Outline" },
+})
 local util = require("tokyonight.util")
 
 local M = {
