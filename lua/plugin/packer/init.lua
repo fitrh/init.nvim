@@ -30,6 +30,7 @@ local plugins = {
   { "yamatsum/nvim-nonicons", module = "nvim-nonicons" },
   require("plugin.treesitter"),
   require("plugin.lspconfig"),
+  require("plugin.jdtls"),
   require("plugin.sandwich"),
   require("plugin.kommentary"),
   require("plugin.hop"),
