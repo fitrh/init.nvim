@@ -1,7 +1,12 @@
+local capabilities = require("lsp.capability")
 local handler = require("lsp.handler")
 local attach = require("lsp.attach")
 local jdtls = require("jdtls")
 local setup = require("jdtls.setup")
+
+local jdtls_capability = jdtls.extendedClientCapabilities
+capabilities.workspace.configuration = true
+jdtls_capability.resolveAdditionalTextEditsSupport = true
 
 local root_files = {
   -- Single-module projects
