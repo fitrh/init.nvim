@@ -8,6 +8,12 @@ local jdtls_capability = jdtls.extendedClientCapabilities
 capabilities.workspace.configuration = true
 jdtls_capability.resolveAdditionalTextEditsSupport = true
 
+local env = {
+  WORKSPACE = os.getenv("JAVA_WORKSPACE"),
+  BASENAME_CWD = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t"),
+  RUNTIMES = ("%s/jvm"):format(os.getenv("LOCAL_LIB")),
+}
+
 local root_files = {
   -- Single-module projects
   {
@@ -20,9 +26,11 @@ local root_files = {
   { 'build.gradle', 'build.gradle.kts' },
 } or vim.fn.getcwd()
 
+local workspace = ("%s/%s"):format(env.WORKSPACE, env.BASENAME_CWD)
+
 local config = {
   root_dir = setup.find_root(root_files),
-  cmd = { "jdtls", },
+  cmd = { "jdtls", workspace, },
   capabilities = capabilities,
   handlers = handler.default(),
   on_attach = function(client, bufnr)
