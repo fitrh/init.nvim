@@ -34,8 +34,8 @@ local config = {
   capabilities = capabilities,
   handlers = handler.default(),
   on_attach = function(client, bufnr)
-    attach.with_all_extensions(client, bufnr)
     setup.add_commands()
+    attach.with_all_extensions(client, bufnr)
   end,
   flags = {
     allow_incremental_sync = true,
