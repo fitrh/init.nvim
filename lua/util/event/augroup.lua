@@ -7,7 +7,6 @@ local function exec(name, arg)
   local group = { ("augroup %s"):format(name), "autocmd!" }
 
   for i, v in ipairs(arg) do
-    table.insert(group, "augroup END")
     if type(v) == "table" then
       local cmd = ("autocmd %s %s %s"):format(
         v.events or events,
@@ -17,6 +16,7 @@ local function exec(name, arg)
       table.insert(group, cmd)
     end
   end
+  table.insert(group, "augroup END")
   exec(table.concat(group, "\n"), false)
 end
 
