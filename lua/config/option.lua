@@ -30,11 +30,13 @@ opt.conceallevel = 2 -- hide concealed text unless it has a custom replacement
 opt.scrolloff = 5
 opt.sidescrolloff = 5
 
+--- popup-menu
 --[[
   Maximum number of items to show in the pop-up menu.
   Zero means 'use available screen space'.
 --]]
 opt.pumheight = 10
+opt.pumblend = 20 -- pseudo-transparency for the popup-menu, value : 0 - 100
 
 -- Line Number
 opt.number = true
