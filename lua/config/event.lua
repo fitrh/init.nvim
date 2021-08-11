@@ -47,4 +47,11 @@ augroup.setup({
       cmd = 'silent! lua vim.highlight.on_yank({ higroup = "Substitute" })',
     },
   },
+  ["OnNewJavaBuffer"] = {
+    {
+      events = "FileType",
+      filter = "java",
+      cmd = [[lua require("plugin.jdtls.config").attach()]],
+    },
+  },
 })
