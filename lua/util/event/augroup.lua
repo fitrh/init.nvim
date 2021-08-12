@@ -1,12 +1,20 @@
 local M = {}
 
-local function exec(name, arg)
+local function exec(name, args)
+  local opts = args or {}
   local exec = vim.api.nvim_exec
-  local filter = arg.filter or nil
-  local events = arg.events or nil
+  local filter = opts.filter or nil
+  local events = opts.events or nil
+  local expect = true
+  if opts.expect ~= nil then
+    expect = opts.expect
+  end
+  if not expect then
+    return nil
+  end
   local group = { ("augroup %s"):format(name), "autocmd!" }
 
-  for i, v in ipairs(arg) do
+  for i, v in ipairs(opts) do
     if type(v) == "table" then
       local cmd = ("autocmd %s %s %s"):format(
         v.events or events,
