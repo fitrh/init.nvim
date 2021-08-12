@@ -25,11 +25,10 @@ keymap.bind({
 
   -- easy save & quit
   lead("<Space>"):exec("w!"):with(opt():noremap()),
-  lead(";"):exec("wq"):with(opt():noremap()),
+  lead(";"):exec("x"):with(opt():noremap()),
   lead("'"):exec("wall"):with(opt():noremap()),
   lead("qq"):exec("q"):with(opt():noremap()),
   lead("ql"):exec("wqall"):with(opt():noremap()),
-  lead("x"):exec("x"):with(opt():noremap()),
 
   --- buffer
   -- next & previous buffer
