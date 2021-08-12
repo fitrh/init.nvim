@@ -10,7 +10,7 @@ local function default(client, bufnr)
   keymap.on_attach(client, bufnr)
   completion.with({ text = true, icon = "default" })
   diagnostic.with({ e = "", w = "", i = "", h = ""})
-  event.highlight_on_cursor_hold()
+  event.attach(client)
 end
 
 function M.with_basic_config(client, bufnr)
