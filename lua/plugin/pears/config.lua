@@ -1,4 +1,5 @@
 local pears = require("pears")
+local rule = require("pears.rule")
 
 pears.setup(function(conf)
   conf.preset "tag_matching"
@@ -10,4 +11,9 @@ pears.setup(function(conf)
       pears_handle()
     end
   end)
+  -- Don't expand a double quote if it comes after an alpha character
+  conf.pair([["]], {
+    close = [["]],
+    should_expand = rule.not_(rule.start_of_context "[a-zA-Z]")
+  })
 end)
