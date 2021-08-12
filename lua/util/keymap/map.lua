@@ -41,14 +41,10 @@ function Map:lua(command)
   return self
 end
 
-function Map:buf(bufnr)
-  self._bufnr = bufnr or 0
-  return self
-end
-
-function Map:on_press(key, in_mode)
+function Map:on_press(key, in_mode, bufnr)
   self._key = key
   self._mode = in_mode or ""
+  self._bufnr = bufnr or nil
   return self
 end
 

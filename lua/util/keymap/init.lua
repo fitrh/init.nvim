@@ -5,15 +5,19 @@ function M.opt()
   return opt:new()
 end
 
-function M.on_press(key, in_mode)
+function M.on_press(key, in_mode, bufnr)
   local map = require("util.keymap.map")
-  return map:new():on_press(key, in_mode)
+  if type(in_mode) == "number" then
+    bufnr = in_mode
+    in_mode = nil
+  end
+  return map:new():on_press(key, in_mode, bufnr)
 end
 
-function M.on_press_leader(key, in_mode)
+function M.on_press_leader(key, in_mode, bufnr)
   local map = require("util.keymap.map")
   local _key = ("<Leader>%s"):format(key)
-  return map:new():on_press(_key, in_mode)
+  return M.on_press(_key, in_mode, bufnr)
 end
 
 function M.termcode(str)
