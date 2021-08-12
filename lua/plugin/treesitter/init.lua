@@ -4,7 +4,11 @@ return {
     run = ":TSUpdate",
     config = function() require("plugin.treesitter.config") end,
     event = {
-      "BufReadPost", "BufWritePost", "BufNewFile", "User TelescopeFindPre"
+      "BufReadPost",
+      "BufWritePost",
+      "BufNewFile",
+      "InsertEnter",
+      "User TelescopeFindPre",
     },
   },
   {
