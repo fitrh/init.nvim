@@ -20,9 +20,9 @@ function M.attach(client)
         cmd = "lua vim.lsp.buf.clear_references()"
       },
     },
-    ["CodelensOnInsert"] = {
+    ["CodelensRefresh"] = {
       expect = client.resolved_capabilities.code_lens,
-      events = "BufEnter,CursorHold,InsertEnter,InsertLeave",
+      events = "BufEnter,BufLeave,InsertEnter,InsertLeave",
       filter = "<buffer>",
       { cmd = "lua vim.lsp.codelens.refresh()" }
     },
