@@ -1,12 +1,11 @@
 local keymap = require("util.keymap")
 local on = keymap.on_press
+local lead = keymap.on_press_leader
 local opt = keymap.opt
 
 keymap.bind({
-  on("f", "n"):exec("HopWord"):with(opt():noremap()),
-  on("f", "v"):exec("HopWord"):with(opt():noremap()),
-  on("F", "n"):exec("HopLine"):with(opt():noremap()),
-  on("F", "v"):exec("HopLine"):with(opt():noremap()),
-  on("<M-f>", "n"):exec("HopPattern"):with(opt():noremap()),
-  on("<M-f>", "v"):exec("HopPattern"):with(opt():noremap()),
+  lead("j"):exec("HopWord"):with(opt():noremap()),
+  on("f"):exec("HopChar2"):with(opt():noremap()),
+  on("F"):exec("HopLineStart"):with(opt():noremap()),
+  on("<M-f>"):exec("HopPattern"):with(opt():noremap()),
 })
