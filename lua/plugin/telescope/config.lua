@@ -8,8 +8,7 @@ telescope.setup({
     layout_config = {
       horizontal = {
         height = 0.8,
-        -- width = 0.75,
-        preview_width = 0.65,
+        preview_width = 80,
       },
       vertical = {
         height = 0.8,
@@ -18,5 +17,6 @@ telescope.setup({
       },
     },
     file_ignore_patterns = { "%.o", "%.class", },
+    winblend = 20,
   },
 })
