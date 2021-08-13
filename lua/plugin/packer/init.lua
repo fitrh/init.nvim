@@ -21,7 +21,6 @@ packer.init({
 
 local plugins = {
   { "wbthomason/packer.nvim", opt = true },
-  { "nvim-lua/popup.nvim", module = "popup" },
   { "nvim-lua/plenary.nvim", module = "plenary" },
   { "nvim-lua/lsp-status.nvim", module = "lsp-status" },
   { "ray-x/lsp_signature.nvim", module = "lsp_signature" },
