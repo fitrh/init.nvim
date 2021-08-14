@@ -43,6 +43,7 @@ local plugins = {
   require("plugin.tokyonight"),
   require("plugin.lualine"),
   require("plugin.colorizer"),
+  require("plugin.modes"),
   -- TODO: add TrueZen (https://github.com/Pocco81/TrueZen.nvim)
   { "baskerville/vim-sxhkdrc", ft = "sxhkdrc" },
 }
