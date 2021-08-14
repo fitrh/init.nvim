@@ -1,20 +1,4 @@
-local autocmd = require("util.event.autocmd")
 local augroup = require("util.event.augroup")
-
-
--- format:
---   [events] = { filter, cmd }
-
--- type:
---   events = string, list of valid vim event name
---   filter = string, optional, pattern to match when the events get fire,
---            default to "*"
---   cmd    = string, vim/ex command to execute
-autocmd.setup({
-  ["WinEnter,BufEnter,InsertLeave"] = { cmd = "set cul" },
-  ["WinLeave,BufLeave,InsertEnter"] = { cmd = "set nocul" },
-})
-
 
 -- format:
 --   [name] = {
@@ -35,8 +19,9 @@ autocmd.setup({
 --                  default to "*"
 --         cmd = string, vim/ex command to execute
 --       }
+
 augroup.setup({
-  ["TrimOrMakeDir"] = {
+  ["TrimAndMakeDir"] = {
     events = "BufWritePre",
     { cmd = [[:%s/\s\+$//e]], },
     { cmd = [[lua require("util.dir").mk()]] },
@@ -44,10 +29,20 @@ augroup.setup({
   ["HighlightOnYank"] = {
     {
       events = "TextYankPost",
-      cmd = 'silent! lua vim.highlight.on_yank({ higroup = "Substitute" })',
+      cmd = [[silent! lua vim.highlight.on_yank()]],
     },
   },
-  ["OnNewJavaBuffer"] = {
+  ["CursorlineToggle"] = {
+    {
+      events = "WinEnter,BufEnter,InsertLeave",
+      cmd = "set cursorline",
+    },
+    {
+      events = "WinLeave,BufLeave,InsertEnter",
+      cmd = "set nocursorline",
+    },
+  },
+  ["AttachJDTLS"] = {
     {
       events = "FileType",
       filter = "java",
