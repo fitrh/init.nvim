@@ -18,4 +18,31 @@ telescope.setup({
     },
     file_ignore_patterns = { "%.o", "%.class", },
   },
+  pickers = {
+    find_files = {
+      theme = "ivy",
+      layout_config = {
+        height = 0.4,
+      }
+    },
+    buffers = {
+      theme = "dropdown",
+      previewer = false,
+    },
+    live_grep = {
+      theme = "dropdown",
+    },
+    filetypes = {
+      layout_config = {
+        width = 0.25,
+        height = 0.5,
+      },
+    },
+    lsp_code_actions = {
+      theme = "cursor",
+    },
+    lsp_range_code_actions = {
+      theme = "cursor",
+    },
+  },
 })
