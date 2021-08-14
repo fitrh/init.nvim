@@ -17,6 +17,5 @@ telescope.setup({
       },
     },
     file_ignore_patterns = { "%.o", "%.class", },
-    winblend = 20,
   },
 })
