@@ -15,7 +15,7 @@ local function exec(name, args)
   local group = { ("augroup %s"):format(name), "autocmd!" }
 
   for i, v in ipairs(opts) do
-    if type(v) == "table" then
+    if type(v) == "table" and (events or v.events) then
       local cmd = ("autocmd %s %s %s"):format(
         v.events or events,
         v.filter or filter or "*",
