@@ -25,12 +25,13 @@ function M.termcode(str)
   return termcode(str, true, true, true)
 end
 
-function M.bind(maps)
+function M.bind(maps, bufnr)
   local keymap = vim.api.nvim_set_keymap
   local buf_keymap = vim.api.nvim_buf_set_keymap
   for _, map in ipairs(maps) do
-    if map._bufnr then
-      buf_keymap(map._bufnr, map._mode, map._key, map._command, map._options)
+    if map._bufnr or bufnr then
+      local _bufnr = map._bufnr or bufnr
+      buf_keymap(_bufnr, map._mode, map._key, map._command, map._options)
     else
       keymap(map._mode, map._key, map._command, map._options)
     end
