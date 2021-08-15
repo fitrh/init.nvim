@@ -27,12 +27,15 @@ telescope.setup({
     },
     buffers = {
       theme = "dropdown",
+      prompt_prefix = " ﬘  ",
       previewer = false,
     },
     live_grep = {
       theme = "dropdown",
+      prompt_prefix = "   ",
     },
     filetypes = {
+      prompt_prefix = "   ",
       layout_config = {
         width = 0.25,
         height = 0.5,
@@ -40,9 +43,13 @@ telescope.setup({
     },
     lsp_code_actions = {
       theme = "cursor",
+      prompt_prefix = " ﯧ  ",
+      layout_config = { width = 50, },
     },
     lsp_range_code_actions = {
       theme = "cursor",
+      prompt_prefix = " ﯧ  ",
+      layout_config = { width = 50, },
     },
   },
 })
