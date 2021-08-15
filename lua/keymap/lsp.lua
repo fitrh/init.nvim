@@ -13,7 +13,6 @@ function M.on_attach(client, bufnr)
     on("gr", "n"):lua("vim.lsp.buf.references()"):with(opt():noremap()),
     on("K", "n"):lua("vim.lsp.buf.hover()"):with(opt():noremap()),
     lead("k", "n"):lua("vim.lsp.buf.signature_help()"):with(opt():noremap()),
-    lead("ls", "n"):lua("vim.lsp.buf.document_symbol()"):with(opt():noremap()),
     lead("wa", "n"):lua("vim.lsp.buf.add_workspace_folder()"):with(opt():noremap()),
     lead("wr", "n"):lua("vim.lsp.buf.remove_workspace_folder()"):with(opt():noremap()),
     lead("D", "n"):lua("vim.lsp.buf.type_definition()"):with(opt():noremap()),
@@ -23,8 +22,11 @@ function M.on_attach(client, bufnr)
     on("[d", "n"):lua("vim.lsp.diagnostic.goto_prev({ popup_opts = { focusable = false, border='rounded' } })"):with(opt():noremap()),
     on("]d", "n"):lua("vim.lsp.diagnostic.goto_next({ popup_opts = { focusable = false, border='rounded' } })"):with(opt():noremap()),
     lead("ll", "n"):lua("vim.lsp.diagnostic.set_loclist()"):with(opt():noremap()),
-    lead("lo"):exec("Telescope lsp_document_symbols"):with(opt():noremap()),
-    -- TODO: add more telescope lsp command
+
+    -- Telescope lsp_xxx commands
+    on("]ls"):exec("Telescope lsp_document_symbols"):with(opt():noremap()),
+    on("ca", "n"):exec("Telescope lsp_code_actions"):with(opt():noremap()),
+    on("ca", "v"):exec("Telescope lsp_range_code_actions"):with(opt():noremap()),
   }, bufnr)
 end
 
