@@ -114,8 +114,6 @@ keymap.bind({
   -- and replace the previous yanked line. This map to imporve that behaviour,
   -- after paste, select the yanked line, so it's easy to yank that line again
   on("p", "v"):run("pgv"):with(opt():noremap()),
-  -- yank current line
-  on("Y", "n"):run("yy"):with(opt():noremap()),
   -- yank-Paste from clipboard
   lead("p", "n"):run('"+p'):with(opt():noremap()),
   lead("p", "v"):run('"+p'):with(opt():noremap()),
