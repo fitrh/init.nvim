@@ -24,6 +24,7 @@ function M.on_attach(client, bufnr)
 
     -- Telescope lsp_xxx commands
     on("]ls"):exec("Telescope lsp_document_symbols"):with(opt():noremap()),
+    on("[ls"):exec("Telescope lsp_workspace_symbols"):with(opt():noremap()),
     on("ca", "n"):exec("Telescope lsp_code_actions"):with(opt():noremap()),
     lead("ca", "v"):exec("Telescope lsp_range_code_actions"):with(opt():noremap()),
   }, bufnr)
