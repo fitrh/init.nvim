@@ -23,7 +23,7 @@ opt.showtabline = 1 -- show tab-page only if there are at least 2 tab pages
 opt.synmaxcol = 120 -- do syntax highlighting until synmaxcol character
 opt.undofile = true -- save undo history to an undo file on BufWrite
 opt.undolevels = 100 -- maximum number of changes than can be undone
-opt.updatetime = 300 -- if this many ms nothing is typed, write the swap file
+opt.updatetime = 5000 -- if this many ms nothing is typed, write the swap file
 opt.conceallevel = 2 -- hide concealed text unless it has a custom replacement
 
 -- Scroll offset, minimal number of line or column to keep around the cursor
