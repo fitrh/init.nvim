@@ -1,3 +1,3 @@
-require("config")
+require("setting")
 require("plugin")
 require("keymap")
