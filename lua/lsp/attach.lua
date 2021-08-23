@@ -7,6 +7,7 @@ local event = require("lsp.event")
 
 local function default(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.lsp.codelens.refresh()
   keymap.on_attach(client, bufnr)
   completion.with({ text = true, icon = "default" })
   diagnostic.with({ e = "", w = "", i = "", h = ""})
