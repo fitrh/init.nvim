@@ -107,6 +107,6 @@ opt.formatoptions:remove({ "t", "o", "2", })
 
 -- completion
 opt.complete:remove({ "u", "t" })
-opt.completeopt:append({ "menuone", "noinsert", "noselect" })
+opt.completeopt:append({ "menu", "menuone", "preview", "noinsert", "noselect" })
 opt.wildmode = { "longest", "full" }
 opt.wildoptions:remove({ "tagfile" })
