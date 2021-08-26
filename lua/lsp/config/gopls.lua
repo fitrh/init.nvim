@@ -4,7 +4,6 @@ local capabilities = require("lsp.capability")
 
 return {
   cmd = { "gopls", "serve", },
-  on_attach = attach.with_all_extensions,
   capabilities = capabilities,
   handlers = handler.default(),
   settings = {
@@ -28,4 +27,5 @@ return {
       },
     },
   },
+  on_attach = attach.with_all_extensions,
 }

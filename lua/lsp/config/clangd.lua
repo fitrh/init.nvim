@@ -1,8 +1,9 @@
 local handler = require("lsp.handler")
 local attach = require("lsp.attach")
+local capabilities = require("lsp.capability")
 local clangd_ext_handler = require("lsp-status").extensions.clangd.setup()
 
-local M = {
+return {
   cmd = {
     -- see clangd --help-hidden
     "clangd",
@@ -15,7 +16,12 @@ local M = {
     "--cross-file-rename",
     "--header-insertion=iwyu",
   },
-  on_attach = attach.with_all_extensions,
+  capabilities = capabilities,
+  handlers = handler.with({
+    handler.on_publish_diagnostics,
+    handler.hover,
+    clangd_ext_handler,
+  }),
   -- TODO: figure out what is this
   init_options = {
     clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
@@ -23,12 +29,5 @@ local M = {
     completeUnimported = true,
     semanticHighlighting = true,
   },
-  capabilities = require("lsp.capability"),
-  handlers = handler.with({
-    handler.on_publish_diagnostics,
-    handler.hover,
-    clangd_ext_handler,
-  }),
+  on_attach = attach.with_all_extensions,
 }
-
-return M

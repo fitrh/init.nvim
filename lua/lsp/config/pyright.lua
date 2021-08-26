@@ -1,9 +1,9 @@
 local handler = require("lsp.handler")
 local attach = require("lsp.attach")
+local capabilities = require("lsp.capability")
 
-local M = {
-  on_attach = attach.with_all_extensions,
-  capabilities = require("lsp.capability"),
+return {
+  capabilities = capabilities,
   handlers = handler.default(),
   settings = {
     python = {
@@ -13,6 +13,5 @@ local M = {
       venvPath = ".",
     }
   },
+  on_attach = attach.with_all_extensions,
 }
-
-return M
