@@ -42,11 +42,4 @@ augroup.setup({
       cmd = "set nocursorline",
     },
   },
-  ["AttachJDTLS"] = {
-    {
-      events = "FileType",
-      filter = "java",
-      cmd = [[lua require("plugin.jdtls.config").attach()]],
-    },
-  },
 })
