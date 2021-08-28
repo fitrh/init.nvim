@@ -15,7 +15,6 @@ function M.on_press(key, in_mode, bufnr)
 end
 
 function M.on_press_leader(key, in_mode, bufnr)
-  local map = require("util.keymap.map")
   local _key = ("<Leader>%s"):format(key)
   return M.on_press(_key, in_mode, bufnr)
 end
