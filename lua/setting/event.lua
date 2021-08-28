@@ -11,6 +11,7 @@ local augroup = require("util.event.augroup")
 --            the autocmd filter is omitted
 --   events = string, optional, the events that will be used for autocmd if
 --            the autocmd events is omitted
+--   expect = boolean, a condtion to match to run the autocmd
 --   autocmd = list of table, autocmd spec that belong to the augroup name
 --     autocmd format:
 --       {
