@@ -29,11 +29,18 @@ function M.bind(maps, args)
   local keymap = vim.api.nvim_set_keymap
   local buf_keymap = vim.api.nvim_buf_set_keymap
   for _, map in ipairs(maps) do
-    if map._bufnr or bufnr then
-      local _bufnr = map._bufnr or bufnr
-      buf_keymap(_bufnr, map._mode, map._key, map._command, map._options)
+    local opt = nil
+    if opts.options then
+      opt = opts.options.get and opts.options:get() or opts.options
+    end
+    opt = map._options or opt
+    opt = type(opt) == "table" and opt or {}
+    if map._bufnr or opts.bufnr then
+      local _bufnr = map._bufnr or opts.bufnr
+      _bufnr = type(_bufnr) == "number" and _bufnr or 0
+      buf_keymap(_bufnr, map._mode, map._key, map._command, opt)
     else
-      keymap(map._mode, map._key, map._command, map._options)
+      keymap(map._mode, map._key, map._command, opt)
     end
   end
 end
