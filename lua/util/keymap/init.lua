@@ -24,7 +24,8 @@ function M.termcode(str)
   return termcode(str, true, true, true)
 end
 
-function M.bind(maps, bufnr)
+function M.bind(maps, args)
+  local opts = args or {}
   local keymap = vim.api.nvim_set_keymap
   local buf_keymap = vim.api.nvim_buf_set_keymap
   for _, map in ipairs(maps) do
