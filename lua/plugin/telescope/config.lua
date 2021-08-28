@@ -39,12 +39,10 @@ telescope.setup({
     lsp_code_actions = {
       theme = "cursor",
       prompt_prefix = " ﯧ  ",
-      layout_config = { width = 50, },
     },
     lsp_range_code_actions = {
       theme = "cursor",
       prompt_prefix = " ﯧ  ",
-      layout_config = { width = 50, },
     },
   },
 })
