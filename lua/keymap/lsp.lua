@@ -7,27 +7,27 @@ function M.on_attach(client, bufnr)
   local opt = keymap.opt
 
   keymap.bind({
-    on("gD", "n"):lua("vim.lsp.buf.declaration()"):with(opt():noremap()),
-    on("gd", "n"):lua("vim.lsp.buf.definition()"):with(opt():noremap()),
-    on("gi", "n"):lua("vim.lsp.buf.implementation()"):with(opt():noremap()),
-    on("gr", "n"):lua("vim.lsp.buf.references()"):with(opt():noremap()),
-    on("K", "n"):lua("vim.lsp.buf.hover()"):with(opt():noremap()),
-    lead("k", "n"):lua("vim.lsp.buf.signature_help()"):with(opt():noremap()),
-    lead("wa", "n"):lua("vim.lsp.buf.add_workspace_folder()"):with(opt():noremap()),
-    lead("wr", "n"):lua("vim.lsp.buf.remove_workspace_folder()"):with(opt():noremap()),
-    lead("D", "n"):lua("vim.lsp.buf.type_definition()"):with(opt():noremap()),
-    lead("rn", "n"):lua("vim.lsp.buf.rename()"):with(opt():noremap()),
-    lead("d", "n"):lua("vim.lsp.diagnostic.show_line_diagnostics({ focusable = false, border = 'rounded' })"):with(opt():noremap()),
-    on("[d", "n"):lua("vim.lsp.diagnostic.goto_prev({ popup_opts = { focusable = false, border='rounded' } })"):with(opt():noremap()),
-    on("]d", "n"):lua("vim.lsp.diagnostic.goto_next({ popup_opts = { focusable = false, border='rounded' } })"):with(opt():noremap()),
-    lead("ll", "n"):lua("vim.lsp.diagnostic.set_loclist()"):with(opt():noremap()),
+    on("gD", "n"):lua("vim.lsp.buf.declaration()"),
+    on("gd", "n"):lua("vim.lsp.buf.definition()"),
+    on("gi", "n"):lua("vim.lsp.buf.implementation()"),
+    on("gr", "n"):lua("vim.lsp.buf.references()"),
+    on("K", "n"):lua("vim.lsp.buf.hover()"),
+    lead("k", "n"):lua("vim.lsp.buf.signature_help()"),
+    lead("wa", "n"):lua("vim.lsp.buf.add_workspace_folder()"),
+    lead("wr", "n"):lua("vim.lsp.buf.remove_workspace_folder()"),
+    lead("D", "n"):lua("vim.lsp.buf.type_definition()"),
+    lead("rn", "n"):lua("vim.lsp.buf.rename()"),
+    lead("d", "n"):lua("vim.lsp.diagnostic.show_line_diagnostics({ focusable = false, border = 'rounded' })"),
+    on("[d", "n"):lua("vim.lsp.diagnostic.goto_prev({ popup_opts = { focusable = false, border='rounded' } })"),
+    on("]d", "n"):lua("vim.lsp.diagnostic.goto_next({ popup_opts = { focusable = false, border='rounded' } })"),
+    lead("ll", "n"):lua("vim.lsp.diagnostic.set_loclist()"),
 
     -- Telescope lsp_xxx commands
-    on("]ls"):exec("Telescope lsp_document_symbols"):with(opt():noremap()),
-    on("[ls"):exec("Telescope lsp_workspace_symbols"):with(opt():noremap()),
-    on("ca", "n"):exec("Telescope lsp_code_actions"):with(opt():noremap()),
-    lead("ca", "v"):exec("Telescope lsp_range_code_actions"):with(opt():noremap()),
-  }, bufnr)
+    on("]ls"):exec("Telescope lsp_document_symbols"),
+    on("[ls"):exec("Telescope lsp_workspace_symbols"),
+    on("ca", "n"):exec("Telescope lsp_code_actions"),
+    lead("ca", "v"):exec("Telescope lsp_range_code_actions"),
+  }, { bufnr = bufnr, options = opt():noremap() })
 end
 
 return M

@@ -4,8 +4,8 @@ local lead = keymap.on_press_leader
 local opt = keymap.opt
 
 keymap.bind({
-  lead("j"):exec("HopWord"):with(opt():noremap()),
-  on("f"):exec("HopChar2"):with(opt():noremap()),
-  on("F"):exec("HopLineStart"):with(opt():noremap()),
-  on("<M-f>"):exec("HopPattern"):with(opt():noremap()),
-})
+  lead("j"):exec("HopWord"),
+  on("f"):exec("HopChar2"),
+  on("F"):exec("HopLineStart"),
+  on("<M-f>"):exec("HopPattern"),
+}, { options = opt():noremap() })

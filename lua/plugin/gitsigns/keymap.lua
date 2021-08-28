@@ -29,24 +29,24 @@ function M.on_attach(bufnr)
   local opt = keymap.opt
 
   keymap.bind({
-    on("]c", "n"):exec(hunk.nex):with(opt():noremap()),
-    on("[c", "n"):exec(hunk.prev):with(opt():noremap()),
-    on("ghs", "n"):exec(hunk.stage):with(opt():noremap()),
-    on("ghs", "v"):lua(hunk.stages):with(opt():noremap()),
-    on("ghu", "n"):exec(hunk.undo):with(opt():noremap()),
-    on("ghr", "n"):exec(hunk.reset):with(opt():noremap()),
-    on("ghr", "v"):lua(hunk.resetl):with(opt():noremap()),
-    on("ghR", "n"):exec(hunk.reset_all):with(opt():noremap()),
-    on("ghp", "n"):exec(hunk.preview):with(opt():noremap()),
-    on("ih", "o"):exec(hunk.select):with(opt():noremap()),
-    on("ih", "x"):exec(hunk.select):with(opt():noremap()),
-    on("gbl", "n"):exec(toggle.blame_win):with(opt():noremap()),
-    on("gt", "n"):exec(toggle.sign):with(opt():noremap()),
-    on("gnm", "n"):exec(toggle.numhl):with(opt():noremap()),
-    on("gll", "n"):exec(toggle.linehl):with(opt():noremap()),
-    on("gwd", "n"):exec(toggle.word_diff):with(opt():noremap()),
-    lead("gl", "n"):exec(toggle.blame):with(opt():noremap()),
-  }, bufnr)
+    on("]c", "n"):exec(hunk.nex),
+    on("[c", "n"):exec(hunk.prev),
+    on("ghs", "n"):exec(hunk.stage),
+    on("ghs", "v"):lua(hunk.stages),
+    on("ghu", "n"):exec(hunk.undo),
+    on("ghr", "n"):exec(hunk.reset),
+    on("ghr", "v"):lua(hunk.resetl),
+    on("ghR", "n"):exec(hunk.reset_all),
+    on("ghp", "n"):exec(hunk.preview),
+    on("ih", "o"):exec(hunk.select),
+    on("ih", "x"):exec(hunk.select),
+    on("gbl", "n"):exec(toggle.blame_win),
+    on("gt", "n"):exec(toggle.sign),
+    on("gnm", "n"):exec(toggle.numhl),
+    on("gll", "n"):exec(toggle.linehl),
+    on("gwd", "n"):exec(toggle.word_diff),
+    lead("gl", "n"):exec(toggle.blame),
+  }, { bufnr = bufnr, options = opt():noremap() })
 end
 
 return M

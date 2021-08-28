@@ -17,117 +17,115 @@ keymap.bind({
   on("<Right>", "i"):disable(),
 
   -- easy escape
-  on("<M-q>"):run("<Esc>"):with(opt():noremap()),
-  on("<M-q>", "s"):run("<Esc>"):with(opt():noremap()),
-  on("<M-q>", "i"):run("<Esc>"):with(opt():noremap()),
-  on("<M-q>", "c"):run("<Esc>"):with(opt():noremap()),
-  on("<M-q>", "t"):run([[<C-\><C-n>]]):with(opt():noremap()),
+  on("<M-q>"):run("<Esc>"),
+  on("<M-q>", "s"):run("<Esc>"),
+  on("<M-q>", "i"):run("<Esc>"),
+  on("<M-q>", "c"):run("<Esc>"),
+  on("<M-q>", "t"):run([[<C-\><C-n>]]),
 
   -- easy save & quit
-  lead("<Space>"):exec("w!"):with(opt():noremap()),
-  lead(";"):exec("x"):with(opt():noremap()),
-  lead("'"):exec("wall"):with(opt():noremap()),
-  lead("qq"):exec("q"):with(opt():noremap()),
-  lead("ql"):exec("wqall"):with(opt():noremap()),
+  lead("<Space>"):exec("w!"),
+  lead(";"):exec("x"),
+  lead("'"):exec("wall"),
+  lead("qq"):exec("q"),
+  lead("ql"):exec("wqall"),
 
   --- buffer
   -- next & previous buffer
-  on("<S-Tab>", "n"):exec("bprevious"):with(opt():noremap()),
-  on("<Tab>", "n"):exec("bnext"):with(opt():noremap()),
+  on("<S-Tab>", "n"):exec("bprevious"),
+  on("<Tab>", "n"):exec("bnext"),
   -- close buffer without close window
-  lead("qb", "n"):exec("enew <BAR> bdelete #"):with(opt():noremap()),
+  lead("qb", "n"):exec("enew <BAR> bdelete #"),
   -- delete current buffer and move to the previous buffer
-  lead("bd", "n"):exec("bprevious <BAR> bdelete #"):with(opt():noremap()),
+  lead("bd", "n"):exec("bprevious <BAR> bdelete #"),
 
   -- toggle cursorline or cursorcolumn
-  on("<C-c>c", "n"):exec("set cursorcolumn!"):with(opt():noremap()),
-  on("<C-c>l", "n"):exec("set cursorline!"):with(opt():noremap()),
+  on("<C-c>c", "n"):exec("set cursorcolumn!"),
+  on("<C-c>l", "n"):exec("set cursorline!"),
 
   -- toggle number
-  lead("nn"):exec("set relativenumber!"):with(opt():noremap()),
-  lead("ln"):exec("set number!"):with(opt():noremap()),
-  lead("zz"):lua(
-    'require("util.keymap.toggle").zen({ laststatus = true })'
-  ):with(opt():noremap()),
-  lead("nr"):lua('require("util.keymap.toggle").zen()'):with(opt():noremap()),
+  lead("nn"):exec("set relativenumber!"),
+  lead("ln"):exec("set number!"),
+  lead("zz"):lua('require("util.keymap.toggle").zen({ laststatus = true })'),
+  lead("nr"):lua('require("util.keymap.toggle").zen()'),
 
   -- cursor movements
-  on("H"):run("^"):with(opt():noremap()),
-  on("L"):run("g_"):with(opt():noremap()),
-  on("<C-e>", "i"):run("<C-o>A"):with(opt():noremap()),
+  on("H"):run("^"),
+  on("L"):run("g_"),
+  on("<C-e>", "i"):run("<C-o>A"),
 
   -- add line below / above current line
-  on("<C-l>j", "i"):run("<C-o>o"):with(opt():noremap()),
-  on("<C-l>k", "i"):run("<C-o>O"):with(opt():noremap()),
+  on("<C-l>j", "i"):run("<C-o>o"),
+  on("<C-l>k", "i"):run("<C-o>O"),
 
   --- window
   -- easy split
-  lead("h", "n"):exec("split"):with(opt():noremap()),
-  lead("v", "n"):exec("vsplit"):with(opt():noremap()),
-  on("Zh", "n"):exec("leftabove vsplit"):with(opt():noremap()),
-  on("Zj", "n"):exec("belowright split"):with(opt():noremap()),
-  on("Zk", "n"):exec("aboveleft split"):with(opt():noremap()),
-  on("Zl", "n"):exec("rightbelow vsplit"):with(opt():noremap()),
+  lead("h", "n"):exec("split"),
+  lead("v", "n"):exec("vsplit"),
+  on("Zh", "n"):exec("leftabove vsplit"),
+  on("Zj", "n"):exec("belowright split"),
+  on("Zk", "n"):exec("aboveleft split"),
+  on("Zl", "n"):exec("rightbelow vsplit"),
   -- resize vertical split
-  lead(".", "n"):run("<C-w>>"):with(opt():noremap()),
-  lead(",", "n"):run("<C-w><"):with(opt():noremap()),
+  lead(".", "n"):run("<C-w>>"),
+  lead(",", "n"):run("<C-w><"),
   -- resize horizontal split
-  lead("=", "n"):run("<C-w>+"):with(opt():noremap()),
-  lead("-", "n"):run("<C-w>-"):with(opt():noremap()),
+  lead("=", "n"):run("<C-w>+"),
+  lead("-", "n"):run("<C-w>-"),
 
   -- open terminal
-  on("<M-`>"):exec("split term://$SHELL"):with(opt():noremap()),
+  on("<M-`>"):exec("split term://$SHELL"),
 
   --- search Behaviour
   -- Map // to Search current selected text
-  on("//", "v"):run('y/<c-r>"<CR>'):with(opt():noremap()),
+  on("//", "v"):run('y/<c-r>"<CR>'),
   -- centering window when hit n/N
-  on("n", "n"):run("mnnzz"):with(opt():noremap()),
-  on("N", "n"):run("mnNzz"):with(opt():noremap()),
+  on("n", "n"):run("mnnzz"),
+  on("N", "n"):run("mnNzz"),
   -- if hlsearch is active, <CR> to clear it, otherwise <CR> is <CR>
   on("<CR>"):run(
     'v:hlsearch ? "<Cmd>nohlsearch<CR>" : "<CR>"'
   ):with(opt():noremap():expr()),
 
   -- move Line
-  on("<C-j>", "n"):exec("m .+1"):with(opt():noremap()),
-  on("<C-j>", "i"):exec("m .+1"):with(opt():noremap()),
-  on("J", "v"):run(":m '>+1<CR>gv=gv"):with(opt():noremap():silent()),
-  on("<C-k>", "n"):exec("m .-2"):with(opt():noremap()),
-  on("<C-k>", "i"):exec("m .-2"):with(opt():noremap()),
-  on("K", "v"):run(":m '<-2<CR>gv=gv"):with(opt():noremap():silent()),
+  on("<C-j>", "n"):exec("m .+1"),
+  on("<C-j>", "i"):exec("m .+1"),
+  --on("J", "v"):run(":m '>+1<CR>gv=gv"):with(opt():noremap():silent()),
+  on("<C-k>", "n"):exec("m .-2"),
+  on("<C-k>", "i"):exec("m .-2"),
+  -- on("K", "v"):run(":m '<-2<CR>gv=gv"):with(opt():noremap():silent()),
 
   -- easy select-all
-  on("<C-a>", "n"):run("ggVG"):with(opt():noremap():silent()),
-  on("<C-a>", "i"):run("<Esc>ggVG"):with(opt():noremap():silent()),
+  -- on("<C-a>", "n"):run("ggVG"):with(opt():noremap():silent()),
+  -- on("<C-a>", "i"):run("<Esc>ggVG"):with(opt():noremap():silent()),
 
   -- tab page
-  lead("t", "n"):exec("tabnew"):with(opt():noremap()),
-  on("<Leader>[", "n"):exec("tabprevious"):with(opt():noremap()),
-  on("<Leader>]", "n"):exec("tabnext"):with(opt():noremap()),
-  on("<M-[>", "n"):exec("-tabmove"):with(opt():noremap()),
-  on("<M-]>", "n"):exec("+tabmove"):with(opt():noremap()),
+  lead("t", "n"):exec("tabnew"),
+  on("<Leader>[", "n"):exec("tabprevious"),
+  on("<Leader>]", "n"):exec("tabnext"),
+  on("<M-[>", "n"):exec("-tabmove"),
+  on("<M-]>", "n"):exec("+tabmove"),
 
 
   -- Paste-Yank behavior
   -- By default, in visual-line mode, the selected line will be yanked,
   -- and replace the previous yanked line. This map to imporve that behaviour,
   -- after paste, select the yanked line, so it's easy to yank that line again
-  on("p", "v"):run("pgv"):with(opt():noremap()),
+  on("p", "v"):run("pgv"),
   -- yank-Paste from clipboard
-  lead("p", "n"):run('"+p'):with(opt():noremap()),
-  lead("p", "v"):run('"+p'):with(opt():noremap()),
-  lead("P", "n"):run('"+P'):with(opt():noremap()),
-  lead("P", "v"):run('"+P'):with(opt():noremap()),
-  lead("y", "n"):run('"+y'):with(opt():noremap()),
-  lead("y", "v"):run('"+y'):with(opt():noremap()),
-  lead("Y", "n"):run('"+y$'):with(opt():noremap()),
-  lead("d", "v"):run('"+d'):with(opt():noremap()),
+  lead("p", "n"):run('"+p'),
+  lead("p", "v"):run('"+p'),
+  lead("P", "n"):run('"+P'),
+  lead("P", "v"):run('"+P'),
+  lead("y", "n"):run('"+y'),
+  lead("y", "v"):run('"+y'),
+  lead("Y", "n"):run('"+y$'),
+  lead("d", "v"):run('"+d'),
 
   -- reselect indented line
-  on("<", "v"):run("<gv"):with(opt():noremap()),
-  on(">", "v"):run(">gv"):with(opt():noremap()),
-  on("=", "v"):run("=gv"):with(opt():noremap()),
-  on("<BS>", "v"):run("<gv"):with(opt():noremap()),
-  on("<TAB>", "v"):run("<gv"):with(opt():noremap()),
-})
+  on("<", "v"):run("<gv"),
+  on(">", "v"):run(">gv"),
+  on("=", "v"):run("=gv"),
+  on("<BS>", "v"):run("<gv"),
+  on("<TAB>", "v"):run("<gv"),
+}, { options = opt():noremap() })
