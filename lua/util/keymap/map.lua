@@ -6,7 +6,7 @@ function Map:new()
     _key = nil,
     _mode = "",
     _command = nil,
-    _options = {},
+    _options = nil,
   }
   setmetatable(instance, self)
   self.__index = self
