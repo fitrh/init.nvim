@@ -1,6 +1,6 @@
 local M = {}
 
-local function exec(name, args)
+local function execute(name, args)
   local opts = args or {}
   local exec = vim.api.nvim_exec
   local filter = opts.filter or nil
@@ -30,7 +30,7 @@ end
 
 function M.setup(augroups)
   for name, autocmd in pairs(augroups) do
-    exec(name, autocmd)
+    execute(name, autocmd)
   end
 end
 
