@@ -1,6 +1,6 @@
 local M = {}
 
-function M.zen(args)
+function M.toggle(args)
   local opts = args or {}
   local opt = vim.opt
 
