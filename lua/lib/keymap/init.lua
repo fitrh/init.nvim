@@ -1,12 +1,12 @@
 local M = {}
 
 function M.opt()
-  local opt = require("util.keymap.option")
+  local opt = require("lib.keymap.option")
   return opt:new()
 end
 
 function M.on_press(key, in_mode, bufnr)
-  local map = require("util.keymap.map")
+  local map = require("lib.keymap.map")
   if type(in_mode) == "number" then
     bufnr = in_mode
     in_mode = nil
