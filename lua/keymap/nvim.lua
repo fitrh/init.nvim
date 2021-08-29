@@ -46,8 +46,6 @@ keymap.bind({
   -- toggle number
   lead("nn"):exec("set relativenumber!"),
   lead("ln"):exec("set number!"),
-  lead("zz"):lua('require("util.keymap.toggle").zen({ laststatus = true })'),
-  lead("nr"):lua('require("util.keymap.toggle").zen()'),
 
   -- cursor movements
   on("H"):run("^"),
