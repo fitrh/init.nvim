@@ -1,6 +1,5 @@
 local keymap = require("lib.keymap")
 local lead = keymap.on_press_leader
-local opt = keymap.opt
 
 keymap.bind({
   lead("/", "n"):plug("kommentary_line_default"),
