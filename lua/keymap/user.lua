@@ -12,7 +12,7 @@ keymap.bind({
   on("<M-l>", "n"):lua([[require("util.tmux").move("l")]]),
 
   -- Minimal zen mode behavior
-  lead("zz", "n"):lua('require("util.keymap.toggle").zen({ laststatus = true })'),
-  lead("nr", "n"):lua('require("util.keymap.toggle").zen()'),
+  lead("zz", "n"):lua('require("util.zen").toggle({ laststatus = true })'),
+  lead("nr", "n"):lua('require("util.zen").toggle()'),
 
 }, { options = opt():noremap() })
