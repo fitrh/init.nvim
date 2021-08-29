@@ -6,7 +6,7 @@ local M = {
 
     local cmd = vim.cmd
     local status = vim.b.gitsigns_status_dict
-    local c = require("util.palette")
+    local c = require("helper.palette")
     local diff = {}
     local bg = c.bg_statusline
 

@@ -1,4 +1,4 @@
-local palette = require("util.palette")
+local palette = require("helper.palette")
 
 require("modes").setup({
   colors = {

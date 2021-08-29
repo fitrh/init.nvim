@@ -1,5 +1,5 @@
 local line = require("lualine")
-local colors = require("util.palette")
+local colors = require("helper.palette")
 local lsp = require("plugin.lualine.component.lsp").setup({ fg = colors.blue2 })
 local gitsigns = require("plugin.lualine.component.gitsigns")
 
