@@ -1,4 +1,4 @@
-local keymap = require("util.keymap")
+local keymap = require("lib.keymap")
 local on = keymap.on_press
 local opt = keymap.opt
 

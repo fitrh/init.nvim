@@ -1,6 +1,6 @@
 local M = {}
 
-local augroup = require("util.event.augroup")
+local augroup = require("lib.event.augroup")
 
 function M.attach(client)
   augroup.setup({

@@ -1,4 +1,4 @@
-local augroup = require("util.event.augroup")
+local augroup = require("lib.event.augroup")
 
 -- format:
 --   [name] = {

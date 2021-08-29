@@ -1,7 +1,7 @@
 return {
   "mfussenegger/nvim-jdtls",
   config = function()
-    require("util.event.augroup").setup({
+    require("lib.event.augroup").setup({
       ["AttachJDTLS"] = {
         {
           events = "FileType",

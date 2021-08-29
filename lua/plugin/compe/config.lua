@@ -34,7 +34,7 @@ local function check_back_space()
   return false
 end
 
-local t = require("util.keymap").termcode
+local t = require("lib.keymap").termcode
 local ok, snip = pcall("luasnip")
 
 -- Use (s-)tab to:

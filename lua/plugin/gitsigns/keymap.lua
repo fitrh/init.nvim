@@ -23,7 +23,7 @@ local toggle = {
 }
 
 function M.on_attach(bufnr)
-  local keymap = require("util.keymap")
+  local keymap = require("lib.keymap")
   local on = keymap.on_press
   local lead = keymap.on_press_leader
   local opt = keymap.opt
