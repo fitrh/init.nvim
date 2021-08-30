@@ -1,7 +1,7 @@
 local M = {}
 
 local hunk = {
-  nex = "Gitsigns next_hunk",
+  next = "Gitsigns next_hunk",
   prev = "Gitsigns prev_hunk",
   stage = "Gitsigns stage_hunk",
   stages = 'require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})',
@@ -29,7 +29,7 @@ function M.on_attach(bufnr)
   local opt = keymap.opt
 
   keymap.bind({
-    on("]c", "n"):exec(hunk.nex),
+    on("]c", "n"):exec(hunk.next),
     on("[c", "n"):exec(hunk.prev),
     on("ghs", "n"):exec(hunk.stage),
     on("ghs", "v"):lua(hunk.stages),
