@@ -57,7 +57,7 @@ local config = {
   handlers = handler.default(),
   settings = settings,
   init_options = {
-    extendedClientCapabilities = jdtls_capability;
+    extendedClientCapabilities = jdtls_capability,
   },
   on_init = function(client, _)
     client.notify('workspace/didChangeConfiguration', { settings = settings })
