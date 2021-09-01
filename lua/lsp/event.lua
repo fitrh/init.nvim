@@ -4,6 +4,12 @@ local augroup = require("lib.event.augroup")
 
 function M.attach(client)
   augroup.setup({
+    ["FormatOnWrite"] = {
+      expect = client.resolved_capabilities.document_formatting,
+      filter = "<buffer>",
+      events = "BufWritePre",
+      { cmd = "lua vim.lsp.buf.formatting_sync()" },
+    },
     ["HighlightOnCursor"] = {
       expect = client.resolved_capabilities.document_highlight,
       filter = "<buffer>",
