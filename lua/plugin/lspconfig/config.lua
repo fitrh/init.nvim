@@ -1,12 +1,13 @@
 local lsp = require("lspconfig")
+local default = require("lsp.config")
 
 local servers = {
-  bashls = require("lsp.config"),
+  bashls = default,
   clangd = require("lsp.config.clangd"),
-  cssls = require("lsp.config"),
+  cssls = default,
   gopls = require("lsp.config.gopls"),
   hls = require("lsp.config.hls"),
-  html = require("lsp.config"),
+  html = default,
   pyright = require("lsp.config.pyright"),
   sumneko_lua = require("lsp.config.sumneko_lua"),
   -- TODO: add null-ls for markdown and toml(?)
