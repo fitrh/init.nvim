@@ -26,6 +26,10 @@ function M.attach(client)
         cmd = "lua vim.lsp.buf.clear_references()"
       },
     },
+    ["LineDiagnosticOnHold"] = {
+      events = "CursorHold",
+      { cmd = "lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false, border = 'rounded' })", },
+    },
     ["CodelensRefresh"] = {
       expect = client.resolved_capabilities.code_lens,
       events = "BufEnter,BufLeave,InsertEnter,InsertLeave",
