@@ -52,19 +52,6 @@ local blank = {
   padding = 0,
 }
 
-local diff = {
-  "diff",
-  -- foreground color
-  color_added = colors.gitsigns.add, -- colors.teal
-  color_modified = colors.gitsigns.change, -- colors.cyan
-  color_removed = colors.gitsigns.delete, -- colors.red
-  symbols = {
-    added = " ",
-    modified = " ",
-    removed = " "
-  },
-}
-
 local branch = {
   "branch",
   icon = "",
