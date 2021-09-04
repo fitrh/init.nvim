@@ -4,11 +4,10 @@ local M = {}
 
 function M.create(args)
   local opts = args or {}
-  local redefine = opts.redefine and "command!" or "command"
   local option = opts.options or "-nargs=0"
   local name = str.ufirst(opts.name)
   local cmd = opts.cmd
-  cmd = ("%s %s %s %s"):format(redefine, option, name, cmd)
+  cmd = ("command! %s %s %s"):format(option, name, cmd)
   vim.cmd(cmd)
 end
 
