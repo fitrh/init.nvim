@@ -57,6 +57,8 @@ keymap.bind({
   on("<C-l>k", "i"):run("<C-o>O"),
 
   --- window
+  -- easy next window jumping
+  on("<M-Tab>", "n"):run("<C-w>w"),
   -- easy split
   lead("h", "n"):exec("split"),
   lead("v", "n"):exec("vsplit"),
