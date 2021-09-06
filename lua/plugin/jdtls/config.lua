@@ -63,8 +63,10 @@ local config = {
     client.notify('workspace/didChangeConfiguration', { settings = settings })
   end,
   on_attach = function(client, bufnr)
-    setup.add_commands()
     attach.with_all_extensions(client, bufnr)
+    setup.add_commands()
+    require("plugin.jdtls.command").attach(client, bufnr)
+    require("plugin.jdtls.keymap").attach(client, bufnr)
   end,
   flags = {
     allow_incremental_sync = true,
