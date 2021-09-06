@@ -8,6 +8,7 @@ local servers = {
   gopls = require("lsp.config.gopls"),
   hls = require("lsp.config.hls"),
   html = default,
+  lemminx = require("lsp.config.lemminx"),
   pyright = require("lsp.config.pyright"),
   sumneko_lua = require("lsp.config.sumneko_lua"),
   -- TODO: add null-ls for markdown and toml(?)
