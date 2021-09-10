@@ -52,25 +52,26 @@ M.with = function(arg)
   vim.lsp.protocol.CompletionItemKind = symbols
 end
 
-M.kind = function(arg)
-  local opts = arg or {}
+M.kind = function(args)
+  local opts = args or {}
   local text = opts.text or nil
   local icon = opts.icon or nil
   local symbols = {}
 
   for i = 1, #maps do
+    local kind = maps[i]["text"]
     if icon then
-      symbols[i] = ("%s"):format(maps[i]["icon"][icon])
+      symbols[kind] = ("%s"):format(maps[i]["icon"][icon])
     end
 
     if text then
-      if symbols[i] then
-        symbols[i] = ("%s (%s)"):format(symbols[i], maps[i]["text"])
+      if symbols[kind] then
+        symbols[kind] = ("%s(%s)"):format(symbols[kind], kind)
       else
-        symbols[i] = ("(%s)"):format(maps[i]["text"])
+        symbols[kind] = ("(%s)"):format(kind)
       end
     end
-    symbols[i] = (" %s "):format(symbols[i])
+    symbols[kind] = (" %s "):format(symbols[kind])
   end
 
   return symbols
