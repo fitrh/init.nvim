@@ -2,7 +2,6 @@ local M = {}
 
 local keymap = require("keymap.lsp")
 local command = require("lsp.command")
-local completion = require("lsp.completion")
 local diagnostic = require("lsp.diagnostic")
 local event = require("lsp.event")
 
@@ -13,7 +12,6 @@ local function default(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   command.attach(client, bufnr)
   keymap.on_attach(client, bufnr)
-  completion.with({ text = true, icon = "default" })
   diagnostic.with({ e = "", w = "", i = "", h = ""})
   event.attach(client)
 end
