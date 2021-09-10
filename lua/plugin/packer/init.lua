@@ -33,7 +33,7 @@ local plugins = {
   require("plugin.sandwich"),
   require("plugin.kommentary"),
   require("plugin.hop"),
-  require("plugin.compe"),
+  require("plugin.cmp"),
   -- require("plugin.autopairs"), -- FIXME: glitch on <CR>
   require("plugin.pears"), -- work best with treesitter
   require("plugin.telescope"),
