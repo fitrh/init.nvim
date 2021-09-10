@@ -1,6 +1,5 @@
 require("keymap.nvim")
 require("plugin.telescope.keymap")
-require("plugin.compe.keymap")
 require("plugin.kommentary.keymap")
 require("plugin.hop.keymap")
 require("plugin.colorizer.keymap")
