@@ -56,6 +56,9 @@ M.kind = function(args)
   local opts = args or {}
   local text = opts.text or nil
   local icon = opts.icon or nil
+  local lp = opts.lp or false
+  local rp = opts.rp or false
+
   local symbols = {}
 
   for i = 1, #maps do
@@ -71,7 +74,14 @@ M.kind = function(args)
         symbols[kind] = ("(%s)"):format(kind)
       end
     end
-    symbols[kind] = (" %s "):format(symbols[kind])
+
+    if lp then
+      symbols[kind] = (" %s"):format(symbols[kind])
+    end
+
+    if rp then
+      symbols[kind] = ("%s "):format(symbols[kind])
+    end
   end
 
   return symbols
