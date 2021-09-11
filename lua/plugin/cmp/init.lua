@@ -6,7 +6,6 @@ return {
     { "hrsh7th/cmp-nvim-lua", ft = "lua", },
     { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp", },
     { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp", },
-    { "L3MON4D3/LuaSnip", module = "luasnip", },
   },
   config = function () require("plugin.cmp.config") end,
   event = "InsertEnter",
