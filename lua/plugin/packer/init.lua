@@ -1,4 +1,4 @@
-vim.cmd [[packadd packer.nvim]]
+vim.cmd("packadd packer.nvim")
 
 local packer = require("packer")
 
@@ -8,7 +8,7 @@ packer.init({
   },
   display = {
     open_fn = function()
-      return require('packer.util').float({ border = 'rounded' })
+      return require("packer.util").float({ border = "rounded" })
     end,
   },
   profile = {
@@ -44,7 +44,6 @@ local plugins = {
   require("plugin.lualine"),
   require("plugin.colorizer"),
   require("plugin.modes"),
-  -- TODO: add TrueZen (https://github.com/Pocco81/TrueZen.nvim)
   { "baskerville/vim-sxhkdrc", ft = "sxhkdrc" },
 }
 
