@@ -127,5 +127,5 @@ keymap.bind({
   on(">", "v"):run(">gv"),
   on("=", "v"):run("=gv"),
   on("<BS>", "v"):run("<gv"),
-  on("<TAB>", "v"):run("<gv"),
+  on("<TAB>", "v"):run(">gv"),
 }, { options = opt():noremap() })
