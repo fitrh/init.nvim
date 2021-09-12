@@ -1,4 +1,4 @@
-local sign = require("lsp.diagnostic").sign
+local sign = require("lsp.ui.diagnostic").sign
 
 local spinners = {
   full = {"⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷"},
@@ -6,7 +6,7 @@ local spinners = {
 }
 
 return {
-  kind_labels = require("lsp.completion").kind({ icon = "default" }),
+  kind_labels = require("lsp.ui.completion").kind({ icon = "default" }),
   current_function = true,
   diagnostics = false,
   indicator_separator = " ",
