@@ -9,6 +9,16 @@ function M.attach(client, bufnr)
       name = "LspFormat",
       cmd = "lua vim.lsp.buf.formatting()",
     })
+    command.create({
+      option = "-buffer",
+      name = "LspFormatSeq",
+      cmd = "lua vim.lsp.buf.formatting_seq_sync()",
+    })
+    command.create({
+      option = "-buffer",
+      name = "LspFormatSync",
+      cmd = "lua vim.lsp.buf.formatting_sync()",
+    })
   end
 end
 
