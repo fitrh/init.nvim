@@ -2,8 +2,8 @@ local M = {}
 
 local keymap = require("keymap.lsp")
 local command = require("lsp.command")
-local diagnostic = require("lsp.diagnostic")
 local event = require("lsp.event")
+local ui = { diagnostic = require("lsp.ui.diagnostic"), }
 
 local function default(client, bufnr)
   if client.resolved_capabilities.code_lens then
@@ -11,9 +11,9 @@ local function default(client, bufnr)
   end
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   command.attach(client, bufnr)
-  keymap.on_attach(client, bufnr)
-  diagnostic.with({ e = "", w = "", i = "", h = ""})
+  keymap.attach(client, bufnr)
   event.attach(client)
+  ui.diagnostic.attach()
 end
 
 function M.with_basic_config(client, bufnr)
