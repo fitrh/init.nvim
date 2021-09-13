@@ -8,4 +8,5 @@ require("modes").setup({
     visual = palette.purple,
   },
   line_opacity = 0.15,
+  focus_only = true,
 })
