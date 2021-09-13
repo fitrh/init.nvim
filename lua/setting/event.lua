@@ -15,6 +15,7 @@ local augroup = require("lib.event.augroup")
 --   autocmd = list of table, autocmd spec that belong to the augroup name
 --     autocmd format:
 --       {
+--         user = boolan, mark it as user custom event, this will disable filter
 --         events, string, optional, list of valid vim event name
 --         filter = string, optional, pattern to match when the events get fire,
 --                  default to "*"
