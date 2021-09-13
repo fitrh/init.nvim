@@ -17,8 +17,8 @@ local function execute(name, args)
   for _, v in ipairs(opts) do
     if type(v) == "table" and (events or v.events) then
       local cmd = ("autocmd %s %s %s"):format(
-        v.events or events,
-        v.filter or filter or "*",
+        v.user and "User" or v.events or events,
+        v.user and v.events or v.filter or filter or "*",
         v.cmd
       )
       table.insert(group, cmd)
