@@ -25,7 +25,7 @@ local augroup = require("lib.event.augroup")
 augroup.setup({
   ["TrimAndMakeDir"] = {
     events = "BufWritePre",
-    { cmd = [[:%s/\s\+$//e]], },
+    { cmd = [[:%s/\s\+$//e]] },
     { cmd = [[lua require("helper.dir").mk()]] },
   },
   ["HighlightOnYank"] = {
