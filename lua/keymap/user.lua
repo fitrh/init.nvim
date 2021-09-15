@@ -4,15 +4,15 @@ local lead = keymap.on_press_leader
 local opt = keymap.opt
 
 keymap.bind({
-
   -- Minimal tmux Integration behavior
-  on("<M-h>", "n"):lua([[require("helper.tmux").move("h")]]),
-  on("<M-j>", "n"):lua([[require("helper.tmux").move("j")]]),
-  on("<M-k>", "n"):lua([[require("helper.tmux").move("k")]]),
-  on("<M-l>", "n"):lua([[require("helper.tmux").move("l")]]),
+  on("<M-h>", "n"):exec("TmuxMoveH"),
+  on("<M-j>", "n"):exec("TmuxMoveJ"),
+  on("<M-k>", "n"):exec("TmuxMoveK"),
+  on("<M-l>", "n"):exec("TmuxMoveL"),
 
   -- Minimal zen mode behavior
-  lead("zz", "n"):lua('require("helper.zen").toggle({ laststatus = true })'),
-  lead("nr", "n"):lua('require("helper.zen").toggle()'),
-
-}, { options = opt():noremap() })
+  lead("zz", "n"):exec("ZenToggleFull"),
+  lead("nr", "n"):exec("ZenToggle"),
+}, {
+  options = opt():noremap(),
+})
