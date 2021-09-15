@@ -11,14 +11,14 @@ telescope.setup({
         preview_width = 80,
       },
     },
-    file_ignore_patterns = { "%.o", "%.class", },
+    file_ignore_patterns = { "%.o", "%.class" },
   },
   pickers = {
     find_files = {
       theme = "ivy",
       layout_config = {
         height = 0.4,
-      }
+      },
     },
     buffers = {
       theme = "dropdown",

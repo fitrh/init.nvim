@@ -83,9 +83,9 @@ keymap.bind({
   on("n", "n"):run("mnnzz"),
   on("N", "n"):run("mnNzz"),
   -- if hlsearch is active, <CR> to clear it, otherwise <CR> is <CR>
-  on("<CR>"):run(
-    'v:hlsearch ? "<Cmd>nohlsearch<CR>" : "<CR>"'
-  ):with(opt():noremap():expr()),
+  on("<CR>")
+    :run('v:hlsearch ? "<Cmd>nohlsearch<CR>" : "<CR>"')
+    :with(opt():noremap():expr()),
 
   -- move Line
   on("<C-j>", "n"):exec("m .+1"),
@@ -105,7 +105,6 @@ keymap.bind({
   on("<Leader>]", "n"):exec("tabnext"),
   on("<M-[>", "n"):exec("-tabmove"),
   on("<M-]>", "n"):exec("+tabmove"),
-
 
   -- Paste-Yank behavior
   -- By default, in visual-line mode, the selected line will be yanked,
@@ -128,4 +127,6 @@ keymap.bind({
   on("=", "v"):run("=gv"),
   on("<BS>", "v"):run("<gv"),
   on("<TAB>", "v"):run(">gv"),
-}, { options = opt():noremap() })
+}, {
+  options = opt():noremap(),
+})

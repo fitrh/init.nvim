@@ -19,20 +19,24 @@ local diagnostics = {
 
 local fileicon = {
   "filetype",
-  format = function() return " " end,
+  format = function()
+    return " "
+  end,
   right_padding = 0,
 }
 
 local filename = {
   "filename",
   left_padding = 0,
-  color = { gui = "BOLD", },
+  color = { gui = "BOLD" },
   path = 1, -- relative path
   file_status = false,
 }
 
 local modified = {
-  function() return vim.bo.modified and "" or nil end, -- "ﴖ"
+  function()
+    return vim.bo.modified and "" or nil
+  end, -- "ﴖ"
   color = { fg = colors.red_br_2 }, -- colors.blue5
   left_padding = 0,
 }
@@ -48,7 +52,9 @@ local readonly = {
 }
 
 local blank = {
-  function() return " " end,
+  function()
+    return " "
+  end,
   padding = 0,
 }
 
@@ -67,7 +73,9 @@ local location = {
 }
 
 local lines = {
-  function() return tostring(vim.fn.line("$")) end,
+  function()
+    return tostring(vim.fn.line("$"))
+  end,
   icon = "", -- the above function must return string to make icon work
   color = { fg = colors.blue },
   left_padding = 0,
@@ -76,10 +84,10 @@ local lines = {
 local sections = {
   lualine_a = { blank },
   lualine_b = {},
-  lualine_c = { blank, readonly, fileicon, filename, modified, diagnostics, },
+  lualine_c = { blank, readonly, fileicon, filename, modified, diagnostics },
   lualine_x = { gitsigns, branch, lsp.status, location, lines },
   lualine_y = {},
-  lualine_z = { blank }
+  lualine_z = { blank },
 }
 
 line.setup({
@@ -91,6 +99,6 @@ line.setup({
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {},
   },
 })

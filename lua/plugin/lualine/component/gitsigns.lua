@@ -26,9 +26,15 @@ local M = {
       Removed = ("%%#Removed# %s"):format(status.removed),
     }
 
-    if status.added > 0 then table.insert(diff, state.Added) end
-    if status.changed > 0 then table.insert(diff, state.Changed) end
-    if status.removed > 0 then table.insert(diff, state.Removed) end
+    if status.added > 0 then
+      table.insert(diff, state.Added)
+    end
+    if status.changed > 0 then
+      table.insert(diff, state.Changed)
+    end
+    if status.removed > 0 then
+      table.insert(diff, state.Removed)
+    end
 
     return table.concat(diff, " ")
   end,

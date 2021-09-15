@@ -15,4 +15,6 @@ keymap.bind({
   lead("gb", "n"):exec("Telescope git_branches"),
   lead("gs", "n"):exec("Telescope git_status"),
   lead("m", "n"):exec("Telescope keymaps"),
-}, { options = opt():noremap() })
+}, {
+  options = opt():noremap(),
+})

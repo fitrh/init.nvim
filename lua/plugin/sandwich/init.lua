@@ -1,6 +1,8 @@
 return {
   "machakann/vim-sandwich",
-  config = function() require("plugin.sandwich.config") end,
+  config = function()
+    require("plugin.sandwich.config")
+  end,
   keys = {
     -- basic add, replace, and delete operator
     { "n", "sa" },

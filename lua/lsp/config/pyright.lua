@@ -11,7 +11,7 @@ return {
         typeCheckingMode = "strict",
       },
       venvPath = ".",
-    }
+    },
   },
   on_attach = attach.with_all_extensions,
 }

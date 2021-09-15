@@ -1,7 +1,7 @@
 local sign = require("lsp.ui.diagnostic").sign
 
 local spinners = {
-  full = {"⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷"},
+  full = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" },
   small = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
 }
 
@@ -19,5 +19,5 @@ return {
   spinner_frames = spinners.small,
   status_symbol = "",
   select_symbol = nil,
-  update_interval = 100
+  update_interval = 100,
 }

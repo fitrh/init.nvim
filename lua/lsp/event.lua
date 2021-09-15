@@ -9,26 +9,28 @@ function M.attach(client)
       filter = "<buffer>",
       {
         events = "CursorHold",
-        cmd = "lua vim.lsp.buf.document_highlight()"
+        cmd = "lua vim.lsp.buf.document_highlight()",
       },
       {
         events = "CursorHoldI",
-        cmd = "lua vim.lsp.buf.document_highlight()"
+        cmd = "lua vim.lsp.buf.document_highlight()",
       },
       {
         events = "CursorMoved",
-        cmd = "lua vim.lsp.buf.clear_references()"
+        cmd = "lua vim.lsp.buf.clear_references()",
       },
     },
     ["LineDiagnosticOnHold"] = {
       events = "CursorHold",
-      { cmd = "lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false, border = 'rounded' })", },
+      {
+        cmd = "lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false, border = 'rounded' })",
+      },
     },
     ["CodelensRefresh"] = {
       expect = client.resolved_capabilities.code_lens,
       events = "BufEnter,BufLeave,InsertEnter,InsertLeave",
       filter = "<buffer>",
-      { cmd = "lua vim.lsp.codelens.refresh()" }
+      { cmd = "lua vim.lsp.codelens.refresh()" },
     },
   })
 end

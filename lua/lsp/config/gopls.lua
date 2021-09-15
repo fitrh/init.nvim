@@ -3,7 +3,7 @@ local attach = require("lsp.attach")
 local capabilities = require("lsp.capability")
 
 return {
-  cmd = { "gopls", "serve", },
+  cmd = { "gopls", "serve" },
   capabilities = capabilities,
   handlers = handler.default(),
   settings = {

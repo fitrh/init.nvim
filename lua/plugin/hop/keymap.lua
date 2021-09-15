@@ -8,4 +8,6 @@ keymap.bind({
   on("f"):exec("HopChar2"),
   on("F"):exec("HopLineStart"),
   on("<M-f>"):exec("HopPattern"),
-}, { options = opt():noremap() })
+}, {
+  options = opt():noremap(),
+})

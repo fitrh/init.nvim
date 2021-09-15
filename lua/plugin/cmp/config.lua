@@ -5,7 +5,7 @@ cmp.setup({
     completeopt = "menu,menuone,preview,noinsert",
   },
   snippet = {
-    expand = function (args)
+    expand = function(args)
       require("luasnip").lsp_expand(args.body)
     end,
   },
@@ -15,7 +15,7 @@ cmp.setup({
   },
   mapping = require("plugin.cmp.keymap").setup(cmp),
   formatting = {
-    format = function (entry, vim_item)
+    format = function(entry, vim_item)
       vim_item.kind = require("lsp.ui.completion").kind({
         text = true,
         icon = "default",
@@ -32,12 +32,12 @@ cmp.setup({
       return vim_item
     end,
   },
-  experimental = { ghost_text = true, },
+  experimental = { ghost_text = true },
   sources = {
-    { name = "nvim_lsp", max_item_count = 10, },
-    { name = "luasnip", max_item_count = 10, },
-    { name = "nvim_lua", max_item_count = 10, },
-    { name = "path", max_item_count = 10, },
-    { name = "buffer", max_item_count = 10, },
+    { name = "nvim_lsp", max_item_count = 10 },
+    { name = "luasnip", max_item_count = 10 },
+    { name = "nvim_lua", max_item_count = 10 },
+    { name = "path", max_item_count = 10 },
+    { name = "buffer", max_item_count = 10 },
   },
 })

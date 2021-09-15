@@ -2,7 +2,13 @@ local neoscroll = require("neoscroll")
 
 neoscroll.setup({
   mappings = {
-    "<C-u>", "<C-d>", "<C-y>", "<C-e>", "zt", "zz", "zb",
+    "<C-u>",
+    "<C-d>",
+    "<C-y>",
+    "<C-e>",
+    "zt",
+    "zz",
+    "zb",
   },
   hide_cursor = true, -- Hide cursor while scrolling
   stop_eof = true, -- Stop at <EOF> when scrolling downwards

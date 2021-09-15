@@ -17,13 +17,13 @@ local env = {
 local root_files = {
   -- Single-module projects
   {
-    'build.xml', -- Ant
-    'pom.xml', -- Maven
-    'settings.gradle', -- Gradle
-    'settings.gradle.kts', -- Gradle
+    "build.xml", -- Ant
+    "pom.xml", -- Maven
+    "settings.gradle", -- Gradle
+    "settings.gradle.kts", -- Gradle
   },
   -- Multi-module projects
-  { 'build.gradle', 'build.gradle.kts' },
+  { "build.gradle", "build.gradle.kts" },
 } or vim.fn.getcwd()
 
 local workspace = ("%s/%s"):format(env.WORKSPACE, env.BASENAME_CWD)
@@ -42,17 +42,17 @@ local settings = {
         useJava7Objects = true,
       },
     },
-    configuration = { runtimes = runtimes, },
+    configuration = { runtimes = runtimes },
     referencesCodeLens = { enabled = true },
     signatureHelp = { enabled = true },
     implementationsCodeLens = { enabled = true },
     saveActions = { organizeImports = true },
-  }
+  },
 }
 
 local config = {
   root_dir = setup.find_root(root_files),
-  cmd = { "jdtls", workspace, },
+  cmd = { "jdtls", workspace },
   capabilities = capabilities,
   handlers = handler.default(),
   settings = settings,
@@ -60,7 +60,7 @@ local config = {
     extendedClientCapabilities = jdtls_capability,
   },
   on_init = function(client, _)
-    client.notify('workspace/didChangeConfiguration', { settings = settings })
+    client.notify("workspace/didChangeConfiguration", { settings = settings })
   end,
   on_attach = function(client, bufnr)
     attach.with_all_extensions(client, bufnr)

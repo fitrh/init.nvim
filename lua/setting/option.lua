@@ -13,11 +13,11 @@ opt.backupcopy = "auto" -- best option for backup strategy
 opt.nrformats:append({ "alpha" }) -- increment/decrement for alphabet
 opt.path:append({ "**" })
 opt.shortmess = {
-    a = true,
-    t = true,
-    T = true,
-    c = true,
-    F = true,
+  a = true,
+  t = true,
+  T = true,
+  c = true,
+  F = true,
 }
 opt.showtabline = 1 -- show tab-page only if there are at least 2 tab pages
 opt.synmaxcol = 120 -- do syntax highlighting until synmaxcol character
@@ -48,7 +48,7 @@ opt.relativenumber = true
 opt.signcolumn = "yes"
 
 -- set empty line at the and of buffer to space, default: ~
-opt.fillchars = { eob = " "  }
+opt.fillchars = { eob = " " }
 
 --[[
   split Behaviour, by default, split will open new window on the left or above
@@ -94,19 +94,40 @@ opt.showmatch = true -- highlight matching <[{()}]>
 
 -- ignored wildcard
 opt.wildignore = {
-  '*.o', '*.obj', '*.a', '*.so', '*.out', '*.class', '*.pyc',
-  '*.jpg', '*.jpeg', '*.png', '*.gif', '*.tiff', '*.webp',
-  '*.pdf', '*.odt', '*.odp', '*.doc', '*.docx', '*.ppt', '*.csv',
-  '__pycache__', '*pycache*', '**/tmp/**', '**/node_modules/**', '.git'
+  "*.o",
+  "*.obj",
+  "*.a",
+  "*.so",
+  "*.out",
+  "*.class",
+  "*.pyc",
+  "*.jpg",
+  "*.jpeg",
+  "*.png",
+  "*.gif",
+  "*.tiff",
+  "*.webp",
+  "*.pdf",
+  "*.odt",
+  "*.odp",
+  "*.doc",
+  "*.docx",
+  "*.ppt",
+  "*.csv",
+  "__pycache__",
+  "*pycache*",
+  "**/tmp/**",
+  "**/node_modules/**",
+  ".git",
 }
 
 --- autoformat option
 -- see :help fo-table
 opt.formatoptions:append({ "n" })
-opt.formatoptions:remove({ "t", "o", "2", })
+opt.formatoptions:remove({ "t", "o", "2" })
 
 -- completion
 opt.complete:remove({ "u", "t" })
-opt.completeopt:append({ "menuone", "noinsert", })
+opt.completeopt:append({ "menuone", "noinsert" })
 opt.wildmode = { "longest", "full" }
 opt.wildoptions:remove({ "tagfile" })

@@ -19,7 +19,7 @@ conf.setup({
       enable = true,
       keymaps = {
         smart_rename = "grr",
-      }
+      },
     },
     navigation = {
       enable = true,
@@ -30,6 +30,6 @@ conf.setup({
         goto_next_usage = "<A-*>",
         goto_previous_usage = "<A-#>",
       },
-    }
+    },
   },
 })

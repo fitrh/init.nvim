@@ -1,6 +1,8 @@
 local M = {
   "norcalli/nvim-colorizer.lua",
-  config = function() require("plugin.colorizer.config") end,
+  config = function()
+    require("plugin.colorizer.config")
+  end,
   cmd = {
     "ColorizerAttachToBuffer",
     "ColorizerDetachFromBuffer",

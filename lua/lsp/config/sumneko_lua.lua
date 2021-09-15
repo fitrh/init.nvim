@@ -19,11 +19,11 @@ return {
         version = "LuaJIT",
         path = runtime_path,
       },
-      diagnostics = { globals = { "vim", }, },
+      diagnostics = { globals = { "vim" } },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
       },
-      telemetery = { enable = false, },
+      telemetery = { enable = false },
     },
   },
   on_attach = attach.with_all_extensions,

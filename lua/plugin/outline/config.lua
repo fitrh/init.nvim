@@ -4,7 +4,7 @@ outline.setup({
   highlight_hovered_item = true,
   show_guides = true,
   auto_preview = true,
-  position = 'right',
+  position = "right",
   show_numbers = false,
   show_relative_numbers = false,
   show_symbol_details = true,
@@ -43,7 +43,7 @@ outline.setup({
     Struct = { icon = "", hl = "TSType" },
     Event = { icon = "ﯓ", hl = "TSType" },
     Operator = { icon = "璉", hl = "TSOperator" },
-    TypeParameter = { icon = "", hl = "TSParameter" }
+    TypeParameter = { icon = "", hl = "TSParameter" },
   },
 })
 

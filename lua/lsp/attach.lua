@@ -3,7 +3,7 @@ local M = {}
 local keymap = require("keymap.lsp")
 local command = require("lsp.command")
 local event = require("lsp.event")
-local ui = { diagnostic = require("lsp.ui.diagnostic"), }
+local ui = { diagnostic = require("lsp.ui.diagnostic") }
 
 local function default(client, bufnr)
   if client.resolved_capabilities.code_lens then

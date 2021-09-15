@@ -16,7 +16,10 @@ function M.attach(client, bufnr)
     on("crc", "n"):exec("JdtExtractConstant"),
     lead("rc", "v"):exec("JdtExtractConstantRange"),
     lead("rm", "v"):exec("JdtExtractMethod"),
-  }, { bufnr = bufnr, options = opt():noremap() })
+  }, {
+    bufnr = bufnr,
+    options = opt():noremap(),
+  })
 end
 
 return M

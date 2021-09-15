@@ -14,7 +14,7 @@ g.tokyonight_dark_float = config.darkFloat
 g.tokyonight_dark_sidebar = config.darkSidebar
 g.tokyonight_sidebars = config.sidebars
 
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd("colorscheme tokyonight")
 
 local c = require("tokyonight.colors").setup(config)
 local hlgroups = {
@@ -26,6 +26,6 @@ local hlgroups = {
   ["VertSplit"] = ("guifg=%s"):format(c.bg_statusline),
 }
 
-for group,hl in pairs(hlgroups) do
+for group, hl in pairs(hlgroups) do
   vim.cmd(("highlight %s %s"):format(group, hl))
 end

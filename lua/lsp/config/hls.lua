@@ -9,7 +9,7 @@ return {
     haskell = {
       formattingProvider = "brittanty",
       maxCompletions = 10,
-    }
+    },
   },
   on_attach = attach.with_all_extensions,
 }

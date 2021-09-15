@@ -46,7 +46,10 @@ function M.on_attach(bufnr)
     on("gll", "n"):exec(toggle.linehl),
     on("gwd", "n"):exec(toggle.word_diff),
     lead("gl", "n"):exec(toggle.blame),
-  }, { bufnr = bufnr, options = opt():noremap() })
+  }, {
+    bufnr = bufnr,
+    options = opt():noremap(),
+  })
 end
 
 return M
