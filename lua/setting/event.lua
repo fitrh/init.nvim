@@ -35,6 +35,8 @@ augroup.setup({
     },
   },
   ["CursorlineToggle"] = {
+    { events = "WinEnter", cmd = "set cursorline" },
+    { events = "WinLeave", cmd = "set nocursorline" },
     {
       events = "WinEnter,BufEnter,InsertLeave",
       cmd = "set cursorline",
