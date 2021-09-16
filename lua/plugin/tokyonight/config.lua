@@ -18,12 +18,12 @@ vim.cmd("colorscheme tokyonight")
 
 local c = require("tokyonight.colors").setup(config)
 local hlgroups = {
-  ["CursorLineNr"] = ("gui=BOLD guifg=%s"):format(c.blue),
-  ["ColorColumn"] = ("guibg=%s"):format(c.bg_statusline),
-  ["TabLineSel"] = ("guifg=%s guibg=%s"):format(c.fg, c.bg),
-  ["TabLine"] = ("guifg=%s guibg=%s"):format(c.fg_gutter, c.bg_statusline),
-  ["TabLineFill"] = ("guifg=%s guibg=%s"):format(c.fg_gutter, c.bg_statusline),
-  ["VertSplit"] = ("guifg=%s"):format(c.bg_statusline),
+  CursorLineNr = ("gui=BOLD guifg=%s"):format(c.blue),
+  ColorColumn = ("guibg=%s"):format(c.bg_statusline),
+  TabLineSel = ("guifg=%s guibg=%s"):format(c.fg, c.bg),
+  TabLine = ("guifg=%s guibg=%s"):format(c.fg_gutter, c.bg_statusline),
+  TabLineFill = ("guifg=%s guibg=%s"):format(c.fg_gutter, c.bg_statusline),
+  VertSplit = ("guifg=%s"):format(c.bg_statusline),
 }
 
 for group, hl in pairs(hlgroups) do
