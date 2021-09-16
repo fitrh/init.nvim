@@ -1,12 +1,13 @@
 local gitsigns = require("gitsigns")
+local sign = require("helper.sign")
 
 gitsigns.setup({
   signs = {
-    add = { text = "┃" },
-    change = { text = "┃" },
-    delete = { text = "┃" },
-    topdelete = { text = "┃" },
-    changedelete = { text = "┃" },
+    add = { text = sign.line.heavy },
+    change = { text = sign.line.heavy },
+    delete = { text = sign.line.heavy },
+    topdelete = { text = sign.line.heavy },
+    changedelete = { text = sign.line.heavy },
   },
   keymaps = {}, -- disable default keymap
   on_attach = require("plugin.gitsigns.keymap").on_attach,
