@@ -21,6 +21,7 @@ function M.attach(args)
     vim.fn.sign_define(diagnostic, {
       text = text,
       texthl = diagnostic,
+      numhl = diagnostic,
     })
   end
 end
