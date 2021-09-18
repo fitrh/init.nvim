@@ -11,7 +11,7 @@ function M.attach(args)
   }
 
   for type, text in pairs(diagnostics) do
-    local diagnostic = ("LspDiagnosticsSign%s"):format(type)
+    local diagnostic = ("DiagnosticSign%s"):format(type)
     vim.fn.sign_define(diagnostic, {
       text = text,
       texthl = diagnostic,
