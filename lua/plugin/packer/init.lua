@@ -30,6 +30,7 @@ local plugins = {
   require("plugin.treesitter"),
   require("plugin.lspconfig"),
   require("plugin.jdtls"),
+  require("plugin.null-ls"),
   require("plugin.sandwich"),
   require("plugin.kommentary"),
   require("plugin.hop"),
