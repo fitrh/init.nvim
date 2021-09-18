@@ -4,9 +4,9 @@ require("modes").setup({
   colors = {
     copy = palette.orange,
     delete = palette.red,
-    insert = palette.bg_highlight,
+    insert = palette.fg_dark,
     visual = palette.purple,
   },
-  line_opacity = 0.15,
+  line_opacity = { insert = 0, visual = 0.2 },
   focus_only = true,
 })
