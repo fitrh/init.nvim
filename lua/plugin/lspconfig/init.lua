@@ -4,6 +4,7 @@ local M = {
     require("plugin.lspconfig.config")
   end,
   event = { "BufReadPre", "BufWritePost", "BufNewFile" },
+  module = "lspconfig",
 }
 
 return M
