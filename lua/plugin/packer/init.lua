@@ -44,6 +44,7 @@ local plugins = {
   require("plugin.lualine"),
   require("plugin.colorizer"),
   require("plugin.modes"),
+  require("plugin.todo-comments"),
   { "baskerville/vim-sxhkdrc", ft = "sxhkdrc" },
 }
 
