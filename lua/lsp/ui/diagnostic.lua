@@ -1,19 +1,13 @@
 local M = {}
 
-M.sign = {
-  Error = "",
-  Warning = "",
-  Information = "",
-  Hint = "",
-}
-
 function M.attach(args)
+  local sign = require("helper.sign").diagnostic
   local opts = args or {}
   local diagnostics = {
-    Error = opts.e or M.sign.Error,
-    Warning = opts.w or M.sign.Warning,
-    Information = opts.i or M.sign.Information,
-    Hint = opts.h or M.sign.Hint,
+    Error = opts.e or sign.ERROR,
+    Warn = opts.w or sign.WARN,
+    Info = opts.i or sign.INFO,
+    Hint = opts.h or sign.HINT,
   }
 
   for type, text in pairs(diagnostics) do

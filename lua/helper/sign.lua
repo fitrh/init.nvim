@@ -1,7 +1,13 @@
 return {
   line = {
-    light = "│",
-    heavy = "┃",
-    double = "║",
+    LIGHT = "│",
+    HEAVY = "┃",
+    DOUBLE = "║",
+  },
+  diagnostic = {
+    ERROR = "",
+    WARN = "",
+    INFO = "",
+    HINT = "",
   },
 }
