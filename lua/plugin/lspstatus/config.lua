@@ -1,4 +1,4 @@
-local sign = require("lsp.ui.diagnostic").sign
+local sign = require("helper.sign").diagnostic
 
 local spinners = {
   full = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" },
@@ -11,10 +11,10 @@ return {
   diagnostics = false,
   indicator_separator = " ",
   component_separator = " ",
-  indicator_errors = sign.Error,
-  indicator_warnings = sign.Warning,
-  indicator_info = sign.Information,
-  indicator_hint = sign.Hint,
+  indicator_errors = sign.ERROR,
+  indicator_warnings = sign.WARN,
+  indicator_info = sign.INFO,
+  indicator_hint = sign.HINT,
   indicator_ok = "",
   spinner_frames = spinners.small,
   status_symbol = "",

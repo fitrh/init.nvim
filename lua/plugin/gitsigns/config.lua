@@ -3,11 +3,11 @@ local sign = require("helper.sign")
 
 gitsigns.setup({
   signs = {
-    add = { text = sign.line.heavy },
-    change = { text = sign.line.heavy },
-    delete = { text = sign.line.heavy },
-    topdelete = { text = sign.line.heavy },
-    changedelete = { text = sign.line.heavy },
+    add = { text = sign.line.HEAVY },
+    change = { text = sign.line.HEAVY },
+    delete = { text = sign.line.HEAVY },
+    topdelete = { text = sign.line.HEAVY },
+    changedelete = { text = sign.line.HEAVY },
   },
   keymaps = {}, -- disable default keymap
   on_attach = require("plugin.gitsigns.keymap").on_attach,
