@@ -1,7 +1,11 @@
 local global = vim.g
 
 global.mapleader = " "
-global.python3_host_prog = "$HOME/.local/lib/pyenvs/neovim/bin/python"
+global.loaded_python3_provider = 0
+global.loaded_python_provider = 0
+global.loaded_ruby_provider = 0
+global.loaded_node_provider = 0
+global.loaded_perl_provider = 0
 global.loaded_spec = 1
 global.loaded_gzip = 1
 global.loaded_tar = 1
