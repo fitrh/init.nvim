@@ -12,15 +12,6 @@ function M.default()
   return M.with({ M.on_publish_diagnostics, M.hover })
 end
 
-M.on_publish_diagnostics = {
-  ["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-      virtual_text = false,
-    }
-  ),
-}
-
 M.signature_help = {
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",

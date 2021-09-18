@@ -18,6 +18,10 @@ function M.attach(args)
       numhl = diagnostic,
     })
   end
+
+  vim.diagnostic.config({
+    virtual_text = false,
+  })
 end
 
 return M
