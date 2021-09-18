@@ -15,8 +15,14 @@ local M = {
   blue = scheme.blue,
   blue2 = scheme.blue2,
   blue5 = scheme.blue5,
-  teal = scheme.teal,
+  blue7 = scheme.blue7,
   cyan = scheme.cyan,
+  green = {
+    primary = scheme.green,
+    accent = scheme.green1,
+    dark = scheme.teal,
+    darker = scheme.green2,
+  },
   purple = scheme.purple,
   magenta = scheme.magenta,
   gitsigns = {
