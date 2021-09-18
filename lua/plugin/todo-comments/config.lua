@@ -7,7 +7,10 @@ todo.setup({
     HACK = { icon = " ", color = "hack" },
     WARN = { icon = "裂" },
     PERF = { icon = "龍" },
-    NOTE = { icon = " ", alt = { "INFO", "REF", "REFS" } },
+    NOTE = { icon = " " },
+    LINK = { icon = " ", color = "ref", alt = { "LINKS", "REF", "REFS" } },
+    SUCCESS = { icon = " ", color = "success", alt = { "OK", "DONE" } },
+    ERROR = { icon = " ", color = "error", alt = { "ERR" } },
   },
   highlight = { max_line_len = 120 },
   colors = {
@@ -16,6 +19,8 @@ todo.setup({
     info = { "DiagnosticInfo" },
     hint = { "DiagnosticHint" },
     hack = { "Function" },
+    ref = { "FloatBorder" },
+    success = { "healthSuccess" },
     default = { "Identifier" },
   },
 })
@@ -26,3 +31,6 @@ todo.setup({
 -- NOTE: i never read this    ﲀ 﨧
 -- HACK: tricky      שּׂ ﭩ 
 -- PERF: this can be optimized    龍
+-- OK: it's okay  ﲏ
+-- ERR: boom  ﮏ 
+-- REFS: https://github.com/fitrh        陵
