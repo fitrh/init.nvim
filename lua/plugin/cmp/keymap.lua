@@ -12,7 +12,7 @@ end
 function M.setup(cmp)
   local snippet = require("luasnip")
   local termcode = require("lib.keymap").termcode
-  local feedkeys = vim.fn.feedkeys
+  local feedkeys = vim.api.nvim_feedkeys
 
   return {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -27,9 +27,11 @@ function M.setup(cmp)
     }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if vim.fn.pumvisible() == 1 then
-        feedkeys(termcode("<C-n>"), "n")
-      elseif has_words_before() and snippet.expand_or_jumpable() then
-        feedkeys(termcode("<Plug>luasnip-expand-or-jump"), "")
+        feedkeys(termcode("<C-n>"), "n", true)
+      elseif snippet.expand_or_jumpable() then
+        snippet.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
       else
         fallback()
       end
@@ -39,9 +41,9 @@ function M.setup(cmp)
     }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if vim.fn.pumvisible() == 1 then
-        feedkeys(termcode("<C-p>"), "n")
+        feedkeys(termcode("<C-p>"), "n", true)
       elseif snippet.jumpable(-1) then
-        feedkeys(termcode("<Plug>luasnip-jump-prev"), "")
+        snippet.jump(-1)
       else
         fallback()
       end
