@@ -10,10 +10,13 @@ local servers = {
   gopls = require("lsp.config.gopls"),
   hls = require("lsp.config.hls"),
   html = default,
+  intelephense = default,
+  jsonls = default,
   lemminx = require("lsp.config.lemminx"),
+  phpactor = default,
   pyright = require("lsp.config.pyright"),
   sumneko_lua = require("lsp.config.sumneko_lua"),
-  -- TODO: add null-ls for markdown and toml(?)
+  yamlls = default,
 }
 
 for name, conf in pairs(servers) do
