@@ -8,7 +8,15 @@ null_ls.config({
     formatting.black,
     formatting.fish_indent,
     formatting.isort,
-    formatting.prettierd,
+    formatting.prettierd.with({
+      condtion = function(utils)
+        local has = utils.root_has_file
+        return has(".prettierrc")
+          or has(".prettierrc.yml")
+          or has(".prettierrc.json")
+          or has("package.json")
+      end,
+    }),
     formatting.shfmt.with({ extra_args = { "-i", "4", "-ci" } }),
     formatting.stylua.with({
       condition = function(utils)
@@ -17,7 +25,15 @@ null_ls.config({
       end,
     }),
 
-    diagnostics.eslint_d,
+    diagnostics.eslint_d.with({
+      condtion = function(utils)
+        local has = utils.root_has_file
+        return has(".eslintrc.js")
+          or has(".eslintrc.yml")
+          or has(".eslintrc.json")
+          or has("package.json")
+      end,
+    }),
     diagnostics.flake8.with({ diagnostics_format = "[#{c}] #{m} (#{s})" }),
     diagnostics.markdownlint,
     diagnostics.pylint.with({ diagnostics_format = "[#{c}] #{m} (#{s})" }),
@@ -27,9 +43,7 @@ null_ls.config({
       end,
     }),
     diagnostics.shellcheck.with({ diagnostics_format = "[#{c}] #{m} (#{s})" }),
-    diagnostics.write_good.with({
-      filetypes = { "markdown", "gitcommit" },
-    }),
+    diagnostics.write_good.with({ filetypes = { "markdown", "gitcommit" } }),
   },
 })
 
