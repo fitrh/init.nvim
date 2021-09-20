@@ -9,7 +9,7 @@ function M.with(handlers)
 end
 
 function M.default()
-  return M.with({ M.on_publish_diagnostics, M.hover })
+  return M.with({ M.hover })
 end
 
 M.signature_help = {
