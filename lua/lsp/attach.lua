@@ -43,8 +43,8 @@ function M.with_all_extensions(client, bufnr)
 end
 
 function M.without_formatting(client)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+  client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_range_formatting = false
 end
 
 return M
