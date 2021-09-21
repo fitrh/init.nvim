@@ -16,6 +16,7 @@ local servers = {
   lemminx = require("lsp.config.lemminx"),
   phpactor = default,
   pyright = require("lsp.config.pyright"),
+  stylelint_lsp = require("lsp.config.stylelint"),
   sumneko_lua = require("lsp.config.sumneko_lua"),
   yamlls = default,
 }
