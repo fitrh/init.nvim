@@ -14,7 +14,6 @@ null_ls.config({
         return has(".prettierrc")
           or has(".prettierrc.yml")
           or has(".prettierrc.json")
-          or has("package.json")
       end,
     }),
     formatting.shfmt.with({ extra_args = { "-i", "4", "-ci" } }),
@@ -31,7 +30,6 @@ null_ls.config({
         return has(".eslintrc.js")
           or has(".eslintrc.yml")
           or has(".eslintrc.json")
-          or has("package.json")
       end,
     }),
     diagnostics.flake8.with({ diagnostics_format = "[#{c}] #{m} (#{s})" }),
