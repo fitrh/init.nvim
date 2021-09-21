@@ -31,6 +31,7 @@ telescope.setup({
   },
   pickers = {
     find_files = {
+      path_display = { "smart" },
       theme = "ivy",
       layout_config = {
         height = 0.4,
@@ -41,6 +42,7 @@ telescope.setup({
       hidden = true,
     },
     buffers = {
+      path_display = { "smart" },
       theme = "dropdown",
       prompt_prefix = " ﬘  ",
       previewer = false,
@@ -55,6 +57,9 @@ telescope.setup({
         width = 0.25,
         height = 0.5,
       },
+    },
+    git_files = {
+      path_display = { "smart" },
     },
     lsp_code_actions = {
       theme = "cursor",
