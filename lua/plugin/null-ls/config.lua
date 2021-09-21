@@ -9,7 +9,7 @@ null_ls.config({
     formatting.fish_indent,
     formatting.isort,
     formatting.prettierd.with({
-      condtion = function(utils)
+      condition = function(utils)
         local has = utils.root_has_file
         return has(".prettierrc")
           or has(".prettierrc.yml")
@@ -25,7 +25,7 @@ null_ls.config({
     }),
 
     diagnostics.eslint_d.with({
-      condtion = function(utils)
+      condition = function(utils)
         local has = utils.root_has_file
         return has(".eslintrc.js")
           or has(".eslintrc.yml")
