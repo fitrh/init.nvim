@@ -19,6 +19,7 @@ local servers = {
   stylelint_lsp = require("lsp.config.stylelint"),
   sumneko_lua = require("lsp.config.sumneko_lua"),
   tailwindcss = require("lsp.config.tailwindcss"),
+  tsserver = require("lsp.config.tsserver"),
   yamlls = default,
 }
 

@@ -27,6 +27,7 @@ local plugins = {
   { "L3MON4D3/LuaSnip", module = "luasnip" },
   { "kyazdani42/nvim-web-devicons", module = "nvim-web-devicons" },
   { "yamatsum/nvim-nonicons", module = "nvim-nonicons" },
+  { "jose-elias-alvarez/nvim-lsp-ts-utils", module = "nvim-lsp-ts-utils" },
   require("plugin.treesitter"),
   require("plugin.lspconfig"),
   require("plugin.jdtls"),
