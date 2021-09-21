@@ -12,6 +12,7 @@ local servers = {
   html = default,
   intelephense = default,
   jsonls = default,
+  kotlin_language_server = default,
   lemminx = require("lsp.config.lemminx"),
   phpactor = default,
   pyright = require("lsp.config.pyright"),
