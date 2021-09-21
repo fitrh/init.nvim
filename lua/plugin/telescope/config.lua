@@ -36,6 +36,10 @@ telescope.setup({
         height = 0.4,
       },
     },
+    file_browser = {
+      prompt_prefix = "   ",
+      hidden = true,
+    },
     buffers = {
       theme = "dropdown",
       prompt_prefix = " ﬘  ",
