@@ -33,9 +33,6 @@ telescope.setup({
     find_files = {
       path_display = { "smart" },
       theme = "ivy",
-      layout_config = {
-        height = 0.4,
-      },
     },
     file_browser = {
       prompt_prefix = "   ",
