@@ -1,8 +1,8 @@
 local M = {}
 
 local keymap = require("keymap.lsp")
-local command = require("lsp.command")
 local event = require("lsp.event")
+local command = { buffer = require("lsp.command.buffer") }
 local ui = { diagnostic = require("lsp.ui.diagnostic") }
 
 local function default(client, bufnr)
@@ -10,7 +10,7 @@ local function default(client, bufnr)
     vim.lsp.codelens.refresh()
   end
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-  command.attach(client, bufnr)
+  command.buffer.attach(client, bufnr)
   keymap.attach(client, bufnr)
   event.attach(client)
   ui.diagnostic.attach()
