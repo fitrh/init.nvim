@@ -17,6 +17,10 @@ function M.attach()
         name = "GoToPrev",
         cmd = "lua vim.diagnostic.goto_prev({ popup_opts = { focusable = false, border = 'rounded', source = 'always' } })",
       },
+      {
+        name = "LocList",
+        cmd = "lua vim.diagnostic.setloclist()",
+      },
     },
   })
 end
