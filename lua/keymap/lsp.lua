@@ -5,29 +5,56 @@ function M.attach(client, bufnr)
   local on = keymap.on_press
   local lead = keymap.on_press_leader
   local opt = keymap.opt
+  local maps = {}
 
-  keymap.bind({
-    on("gD", "n"):lua("vim.lsp.buf.declaration()"),
-    on("gd", "n"):lua("vim.lsp.buf.definition()"),
-    on("gi", "n"):lua("vim.lsp.buf.implementation()"),
-    on("gr", "n"):lua("vim.lsp.buf.references()"),
-    on("K", "n"):lua("vim.lsp.buf.hover()"),
-    lead("k", "n"):lua("vim.lsp.buf.signature_help()"),
-    lead("wa", "n"):lua("vim.lsp.buf.add_workspace_folder()"),
-    lead("wr", "n"):lua("vim.lsp.buf.remove_workspace_folder()"),
-    lead("D", "n"):lua("vim.lsp.buf.type_definition()"),
-    lead("rn", "n"):lua("vim.lsp.buf.rename()"),
-    lead("d", "n"):lua("vim.lsp.diagnostic.show_line_diagnostics({ focusable = false, border = 'rounded' })"),
-    on("[d", "n"):lua("vim.lsp.diagnostic.goto_prev({ popup_opts = { focusable = false, border='rounded' } })"),
-    on("]d", "n"):lua("vim.lsp.diagnostic.goto_next({ popup_opts = { focusable = false, border='rounded' } })"),
-    lead("ll", "n"):lua("vim.lsp.diagnostic.set_loclist()"),
+  if client.resolved_capabilities.document_formatting then
+    maps["Format"] = lead("<CR>", "n"):exec("LspFormatSync<CR><BAR>:w")
+  end
 
-    -- Telescope lsp_xxx commands
-    on("]ls"):exec("Telescope lsp_document_symbols"),
-    on("[ls"):exec("Telescope lsp_workspace_symbols"),
-    on("ca", "n"):exec("Telescope lsp_code_actions"),
-    lead("ca", "v"):exec("Telescope lsp_range_code_actions"),
-  }, { bufnr = bufnr, options = opt():noremap() })
+  maps["wa"] = lead("wa", "n"):lua("vim.lsp.buf.add_workspace_folder()")
+  maps["wr"] = lead("wr", "n"):lua("vim.lsp.buf.remove_workspace_folder()")
+  maps["nr"] = lead("rn", "n"):lua("vim.lsp.buf.rename()")
+  maps["gc"] = on("gc", "n"):lua("vim.lsp.codelens.run()")
+
+  local capabilityKeys = {
+    { key = ";ls", mode = "n", cmd = "SignatureHelp" },
+    { key = "K", mode = "n", cmd = "Hover" },
+    { key = ";lD", mode = "n", cmd = "GoToDeclaration" },
+    { key = ";ld", mode = "n", cmd = "GoToDefinition" },
+    { key = ";lt", mode = "n", cmd = "GoToTypeDefinition" },
+    { key = ";li", mode = "n", cmd = "ListImplementation" },
+    { key = ";lr", mode = "n", cmd = "ListReference" },
+    { key = ";lr", mode = "n", cmd = "ListReference" },
+    { key = ";lr", mode = "n", cmd = "ListReference" },
+  }
+  local diagnosticKeys = {
+    { key = "<Leader>d", mode = "n", cmd = "ShowInline" },
+    { key = "[d", mode = "n", cmd = "GoToPrev" },
+    { key = "]d", mode = "n", cmd = "GoToNext" },
+    { key = "<Leader>ll", mode = "n", cmd = "LocList" },
+  }
+  local telescopeKeys = {
+    { key = "]ls", mode = "n", cmd = "lsp_document_symbols" },
+    { key = "[ls", mode = "n", cmd = "lsp_workspace_symbols" },
+    { key = "ca", mode = "n", cmd = "lsp_code_actions" },
+    { key = "ca", mode = "v", cmd = "lsp_range_code_actions" },
+  }
+
+  for _, v in ipairs(capabilityKeys) do
+    if vim.fn.exists((":Lsp%s"):format(v.cmd)) then
+      maps[v.cmd] = on(v.key, v.mode):exec(("%s%s"):format("Lsp", v.cmd))
+    end
+  end
+
+  for _, v in ipairs(diagnosticKeys) do
+    maps[v.cmd] = on(v.key, v.mode):exec(("%s%s"):format("Diagnostic", v.cmd))
+  end
+
+  for _, v in ipairs(telescopeKeys) do
+    maps[v.cmd] = on(v.key, v.mode):exec(("%s %s"):format("Telescope", v.cmd))
+  end
+
+  keymap.bind(maps, { bufnr = bufnr, options = opt():noremap() })
 end
 
 return M
