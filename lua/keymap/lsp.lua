@@ -37,7 +37,7 @@ function M.attach(client, bufnr)
     { key = "]ls", mode = "n", cmd = "lsp_document_symbols" },
     { key = "[ls", mode = "n", cmd = "lsp_workspace_symbols" },
     { key = "ca", mode = "n", cmd = "lsp_code_actions" },
-    { key = "ca", mode = "v", cmd = "lsp_range_code_actions" },
+    { key = "<Leader>ca", mode = "v", cmd = "lsp_range_code_actions" },
   }
 
   for _, v in ipairs(capabilityKeys) do
