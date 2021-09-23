@@ -28,7 +28,7 @@ function M.bind(maps, args)
   local opts = args or {}
   local keymap = vim.api.nvim_set_keymap
   local buf_keymap = vim.api.nvim_buf_set_keymap
-  for _, map in ipairs(maps) do
+  for _, map in pairs(maps) do
     local opt = nil
     if opts.options then
       opt = opts.options.get and opts.options:get() or opts.options
