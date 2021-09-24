@@ -15,10 +15,13 @@ function M.attach(client, bufnr)
     maps["Format"] = lead("<CR>", "n"):exec("LspFormatSync<CR><BAR>:w")
   end
 
+  if has(":CodelensRun") then
+    maps["CodelensRun"] = on("gc", "n"):exec("CodelensRun")
+  end
+
   maps["wa"] = lead("wa", "n"):lua("vim.lsp.buf.add_workspace_folder()")
   maps["wr"] = lead("wr", "n"):lua("vim.lsp.buf.remove_workspace_folder()")
   maps["nr"] = lead("rn", "n"):lua("vim.lsp.buf.rename()")
-  maps["gc"] = on("gc", "n"):lua("vim.lsp.codelens.run()")
 
   local capabilityKeys = {
     { key = ";ls", mode = "n", cmd = "SignatureHelp" },
