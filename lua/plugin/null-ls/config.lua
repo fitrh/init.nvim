@@ -3,7 +3,6 @@ local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.config({
-  diagnostics_format = "#{m} (#{s})",
   sources = {
     formatting.black,
     formatting.fish_indent,
@@ -32,15 +31,15 @@ null_ls.config({
           or has(".eslintrc.json")
       end,
     }),
-    diagnostics.flake8.with({ diagnostics_format = "[#{c}] #{m} (#{s})" }),
+    diagnostics.flake8.with({ diagnostics_format = "[#{c}] #{m}" }),
     diagnostics.markdownlint,
-    diagnostics.pylint.with({ diagnostics_format = "[#{c}] #{m} (#{s})" }),
+    diagnostics.pylint.with({ diagnostics_format = "[#{c}] #{m}" }),
     diagnostics.selene.with({
       condition = function(utils)
         return utils.root_has_file("selene.toml")
       end,
     }),
-    diagnostics.shellcheck.with({ diagnostics_format = "[#{c}] #{m} (#{s})" }),
+    diagnostics.shellcheck.with({ diagnostics_format = "[#{c}] #{m}" }),
     diagnostics.write_good.with({ filetypes = { "markdown", "gitcommit" } }),
   },
 })
