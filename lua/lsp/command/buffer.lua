@@ -88,6 +88,17 @@ function M.attach(client, bufnr)
     })
   end
 
+  if capable.document_highlight then
+    command.group({
+      prefix = "LspDocument",
+      option = "-bufnr",
+      create = {
+        { name = "Highlight", cmd = "lua vim.lsp.buf.document_highlight()" },
+        { name = "ClearRefs", cmd = "lua vim.lsp.buf.clear_references()" },
+      },
+    })
+  end
+
   if capable.call_hierarchy then
     command.group({
       prefix = "LspList",
