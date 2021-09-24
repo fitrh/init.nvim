@@ -4,7 +4,7 @@ local function has(cmd)
   return vim.fn.exists(cmd) ~= 0
 end
 
-function M.attach(client, bufnr)
+function M.attach(bufnr)
   local keymap = require("lib.keymap")
   local on = keymap.on_press
   local lead = keymap.on_press_leader
