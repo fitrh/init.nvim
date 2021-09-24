@@ -4,6 +4,7 @@ local keymap = require("keymap.lsp")
 local event = require("lsp.event")
 local command = {
   buffer = require("lsp.command.buffer"),
+  codelens = require("lsp.command.codelens"),
   diagnostic = require("lsp.command.diagnostic"),
 }
 local ui = { diagnostic = require("lsp.ui.diagnostic") }
@@ -14,9 +15,10 @@ local function default(client, bufnr)
   end
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   command.buffer.attach(client, bufnr)
+  command.codelens.attach(client)
   command.diagnostic.attach()
-  keymap.attach(client, bufnr)
-  event.attach(client)
+  keymap.attach(bufnr)
+  event.attach()
   ui.diagnostic.attach()
 end
 
