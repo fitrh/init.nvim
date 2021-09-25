@@ -65,8 +65,8 @@ local config = {
   on_attach = function(client, bufnr)
     attach.with_all_extensions(client, bufnr)
     setup.add_commands()
-    require("plugin.jdtls.command").attach(client, bufnr)
-    require("plugin.jdtls.keymap").attach(client, bufnr)
+    require("plugin.jdtls.command").attach()
+    require("plugin.jdtls.keymap").attach(bufnr)
   end,
   flags = {
     allow_incremental_sync = true,

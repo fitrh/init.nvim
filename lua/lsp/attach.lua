@@ -14,7 +14,7 @@ local function default(client, bufnr)
     vim.lsp.codelens.refresh()
   end
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-  command.buffer.attach(client, bufnr)
+  command.buffer.attach(client)
   command.codelens.attach(client)
   command.diagnostic.attach()
   keymap.attach(bufnr)

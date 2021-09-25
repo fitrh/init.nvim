@@ -1,6 +1,6 @@
 local M = {}
 
-function M.attach(client, bufnr)
+function M.attach()
   require("lib.command").group({
     prefix = "Jdt",
     option = "-buffer",

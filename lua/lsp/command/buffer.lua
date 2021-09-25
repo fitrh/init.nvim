@@ -1,8 +1,8 @@
 local M = {}
 
-function M.attach(client, bufnr)
-  local command = require("lib.command")
+function M.attach(client)
   local capable = client.resolved_capabilities
+  local command = require("lib.command")
 
   if capable.document_formatting then
     command.group({
