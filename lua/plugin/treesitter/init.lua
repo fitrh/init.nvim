@@ -10,7 +10,6 @@ return {
       "BufWritePost",
       "BufNewFile",
       "InsertEnter",
-      "User TelescopeFindPre",
     },
   },
   {
