@@ -7,7 +7,7 @@ telescope.setup({
       height = 0.8,
       horizontal = { preview_width = 80 },
     },
-    winblend = 20,
+    winblend = vim.api.nvim_get_option("pumblend"),
     prompt_prefix = "   ",
     selection_caret = " ",
     dynamic_preview_title = true,
