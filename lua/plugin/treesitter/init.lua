@@ -5,12 +5,7 @@ return {
     config = function()
       require("plugin.treesitter.config")
     end,
-    event = {
-      "BufReadPost",
-      "BufWritePost",
-      "BufNewFile",
-      "InsertEnter",
-    },
+    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
   },
   {
     "nvim-treesitter/nvim-treesitter-refactor",
