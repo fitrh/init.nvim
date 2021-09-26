@@ -6,10 +6,11 @@ local function has(cmd)
   return vim.fn.exists(cmd) ~= 0
 end
 
-function M.attach()
+function M.attach(client)
+  local capable = client.resolved_capabilities
   augroup.setup({
     ["HighlightOnCursor"] = {
-      expect = has(":LspDocumentHighlight"),
+      expect = capable.document_highlight and has(":LspDocumentHighlight"),
       filter = "<buffer>",
       { events = "CursorHold", cmd = "LspDocumentHighlight" },
       { events = "CursorHoldI", cmd = "LspDocumentHighlight" },
@@ -19,7 +20,7 @@ function M.attach()
       { events = "CursorHold", cmd = "DiagnosticShowInline" },
     },
     ["CodelensRefresh"] = {
-      expect = has(":CodelensRefresh"),
+      expect = capable.code_lens and has(":CodelensRefresh"),
       events = "BufEnter,BufLeave,InsertEnter,InsertLeave",
       filter = "<buffer>",
       { cmd = "CodelensRefresh" },

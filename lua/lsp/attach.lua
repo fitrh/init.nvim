@@ -18,7 +18,7 @@ local function default(client, bufnr)
   command.codelens.attach(client)
   command.diagnostic.attach()
   keymap.attach(bufnr)
-  event.attach()
+  event.attach(client)
   ui.diagnostic.attach()
 end
 
