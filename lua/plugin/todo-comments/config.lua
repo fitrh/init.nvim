@@ -12,7 +12,7 @@ todo.setup({
     SUCCESS = { icon = " ", color = "success", alt = { "OK", "DONE" } },
     ERROR = { icon = " ", color = "error", alt = { "ERR" } },
   },
-  highlight = { max_line_len = 120 },
+  highlight = { before = "fg", max_line_len = 120 },
   colors = {
     error = { "DiagnosticError" },
     warning = { "DiagnosticWarn" },
