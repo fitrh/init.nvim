@@ -7,7 +7,7 @@ todo.setup({
     HACK = { icon = " ", color = "hack" },
     WARN = { icon = "裂" },
     PERF = { icon = "龍" },
-    NOTE = { icon = " " },
+    NOTE = { icon = " ", alt = { "INFO", "NB" } },
     LINK = { icon = " ", color = "ref", alt = { "LINKS", "REF", "REFS" } },
     SUCCESS = { icon = " ", color = "success", alt = { "OK", "DONE" } },
     ERROR = { icon = " ", color = "error", alt = { "ERR" } },
