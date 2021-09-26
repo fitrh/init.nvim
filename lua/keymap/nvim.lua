@@ -27,17 +27,17 @@ keymap.bind({
   lead("<Space>"):exec("w!"),
   lead(";"):exec("x"),
   lead("'"):exec("wall"),
-  lead("qq"):exec("q"),
-  lead("ql"):exec("wqall"),
+  on("[q"):exec("q"),
+  on("[Q"):exec("wqall"),
 
   --- buffer
   -- next & previous buffer
   on("<S-Tab>", "n"):exec("bprevious"),
   on("<Tab>", "n"):exec("bnext"),
   -- close buffer without close window
-  lead("qb", "n"):exec("enew <BAR> bdelete #"),
+  lead("bq", "n"):exec("enew<BAR>bdelete #"),
   -- delete current buffer and move to the previous buffer
-  lead("bd", "n"):exec("bprevious <BAR> bdelete #"),
+  lead("bd", "n"):exec("bprevious<BAR>bdelete #"),
 
   -- toggle cursorline or cursorcolumn
   on("<C-c>c", "n"):exec("set cursorcolumn!"),
