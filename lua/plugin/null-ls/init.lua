@@ -14,6 +14,7 @@ return {
     "json",
     "lua",
     "markdown",
+    "php",
     "python",
     "scss",
     "sh",
