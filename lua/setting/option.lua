@@ -36,7 +36,7 @@ opt.sidescrolloff = 5
   Zero means 'use available screen space'.
 --]]
 opt.pumheight = 10
-opt.pumblend = 20 -- pseudo-transparency for the popup-menu, value : 0 - 100
+opt.pumblend = 10 -- pseudo-transparency for the popup-menu, value : 0 - 100
 
 -- Line Number
 opt.number = true
