@@ -4,10 +4,10 @@ local lead = keymap.on_press_leader
 local opt = keymap.opt
 
 keymap.bind({
-  lead("bl", "n"):exec("Telescope buffers"),
-  on("<C-p>"):exec("Telescope find_files"),
-  lead("e"):exec("Telescope file_browser"),
+  on("[b", "n"):exec("Telescope buffers"),
+  on("[p"):exec("Telescope find_files"),
   on("<C-f>"):exec("Telescope live_grep"),
+  lead("e"):exec("Telescope file_browser"),
   lead("ft"):exec("Telescope filetypes"),
   lead("lo"):exec("Telescope treesitter"),
   lead("gf", "n"):exec("Telescope git_files"),
