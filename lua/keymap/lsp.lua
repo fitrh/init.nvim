@@ -24,12 +24,12 @@ function M.attach(bufnr)
   maps["nr"] = lead("rn", "n"):lua("vim.lsp.buf.rename()")
 
   local capabilityKeys = {
-    { key = ";ls", mode = "n", cmd = "SignatureHelp" },
+    { key = "[s", mode = "n", cmd = "SignatureHelp" },
     { key = "K", mode = "n", cmd = "Hover" },
-    { key = ";lD", mode = "n", cmd = "GoToDeclaration" },
-    { key = ";ld", mode = "n", cmd = "GoToDefinition" },
-    { key = ";lt", mode = "n", cmd = "GoToTypeDefinition" },
-    { key = ";li", mode = "n", cmd = "ListImplementation" },
+    { key = "[gD", mode = "n", cmd = "GoToDeclaration" },
+    { key = "[gd", mode = "n", cmd = "GoToDefinition" },
+    { key = "[gt", mode = "n", cmd = "GoToTypeDefinition" },
+    { key = "]ll", mode = "n", cmd = "ListImplementation" },
     { key = ";lr", mode = "n", cmd = "ListReference" },
     { key = ";lr", mode = "n", cmd = "ListReference" },
     { key = ";lr", mode = "n", cmd = "ListReference" },
