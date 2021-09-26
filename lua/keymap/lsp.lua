@@ -30,9 +30,10 @@ function M.attach(bufnr)
     { key = "[gd", mode = "n", cmd = "GoToDefinition" },
     { key = "[gt", mode = "n", cmd = "GoToTypeDefinition" },
     { key = "]ll", mode = "n", cmd = "ListImplementation" },
-    { key = ";lr", mode = "n", cmd = "ListReference" },
-    { key = ";lr", mode = "n", cmd = "ListReference" },
-    { key = ";lr", mode = "n", cmd = "ListReference" },
+    { key = "[ll", mode = "n", cmd = "ListReferences" },
+    { key = "]lS", mode = "n", cmd = "ListSymbols" },
+    { key = "]lI", mode = "n", cmd = "ListIncoming" },
+    { key = "]lO", mode = "n", cmd = "ListOutgoing" },
   }
   local diagnosticKeys = {
     { key = "<Leader>d", mode = "n", cmd = "ShowInline" },
