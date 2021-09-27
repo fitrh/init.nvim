@@ -41,12 +41,13 @@ local settings = {
         useInstanceof = true,
         useJava7Objects = true,
       },
+      useBlocks = true,
     },
     configuration = { runtimes = runtimes },
-    referencesCodeLens = { enabled = true },
-    signatureHelp = { enabled = true },
     implementationsCodeLens = { enabled = true },
+    referencesCodeLens = { enabled = true },
     saveActions = { organizeImports = true },
+    signatureHelp = { enabled = true },
   },
 }
 
