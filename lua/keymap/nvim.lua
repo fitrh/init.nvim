@@ -19,6 +19,7 @@ keymap.bind({
   -- prevent entering ex-mode
   on("Q", "n"):disable(),
   on("gQ", "n"):disable(),
+  on("<M-Q>"):disable(),
 
   -- easy escape
   on("<M-q>"):run("<Esc>"),
