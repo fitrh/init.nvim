@@ -33,6 +33,7 @@ local plugins = {
   require("plugin.lspconfig"),
   require("plugin.jdtls"),
   require("plugin.rust-tools"),
+  require("plugin.crates"),
   require("plugin.null-ls"),
   require("plugin.sandwich"),
   require("plugin.kommentary"),
