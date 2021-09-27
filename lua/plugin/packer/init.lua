@@ -32,6 +32,7 @@ local plugins = {
   require("plugin.treesitter"),
   require("plugin.lspconfig"),
   require("plugin.jdtls"),
+  require("plugin.rust-tools"),
   require("plugin.null-ls"),
   require("plugin.sandwich"),
   require("plugin.kommentary"),
