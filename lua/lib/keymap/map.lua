@@ -20,30 +20,30 @@ function Map:exec(command)
   return self
 end
 
-function Map:plug(command)
+function Map:plug(plug)
   if not self._command then
-    self._command = ("<Plug>%s"):format(command)
+    self._command = ("<Plug>%s"):format(plug)
   end
   return self
 end
 
-function Map:run(command)
+function Map:run(keys)
   if not self._command then
-    self._command = command
+    self._command = keys
   end
   return self
 end
 
-function Map:lua(command)
+function Map:lua(module)
   if not self._command then
-    self._command = ("<Cmd>lua %s<CR>"):format(command)
+    self._command = ("<Cmd>lua %s<CR>"):format(module)
   end
   return self
 end
 
-function Map:on_press(key, in_mode, bufnr)
+function Map:on_press(key, mode, bufnr)
   self._key = key
-  self._mode = in_mode or ""
+  self._mode = mode or ""
   self._bufnr = bufnr or nil
   return self
 end
