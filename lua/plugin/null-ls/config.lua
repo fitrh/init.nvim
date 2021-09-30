@@ -34,7 +34,13 @@ null_ls.config({
     diagnostics.flake8.with({ diagnostics_format = "[#{c}] #{m}" }),
     diagnostics.markdownlint,
     diagnostics.phpcs,
-    diagnostics.pylint.with({ diagnostics_format = "[#{c}] #{m}" }),
+    diagnostics.pylint.with({
+      diagnostics_format = "[#{c}] #{m}",
+      condition = function(utils)
+        local has = utils.root_has_file
+        return has("pylintrc") or has(".pylintrc")
+      end,
+    }),
     diagnostics.selene.with({
       condition = function(utils)
         return utils.root_has_file("selene.toml")
