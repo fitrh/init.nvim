@@ -13,8 +13,8 @@ function M.attach()
     on("[rJ", "n"):exec("RustJoinLines"),
     on("[ra", "n"):exec("RustHoverActions"),
     on("[ra", "v"):exec("RustHoverRange"),
-    on("[rj", "a"):exec("RustMoveItemDown"),
-    on("[rk", "a"):exec("RustMoveItemUp"),
+    on("[rj", "n"):exec("RustMoveItemDown"),
+    on("[rk", "n"):exec("RustMoveItemUp"),
   }, {
     options = opt():noremap(),
   })
