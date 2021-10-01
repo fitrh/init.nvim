@@ -31,7 +31,7 @@ require("rust-tools").setup({
     },
     on_attach = function(client, bufnr)
       require("lsp.attach").with_all_extensions(client, bufnr)
-      -- TODO: Attach keymap
+      require("plugin.rust-tools.keymap").attach()
     end,
   },
 })
