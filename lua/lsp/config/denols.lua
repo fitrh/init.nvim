@@ -1,8 +1,14 @@
 local has = require("lspconfig.util").root_pattern
 
 return {
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  root_dir = has("mod.ts", "deps.ts", "deno.json", "deno.jsonc"),
+  root_dir = has(
+    "mod.ts",
+    "mod.js",
+    "deps.ts",
+    "deps.js",
+    "deno.json",
+    "deno.jsonc"
+  ),
   capabilities = require("lsp.capability"),
   handlers = require("lsp.handler").default(),
   init_options = {
