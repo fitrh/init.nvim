@@ -7,6 +7,7 @@ null_ls.config({
     formatting.black,
     formatting.fish_indent,
     formatting.isort,
+    formatting.markdownlint,
     formatting.prettierd.with({
       condition = function(utils)
         local has = utils.root_has_file
