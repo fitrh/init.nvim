@@ -1,6 +1,7 @@
 local null_ls = require("null-ls")
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
+local action = null_ls.builtins.code_actions
 
 null_ls.config({
   sources = {
@@ -49,6 +50,12 @@ null_ls.config({
     }),
     diagnostics.shellcheck.with({ diagnostics_format = "[#{c}] #{m}" }),
     diagnostics.write_good.with({ filetypes = { "markdown", "gitcommit" } }),
+
+    action.gitsigns.with({
+      condition = function(utils)
+        return utils.root_has_file(".git")
+      end,
+    }),
   },
 })
 
