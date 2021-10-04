@@ -26,9 +26,9 @@ function M.attach(bufnr)
   local capabilityKeys = {
     { key = "[s", mode = "n", cmd = "SignatureHelp" },
     { key = "K", mode = "n", cmd = "Hover" },
-    { key = "[gD", mode = "n", cmd = "GoToDeclaration" },
-    { key = "[gd", mode = "n", cmd = "GoToDefinition" },
-    { key = "[gt", mode = "n", cmd = "GoToTypeDefinition" },
+    { key = "]D", mode = "n", cmd = "GoToDeclaration" },
+    { key = "[D", mode = "n", cmd = "GoToDefinition" },
+    { key = "[T", mode = "n", cmd = "GoToTypeDefinition" },
     { key = "]ll", mode = "n", cmd = "ListImplementation" },
     { key = "[ll", mode = "n", cmd = "ListReferences" },
     { key = "]lS", mode = "n", cmd = "ListSymbols" },
