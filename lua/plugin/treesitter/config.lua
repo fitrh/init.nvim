@@ -40,7 +40,6 @@ conf.setup({
     "zig",
   },
   highlight = { enable = true },
-  autopairs = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {
