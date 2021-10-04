@@ -6,6 +6,7 @@ return {
       require("plugin.treesitter.config")
     end,
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+    module = "nvim-treesitter",
   },
   {
     "nvim-treesitter/nvim-treesitter-refactor",
