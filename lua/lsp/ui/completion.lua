@@ -18,7 +18,7 @@ local maps = {
   { text = "Snippet", icon = { default = " ", codicon = "" } },
   { text = "Color", icon = { default = " ", codicon = "" } },
   { text = "File", icon = { default = " ", codicon = "" } },
-  { text = "Reference", icon = { default = " ", codicon = "" } },
+  { text = "Reference", icon = { default = " ", codicon = "" } },
   { text = "Folder", icon = { default = " ", codicon = "" } },
   { text = "EnumMember", icon = { default = " ", codicon = "" } },
   { text = "Constant", icon = { default = " ", codicon = "" } },
