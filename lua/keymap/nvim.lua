@@ -106,10 +106,10 @@ keymap.bind({
 
   -- tab page
   lead("t", "n"):exec("tabnew"),
-  on("<Leader>[", "n"):exec("tabprevious"),
-  on("<Leader>]", "n"):exec("tabnext"),
-  on("<M-[>", "n"):exec("-tabmove"),
-  on("<M-]>", "n"):exec("+tabmove"),
+  on("<M-[>", "n"):exec("tabprevious"),
+  on("<M-]>", "n"):exec("tabnext"),
+  lead("[", "n"):exec("-tabmove"),
+  lead("]", "n"):exec("+tabmove"),
 
   -- Paste-Yank behavior
   -- By default, in visual-line mode, the selected line will be yanked,
