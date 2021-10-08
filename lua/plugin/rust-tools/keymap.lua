@@ -5,6 +5,7 @@ function M.attach()
   local on = keymap.on_press
   local opt = keymap.opt
   keymap.bind({
+    on("[rw", "n"):exec("RustReloadWorkspace"),
     on("[rr", "n"):exec("RustToggleInlayHints"),
     on("[rR", "n"):exec("RustRunnables"),
     on("[rE", "n"):exec("RustExpandMacro"),
