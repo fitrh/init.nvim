@@ -37,7 +37,7 @@ telescope.setup({
       "gradle/",
       "node_modules/",
       "target/",
-      "vendor",
+      "vendor/",
     },
   },
   pickers = {
