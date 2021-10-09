@@ -25,6 +25,12 @@ null_ls.config({
       end,
     }),
 
+    diagnostics.cppcheck.with({
+      condition = function(utils)
+        return utils.root_has_file(".cppcheck")
+      end,
+      extra_args = { "--cppcheck-build-dir=.cppcheck" },
+    }),
     diagnostics.eslint_d.with({
       condition = function(utils)
         local has = utils.root_has_file

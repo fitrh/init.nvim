@@ -5,6 +5,8 @@ return {
     require("plugin.null-ls.config")
   end,
   ft = {
+    "c",
+    "cpp",
     "css",
     "fish",
     "gitcommit",
