@@ -35,9 +35,9 @@ cmp.setup({
   experimental = { ghost_text = true },
   sources = {
     { name = "nvim_lsp", max_item_count = 10 },
-    { name = "nvim_lua", max_item_count = 10 },
-    { name = "luasnip", max_item_count = 10 },
-    { name = "buffer", max_item_count = 10 },
+    { name = "nvim_lua", max_item_count = 5 },
+    { name = "luasnip", max_item_count = 5 },
+    { name = "buffer", max_item_count = 5 },
     { name = "path", max_item_count = 10 },
   },
 })
