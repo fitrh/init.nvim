@@ -6,7 +6,7 @@ local opt = keymap.opt
 keymap.bind({
   on("[b", "n"):exec("Telescope buffers"),
   on("[p"):exec("Telescope find_files"),
-  on("<C-f>"):exec("Telescope live_grep"),
+  on("[f"):exec("Telescope live_grep"),
   lead("e"):exec("Telescope file_browser"),
   lead("ft"):exec("Telescope filetypes"),
   lead("lo"):exec("Telescope treesitter"),
