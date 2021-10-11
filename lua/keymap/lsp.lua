@@ -12,7 +12,7 @@ function M.attach(bufnr)
   local maps = {}
 
   if has(":LspFormatSync") then
-    maps["Format"] = lead("<CR>", "n"):exec("LspFormatSync<CR><BAR>:update")
+    maps["Format"] = lead("<CR>", "n"):exec("LspFormatSync<CR><BAR><Cmd>update")
   end
 
   if has(":CodelensRun") then
