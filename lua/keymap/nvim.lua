@@ -29,7 +29,7 @@ keymap.bind({
   on("<M-q>", "t"):run([[<C-\><C-n>]]),
 
   -- easy save & quit
-  lead("<Space>"):exec("w!"),
+  lead("<Space>"):exec("update"),
   lead(";"):exec("x"),
   lead("'"):exec("wall"),
   on("[q"):exec("q"),
