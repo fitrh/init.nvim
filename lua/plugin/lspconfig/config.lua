@@ -7,6 +7,7 @@ local servers = {
   cssls = default,
   dartls = require("lsp.config.dartls"),
   denols = require("lsp.config.denols"),
+  emmet_ls = default, -- FIX: Integration with auto pairs plugin
   gopls = require("lsp.config.gopls"),
   hls = require("lsp.config.hls"),
   html = default,
