@@ -31,7 +31,7 @@ telescope.setup({
       ".idea/",
       ".settings/",
       ".vscode/",
-      "__pycache__",
+      "__pycache__/",
       "build/",
       "env/",
       "gradle/",
