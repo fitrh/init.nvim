@@ -24,6 +24,6 @@ local servers = {
   yamlls = default,
 }
 
-for name, conf in pairs(servers) do
-  lsp[name].setup(conf)
+for server, config in pairs(servers) do
+  lsp[server].setup(config)
 end
