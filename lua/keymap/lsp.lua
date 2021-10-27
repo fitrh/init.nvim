@@ -21,9 +21,9 @@ function M.attach(bufnr)
 
   maps["wa"] = lead("wa", "n"):lua("vim.lsp.buf.add_workspace_folder()")
   maps["wr"] = lead("wr", "n"):lua("vim.lsp.buf.remove_workspace_folder()")
-  maps["nr"] = lead("rn", "n"):lua("vim.lsp.buf.rename()")
 
   local capabilityKeys = {
+    { key = "[rn", mode = "n", cmd = "Rename" },
     { key = "[s", mode = "n", cmd = "SignatureHelp" },
     { key = "K", mode = "n", cmd = "Hover" },
     { key = "]D", mode = "n", cmd = "GoToDeclaration" },
