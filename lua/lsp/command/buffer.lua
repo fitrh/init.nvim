@@ -16,6 +16,14 @@ function M.attach(client)
     })
   end
 
+  if capable.rename then
+    command.create({
+      option = "-buffer -nargs=?",
+      name = "LspRename",
+      cmd = "lua vim.lsp.buf.rename(<f-args>)",
+    })
+  end
+
   if capable.signature_help then
     command.create({
       option = "-buffer",
