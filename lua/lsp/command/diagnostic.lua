@@ -5,8 +5,8 @@ function M.attach()
 
   local diagnostic = {
     SHOW = ("lua vim.diagnostic.open_float(0, %s)"):format(opts),
-    NEXT = ("lua vim.diagnostic.goto_next({ popup_opts = %s })"):format(opts),
-    PREV = ("lua vim.diagnostic.goto_prev({ popup_opts = %s })"):format(opts),
+    NEXT = ("lua vim.diagnostic.goto_next({ float = %s })"):format(opts),
+    PREV = ("lua vim.diagnostic.goto_prev({ float = %s })"):format(opts),
   }
 
   require("lib.command").group({
