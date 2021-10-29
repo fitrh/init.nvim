@@ -4,7 +4,7 @@ function M.attach()
   local opts = '{ scope = "cursor", focusable = false, border = "rounded" }'
 
   local diagnostic = {
-    SHOW = ("lua vim.diagnostic.show_line_diagnostics(%s)"):format(opts),
+    SHOW = ("lua vim.diagnostic.open_float(0, %s)"):format(opts),
     NEXT = ("lua vim.diagnostic.goto_next({ popup_opts = %s })"):format(opts),
     PREV = ("lua vim.diagnostic.goto_prev({ popup_opts = %s })"):format(opts),
   }
