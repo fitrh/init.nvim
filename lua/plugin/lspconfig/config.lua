@@ -22,6 +22,7 @@ local servers = {
   tailwindcss = require("lsp.config.tailwindcss"),
   tsserver = require("lsp.config.tsserver"),
   yamlls = default,
+  zls = default,
 }
 
 for server, config in pairs(servers) do

@@ -29,6 +29,8 @@ local M = {
     "xml",
     "xsd",
     "yaml",
+    "zig",
+    "zir",
   },
   module = "lspconfig",
 }
