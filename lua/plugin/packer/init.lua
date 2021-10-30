@@ -28,7 +28,7 @@ local plugins = {
   { "kyazdani42/nvim-web-devicons", module = "nvim-web-devicons" },
   { "yamatsum/nvim-nonicons", module = "nvim-nonicons" },
   { "jose-elias-alvarez/nvim-lsp-ts-utils", module = "nvim-lsp-ts-utils" },
-  { "nathom/filetype.nvim", event = { "BufNewFile", "BufRead" } },
+  require("plugin.filetype"),
   require("plugin.treesitter"),
   require("plugin.lspconfig"),
   require("plugin.jdtls"),
