@@ -16,9 +16,6 @@ function M.attach(client)
       { events = "CursorMoved", cmd = "LspDocumentClearRefs" },
       { events = "InsertEnter", cmd = "LspDocumentClearRefs" },
     },
-    ["LineDiagnosticOnHold"] = {
-      { events = "CursorHold", cmd = "DiagnosticShowInline" },
-    },
     ["CodelensRefresh"] = {
       expect = capable.code_lens and has(":CodelensRefresh"),
       events = "BufEnter,BufLeave,InsertEnter,InsertLeave",
