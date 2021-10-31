@@ -13,8 +13,10 @@ function M.attach(client)
       expect = capable.document_highlight and has(":LspDocumentHighlight"),
       filter = "<buffer>",
       { events = "CursorHold", cmd = "LspDocumentHighlight" },
-      { events = "CursorMoved", cmd = "LspDocumentClearRefs" },
-      { events = "InsertEnter", cmd = "LspDocumentClearRefs" },
+      {
+        events = "CursorMoved,InsertEnter,BufLeave",
+        cmd = "LspDocumentClearRefs",
+      },
     },
     ["CodelensRefresh"] = {
       expect = capable.code_lens and has(":CodelensRefresh"),
