@@ -28,6 +28,9 @@ local hlgroups = {
   DiagnosticSignWarn = ("gui=BOLD guifg=%s"):format(c.warning),
   DiagnosticSignInfo = ("gui=BOLD guifg=%s"):format(c.info),
   DiagnosticSignHint = ("gui=BOLD guifg=%s"):format(c.hint),
+  GitSignsAddNr = ("gui=bold guifg=%s"):format(c.gitSigns.add),
+  GitSignsChangeNr = ("gui=bold guifg=%s"):format(c.gitSigns.change),
+  GitSignsDeleteNr = ("gui=bold guifg=%s"):format(c.gitSigns.delete),
 }
 
 for group, hl in pairs(hlgroups) do
