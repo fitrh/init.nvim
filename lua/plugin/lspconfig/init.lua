@@ -4,6 +4,7 @@ local M = {
     require("plugin.lspconfig.config")
   end,
   ft = {
+    "bib",
     "c",
     "cpp",
     "css",
@@ -23,6 +24,7 @@ local M = {
     "scss",
     "sh",
     "svg",
+    "tex",
     "typescript",
     "typescriptreact",
     "vue",
