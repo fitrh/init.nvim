@@ -3,6 +3,7 @@ local M = {}
 function M.setup(arg)
   local opts = arg or {}
   local foreground = opts.fg or "blue"
+  local lsp = require("lsp-status")
   return {
     server = {
       function()
@@ -24,13 +25,13 @@ function M.setup(arg)
     },
     status = {
       function()
-        if #vim.lsp.buf_get_clients() == 0 then
-          return
-        end
-        local lsp = require("lsp-status")
-        return lsp.status() ~= " " and lsp.status() or nil
+        return lsp.status()
+      end,
+      cond = function()
+        return #vim.lsp.buf_get_clients() > 0 and lsp.status() ~= " "
       end,
       color = { fg = foreground, gui = "BOLD" },
+      padding = 0,
     },
   }
 end
