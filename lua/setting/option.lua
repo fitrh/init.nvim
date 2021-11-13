@@ -6,6 +6,7 @@ opt.hidden = true -- enable switching unsaved buffer
 opt.wrap = false
 opt.showcmd = false
 opt.showmode = false
+opt.laststatus = 0 -- disable statusline
 opt.ruler = false -- hide line & column information, use g Ctrl + g instead
 opt.writebackup = true -- protect against crash during write
 opt.backup = false -- but do not persist backup after successful write
