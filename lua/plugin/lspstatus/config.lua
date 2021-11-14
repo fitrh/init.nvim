@@ -3,6 +3,7 @@ local sign = require("helper.sign").diagnostic
 local spinners = {
   full = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" },
   small = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+  moon = { "🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘" },
 }
 
 return {
@@ -16,7 +17,7 @@ return {
   indicator_info = sign.INFO,
   indicator_hint = sign.HINT,
   indicator_ok = "",
-  spinner_frames = spinners.small,
+  spinner_frames = spinners.moon,
   status_symbol = "",
   select_symbol = nil,
   update_interval = 100,
