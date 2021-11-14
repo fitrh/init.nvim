@@ -2,6 +2,7 @@ return {
   "phaazon/hop.nvim",
   config = function()
     require("plugin.hop.config")
+    require("plugin.hop.keymap")
   end,
   cmd = {
     "HopWord",
@@ -23,4 +24,5 @@ return {
     "HopPatternAC",
     "HopPatternBC",
   },
+  keys = { "f", "F", "<M-f>" },
 }
