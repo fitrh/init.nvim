@@ -2,21 +2,20 @@ local M = {}
 
 function M.toggle(args)
   local opts = args or {}
-  local opt = vim.opt
 
-  if opt.signcolumn:get() == "yes" then
-    opt.signcolumn = "no"
-    opt.number = false
-    opt.relativenumber = false
+  if vim.api.nvim_win_get_option(0, "signcolumn") == "yes" then
+    vim.api.nvim_win_set_option(0, "signcolumn", "no")
+    vim.api.nvim_win_set_option(0, "number", false)
+    vim.api.nvim_win_set_option(0, "relativenumber", false)
     if opts.laststatus then
-      opt.laststatus = 0
+      vim.api.nvim_set_option("laststatus", 0)
     end
   else
-    opt.signcolumn = "yes"
-    opt.number = true
-    opt.relativenumber = true
+    vim.api.nvim_win_set_option(0, "signcolumn", "yes")
+    vim.api.nvim_win_set_option(0, "number", true)
+    vim.api.nvim_win_set_option(0, "relativenumber", true)
     if opts.laststatus then
-      vim.opt.laststatus = 2
+      vim.api.nvim_set_option("laststatus", 2)
     end
   end
 end
