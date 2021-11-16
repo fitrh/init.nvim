@@ -19,14 +19,7 @@ M.init = {
 
 function M.use(plugins)
   return function(use)
-    use({
-      "wbthomason/packer.nvim",
-      config = function()
-        require("plugin.packer.config")
-      end,
-      opt = true,
-    })
-
+    use({ "wbthomason/packer.nvim", opt = true })
     for _, plugin in ipairs(plugins) do
       use(plugin)
     end
