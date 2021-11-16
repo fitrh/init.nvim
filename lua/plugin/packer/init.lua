@@ -1,26 +1,6 @@
 vim.cmd("packadd packer.nvim")
 
-local packer = require("packer")
-
-packer.init({
-  git = {
-    clone_timeout = 180, -- Timeout, in seconds
-  },
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
-    end,
-  },
-  profile = {
-    enable = true,
-    -- integer in milliseconds, plugins which load faster than this
-    -- won't be shown in profile output
-    threshold = 1,
-  },
-})
-
 local plugins = {
-  { "wbthomason/packer.nvim", opt = true },
   { "nvim-lua/plenary.nvim", module = "plenary" },
   { "nvim-lua/lsp-status.nvim", module = "lsp-status" },
   { "ray-x/lsp_signature.nvim", module = "lsp_signature" },
@@ -54,8 +34,7 @@ local plugins = {
   { "baskerville/vim-sxhkdrc", ft = "sxhkdrc" },
 }
 
-packer.startup(function(use)
-  for _, plugin in ipairs(plugins) do
-    use(plugin)
-  end
-end)
+local packer = require("packer")
+local config = require("plugin.packer.config")
+packer.init(config.init)
+packer.startup(config.use(plugins))
