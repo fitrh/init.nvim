@@ -30,7 +30,7 @@ local workspace = ("%s/%s"):format(env.WORKSPACE, env.BASENAME_CWD)
 
 local runtimes = {
   { name = "JavaSE-11", path = ("%s/jdk-11"):format(env.RUNTIMES) },
-  { name = "JavaSE-16", path = ("%s/latest"):format(env.RUNTIMES) },
+  { name = "JavaSE-17", path = ("%s/jdk-17"):format(env.RUNTIMES) },
 }
 
 local settings = {
