@@ -22,11 +22,11 @@ keymap.bind({
   on("<M-Q>"):disable(),
 
   -- easy escape
-  on("<M-q>"):run("<Esc>"),
-  on("<M-q>", "s"):run("<Esc>"),
-  on("<M-q>", "i"):run("<Esc>"),
-  on("<M-q>", "c"):run("<Esc>"),
-  on("<M-q>", "t"):run([[<C-\><C-n>]]),
+  on("<M-q>"):send("<Esc>"),
+  on("<M-q>", "s"):send("<Esc>"),
+  on("<M-q>", "i"):send("<Esc>"),
+  on("<M-q>", "c"):send("<Esc>"),
+  on("<M-q>", "t"):send([[<C-\><C-n>]]),
 
   -- easy save & quit
   lead("<Space>"):exec("update"),
@@ -53,17 +53,17 @@ keymap.bind({
   lead("ln"):exec("set number!"),
 
   -- cursor movements
-  on("H"):run("^"),
-  on("L"):run("g_"),
-  on("<C-e>", "i"):run("<C-o>A"),
+  on("H"):send("^"),
+  on("L"):send("g_"),
+  on("<C-e>", "i"):send("<C-o>A"),
 
   -- add line below / above current line
-  on("<C-l>j", "i"):run("<C-o>o"),
-  on("<C-l>k", "i"):run("<C-o>O"),
+  on("<C-l>j", "i"):send("<C-o>o"),
+  on("<C-l>k", "i"):send("<C-o>O"),
 
   --- window
   -- easy next window jumping
-  on("<M-Tab>", "n"):run("<C-w>w"),
+  on("<M-Tab>", "n"):send("<C-w>w"),
   -- easy split
   lead("h", "n"):exec("split"),
   lead("v", "n"):exec("vsplit"),
@@ -72,37 +72,37 @@ keymap.bind({
   on("Zk", "n"):exec("aboveleft split"),
   on("Zl", "n"):exec("rightbelow vsplit"),
   -- resize vertical split
-  lead(".", "n"):run("<C-w>>"),
-  lead(",", "n"):run("<C-w><"),
+  lead(".", "n"):send("<C-w>>"),
+  lead(",", "n"):send("<C-w><"),
   -- resize horizontal split
-  lead("=", "n"):run("<C-w>+"),
-  lead("-", "n"):run("<C-w>-"),
+  lead("=", "n"):send("<C-w>+"),
+  lead("-", "n"):send("<C-w>-"),
 
   -- open terminal
   on("<M-`>"):exec("split term://$SHELL"),
 
   --- search Behaviour
   -- Map // to Search current selected text
-  on("//", "v"):run('y/<c-r>"<CR>'),
+  on("//", "v"):send('y/<c-r>"<CR>'),
   -- centering window when hit n/N
-  on("n", "n"):run("mnnzz"),
-  on("N", "n"):run("mnNzz"),
+  on("n", "n"):send("mnnzz"),
+  on("N", "n"):send("mnNzz"),
   -- if hlsearch is active, <CR> to clear it, otherwise <CR> is <CR>
   on("<CR>")
-    :run('v:hlsearch ? "<Cmd>nohlsearch<CR>" : "<CR>"')
+    :send('v:hlsearch ? "<Cmd>nohlsearch<CR>" : "<CR>"')
     :with(opt():noremap():expr()),
 
   -- move Line
   on("<C-j>", "n"):exec("m .+1"),
   on("<C-j>", "i"):exec("m .+1"),
-  on("J", "v"):run(":m '>+1<CR>gv=gv"):with(opt():noremap():silent()),
+  on("J", "v"):send(":m '>+1<CR>gv=gv"):with(opt():noremap():silent()),
   on("<C-k>", "n"):exec("m .-2"),
   on("<C-k>", "i"):exec("m .-2"),
-  on("K", "v"):run(":m '<-2<CR>gv=gv"):with(opt():noremap():silent()),
+  on("K", "v"):send(":m '<-2<CR>gv=gv"):with(opt():noremap():silent()),
 
   -- easy select-all
-  on("<C-a>", "n"):run("ggVG"):with(opt():noremap():silent()),
-  on("<C-a>", "i"):run("<Esc>ggVG"):with(opt():noremap():silent()),
+  on("<C-a>", "n"):send("ggVG"):with(opt():noremap():silent()),
+  on("<C-a>", "i"):send("<Esc>ggVG"):with(opt():noremap():silent()),
 
   -- tab page
   lead("t", "n"):exec("tabnew"),
@@ -115,23 +115,23 @@ keymap.bind({
   -- By default, in visual-line mode, the selected line will be yanked,
   -- and replace the previous yanked line. This map to imporve that behaviour,
   -- after paste, select the yanked line, so it's easy to yank that line again
-  on("p", "v"):run("pgv"),
+  on("p", "v"):send("pgv"),
   -- yank-Paste from clipboard
-  lead("p", "n"):run('"+p'),
-  lead("p", "v"):run('"+p'),
-  lead("P", "n"):run('"+P'),
-  lead("P", "v"):run('"+P'),
-  lead("y", "n"):run('"+y'),
-  lead("y", "v"):run('"+y'),
-  lead("Y", "n"):run('"+y$'),
-  lead("d", "v"):run('"+d'),
+  lead("p", "n"):send('"+p'),
+  lead("p", "v"):send('"+p'),
+  lead("P", "n"):send('"+P'),
+  lead("P", "v"):send('"+P'),
+  lead("y", "n"):send('"+y'),
+  lead("y", "v"):send('"+y'),
+  lead("Y", "n"):send('"+y$'),
+  lead("d", "v"):send('"+d'),
 
   -- reselect indented line
-  on("<", "v"):run("<gv"),
-  on(">", "v"):run(">gv"),
-  on("=", "v"):run("=gv"),
-  on("<BS>", "v"):run("<gv"),
-  on("<TAB>", "v"):run(">gv"),
+  on("<", "v"):send("<gv"),
+  on(">", "v"):send(">gv"),
+  on("=", "v"):send("=gv"),
+  on("<BS>", "v"):send("<gv"),
+  on("<TAB>", "v"):send(">gv"),
 }, {
   options = opt():noremap(),
 })

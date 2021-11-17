@@ -27,7 +27,7 @@ function Map:plug(plug)
   return self
 end
 
-function Map:run(keys)
+function Map:send(keys)
   if not self._command then
     self._command = keys
   end
