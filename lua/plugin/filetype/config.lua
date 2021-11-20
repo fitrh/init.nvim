@@ -3,6 +3,9 @@ require("filetype").setup({
     extensions = {
       h = "c",
       hpp = "cpp",
+      v = "vlang",
+      vv = "vlang",
+      vsh = "vlang",
     },
   },
 })
