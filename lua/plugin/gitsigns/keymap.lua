@@ -21,7 +21,7 @@ local toggle = {
   linehl = "Gitsigns toggle_linehl",
   word_diff = "Gitsigns toggle_word_diff",
   blame = "Gitsigns toggle_current_line_blame",
-  blame_win = "Gitsigns blame_line true",
+  blame_win = "Gitsigns blame_line full=true",
 }
 
 function M.on_attach(bufnr)
