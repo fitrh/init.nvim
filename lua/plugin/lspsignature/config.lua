@@ -7,7 +7,7 @@ local M = {
   max_height = 10,
   max_width = 80,
   extra_trigger_chars = { "(", "{", "," },
-  zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
+  zindex = 50, -- by default it will be on top of all floating windows, set to 50 send it to bottom
   tranparency = vim.api.nvim_get_option("pumblend"),
   toggle_key = "<M-x>",
 }
