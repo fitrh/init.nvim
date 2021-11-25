@@ -82,8 +82,8 @@ keymap.bind({
   on("<M-`>"):exec("split term://$SHELL"),
 
   --- search Behaviour
-  -- Map // to Search current selected text
-  on("//", "v"):send('y/<c-r>"<CR>'),
+  -- Map "/" to Search current selected text
+  on("/", "v"):send('y/<C-r>"<CR>'),
   -- centering window when hit n/N
   on("n", "n"):send("mnnzz"),
   on("N", "n"):send("mnNzz"),
