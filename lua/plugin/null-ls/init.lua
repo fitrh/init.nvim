@@ -10,6 +10,7 @@ return {
     "css",
     "fish",
     "gitcommit",
+    "gitrebase",
     "html",
     "javascript",
     "javascriptreact",

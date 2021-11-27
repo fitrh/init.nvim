@@ -62,6 +62,7 @@ null_ls.config({
         return utils.root_has_file(".git")
       end,
     }),
+    action.gitrebase,
   },
 })
 
