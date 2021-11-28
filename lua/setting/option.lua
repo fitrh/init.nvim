@@ -28,8 +28,8 @@ opt.updatetime = 250 -- if this many ms nothing is typed, write the swap file
 opt.conceallevel = 2 -- hide concealed text unless it has a custom replacement
 
 -- Scroll offset, minimal number of line or column to keep around the cursor
-opt.scrolloff = 5
-opt.sidescrolloff = 5
+opt.scrolloff = 10
+opt.sidescrolloff = 10
 
 --- popup-menu
 --[[
