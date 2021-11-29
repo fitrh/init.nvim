@@ -13,7 +13,7 @@ require("nvim-web-devicons").setup({
     make = {
       icon = "",
       color = "#e37933",
-      name = "Makefile",
+      name = "Make",
     },
     ["package.json"] = {
       icon = "",
