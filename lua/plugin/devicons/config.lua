@@ -1,5 +1,15 @@
 require("nvim-web-devicons").setup({
   override = {
+    ["Cargo.toml"] = {
+      icon = "",
+      color = "#dea584",
+      name = "CargoTOML",
+    },
+    ["Cargo.lock"] = {
+      icon = "",
+      color = "#9e5f27",
+      name = "CargoLock",
+    },
     javascript = {
       icon = "",
       color = "#8fa959",
@@ -29,6 +39,26 @@ require("nvim-web-devicons").setup({
       icon = "",
       color = "#6a9fb5",
       name = "TXT",
+    },
+    v = {
+      icon = "",
+      color = "#5d88c0",
+      name = "V",
+    },
+    vlang = {
+      icon = "",
+      color = "#5d88c0",
+      name = "Vlang",
+    },
+    vv = {
+      icon = "",
+      color = "#5d88c0",
+      name = "Vv",
+    },
+    vsh = {
+      icon = "",
+      color = "#5d88c0",
+      name = "Vsh",
     },
   },
   default = true,
