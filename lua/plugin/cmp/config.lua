@@ -6,6 +6,7 @@ cmp.setup({
       require("luasnip").lsp_expand(args.body)
     end,
   },
+  preselect = cmp.PreselectMode.None,
   documentation = {
     border = require("helper.border").rounded,
     maxwidth = 80,
