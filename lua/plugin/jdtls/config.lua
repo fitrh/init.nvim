@@ -1,6 +1,4 @@
 local capabilities = require("lsp.capability")
-local handler = require("lsp.handler")
-local attach = require("lsp.attach")
 local jdtls = require("jdtls")
 local setup = require("jdtls.setup")
 
@@ -54,7 +52,7 @@ local config = {
   root_dir = setup.find_root(root_files),
   cmd = { "jdtls", workspace },
   capabilities = capabilities,
-  handlers = handler.default(),
+  handlers = require("lsp.handler").default(),
   settings = settings,
   init_options = {
     extendedClientCapabilities = jdtls_capability,
@@ -63,7 +61,7 @@ local config = {
     client.notify("workspace/didChangeConfiguration", { settings = settings })
   end,
   on_attach = function(client, bufnr)
-    attach.with_all_extensions(client, bufnr)
+    require("lsp.attach").with_all_extensions(client, bufnr)
     setup.add_commands()
     require("plugin.jdtls.command").attach()
     require("plugin.jdtls.keymap").attach(bufnr)
