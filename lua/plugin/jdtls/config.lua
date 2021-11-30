@@ -17,7 +17,6 @@ local env = {
 local root_files = {
   -- Single-module projects
   {
-    "build.xml", -- Ant
     "pom.xml", -- Maven
     "settings.gradle", -- Gradle
     "settings.gradle.kts", -- Gradle
