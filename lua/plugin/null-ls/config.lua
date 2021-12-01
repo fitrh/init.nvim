@@ -40,6 +40,7 @@ null_ls.config({
       end,
     }),
     diagnostics.flake8.with({ diagnostics_format = "[#{c}] #{m}" }),
+    diagnostics.golangci_lint,
     diagnostics.markdownlint,
     diagnostics.phpcs,
     diagnostics.pylint.with({

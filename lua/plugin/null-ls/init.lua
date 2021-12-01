@@ -11,6 +11,8 @@ return {
     "fish",
     "gitcommit",
     "gitrebase",
+    "go",
+    "gomod",
     "html",
     "javascript",
     "javascriptreact",
