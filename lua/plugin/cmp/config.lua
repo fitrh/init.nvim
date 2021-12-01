@@ -39,3 +39,19 @@ cmp.setup({
     { name = "path", max_item_count = 10 },
   },
 })
+
+cmp.setup.cmdline("/", {
+  sources = cmp.config.sources({
+    { name = "nvim_lsp_document_symbol", max_item_count = 10 },
+  }, {
+    { name = "buffer", max_item_count = 10 },
+  }),
+})
+
+cmp.setup.cmdline(":", {
+  sources = cmp.config.sources({
+    { name = "cmdline", max_item_count = 10 },
+  }, {
+    { name = "path", max_item_count = 10 },
+  }),
+})
