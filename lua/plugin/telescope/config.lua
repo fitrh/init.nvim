@@ -38,6 +38,8 @@ telescope.setup({
       "node_modules/",
       "target/",
       "vendor/",
+      "zig%-cache/",
+      "zig%-out/",
     },
   },
   pickers = {
