@@ -93,5 +93,14 @@ telescope.setup({
       prompt_prefix = " ﯧ  ",
       theme = "cursor",
     },
+    lsp_document_diagnostics = {
+      prompt_prefix = "   ",
+      theme = "dropdown",
+    },
+    lsp_workspace_diagnostics = {
+      layout_config = { width = 0.55 },
+      prompt_prefix = "   ",
+      theme = "dropdown",
+    },
   },
 })
