@@ -36,7 +36,7 @@ M.file = {
   location = {
     function()
       local len = #tostring(vim.fn.line("$"))
-      return ("%%%sl,%%3c"):format(len)
+      return ("%%%sl,%%-3c"):format(len)
     end,
     icon = "ﰙ",
   },
