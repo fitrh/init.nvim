@@ -7,6 +7,8 @@ keymap.bind({
   on("[b", "n"):exec("Telescope buffers"),
   on("[p"):exec("Telescope find_files"),
   on("[f"):exec("Telescope live_grep"),
+  on("[ld", "n"):exec("Telescope lsp_document_diagnostics"),
+  on("[lD", "n"):exec("Telescope lsp_workspace_diagnostics"),
   lead("e"):exec("Telescope file_browser"),
   lead("ft"):exec("Telescope filetypes"),
   lead("lo"):exec("Telescope treesitter"),
