@@ -1,4 +1,8 @@
-require("nvim-web-devicons").setup({
+local devicons = require("nvim-web-devicons")
+
+devicons.set_default_icon("", "#6d8086")
+
+devicons.setup({
   override = {
     ["Cargo.toml"] = {
       icon = "",
