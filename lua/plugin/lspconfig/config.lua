@@ -20,6 +20,7 @@ local servers = {
   stylelint_lsp = require("lsp.config.stylelint"),
   sumneko_lua = require("lsp.config.sumneko_lua"),
   tailwindcss = require("lsp.config.tailwindcss"),
+  taplo = default,
   texlab = require("lsp.config.texlab"),
   tsserver = require("lsp.config.tsserver"),
   yamlls = default,

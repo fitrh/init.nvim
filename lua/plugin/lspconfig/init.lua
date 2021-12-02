@@ -25,6 +25,7 @@ local M = {
     "sh",
     "svg",
     "tex",
+    "toml",
     "typescript",
     "typescriptreact",
     "vue",
