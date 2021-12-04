@@ -17,6 +17,7 @@ null_ls.config({
           or has(".prettierrc.json")
       end,
     }),
+    formatting.shellharden,
     formatting.shfmt.with({ extra_args = { "-i", "4", "-ci" } }),
     formatting.stylua.with({
       condition = function(utils)
