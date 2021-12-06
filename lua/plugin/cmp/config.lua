@@ -1,9 +1,10 @@
 local cmp = require("cmp")
+local snippet = require("luasnip")
 
 cmp.setup({
   snippet = {
     expand = function(args)
-      require("luasnip").lsp_expand(args.body)
+      snippet.lsp_expand(args.body)
     end,
   },
   preselect = cmp.PreselectMode.None,
@@ -11,7 +12,7 @@ cmp.setup({
     border = require("helper.border").rounded,
     maxwidth = 80,
   },
-  mapping = require("plugin.cmp.keymap").setup(cmp),
+  mapping = require("plugin.cmp.keymap").setup(cmp, snippet),
   formatting = {
     format = function(entry, vim_item)
       vim_item.kind = require("lsp.ui.completion").kind({

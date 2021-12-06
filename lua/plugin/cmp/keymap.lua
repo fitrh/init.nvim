@@ -9,9 +9,7 @@ local function has_words_before()
       == nil
 end
 
-function M.setup(cmp)
-  local snippet = require("luasnip")
-
+function M.setup(cmp, snippet)
   return {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
