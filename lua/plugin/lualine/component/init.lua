@@ -35,8 +35,9 @@ M.file = {
 
   location = {
     function()
-      local len = #tostring(vim.fn.line("$"))
-      return ("%%%sl,%%-3c"):format(len)
+      local length = #tostring(vim.fn.line("$"))
+      local width = #tostring(vim.api.nvim_buf_get_option(0, "textwidth"))
+      return ("%%%sl,%%-%sc"):format(length, width)
     end,
     icon = "ﰙ",
   },
