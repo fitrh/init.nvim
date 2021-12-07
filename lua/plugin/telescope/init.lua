@@ -6,4 +6,17 @@ return {
     require("plugin.telescope.keymap")
   end,
   cmd = "Telescope",
+  keys = {
+    "[b",
+    "[p",
+    "[f",
+    "[ld",
+    "[lD",
+    "[ls",
+    "[lS",
+    "<Leader>e",
+    "<Leader>ft",
+    "<Leader>gf",
+    "<Leader>gs",
+  },
 }
