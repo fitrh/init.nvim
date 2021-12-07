@@ -9,6 +9,7 @@ conf.setup({
     "comment",
     "cpp",
     "css",
+    "c_sharp",
     "dart",
     "dockerfile",
     "fish",
