@@ -15,6 +15,7 @@ local servers = {
   jsonls = default,
   kotlin_language_server = default,
   lemminx = require("lsp.config.lemminx"),
+  omnisharp = require("lsp.config.omnisharp"),
   phpactor = default,
   pyright = require("lsp.config.pyright"),
   stylelint_lsp = require("lsp.config.stylelint"),
