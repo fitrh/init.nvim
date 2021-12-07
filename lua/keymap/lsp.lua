@@ -42,12 +42,6 @@ function M.attach(bufnr)
     { key = "]d", mode = "n", cmd = "GoToNext" },
     { key = "<Leader>ll", mode = "n", cmd = "LocList" },
   }
-  local telescopeKeys = {
-    { key = "]ls", mode = "n", cmd = "lsp_document_symbols" },
-    { key = "[ls", mode = "n", cmd = "lsp_workspace_symbols" },
-    { key = "ca", mode = "n", cmd = "lsp_code_actions" },
-    { key = "<Leader>ca", mode = "v", cmd = "lsp_range_code_actions" },
-  }
 
   for _, v in ipairs(capabilityKeys) do
     if has((":Lsp%s"):format(v.cmd)) then
@@ -57,10 +51,6 @@ function M.attach(bufnr)
 
   for _, v in ipairs(diagnosticKeys) do
     maps[v.cmd] = on(v.key, v.mode):exec(("%s%s"):format("Diagnostic", v.cmd))
-  end
-
-  for _, v in ipairs(telescopeKeys) do
-    maps[v.cmd] = on(v.key, v.mode):exec(("%s %s"):format("Telescope", v.cmd))
   end
 
   keymap.bind(maps, { bufnr = bufnr, options = opt():noremap() })
