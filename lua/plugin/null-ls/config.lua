@@ -43,6 +43,9 @@ null_ls.config({
     diagnostics.flake8.with({ diagnostics_format = "[#{c}] #{m}" }),
     diagnostics.golangci_lint,
     diagnostics.markdownlint,
+    diagnostics.misspell.with({
+      filetypes = { "gitcommit", "markdown", "txt" },
+    }),
     diagnostics.phpcs,
     diagnostics.pylint.with({
       diagnostics_format = "[#{c}] #{m}",
