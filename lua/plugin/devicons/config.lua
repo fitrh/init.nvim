@@ -14,6 +14,11 @@ devicons.setup({
       color = "#9e5f27",
       name = "CargoLock",
     },
+    config = {
+      icon = "",
+      color = "#ECECEC",
+      name = "Config",
+    },
     javascript = {
       icon = "",
       color = "#8fa959",
