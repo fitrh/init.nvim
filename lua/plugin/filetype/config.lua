@@ -7,5 +7,8 @@ require("filetype").setup({
       vv = "vlang",
       vsh = "vlang",
     },
+    literal = {
+      [".env"] = "config",
+    },
   },
 })
