@@ -24,6 +24,7 @@ return {
     "scss",
     "sh",
     "svelte",
+    "txt",
     "typescript",
     "typescriptreact",
     "vue",
