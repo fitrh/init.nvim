@@ -14,10 +14,6 @@ todo.setup({
   },
   highlight = { max_line_len = 120 },
   colors = {
-    error = { "DiagnosticError" },
-    warning = { "DiagnosticWarn" },
-    info = { "DiagnosticInfo" },
-    hint = { "DiagnosticHint" },
     hack = { "Function" },
     link = { "FloatBorder" },
     success = { "healthSuccess" },
