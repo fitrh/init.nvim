@@ -15,7 +15,7 @@ local options = {
 
 local diagnostics = {
   "diagnostics",
-  sources = { "nvim_lsp" },
+  sources = { "nvim_diagnostic" },
 }
 
 local sections = {
