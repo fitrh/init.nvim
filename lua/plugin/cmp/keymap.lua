@@ -21,9 +21,7 @@ function M.setup(cmp, snippet)
       select = false,
     }),
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif snippet.expand_or_jumpable() then
+      if snippet.expand_or_jumpable() then
         snippet.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
@@ -35,9 +33,7 @@ function M.setup(cmp, snippet)
       "s",
     }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif snippet.jumpable(-1) then
+      if snippet.jumpable(-1) then
         snippet.jump(-1)
       else
         fallback()
