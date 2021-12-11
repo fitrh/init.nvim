@@ -11,6 +11,7 @@ cmp.setup({
   documentation = {
     border = require("helper.border").rounded,
     maxwidth = 80,
+    maxheight = 12,
   },
   mapping = require("plugin.cmp.keymap").setup(cmp, snippet),
   formatting = {
