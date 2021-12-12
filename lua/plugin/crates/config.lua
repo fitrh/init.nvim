@@ -5,7 +5,7 @@ require("crates").setup({
     prerelease = "  裂%s  ",
     yanked = "  戀%s  ",
     nomatch = "  𥉉No match  ",
-    update = "  療%s  ",
+    upgrade = "  療%s  ",
     error = "   Error fetching crate  ",
   },
   highlight = {
@@ -14,7 +14,7 @@ require("crates").setup({
     prerelease = "DiagnosticVirtualTextWarn",
     yanked = "DiagnosticVirtualTextError",
     nomatch = "DiagnosticVirtualTextWarn",
-    update = "DiagnosticHint",
+    upgrade = "DiagnosticHint",
     error = "DiagnosticVirtualTextError",
   },
   popup = {
