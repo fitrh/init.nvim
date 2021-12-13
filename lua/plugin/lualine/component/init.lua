@@ -49,7 +49,7 @@ M.file = {
       return tostring(vim.fn.line("$"))
     end,
     icon = "", -- the above function must return string to make icon work
-    color = { fg = palette.blue },
+    color = "LualineComponentLines",
     padding = 0,
   },
 }
