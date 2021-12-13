@@ -12,6 +12,8 @@ function M.spacer(width)
   }
 end
 
+M.mode = require("plugin.lualine.component.mode")
+
 M.file = {
   type = {
     "filetype",

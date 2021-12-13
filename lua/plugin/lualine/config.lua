@@ -22,7 +22,8 @@ local sections = {
   lualine_a = { spacer() },
   lualine_b = {},
   lualine_c = {
-    spacer(2),
+    component.mode,
+    spacer(),
     state.readonly,
     file.icon,
     file.name,
@@ -35,7 +36,7 @@ local sections = {
     lsp.status,
     file.location,
     file.lines,
-    spacer(2),
+    spacer(),
   },
   lualine_y = {},
   lualine_z = { spacer() },
