@@ -1,4 +1,4 @@
-local palette = require("helper.palette")
+local palette = require("plugin.themes.palette")
 local highlight = require("lib.highlight")
 
 return {

@@ -25,7 +25,7 @@ local plugins = {
   require("plugin.gitsigns"),
   require("plugin.outline"),
   require("plugin.neoscroll"),
-  require("plugin.tokyonight"),
+  require("plugin.themes"),
   require("plugin.devicons"),
   require("plugin.lualine"),
   require("plugin.colorizer"),
