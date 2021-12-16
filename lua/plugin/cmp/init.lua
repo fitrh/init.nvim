@@ -8,14 +8,8 @@ return {
     { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
     { "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
     { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
-    {
-      "L3MON4D3/LuaSnip",
-      requires = {
-        "rafamadriz/friendly-snippets",
-        module = "friendly-snippets",
-      },
-      module = "luasnip",
-    },
+    { "L3MON4D3/LuaSnip", module = "luasnip" },
+    { "rafamadriz/friendly-snippets", module = "friendly-snippets" },
   },
   config = function()
     require("plugin.cmp.config")
