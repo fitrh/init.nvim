@@ -10,12 +10,8 @@ require("crates").setup({
   },
   highlight = {
     loading = "DiagnosticVirtualTextHint",
-    version = "DiagnosticVirtualTextInfo",
-    prerelease = "DiagnosticVirtualTextWarn",
-    yanked = "DiagnosticVirtualTextError",
     nomatch = "DiagnosticVirtualTextWarn",
     upgrade = "DiagnosticHint",
-    error = "DiagnosticVirtualTextError",
   },
   popup = {
     autofocus = true, -- focus the versions popup when opening it
