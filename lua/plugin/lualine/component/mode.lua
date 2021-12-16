@@ -15,16 +15,17 @@ return {
       [""] = { text = "SBL", color = palette.purple },
       t = { text = "TRM", color = palette.red },
     }
+    local mode = modes[vim.api.nvim_get_mode().mode]
     highlight.set("LualineComponentMode", {
-      fg = modes[vim.fn.mode()].color,
+      fg = mode.color,
       bg = palette.bg_statusline,
       style = "BOLD",
     })
     highlight.set("LualineComponentLines", {
-      fg = modes[vim.fn.mode()].color,
+      fg = mode.color,
       bg = palette.bg_statusline,
     })
-    return modes[vim.fn.mode()].text
+    return mode.text
   end,
   color = "LualineComponentMode",
 }
