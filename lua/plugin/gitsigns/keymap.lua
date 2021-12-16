@@ -1,8 +1,8 @@
 local M = {}
 
 local hunk = {
-  next = "Gitsigns next_hunk",
-  prev = "Gitsigns prev_hunk",
+  next = "&diff ? ']c' : '<Cmd>Gitsigns next_hunk<CR>'",
+  prev = "&diff ? '[c' : '<Cmd>Gitsigns prev_hunk<CR>'",
   stage = "Gitsigns stage_hunk",
   stage_selected = "'<,'>Gitsigns stage_hunk",
   stage_buffer = "Gitsigns stage_buffer",
@@ -31,8 +31,8 @@ function M.on_attach(bufnr)
   local opt = keymap.opt
 
   keymap.bind({
-    on("]c", "n"):exec(hunk.next),
-    on("[c", "n"):exec(hunk.prev),
+    on("]c", "n"):send(hunk.next):with(opt():expr()),
+    on("[c", "n"):send(hunk.prev):with(opt():expr()),
     on("ghs", "n"):exec(hunk.stage),
     on("ghS", "n"):exec(hunk.stage_buffer),
     on("ghs", "v"):exec(hunk.stage_selected),
