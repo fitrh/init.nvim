@@ -91,6 +91,7 @@ opt.colorcolumn = { "+1" }
 
 -- Cursor Line
 opt.cursorline = true -- highlight current line
+opt.guicursor = "n-c:hor50,i-ci-ve:ver25"
 opt.showmatch = true -- highlight matching <[{()}]>
 
 -- ignored wildcard
