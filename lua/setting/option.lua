@@ -20,6 +20,7 @@ opt.ignorecase = true
 opt.laststatus = 0 -- disable statusline
 opt.nrformats:append({ "alpha" }) -- increment/decrement for alphabet
 opt.number = true
+opt.numberwidth = 1
 opt.pastetoggle = "<F2>" -- toggling paste mode when press this key
 opt.path:append({ "**" })
 opt.pumblend = 10 -- pseudo-transparency for the popup-menu, value : 0 - 100
