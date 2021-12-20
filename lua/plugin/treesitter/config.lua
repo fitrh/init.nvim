@@ -46,7 +46,6 @@ conf.setup({
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "<C-n>",
       node_incremental = "<CR>",
       scope_incremental = "<S-CR>",
       node_decremental = "<BS>",
