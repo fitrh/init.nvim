@@ -72,10 +72,6 @@ local config = {
   },
 }
 
-local M = {}
-
-function M.attach()
+return function()
   jdtls.start_or_attach(config)
 end
-
-return M
