@@ -25,6 +25,8 @@ conf.setup({
     "kotlin",
     "latex",
     "lua",
+    "make",
+    "markdown",
     "php",
     "python",
     "query",
