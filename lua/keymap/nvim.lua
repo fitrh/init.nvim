@@ -17,7 +17,6 @@ keymap.bind({
   on("<Right>", "i"):disable(),
 
   -- prevent entering ex-mode
-  on("Q", "n"):disable(),
   on("gQ", "n"):disable(),
   on("<M-Q>"):disable(),
 
