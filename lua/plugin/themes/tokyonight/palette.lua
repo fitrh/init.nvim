@@ -16,6 +16,7 @@ local M = {
   blue2 = scheme.blue2,
   blue5 = scheme.blue5,
   blue7 = scheme.blue7,
+  yellow = scheme.yellow,
   cyan = scheme.cyan,
   green = {
     primary = scheme.green,
