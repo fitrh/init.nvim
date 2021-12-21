@@ -8,8 +8,8 @@ local git = component.git
 local spacer = component.spacer
 
 local options = {
-  component_separators = { "", "" },
-  section_separators = { "", "" },
+  component_separators = "",
+  section_separators = "",
   disabled_filetypes = { "Outline" },
 }
 
