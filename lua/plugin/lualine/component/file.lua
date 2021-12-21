@@ -21,7 +21,7 @@ return {
 
   location = {
     function()
-      local length = #tostring(vim.fn.line("$"))
+      local length = #tostring(vim.api.nvim_buf_line_count(0))
       local width = #tostring(vim.api.nvim_buf_get_option(0, "textwidth"))
       return ("%%%sl,%%-%sc"):format(length, width)
     end,
@@ -30,9 +30,9 @@ return {
 
   lines = {
     function()
-      return tostring(vim.fn.line("$"))
+      return vim.api.nvim_buf_line_count(0)
     end,
-    icon = "", -- the above function must return string to make icon work
+    icon = "",
     color = "LualineComponentLines",
     padding = 0,
   },
