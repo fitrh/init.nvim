@@ -11,7 +11,7 @@ return {
       v = { text = "VIS", color = palette.purple },
       [""] = { text = "V·B", color = palette.purple },
       V = { text = "V·L", color = palette.purple },
-      c = { text = "CMD", color = palette.orange },
+      c = { text = "CMD", color = palette.yellow },
       s = { text = "SEL", color = palette.purple },
       S = { text = "S·L", color = palette.purple },
       [""] = { text = "S·B", color = palette.purple },
