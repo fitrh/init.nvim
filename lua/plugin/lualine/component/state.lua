@@ -4,20 +4,22 @@ return {
   modified = {
     function()
       return ""
-    end, -- "ﴖ"
-    cond = function()
-      return vim.bo.modified
     end,
-    color = { fg = palette.red_br_2 }, -- palette.blue5
+    cond = function()
+      return vim.api.nvim_buf_get_option(0, "modified")
+    end,
+    color = { fg = palette.red_br_2 },
     padding = 0,
   },
 
   readonly = {
     function()
-      return "" -- ""
+      return ""
     end,
     cond = function()
-      return vim.bo.readonly or not vim.bo.modifiable
+      local readonly = vim.api.nvim_buf_get_option(0, "readonly")
+      local modifiable = vim.api.nvim_buf_get_option(0, "modifiable")
+      return readonly or not modifiable
     end,
     color = { fg = palette.red1 },
     padding = { left = 0, right = 1 },
