@@ -4,7 +4,7 @@ local lead = keymap.on_press_leader
 local opt = keymap.opt
 
 keymap.bind({
-  on("[b", "n"):exec("Telescope buffers"),
+  on("[]", "n"):exec("Telescope buffers"),
   on("[p"):exec("Telescope find_files"),
   on("[f"):exec("Telescope live_grep"),
   lead("e"):exec("Telescope file_browser"),

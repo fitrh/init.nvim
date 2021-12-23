@@ -7,7 +7,7 @@ return {
   end,
   cmd = "Telescope",
   keys = {
-    "[b",
+    "[]",
     "[p",
     "[f",
     "[ld",
