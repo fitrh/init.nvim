@@ -10,7 +10,7 @@ local spacer = component.spacer
 local options = {
   component_separators = "",
   section_separators = "",
-  disabled_filetypes = { "Outline" },
+  disabled_filetypes = { "Outline", "help" },
 }
 
 local diagnostics = {
