@@ -55,7 +55,7 @@ telescope.setup({
       hidden = true,
     },
     buffers = {
-      prompt_prefix = " ﬘  ",
+      prompt_prefix = "   ",
       path_display = { "smart" },
       theme = "dropdown",
       previewer = false,
