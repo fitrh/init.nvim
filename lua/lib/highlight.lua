@@ -1,5 +1,15 @@
 local M = {}
 
+function M.fg(group_name)
+  local hl = vim.api.nvim_get_hl_by_name(group_name, true)
+  return hl.foreground and ("#%06x"):format(hl.foreground) or "NONE"
+end
+
+function M.bg(group_name)
+  local hl = vim.api.nvim_get_hl_by_name(group_name, true)
+  return hl.background and ("#%06x"):format(hl.background) or "NONE"
+end
+
 function M.set(group_name, gui, tui)
   local fg = gui.fg or "NONE"
   local bg = gui.bg or "NONE"
