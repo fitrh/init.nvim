@@ -6,6 +6,7 @@ local plugins = {
   { "ray-x/lsp_signature.nvim", module = "lsp_signature" },
   { "yamatsum/nvim-nonicons", module = "nvim-nonicons" },
   { "jose-elias-alvarez/nvim-lsp-ts-utils", module = "nvim-lsp-ts-utils" },
+  { "b0o/schemastore.nvim", module = "schemastore" },
   require("plugin.filetype"),
   require("plugin.treesitter"),
   require("plugin.lspconfig"),
