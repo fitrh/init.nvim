@@ -7,10 +7,10 @@ function M.attach(client)
 
   require("lib.command").group({
     prefix = "Codelens",
-    option = "-buffer",
-    create = {
-      { name = "Refresh", cmd = "lua vim.lsp.codelens.refresh()" },
-      { name = "Run", cmd = "lua vim.lsp.codelens.run()" },
+    buf = true,
+    cmds = {
+      { name = "Refresh", cmd = vim.lsp.codelens.refresh },
+      { name = "Run", cmd = vim.lsp.codelens.run },
     },
   })
 end

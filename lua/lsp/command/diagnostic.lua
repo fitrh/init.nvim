@@ -19,13 +19,13 @@ function M.attach()
 
   require("lib.command").group({
     prefix = "Diagnostic",
-    option = "-buffer",
-    create = {
+    buf = true,
+    cmds = {
       { name = "ShowInLine", cmd = diagnostic.SHOW.line },
       { name = "ShowOnCursor", cmd = diagnostic.SHOW.cursor },
       { name = "GoToNext", cmd = diagnostic.NEXT },
       { name = "GoToPrev", cmd = diagnostic.PREV },
-      { name = "LocList", cmd = "lua vim.diagnostic.setloclist()" },
+      { name = "LocList", cmd = vim.diagnostic.setloclist },
     },
   })
 end

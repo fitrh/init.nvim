@@ -7,102 +7,72 @@ function M.attach(client)
   if capable.document_formatting then
     command.group({
       prefix = "LspFormat",
-      option = "-buffer",
-      create = {
-        { name = "", cmd = "lua vim.lsp.buf.formatting()" },
-        { name = "Seq", cmd = "lua vim.lsp.buf.formatting_seq_sync()" },
-        { name = "Sync", cmd = "lua vim.lsp.buf.formatting_sync()" },
+      buf = true,
+      cmds = {
+        { cmd = vim.lsp.buf.formatting },
+        { name = "Seq", cmd = vim.lsp.buf.formatting_seq_sync },
+        { name = "Sync", cmd = vim.lsp.buf.formatting_sync },
       },
     })
   end
 
   if capable.rename then
-    command.create({
-      option = "-buffer -nargs=?",
-      name = "LspRename",
-      cmd = "lua vim.lsp.buf.rename(<f-args>)",
-    })
+    command.add("LspRename", function(opts)
+      vim.lsp.buf.rename(opts.args)
+    end, { buf = true, opts = { nargs = "?", force = true } })
   end
 
   if capable.signature_help then
-    command.create({
-      option = "-buffer",
-      name = "LspSignatureHelp",
-      cmd = "lua vim.lsp.buf.signature_help()",
-    })
+    command.add("LspSignatureHelp", vim.lsp.buf.signature_help, { buf = true })
   end
 
   if capable.code_action then
-    command.create({
-      option = "-buffer",
-      name = "LspCodeAction",
-      cmd = "lua vim.lsp.buf.code_action()",
-    })
+    command.add("LspCodeAction", vim.lsp.buf.code_action, { buf = true })
   end
 
   if capable.hover then
-    command.create({
-      option = "-buffer",
-      name = "LspHover",
-      cmd = "lua vim.lsp.buf.hover()",
-    })
+    command.add("LspHover", vim.lsp.buf.hover, { buf = true })
   end
 
   if capable.declaration then
-    command.create({
-      option = "-buffer",
-      name = "LspGoToDeclaration",
-      cmd = "lua vim.lsp.buf.declaration()",
-    })
+    command.add("LspGoToDeclaration", vim.lsp.buf.declaration, { buf = true })
   end
 
   if capable.goto_definition then
-    command.create({
-      option = "-buffer",
-      name = "LspGoToDefinition",
-      cmd = "lua vim.lsp.buf.definition()",
-    })
+    command.add("LspGoToDefinition", vim.lsp.buf.definition, { buf = true })
   end
 
   if capable.type_definition then
-    command.create({
-      option = "-buffer",
-      name = "LspGoToTypeDefinition",
-      cmd = "lua vim.lsp.buf.type_definition()",
-    })
+    command.add(
+      "LspGoToTypeDefinition",
+      vim.lsp.buf.type_definition,
+      { buf = true }
+    )
   end
 
   if capable.implementation then
-    command.create({
-      option = "-buffer",
-      name = "LspListImplementation",
-      cmd = "lua vim.lsp.buf.implementation()",
-    })
+    command.add(
+      "LspListImplementation",
+      vim.lsp.buf.implementation,
+      { buf = true }
+    )
   end
 
   if capable.find_references then
-    command.create({
-      option = "-buffer",
-      name = "LspListReferences",
-      cmd = "lua vim.lsp.buf.references()",
-    })
+    command.add("LspListReferences", vim.lsp.buf.references, { buf = true })
   end
 
   if capable.document_symbol then
-    command.create({
-      option = "-buffer",
-      name = "LspListSymbols",
-      cmd = "lua vim.lsp.buf.document_symbol()",
-    })
+    command.add("LspListSymbols", vim.lsp.buf.document_symbol, { buf = true })
   end
 
   if capable.document_highlight then
     command.group({
       prefix = "LspDocument",
-      option = "-bufnr",
-      create = {
-        { name = "Highlight", cmd = "lua vim.lsp.buf.document_highlight()" },
-        { name = "ClearRefs", cmd = "lua vim.lsp.buf.clear_references()" },
+      buf = true,
+      cmds = {
+        { name = "Highlight", cmd = vim.lsp.buf.document_highlight },
+        { name = "ClearRefs", cmd = vim.lsp.buf.clear_references },
       },
     })
   end
@@ -110,10 +80,10 @@ function M.attach(client)
   if capable.call_hierarchy then
     command.group({
       prefix = "LspList",
-      option = "-buffer",
-      create = {
-        { name = "Icoming", cmd = "lua vim.lsp.buf.incoming_calls()" },
-        { name = "Outgoing", cmd = "lua vim.lsp.buf.outging_calls()" },
+      buf = true,
+      cmds = {
+        { name = "Icoming", cmd = vim.lsp.buf.incoming_calls },
+        { name = "Outgoing", cmd = vim.lsp.buf.outging_calls },
       },
     })
   end
