@@ -12,6 +12,7 @@ local plugins = {
   require("plugin.lspconfig"),
   require("plugin.jdtls"),
   require("plugin.rust-tools"),
+  require("plugin.flutter-tools"),
   require("plugin.crates"),
   require("plugin.null-ls"),
   require("plugin.sandwich"),
