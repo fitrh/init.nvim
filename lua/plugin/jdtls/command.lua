@@ -3,45 +3,53 @@ local M = {}
 function M.attach()
   require("lib.command").group({
     prefix = "Jdt",
-    option = "-buffer",
-    create = {
-      { name = "CodeAction", cmd = [[lua require("jdtls").code_action()]] },
+    buf = true,
+    cmds = {
+      { name = "CodeAction", cmd = require("jdtls").code_action },
       {
         name = "CodeActionRange",
-        cmd = [[lua require("jdtls").code_action(true)]],
+        cmd = function()
+          require("jdtls").code_action(true)
+        end,
       },
       {
         name = "JdtCodeActionRefactor",
-        cmd = [[lua require("jdtls").code_action(false, "refactor")]],
+        cmd = function()
+          require("jdtls").code_action(false, "refactor")
+        end,
       },
-      {
-        name = "OrganizeImports",
-        cmd = [[lua require("jdtls").organize_imports()]],
-      },
-      {
-        name = "ExtractVariable",
-        cmd = [[lua require("jdtls").extract_variable()]],
-      },
+      { name = "OrganizeImports", cmd = require("jdtls").organize_imports },
+      { name = "ExtractVariable", cmd = require("jdtls").extract_variable },
       {
         name = "ExtractVariableRange",
-        cmd = [[lua require("jdtls").extract_variable(true)]],
+        cmd = function()
+          require("jdtls").extract_variable(true)
+        end,
       },
-      {
-        name = "ExtractConstant",
-        cmd = [[lua require("jdtls").extract_constant()]],
-      },
+      { name = "ExtractConstant", cmd = require("jdtls").extract_constant },
       {
         name = "ExtractConstantRange",
-        cmd = [[lua require("jdtls").extract_constant(true)]],
+        cmd = function()
+          require("jdtls").extract_constant(true)
+        end,
       },
       {
         name = "ExtractMethod",
-        cmd = [[lua require("jdtls").extract_method(true)]],
+        cmd = function()
+          require("jdtls").extract_method(true)
+        end,
       },
-      { name = "TestClass", cmd = [[lua require("jdtls").test_class(true)]] },
+      {
+        name = "TestClass",
+        cmd = function()
+          require("jdtls").test_class(true)
+        end,
+      },
       {
         name = "TestNearestMethod",
-        cmd = [[lua require("jdtls").test_nearest_method(true)]],
+        cmd = function()
+          require("jdtls").test_nearest_method(true)
+        end,
       },
     },
   })
