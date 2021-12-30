@@ -1,19 +1,19 @@
-local mod = "lua require('crates')"
+local crates = require("crates")
 
 require("lib.command").group({
   prefix = "Crates",
-  create = {
-    { name = "Refresh", cmd = ("%s.update()"):format(mod) },
-    { name = "Toggle", cmd = ("%s.toggle()"):format(mod) },
-    { name = "Reload", cmd = ("%s.reload()"):format(mod) },
-    { name = "Hide", cmd = ("%s.hide()"):format(mod) },
-    { name = "Update", cmd = ("%s.update_crate()"):format(mod) },
-    { name = "Updates", cmd = ("%s.update_crates()"):format(mod) },
-    { name = "UpdateAll", cmd = ("%s.update_all_crates()"):format(mod) },
-    { name = "Upgrade", cmd = ("%s.upgrade_crate()"):format(mod) },
-    { name = "Upgrades", cmd = ("%s.upgrade_crates()"):format(mod) },
-    { name = "UpgradeAll", cmd = ("%s.upgrade_all_crates()"):format(mod) },
-    { name = "ShowPopup", cmd = ("%s.show_popup()"):format(mod) },
-    { name = "HidePopup", cmd = ("%s.hide_popup()"):format(mod) },
+  cmds = {
+    { name = "Refresh", cmd = crates.update },
+    { name = "Toggle", cmd = crates.toggle },
+    { name = "Reload", cmd = crates.reload },
+    { name = "Hide", cmd = crates.hide },
+    { name = "Update", cmd = crates.update_crate },
+    { name = "Updates", cmd = crates.update_crates },
+    { name = "UpdateAll", cmd = crates.update_all_crates },
+    { name = "Upgrade", cmd = crates.upgrade_crate },
+    { name = "Upgrades", cmd = crates.upgrade_crates },
+    { name = "UpgradeAll", cmd = crates.upgrade_all_crates },
+    { name = "ShowPopup", cmd = crates.show_popup },
+    { name = "HidePopup", cmd = crates.hide_popup },
   },
 })
