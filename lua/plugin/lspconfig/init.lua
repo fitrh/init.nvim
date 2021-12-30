@@ -9,7 +9,6 @@ local M = {
     "cpp",
     "cs",
     "css",
-    "dart",
     "go",
     "gomod",
     "haskell",
