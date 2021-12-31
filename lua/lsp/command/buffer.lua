@@ -82,8 +82,18 @@ function M.attach(client)
       prefix = "LspList",
       buf = true,
       cmds = {
-        { name = "Icoming", cmd = vim.lsp.buf.incoming_calls },
-        { name = "Outgoing", cmd = vim.lsp.buf.outging_calls },
+        {
+          name = "Icoming",
+          cmd = function()
+            vim.lsp.buf.incoming_calls()
+          end,
+        },
+        {
+          name = "Outgoing",
+          cmd = function()
+            vim.lsp.buf.outging_calls()
+          end,
+        },
       },
     })
   end
