@@ -17,9 +17,9 @@ function M.attach(client)
   end
 
   if capable.rename then
-    command.add("LspRename", function(opts)
-      vim.lsp.buf.rename(opts.args)
-    end, { buf = true, opts = { nargs = "?", force = true } })
+    command.add("LspRename", function()
+      vim.lsp.buf.rename()
+    end, { buf = true })
   end
 
   if capable.signature_help then
