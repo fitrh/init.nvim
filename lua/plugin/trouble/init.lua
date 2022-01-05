@@ -11,7 +11,7 @@ return {
     "TroubleToggle",
     "TroubleRefresh",
   },
-  key = {
+  keys = {
     { "n", "[xx" },
     { "n", "[xd" },
     { "n", "[xw" },
