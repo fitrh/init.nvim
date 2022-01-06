@@ -25,7 +25,7 @@ return {
       bg = palette.bg_statusline,
       style = "BOLD",
     })
-    highlight.set("LualineComponentLines", {
+    highlight.set("ModeColorState", {
       fg = mode.color,
       bg = palette.bg_statusline,
     })

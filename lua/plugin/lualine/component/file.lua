@@ -33,7 +33,7 @@ return {
       return vim.api.nvim_buf_line_count(0)
     end,
     icon = "",
-    color = "LualineComponentLines",
+    color = "ModeColorState",
     padding = 0,
   },
 }
