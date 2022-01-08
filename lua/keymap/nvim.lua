@@ -32,7 +32,7 @@ keymap.bind({
   lead(";"):exec("x"),
   lead("'"):exec("wall"),
   on("[q"):exec("q"),
-  on("[Q"):exec("wqall"),
+  on("[Q"):exec("xall"),
 
   --- buffer
   -- next & previous buffer
