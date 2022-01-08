@@ -10,6 +10,14 @@ function M.spacer(width)
   }
 end
 
+M.strip = {
+  function()
+    return require("helper.sign").line.HEAVY
+  end,
+  color = "ModeColorState",
+  padding = 0,
+}
+
 M.mode = require("plugin.lualine.component.mode")
 M.file = require("plugin.lualine.component.file")
 M.state = require("plugin.lualine.component.state")
