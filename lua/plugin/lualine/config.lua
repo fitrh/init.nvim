@@ -6,6 +6,7 @@ local file = component.file
 local state = component.state
 local git = component.git
 local spacer = component.spacer
+local strip = component.strip
 
 local options = {
   component_separators = "",
@@ -19,9 +20,10 @@ local diagnostics = {
 }
 
 local sections = {
-  lualine_a = { spacer() },
+  lualine_a = {},
   lualine_b = {},
   lualine_c = {
+    strip,
     component.mode,
     spacer(),
     state.readonly,
@@ -37,9 +39,10 @@ local sections = {
     file.location,
     file.lines,
     spacer(),
+    strip,
   },
   lualine_y = {},
-  lualine_z = { spacer() },
+  lualine_z = {},
 }
 
 line.setup({
