@@ -4,6 +4,6 @@ return {
   config = function()
     require("plugin.lualine.config")
   end,
-  event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+  event = { "BufReadPost", "BufNewFile" },
   module = "lualine",
 }
