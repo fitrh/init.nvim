@@ -2,7 +2,7 @@ local M = {}
 
 function M.add(name, cmd, opts)
   opts = opts or {}
-  local options = opts.opts or { nargs = 0, force = true }
+  local options = opts.opts or { nargs = 0 }
   local buf = opts.buf or false
 
   if buf then
