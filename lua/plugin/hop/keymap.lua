@@ -4,6 +4,7 @@ local opt = keymap.opt
 
 keymap.bind({
   on("ff"):exec("HopWord"),
+  on("fw"):exec("HopWordMW"),
   on("fj"):exec("HopChar2AC"),
   on("fk"):exec("HopChar2BC"),
   on("fl"):exec("HopChar2CurrentLineAC"),
