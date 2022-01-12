@@ -1,31 +1,43 @@
 local M = {}
 
-function M.attach()
-  local default = 'focusable = false, border = "rounded"'
-  local opts = {
-    cursor = 'scope = "cursor", ' .. default,
-    line = 'scope = "line", ' .. default,
-  }
+local function opts(scope)
+  return { scope = scope, focusable = false, border = "rounded" }
+end
 
-  local api = "lua vim.diagnostic"
-  local diagnostic = {
-    SHOW = {
-      cursor = ("%s.open_float(0, { %s })"):format(api, opts.cursor),
-      line = ("%s.open_float(0, { %s })"):format(api, opts.line),
-    },
-    NEXT = ("%s.goto_next({ float = { %s } })"):format(api, opts.cursor),
-    PREV = ("%s.goto_prev({ float = { %s } })"):format(api, opts.cursor),
-  }
+local scope = { cursor = "cursor", line = "line" }
+
+function M.attach()
+  local api = vim.diagnostic
 
   require("lib.command").group({
     prefix = "Diagnostic",
     buf = true,
     cmds = {
-      { name = "ShowInLine", cmd = diagnostic.SHOW.line },
-      { name = "ShowOnCursor", cmd = diagnostic.SHOW.cursor },
-      { name = "GoToNext", cmd = diagnostic.NEXT },
-      { name = "GoToPrev", cmd = diagnostic.PREV },
-      { name = "LocList", cmd = vim.diagnostic.setloclist },
+      {
+        name = "ShowInLine",
+        cmd = function()
+          api.open_float(0, opts(scope.line))
+        end,
+      },
+      {
+        name = "ShowOnCursor",
+        cmd = function()
+          api.open_float(0, opts(scope.cursor))
+        end,
+      },
+      {
+        name = "GoToNext",
+        cmd = function()
+          api.goto_next({ float = opts(scope.cursor) })
+        end,
+      },
+      {
+        name = "GoToPrev",
+        cmd = function()
+          api.goto_prev({ float = opts(scope.cursor) })
+        end,
+      },
+      { name = "LocList", cmd = api.setloclist },
     },
   })
 end
