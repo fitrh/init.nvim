@@ -70,5 +70,6 @@ null_ls.setup({
       end,
     }),
     action.gitrebase,
+    action.shellcheck,
   },
 })
