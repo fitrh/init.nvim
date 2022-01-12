@@ -1,5 +1,6 @@
 local gitsigns = require("gitsigns")
 local sign = require("helper.sign")
+local formatter = require("plugin.gitsigns.formatter")
 
 gitsigns.setup({
   signs = {
@@ -14,4 +15,5 @@ gitsigns.setup({
   preview_config = { border = "rounded" },
   current_line_blame = true,
   current_line_blame_opts = { delay = 250 },
+  current_line_blame_formatter = formatter.current_line_blame,
 })
