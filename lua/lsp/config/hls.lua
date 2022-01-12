@@ -7,7 +7,7 @@ return {
   handlers = handler.default(),
   settings = {
     haskell = {
-      formattingProvider = "brittanty",
+      formattingProvider = "brittany",
       maxCompletions = 10,
     },
   },
