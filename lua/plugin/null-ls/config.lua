@@ -9,7 +9,7 @@ null_ls.setup({
     formatting.black,
     formatting.brittany,
     formatting.fish_indent,
-    formatting.isort,
+    formatting.isort.with({ extra_args = { "--profile", "black" } }),
     formatting.markdownlint,
     formatting.prettierd.with({
       condition = function(utils)
