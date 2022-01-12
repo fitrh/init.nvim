@@ -13,6 +13,7 @@ return {
     "gitrebase",
     "go",
     "gomod",
+    "haskell",
     "html",
     "javascript",
     "javascriptreact",

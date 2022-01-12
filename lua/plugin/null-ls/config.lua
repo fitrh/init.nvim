@@ -7,6 +7,7 @@ null_ls.setup({
   on_attach = require("lsp.attach").with.all,
   sources = {
     formatting.black,
+    formatting.brittany,
     formatting.fish_indent,
     formatting.isort,
     formatting.markdownlint,
