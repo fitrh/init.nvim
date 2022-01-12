@@ -3,7 +3,7 @@ local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local action = null_ls.builtins.code_actions
 
-null_ls.config({
+null_ls.setup({
   on_attach = require("lsp.attach").with.all,
   sources = {
     formatting.black,
@@ -70,10 +70,4 @@ null_ls.config({
     }),
     action.gitrebase,
   },
-})
-
-require("lspconfig")["null-ls"].setup({
-  capabilities = require("lsp.capability"),
-  handlers = require("lsp.handler").default(),
-  on_attach = require("lsp.attach").with_all_extensions,
 })
