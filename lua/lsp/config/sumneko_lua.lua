@@ -26,5 +26,5 @@ return {
       telemetery = { enable = false },
     },
   },
-  on_attach = attach.with_all_extensions,
+  on_attach = attach.with.all,
 }

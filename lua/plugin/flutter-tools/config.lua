@@ -18,7 +18,7 @@ require("flutter-tools").setup({
         triggerSignatureHelpAutomatically = true,
       },
     },
-    on_attach = require("lsp.attach").with_all_extensions,
+    on_attach = require("lsp.attach").with.all,
   },
 })
 

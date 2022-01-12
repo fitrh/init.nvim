@@ -4,5 +4,5 @@ return {
   settings = {
     json = { schemas = require("schemastore").json.schemas() },
   },
-  on_attach = require("lsp.attach").with_all_extensions,
+  on_attach = require("lsp.attach").with.all,
 }

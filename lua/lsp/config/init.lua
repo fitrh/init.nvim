@@ -18,7 +18,7 @@ return {
   -- before_init
   -- on_init
   -- on_exit
-  on_attach = attach.with_all_extensions,
+  on_attach = attach.with.all,
   -- trace
   -- flags
 }

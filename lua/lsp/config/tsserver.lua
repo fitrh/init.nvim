@@ -19,8 +19,8 @@ return {
   on_attach = function(client, bufnr)
     local attach = require("lsp.attach")
     local util = require("nvim-lsp-ts-utils")
-    attach.without_formatting(client)
-    attach.with_all_extensions(client, bufnr)
+    attach.without.formatting(client)
+    attach.with.all(client, bufnr)
     util.setup({
       eslint_enable_diagnostics = true,
       eslint_bin = "eslint_d",

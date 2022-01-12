@@ -16,5 +16,5 @@ return {
       diagnosticsDelay = 250,
     },
   },
-  on_attach = require("lsp.attach").with_all_extensions,
+  on_attach = require("lsp.attach").with.all,
 }

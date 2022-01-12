@@ -61,7 +61,7 @@ local config = {
     client.notify("workspace/didChangeConfiguration", { settings = settings })
   end,
   on_attach = function(client, bufnr)
-    require("lsp.attach").with_all_extensions(client, bufnr)
+    require("lsp.attach").with.all(client, bufnr)
     setup.add_commands()
     require("plugin.jdtls.command").attach()
     require("plugin.jdtls.keymap").attach(bufnr)

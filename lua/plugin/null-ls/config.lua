@@ -4,6 +4,7 @@ local diagnostics = null_ls.builtins.diagnostics
 local action = null_ls.builtins.code_actions
 
 null_ls.config({
+  on_attach = require("lsp.attach").with.all,
   sources = {
     formatting.black,
     formatting.fish_indent,
