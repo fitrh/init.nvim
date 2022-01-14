@@ -1,5 +1,5 @@
 local lsp = require("lspconfig")
-local default = require("lsp.config")
+local default = require("lsp.config.default")
 
 local servers = {
   bashls = default,
