@@ -48,6 +48,7 @@ null_ls.setup({
     diagnostics.misspell.with({
       filetypes = { "gitcommit", "markdown", "txt" },
     }),
+    diagnostics.mypy.with({ diagnostics_format = "[#{c}] #{m}" }),
     diagnostics.phpcs,
     diagnostics.pylint.with({
       diagnostics_format = "[#{c}] #{m}",
