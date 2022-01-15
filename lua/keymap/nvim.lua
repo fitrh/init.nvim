@@ -100,7 +100,7 @@ keymap.bind({
   on("K", "v"):send(":m '<-2<CR>gv=gv"):with(opt():noremap():silent()),
 
   -- join lines without changing cursor position
-  on("J", "n"):send("mzJ'z"),
+  on("J", "n"):send("mzJ`z"),
 
   -- easy select-all
   on("<C-a>", "n"):send("ggVG"):with(opt():noremap():silent()),
