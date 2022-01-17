@@ -22,8 +22,7 @@ require("flutter-tools").setup({
   },
 })
 
-local telescope = require("telescope")
-
-if telescope and telescope.load_extension then
+local ok, telescope = pcall(require, "telescope")
+if ok and telescope.load_extension then
   telescope.load_extension("flutter")
 end
