@@ -1,12 +1,9 @@
 local num_of_items = vim.api.nvim_get_option("pumheight")
 local cmp = require("cmp")
 local snippet = require("luasnip")
-require("luasnip.loaders.from_vscode").lazy_load({
-  paths = {
-    -- TODO: do not use absolute path
-    "/home/fitrh/.local/share/nvim/site/pack/packer/opt/friendly-snippets",
-  },
-})
+
+vim.api.nvim_command("packadd friendly-snippets")
+require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
   snippet = {
