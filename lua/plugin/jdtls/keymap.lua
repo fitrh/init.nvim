@@ -7,9 +7,6 @@ function M.attach(bufnr)
   local opt = keymap.opt
 
   keymap.bind({
-    on("ca", "n"):exec("JdtCodeAction"),
-    lead("ca", "v"):exec("JdtCodeActionRange"),
-    on("cr", "n"):exec("JdtCodeActionRefactor"),
     on("goi", "n"):exec("JdtOrganizeImports"),
     on("crv", "n"):exec("JdtExtractVariable"),
     lead("rv", "v"):exec("JdtExtractVariableRange"),

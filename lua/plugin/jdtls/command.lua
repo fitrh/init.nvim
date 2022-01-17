@@ -5,19 +5,6 @@ function M.attach()
     prefix = "Jdt",
     buf = true,
     cmds = {
-      { name = "CodeAction", cmd = require("jdtls").code_action },
-      {
-        name = "CodeActionRange",
-        cmd = function()
-          require("jdtls").code_action(true)
-        end,
-      },
-      {
-        name = "JdtCodeActionRefactor",
-        cmd = function()
-          require("jdtls").code_action(false, "refactor")
-        end,
-      },
       { name = "OrganizeImports", cmd = require("jdtls").organize_imports },
       { name = "ExtractVariable", cmd = require("jdtls").extract_variable },
       {
