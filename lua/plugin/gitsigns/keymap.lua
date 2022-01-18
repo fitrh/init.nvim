@@ -19,6 +19,7 @@ local toggle = {
   sign = "Gitsigns toggle_signs",
   numhl = "Gitsigns toggle_numhl",
   linehl = "Gitsigns toggle_linehl",
+  deleted = "Gitsigns toggle_deleted",
   word_diff = "Gitsigns toggle_word_diff",
   blame = "Gitsigns toggle_current_line_blame",
   blame_win = "Gitsigns blame_line full=true",
@@ -48,6 +49,7 @@ function M.on_attach(bufnr)
     on("gt", "n"):exec(toggle.sign),
     on("gnm", "n"):exec(toggle.numhl),
     on("gll", "n"):exec(toggle.linehl),
+    on("gdl", "n"):exec(toggle.deleted),
     on("gwd", "n"):exec(toggle.word_diff),
     lead("gl", "n"):exec(toggle.blame),
   }, {
