@@ -31,6 +31,7 @@ local hlgroups = {
   GitSignsAddNr = ("gui=bold guifg=%s"):format(c.gitSigns.add),
   GitSignsChangeNr = ("gui=bold guifg=%s"):format(c.gitSigns.change),
   GitSignsDeleteNr = ("gui=bold guifg=%s"):format(c.gitSigns.delete),
+  GitSignsDeleteLn = ("guifg=%s"):format(c.gitSigns.delete),
 }
 
 for group, hl in pairs(hlgroups) do
