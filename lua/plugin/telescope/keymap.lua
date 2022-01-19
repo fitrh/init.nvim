@@ -19,8 +19,8 @@ keymap.bind({
   on("[lD", "n"):exec("Telescope diagnostics"),
   on("[ls", "n"):exec("Telescope lsp_document_symbols"),
   on("[lS", "n"):exec("Telescope lsp_workspace_symbols"),
-  on("ca", "n"):exec("Telescope lsp_code_actions"),
-  lead("ca", "v"):exec("Telescope lsp_range_code_actions"),
+  on("[a", "n"):exec("Telescope lsp_code_actions"),
+  on("[a", "v"):exec("Telescope lsp_range_code_actions"),
 }, {
   options = opt():noremap(),
 })
