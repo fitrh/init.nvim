@@ -23,7 +23,6 @@ local hlgroups = {
   TabLineSel = ("guifg=%s guibg=%s"):format(c.fg, c.bg),
   TabLine = ("guifg=%s guibg=%s"):format(c.fg_gutter, c.bg_statusline),
   TabLineFill = ("guifg=%s guibg=%s"):format(c.fg_gutter, c.bg_statusline),
-  VertSplit = ("guifg=%s"):format(c.bg_statusline),
   DiagnosticSignError = ("gui=BOLD guifg=%s"):format(c.error),
   DiagnosticSignWarn = ("gui=BOLD guifg=%s"):format(c.warning),
   DiagnosticSignInfo = ("gui=BOLD guifg=%s"):format(c.info),
