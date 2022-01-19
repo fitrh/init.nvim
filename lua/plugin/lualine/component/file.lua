@@ -1,3 +1,5 @@
+local fmt = require("plugin.lualine.component.fmt")
+
 return {
   type = {
     "filetype",
@@ -15,6 +17,9 @@ return {
     "filename",
     color = { gui = "BOLD" },
     padding = { left = 0, right = 1 },
+    fmt = function(str)
+      return fmt.show_on_width(80, str, vim.fn.expand("%:t"))
+    end,
     path = 1, -- relative path
     file_status = false,
   },

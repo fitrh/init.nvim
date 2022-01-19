@@ -1,5 +1,6 @@
 local palette = require("plugin.themes.palette")
 local highlight = require("lib.highlight")
+local fmt = require("plugin.lualine.component.fmt")
 
 return {
   function()
@@ -32,4 +33,7 @@ return {
     return mode.text
   end,
   color = "LualineComponentMode",
+  fmt = function(str)
+    return fmt.show_on_width(80, str, string.sub(str, 1, 1))
+  end,
 }
