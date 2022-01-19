@@ -32,6 +32,8 @@ local M = {
     "vue",
     "xml",
     "xsd",
+    "xsl",
+    "xslt",
     "yaml",
     "zig",
     "zir",
