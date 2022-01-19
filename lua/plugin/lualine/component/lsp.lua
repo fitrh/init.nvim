@@ -28,7 +28,10 @@ function M.setup(arg)
         return lsp.status()
       end,
       cond = function()
-        return #vim.lsp.buf_get_clients() > 0 and lsp.status() ~= " "
+        local width = vim.api.nvim_win_get_width(0) - #lsp.status()
+        local client_attached = #vim.lsp.buf_get_clients() > 0
+        local status_not_empty = lsp.status() ~= " "
+        return width > 99 and client_attached and status_not_empty
       end,
       color = { fg = foreground, gui = "BOLD" },
       padding = 0,
