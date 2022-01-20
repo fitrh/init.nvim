@@ -6,6 +6,11 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
       module = "telescope._extensions.file_browser",
     },
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      run = "make",
+      module = "telescope._extensions.fzf",
+    },
   },
   config = function()
     require("plugin.telescope.config")

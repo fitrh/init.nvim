@@ -103,7 +103,15 @@ telescope.setup({
     file_browser = {
       prompt_prefix = "   ",
     },
+    fzf = {},
   },
 })
 
-telescope.load_extension("file_browser")
+local extensions = {
+  "file_browser",
+  "fzf",
+}
+
+for _, extension in ipairs(extensions) do
+  telescope.load_extension(extension)
+end
