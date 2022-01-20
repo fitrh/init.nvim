@@ -2,7 +2,10 @@ return {
   "nvim-telescope/telescope.nvim",
   requires = {
     { "nvim-lua/plenary.nvim" },
-    { "nvim-telescope/telescope-file-browser.nvim", module = "telescope" },
+    {
+      "nvim-telescope/telescope-file-browser.nvim",
+      module = "telescope._extensions.file_browser",
+    },
   },
   config = function()
     require("plugin.telescope.config")
