@@ -50,10 +50,6 @@ telescope.setup({
       path_display = { "smart" },
       theme = "ivy",
     },
-    file_browser = {
-      prompt_prefix = "   ",
-      hidden = true,
-    },
     buffers = {
       prompt_prefix = "   ",
       path_display = { "smart" },
@@ -103,4 +99,11 @@ telescope.setup({
       previewer = false,
     },
   },
+  extensions = {
+    file_browser = {
+      prompt_prefix = "   ",
+    },
+  },
 })
+
+telescope.load_extension("file_browser")

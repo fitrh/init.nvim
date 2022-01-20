@@ -1,6 +1,9 @@
 return {
   "nvim-telescope/telescope.nvim",
-  requires = { "nvim-lua/plenary.nvim" },
+  requires = {
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-telescope/telescope-file-browser.nvim", module = "telescope" },
+  },
   config = function()
     require("plugin.telescope.config")
     require("plugin.telescope.keymap")
