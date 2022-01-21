@@ -11,7 +11,13 @@ gitsigns.setup({
     changedelete = { text = sign.line.HEAVY },
   },
   keymaps = {}, -- disable default keymap
-  on_attach = require("plugin.gitsigns.keymap").attach,
+  on_attach = function(bufnr)
+    -- NOTE: Wokraround until gitsigns command accept args
+    require("lib.command").add("Blame", function()
+      gitsigns.blame_line({ full = true })
+    end, { buf = bufnr })
+    require("plugin.gitsigns.keymap").attach(bufnr)
+  end,
   preview_config = { border = "rounded" },
   current_line_blame = true,
   current_line_blame_opts = { delay = 250 },

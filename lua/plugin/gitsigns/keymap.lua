@@ -45,6 +45,7 @@ function M.attach(bufnr)
     on("ghp", "n"):exec(hunk.preview),
     on("ih", "o"):exec(hunk.select),
     on("ih", "x"):exec(hunk.select),
+    on("gB", "n"):exec("Blame"),
     on("gbl", "n"):exec(toggle.blame_win),
     on("gt", "n"):exec(toggle.sign),
     on("gnm", "n"):exec(toggle.numhl),
