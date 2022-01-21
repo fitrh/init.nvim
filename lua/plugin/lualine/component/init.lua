@@ -10,13 +10,23 @@ function M.spacer(width)
   }
 end
 
-M.strip = {
-  function()
-    return require("helper.sign").line.HEAVY
-  end,
-  color = "ModeColorState",
-  padding = 0,
-}
+---@alias StripAlignment
+---| '"left"' # Left align character -> `▌`.
+---| '"right"' # Right align character -> `▐`.
+
+---@param alignment StripAlignment
+---@return table
+function M.strip(alignment)
+  alignment = alignment or "left"
+  local char = require("helper.sign").line.NORMAL
+  return {
+    function()
+      return char[alignment]
+    end,
+    color = "ModeColorState",
+    padding = 0,
+  }
+end
 
 M.mode = require("plugin.lualine.component.mode")
 M.file = require("plugin.lualine.component.file")
