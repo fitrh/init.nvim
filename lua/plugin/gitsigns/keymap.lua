@@ -25,7 +25,7 @@ local toggle = {
   blame_win = "Gitsigns blame_line full=true",
 }
 
-function M.on_attach(bufnr)
+function M.attach(bufnr)
   local keymap = require("lib.keymap")
   local on = keymap.on_press
   local lead = keymap.on_press_leader

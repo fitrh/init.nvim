@@ -11,7 +11,7 @@ gitsigns.setup({
     changedelete = { text = sign.line.HEAVY },
   },
   keymaps = {}, -- disable default keymap
-  on_attach = require("plugin.gitsigns.keymap").on_attach,
+  on_attach = require("plugin.gitsigns.keymap").attach,
   preview_config = { border = "rounded" },
   current_line_blame = true,
   current_line_blame_opts = { delay = 250 },
