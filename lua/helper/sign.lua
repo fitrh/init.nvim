@@ -1,7 +1,8 @@
 return {
   line = {
-    LIGHT = "│",
-    NORMAL = "┃",
+    THIN = "│",
+    LIGHT = "┃",
+    NORMAL = { left = "▌", right = "▐" },
     HEAVY = "▊",
     DOUBLE = "║",
   },
