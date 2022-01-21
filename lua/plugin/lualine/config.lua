@@ -13,8 +13,13 @@ local spacer = custom.component.spacer
 local options = {
   component_separators = "",
   section_separators = "",
-  disabled_filetypes = { "Outline", "help" },
+  disabled_filetypes = { "Outline" },
 }
+
+local extensions = { "quickfix" }
+for _, extension in pairs(custom.extension) do
+  table.insert(extensions, extension)
+end
 
 local diagnostics = {
   "diagnostics",
@@ -56,5 +61,5 @@ line.setup({
     lualine_y = {},
     lualine_z = {},
   },
-  extensions = { "quickfix" },
+  extensions = extensions,
 })
