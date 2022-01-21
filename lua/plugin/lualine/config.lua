@@ -1,11 +1,14 @@
 local line = require("lualine")
 local colors = require("plugin.themes.palette")
 local lsp = require("plugin.lualine.component.lsp").setup({ fg = colors.blue2 })
-local component = require("plugin.lualine.component")
-local file = component.file
-local state = component.state
-local git = component.git
-local spacer = component.spacer
+local custom = {
+  extension = require("plugin.lualine.extension"),
+  component = require("plugin.lualine.component"),
+}
+local file = custom.component.file
+local state = custom.component.state
+local git = custom.component.git
+local spacer = custom.component.spacer
 
 local options = {
   component_separators = "",
@@ -22,7 +25,7 @@ local sections = {
   lualine_a = {},
   lualine_b = {},
   lualine_c = {
-    component.mode,
+    custom.component.mode,
     spacer(),
     state.readonly,
     file.icon,
