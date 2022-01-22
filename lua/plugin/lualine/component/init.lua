@@ -1,10 +1,13 @@
 local M = {}
 
+---@param width number
+---@return table
 function M.spacer(width)
   width = width or 1
+  local spaces = string.rep(" ", width)
   return {
     function()
-      return string.rep(" ", width)
+      return spaces
     end,
     padding = 0,
   }
