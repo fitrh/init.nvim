@@ -10,7 +10,6 @@ gitsigns.setup({
     topdelete = { text = sign.line.HEAVY },
     changedelete = { text = sign.line.HEAVY },
   },
-  keymaps = {}, -- disable default keymap
   on_attach = function(bufnr)
     -- NOTE: Wokraround until gitsigns command accept args
     require("lib.command").add("Blame", function()
