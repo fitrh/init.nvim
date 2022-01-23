@@ -1,4 +1,4 @@
-local fmt = require("plugin.lualine.component.fmt")
+local fmt = require("plugin.lualine.component.util.fmt")
 
 return {
   type = {

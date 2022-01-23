@@ -1,6 +1,6 @@
 local palette = require("plugin.themes.palette")
 local highlight = require("lib.highlight")
-local fmt = require("plugin.lualine.component.fmt")
+local fmt = require("plugin.lualine.component.util.fmt")
 
 local modes = {
   n = { text = "NRM", color = palette.blue },
