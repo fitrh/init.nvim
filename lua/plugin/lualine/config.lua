@@ -9,6 +9,7 @@ local file = custom.component.file
 local state = custom.component.state
 local git = custom.component.git
 local spacer = custom.component.spacer
+local strip = custom.component.strip
 
 local options = {
   component_separators = "",
@@ -30,6 +31,7 @@ local sections = {
   lualine_a = {},
   lualine_b = {},
   lualine_c = {
+    strip(),
     custom.component.mode,
     spacer(),
     state.readonly,
@@ -44,7 +46,7 @@ local sections = {
     lsp.status,
     file.location,
     file.lines,
-    spacer(),
+    strip("right"),
   },
   lualine_y = {},
   lualine_z = {},
