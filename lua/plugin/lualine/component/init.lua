@@ -3,8 +3,7 @@ local M = {}
 ---@param width number
 ---@return table
 function M.spacer(width)
-  width = width or 1
-  local spaces = string.rep(" ", width)
+  local spaces = string.rep(" ", width or 1)
   return {
     function()
       return spaces
@@ -20,11 +19,10 @@ end
 ---@param alignment StripAlignment
 ---@return table
 function M.strip(alignment)
-  alignment = alignment or "left"
-  local char = require("helper.sign").line.NORMAL
+  local char = require("helper.sign").line.NORMAL[alignment or "left"]
   return {
     function()
-      return char[alignment]
+      return char
     end,
     color = "ModeColorState",
     padding = 0,
