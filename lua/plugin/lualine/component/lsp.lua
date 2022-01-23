@@ -34,7 +34,6 @@ function M.setup(arg)
         return width > 99 and client_attached and status_not_empty
       end,
       color = { fg = foreground, gui = "BOLD" },
-      padding = 0,
     },
   }
 end

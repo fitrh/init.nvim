@@ -8,7 +8,6 @@ return {
 
   icon = {
     "filetype",
-    padding = { left = 0, right = 1 },
     colored = true,
     icon_only = true,
   },
@@ -16,7 +15,6 @@ return {
   name = {
     "filename",
     color = { gui = "BOLD" },
-    padding = { left = 0, right = 1 },
     fmt = function(str)
       return fmt.show_on_width(80, str, vim.fn.expand("%:t"))
     end,

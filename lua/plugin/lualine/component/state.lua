@@ -9,7 +9,6 @@ return {
       return vim.api.nvim_buf_get_option(0, "modified")
     end,
     color = { fg = palette.red_br_2 },
-    padding = 0,
   },
 
   readonly = {
@@ -22,6 +21,5 @@ return {
       return readonly or not modifiable
     end,
     color = { fg = palette.red1 },
-    padding = { left = 0, right = 1 },
   },
 }
