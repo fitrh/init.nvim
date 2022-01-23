@@ -1,5 +1,6 @@
 local line = require("lualine")
 local colors = require("plugin.themes.palette")
+local align = require("plugin.lualine.component.util.alignment")
 local lsp = require("plugin.lualine.component.lsp").setup({ fg = colors.blue2 })
 local custom = {
   extension = require("plugin.lualine.extension"),
@@ -32,20 +33,20 @@ local sections = {
   lualine_b = {},
   lualine_c = {
     strip(),
-    custom.component.mode,
+    align.left(custom.component.mode),
     spacer(),
-    state.readonly,
-    file.icon,
-    file.name,
-    state.modified,
+    align.left(state.readonly),
+    align.left(file.icon),
+    align.left(file.name),
+    align.no(state.modified),
     diagnostics,
   },
   lualine_x = {
-    git.diff,
+    align.right(git.diff),
     git.branch,
-    lsp.status,
-    file.location,
-    file.lines,
+    align.no(lsp.status),
+    align.right(file.location),
+    align.right(file.lines),
     strip("right"),
   },
   lualine_y = {},
