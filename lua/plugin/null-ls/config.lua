@@ -13,33 +13,28 @@ null_ls.setup({
     formatting.markdownlint,
     formatting.prettierd.with({
       condition = function(utils)
-        local has = utils.root_has_file
-        return has(".prettierrc")
-          or has(".prettierrc.yml")
-          or has(".prettierrc.json")
+        local rc = { ".prettierrc", ".prettierrc.yml", ".prettierrc.json" }
+        return utils.root_has_file(rc)
       end,
     }),
     formatting.shellharden,
     formatting.shfmt.with({ extra_args = { "-i", "4", "-ci" } }),
     formatting.stylua.with({
       condition = function(utils)
-        return utils.root_has_file("stylua.toml")
-          or utils.root_has_file(".stylua.toml")
+        return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
       end,
     }),
 
     diagnostics.cppcheck.with({
       condition = function(utils)
-        return utils.root_has_file(".cppcheck")
+        return utils.root_has_file({ ".cppcheck" })
       end,
       extra_args = { "--cppcheck-build-dir=.cppcheck" },
     }),
     diagnostics.eslint_d.with({
       condition = function(utils)
-        local has = utils.root_has_file
-        return has(".eslintrc.js")
-          or has(".eslintrc.yml")
-          or has(".eslintrc.json")
+        local rc = { ".eslintrc.js", ".eslintrc.yml", ".eslintrc.json" }
+        return utils.root_has_file(rc)
       end,
     }),
     diagnostics.flake8.with({ diagnostics_format = "[#{c}] #{m}" }),
@@ -50,8 +45,7 @@ null_ls.setup({
     }),
     diagnostics.mypy.with({
       condition = function(utils)
-        local has = utils.root_has_file
-        return has("mypy.ini") or has(".mypy.ini")
+        return utils.root_has_file({ "mypy.ini", ".mypy.ini" })
       end,
       diagnostics_format = "[#{c}] #{m}",
     }),
@@ -59,8 +53,7 @@ null_ls.setup({
     diagnostics.pylint.with({
       diagnostics_format = "[#{c}] #{m}",
       condition = function(utils)
-        local has = utils.root_has_file
-        return has("pylintrc") or has(".pylintrc")
+        return utils.root_has_file({ "pylintrc", ".pylintrc" })
       end,
     }),
     diagnostics.selene.with({
@@ -73,7 +66,7 @@ null_ls.setup({
 
     action.gitsigns.with({
       condition = function(utils)
-        return utils.root_has_file(".git")
+        return utils.root_has_file({ ".git" })
       end,
     }),
     action.gitrebase,
