@@ -2,7 +2,6 @@ local num_of_items = vim.api.nvim_get_option("pumheight")
 local cmp = require("cmp")
 local snippet = require("luasnip")
 
-vim.api.nvim_command("packadd friendly-snippets")
 require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
