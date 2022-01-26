@@ -8,6 +8,7 @@ local mode = custom.component.mode
 local file = custom.component.file
 local state = custom.component.state
 local git = custom.component.git
+local lsp = custom.component.lsp
 local spacer = custom.component.spacer
 local strip = custom.component.strip
 local config = {}
@@ -42,6 +43,7 @@ config.sections.lualine_c = {
 }
 
 config.sections.lualine_x = {
+  lsp.progress,
   align.right(git.diff),
   git.branch,
   align.right(file.location),
