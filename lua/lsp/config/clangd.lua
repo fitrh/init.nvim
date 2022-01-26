@@ -1,7 +1,6 @@
 local handler = require("lsp.handler")
 local attach = require("lsp.attach")
 local capabilities = require("lsp.capability")
-local clangd_ext_handler = require("lsp-status").extensions.clangd.setup()
 
 return {
   cmd = {
@@ -16,7 +15,7 @@ return {
     "--header-insertion=iwyu",
   },
   capabilities = capabilities,
-  handlers = handler.with({ handler.hover, clangd_ext_handler }),
+  handlers = handler.default(),
   -- TODO: figure out what is this
   init_options = {
     clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread

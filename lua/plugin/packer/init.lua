@@ -2,7 +2,6 @@ vim.cmd("packadd packer.nvim")
 
 local plugins = {
   { "nvim-lua/plenary.nvim", module = "plenary" },
-  { "nvim-lua/lsp-status.nvim", module = "lsp-status" },
   { "ray-x/lsp_signature.nvim", module = "lsp_signature" },
   { "yamatsum/nvim-nonicons", module = "nvim-nonicons" },
   { "jose-elias-alvarez/nvim-lsp-ts-utils", module = "nvim-lsp-ts-utils" },
