@@ -1,5 +1,3 @@
-local event = { "InsertEnter", "CmdlineEnter" }
-
 return {
   "hrsh7th/nvim-cmp",
   requires = {
@@ -11,11 +9,11 @@ return {
     { "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
     { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
     { "L3MON4D3/LuaSnip", module = "luasnip" },
-    { "rafamadriz/friendly-snippets", event = event },
+    { "rafamadriz/friendly-snippets", event = { "BufRead" } },
   },
   config = function()
     require("plugin.cmp.config")
   end,
-  event = event,
+  event = { "InsertEnter", "CmdlineEnter" },
   module = "cmp",
 }
