@@ -32,6 +32,7 @@ local plugins = {
   require("plugin.todo-comments"),
   require("plugin.trouble"),
   require("plugin.headlines"),
+  require("plugin.notify"),
   { "baskerville/vim-sxhkdrc", ft = "sxhkdrc" },
 }
 
