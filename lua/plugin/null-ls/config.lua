@@ -58,7 +58,7 @@ null_ls.setup({
     }),
     diagnostics.selene.with({
       condition = function(utils)
-        return utils.root_has_file("selene.toml")
+        return utils.root_has_file({ "selene.toml" })
       end,
     }),
     diagnostics.shellcheck.with({ diagnostics_format = "[#{c}] #{m}" }),
