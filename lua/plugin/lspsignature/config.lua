@@ -8,6 +8,7 @@ local M = {
   hi_parameter = "LspSignatureActiveParameter",
   extra_trigger_chars = { "(", "{", "," },
   zindex = 200, -- 50 makes its floating windows below other floating windows
+  padding = " ",
   tranparency = vim.api.nvim_get_option("pumblend"),
   toggle_key = "<M-x>",
 }
