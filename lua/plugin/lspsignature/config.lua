@@ -2,6 +2,7 @@ local M = {
   bind = true,
   doc_lines = 0, -- 0 means disable API DOC in INSERT mode
   floating_window = true,
+  hint_enable = false,
   hint_prefix = " () ",
   hint_scheme = "DiagnosticHint",
   hi_parameter = "LspSignatureActiveParameter",
