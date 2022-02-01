@@ -47,6 +47,7 @@ telescope.setup({
   },
   pickers = {
     find_files = {
+      layout_config = { height = 0.60 },
       path_display = { "smart" },
       theme = "ivy",
     },
