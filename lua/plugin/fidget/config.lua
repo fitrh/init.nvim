@@ -2,21 +2,8 @@ local fidget = require("fidget")
 local config = {}
 
 config.text = {
-  spinner = {
-    "   ",
-    ".  ",
-    ".. ",
-    "...",
-    " ..",
-    "  .",
-    "   ",
-    "  .",
-    " ..",
-    "...",
-    ".. ",
-    ".  ",
-  },
-  done = "",
+  spinner = "dots",
+  done = "✓",
 }
 
 fidget.setup(config)
