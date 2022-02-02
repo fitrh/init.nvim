@@ -1,8 +1,7 @@
-local signature = {
-  plugin = require("lsp_signature"),
-  config = require("plugin.lspsignature.config"),
-}
+local ok, plugin = pcall(require, "lsp_signature")
 
 return function()
-  signature.plugin.on_attach(signature.config)
+  if ok then
+    plugin.on_attach(require("plugin.lspsignature.config"))
+  end
 end
