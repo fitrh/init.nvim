@@ -64,11 +64,6 @@ null_ls.setup({
     diagnostics.shellcheck.with({ diagnostics_format = "[#{c}] #{m}" }),
     diagnostics.write_good.with({ filetypes = { "markdown", "gitcommit" } }),
 
-    action.gitsigns.with({
-      condition = function(utils)
-        return utils.root_has_file({ ".git" })
-      end,
-    }),
     action.gitrebase,
     action.shellcheck,
   },
