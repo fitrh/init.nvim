@@ -1,4 +1,4 @@
-local M = {}
+local Highlight = {}
 
 function M.fg(group_name)
   local hl = vim.api.nvim_get_hl_by_name(group_name, true)
@@ -10,24 +10,63 @@ function M.bg(group_name)
   return hl.background and ("#%06x"):format(hl.background) or "NONE"
 end
 
-function M.set(group_name, gui, tui)
-  local fg = gui.fg or "NONE"
-  local bg = gui.bg or "NONE"
+---@class HighlightDef
+---@field inherit string
+---@field fg string
+---@field bg string
+---@field special string
+---@field italic boolean
+---@field bold boolean
+---@field undercurl boolean
+---@field underline boolean
+---@field reverse boolean
 
-  local hl_def = ("guifg=%s guibg=%s"):format(fg, bg)
-  if gui.sp then
-    hl_def = hl_def .. (" guisp=%s"):format(gui.sp)
-  end
-  if gui.style then
-    hl_def = hl_def .. (" gui=%s"):format(gui.style)
-  end
-  if tui then
-    hl_def = hl_def
-      .. ("ctermfg=%s ctermbg=%s"):format(tui.fg or "NONE", tui.bg or "NONE")
+---Parse HighlightDef into highlight definition map
+---
+---@param hl HighlightDef
+---@return table def # highlight definition map, see `:h nvim_get_hl_by_name`
+local function parse_def(hl)
+  local styles = { "italic", "bold", "underline", "undercurl", "reverse" }
+  local inherit = {}
+
+  if hl.inherit then
+    inherit = vim.api.nvim_get_hl_by_name(hl.inherit, true) or {}
   end
 
-  local command = ("highlight %s %s"):format(group_name, hl_def)
-  vim.api.nvim_command(command)
+  local def = {
+    foreground = hl.fg or inherit.foreground or "NONE",
+    background = hl.bg or inherit.background or "NONE",
+    special = hl.special or inherit.special or "NONE",
+    italic = inherit.italic or false,
+    bold = inherit.bold or false,
+    underline = inherit.underline or false,
+    undercurl = inherit.undercurl or false,
+    reverse = inherit.reverse or false,
+  }
+
+  for _, style in pairs(styles) do
+    if hl[style] ~= nil then
+      def[style] = hl[style]
+    end
+  end
+
+  return def
 end
 
-return M
+---Create or set highlight group using vim.api.nvim_set_hl
+---
+---@param name string #highlight group name
+---@param def HighlightDef #table of HighlightDef
+function Highlight.set(name, def)
+  vim.api.nvim_set_hl(0, name, parse_def(def))
+end
+
+---Link `hl` to `hl_source` highlight group
+---
+---@param hl string #highlight group name
+---@param hl_source string #highlight group name to be linked
+function Highlight.link(hl, hl_source)
+  vim.api.nvim_set_hl(0, hl, { link = hl_source })
+end
+
+return Highlight
