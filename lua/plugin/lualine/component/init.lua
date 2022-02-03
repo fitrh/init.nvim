@@ -19,7 +19,7 @@ end
 ---@param alignment StripAlignment
 ---@return table
 function M.strip(alignment)
-  local char = require("helper.sign").line.NORMAL[alignment or "left"]
+  local char = require("helper.sign").line.THIN[alignment or "left"]
   return {
     function()
       return char

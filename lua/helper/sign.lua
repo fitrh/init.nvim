@@ -1,9 +1,11 @@
 return {
   line = {
-    THIN = "│",
+    THIN = { left = "▏", center = "│", right = "▕" },
     LIGHT = "┃",
-    NORMAL = { left = "▌", right = "▐" },
+    HALF = { left = "▌", right = "▐" },
     HEAVY = "▊",
+    FULL = "█",
+    SHADE = { light = "░", medium = "▒", dark = "▓" },
     DOUBLE = "║",
   },
   diagnostic = {
