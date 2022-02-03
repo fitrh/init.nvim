@@ -24,7 +24,7 @@ function M.strip(alignment)
     function()
       return char
     end,
-    color = "ModeColorState",
+    color = "ModeState",
     padding = 0,
   }
 end

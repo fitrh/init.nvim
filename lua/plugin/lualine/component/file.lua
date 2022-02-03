@@ -36,7 +36,7 @@ return {
       return vim.api.nvim_buf_line_count(0)
     end,
     icon = "",
-    color = "ModeColorState",
+    color = "ModeState",
     padding = 0,
   },
 }

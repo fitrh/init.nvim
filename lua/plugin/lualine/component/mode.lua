@@ -1,5 +1,5 @@
 local palette = require("plugin.themes.palette")
-local highlight = require("lib.highlight")
+local hl = require("lib.highlight")
 local fmt = require("plugin.lualine.component.util.fmt")
 
 local modes = {
@@ -22,15 +22,8 @@ local modes = {
 return {
   function()
     local mode = modes[vim.api.nvim_get_mode().mode]
-    highlight.set("LualineComponentMode", {
-      fg = mode.color,
-      bg = palette.bg_statusline,
-      style = "BOLD",
-    })
-    highlight.set("ModeColorState", {
-      fg = mode.color,
-      bg = palette.bg_statusline,
-    })
+    hl.set("ModeState", { fg = mode.color, bg = palette.bg_statusline })
+    hl.set("LualineComponentMode", { inherit = "ModeState", bold = true })
     return mode.text
   end,
   color = "LualineComponentMode",
