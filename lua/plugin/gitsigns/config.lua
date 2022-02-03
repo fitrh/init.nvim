@@ -4,11 +4,11 @@ local formatter = require("plugin.gitsigns.formatter")
 
 gitsigns.setup({
   signs = {
-    add = { text = sign.line.HEAVY },
-    change = { text = sign.line.HEAVY },
-    delete = { text = sign.line.HEAVY },
-    topdelete = { text = sign.line.HEAVY },
-    changedelete = { text = sign.line.HEAVY },
+    add = { text = sign.line.SHADE.light },
+    change = { text = sign.line.SHADE.light },
+    delete = { text = sign.line.SHADE.light },
+    topdelete = { text = sign.line.SHADE.light },
+    changedelete = { text = sign.line.SHADE.light },
   },
   on_attach = function(bufnr)
     -- NOTE: Wokraround until gitsigns command accept args
