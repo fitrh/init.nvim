@@ -1,11 +1,19 @@
 local Highlight = {}
 
-function M.fg(group_name)
+---Get the foreground color of `group_name` highlight group
+---
+---@param group_name string
+---@return string ##RRGGBB
+function Highlight.fg(group_name)
   local hl = vim.api.nvim_get_hl_by_name(group_name, true)
   return hl.foreground and ("#%06x"):format(hl.foreground) or "NONE"
 end
 
-function M.bg(group_name)
+---Get the background color of `group_name` highlight group
+---
+---@param group_name string
+---@return string ##RRGGBB
+function Highlight.bg(group_name)
   local hl = vim.api.nvim_get_hl_by_name(group_name, true)
   return hl.background and ("#%06x"):format(hl.background) or "NONE"
 end
