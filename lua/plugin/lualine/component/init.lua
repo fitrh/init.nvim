@@ -1,7 +1,7 @@
 local M = {}
 
----@param width number
----@return table
+---@param width number #default = 1
+---@return table component
 function M.spacer(width)
   local spaces = string.rep(" ", width or 1)
   return {
@@ -17,7 +17,7 @@ end
 ---| '"right"' # Right align character -> `▐`.
 
 ---@param alignment StripAlignment
----@return table
+---@return table component
 function M.strip(alignment)
   local char = require("helper.sign").line.THIN[alignment or "left"]
   return {
