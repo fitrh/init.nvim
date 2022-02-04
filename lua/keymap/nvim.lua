@@ -26,6 +26,7 @@ keymap.bind({
   on("<M-q>", "i"):send("<Esc>"),
   on("<M-q>", "c"):send("<Esc>"),
   on("<M-q>", "t"):send([[<C-\><C-n>]]),
+  on("<C-[>", "t"):send([[<C-\><C-n>]]),
 
   -- easy save & quit
   lead("<Space>"):exec("update"),
