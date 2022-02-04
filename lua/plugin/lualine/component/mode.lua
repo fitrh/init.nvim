@@ -4,6 +4,7 @@ local fmt = require("plugin.lualine.component.util.fmt")
 
 local modes = {
   n = { text = "NRM", color = palette.blue },
+  nt = { text = "N·T", color = palette.blue },
   i = { text = "INS", color = palette.green.primary },
   ix = { text = "I·X", color = palette.green.primary }, -- i_CTRL-N
   ic = { text = "I·C", color = palette.green.primary }, -- i_CTRL-X
