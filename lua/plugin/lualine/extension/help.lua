@@ -9,9 +9,7 @@ local component = {
 
 M.filetypes = { "help" }
 
-M.sections = {
-  lualine_c = { "%=", component },
-}
+M.sections = { lualine_c = { "%=", component } }
 
 M.inactive_sections = {}
 
