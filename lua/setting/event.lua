@@ -43,4 +43,9 @@ augroup.setup({
       cmd = "set nocursorline",
     },
   },
+  ["OnTerminalBuffer"] = {
+    events = "TermOpen",
+    { cmd = "setlocal ft=terminal" },
+    { cmd = "setlocal nonumber norelativenumber signcolumn=no" },
+  },
 })
