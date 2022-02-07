@@ -103,6 +103,7 @@ telescope.setup({
   extensions = {
     file_browser = {
       prompt_prefix = "   ",
+      hide_parent_dir = true,
     },
     fzf = {},
   },
