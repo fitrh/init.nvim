@@ -3,5 +3,5 @@ return {
   config = function()
     require("plugin.notify.config")
   end,
-  event = { "BufEnter" },
+  event = { "BufNew", "BufRead" },
 }
