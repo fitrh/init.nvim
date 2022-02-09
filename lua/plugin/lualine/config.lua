@@ -9,7 +9,10 @@ local file = custom.component.file
 local state = custom.component.state
 local git = custom.component.git
 local spacer = custom.component.spacer
-local strip = custom.component.strip
+local strip = {
+  L = custom.component.strip("left"),
+  R = custom.component.strip("right"),
+}
 local config = {}
 
 config.options = {
@@ -31,7 +34,7 @@ config.sections = {
 }
 
 config.sections.lualine_c = {
-  strip(),
+  strip.L,
   align.left(mode),
   spacer(),
   align.left(state.readonly),
@@ -46,7 +49,7 @@ config.sections.lualine_x = {
   git.branch,
   align.right(file.location),
   align.right(file.lines),
-  strip("right"),
+  strip.R,
 }
 
 config.inactive_sections = {
