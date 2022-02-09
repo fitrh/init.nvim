@@ -3,7 +3,6 @@ local default = require("lsp.config.default")
 
 local servers = {
   bashls = default,
-  clangd = require("lsp.config.clangd"),
   cssls = default,
   denols = require("lsp.config.denols"),
   emmet_ls = require("lsp.config.emmet_ls"), -- FIX: Integration with auto pairs plugin

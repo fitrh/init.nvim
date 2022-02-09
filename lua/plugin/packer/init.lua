@@ -9,6 +9,7 @@ local plugins = {
   require("plugin.filetype"),
   require("plugin.treesitter"),
   require("plugin.lspconfig"),
+  require("plugin.clangdext"),
   require("plugin.jdtls"),
   require("plugin.rust-tools"),
   require("plugin.flutter-tools"),

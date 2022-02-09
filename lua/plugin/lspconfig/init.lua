@@ -5,8 +5,6 @@ local M = {
   end,
   ft = {
     "bib",
-    "c",
-    "cpp",
     "cs",
     "css",
     "go",
