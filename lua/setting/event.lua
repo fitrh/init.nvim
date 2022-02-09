@@ -37,11 +37,6 @@ augroup.setup({
   ["CursorlineToggle"] = {
     { events = "WinEnter", cmd = "set cursorline" },
     { events = "WinLeave", cmd = "set nocursorline" },
-    {
-      events = "FileType",
-      filter = "TelescopePrompt",
-      cmd = "set nocursorline",
-    },
   },
   ["OnTerminalBuffer"] = {
     events = "TermOpen",
