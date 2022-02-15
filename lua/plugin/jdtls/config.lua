@@ -10,7 +10,7 @@ local home = os.getenv("HOME")
 local env = {
   WORKSPACE = os.getenv("JAVA_WORKSPACE") or ("%s/java"):format(home),
   BASENAME_CWD = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t"),
-  RUNTIMES = ("%s/jvm"):format(os.getenv("LOCAL_LIB") or home),
+  RUNTIMES = os.getenv("JAVA_RUNTIMES") or home,
 }
 
 local root_files = {
