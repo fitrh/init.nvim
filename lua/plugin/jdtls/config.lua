@@ -6,10 +6,11 @@ local jdtls_capability = jdtls.extendedClientCapabilities
 capabilities.workspace.configuration = true
 jdtls_capability.resolveAdditionalTextEditsSupport = true
 
+local home = os.getenv("HOME")
 local env = {
-  WORKSPACE = os.getenv("JAVA_WORKSPACE"),
+  WORKSPACE = os.getenv("JAVA_WORKSPACE") or ("%s/java"):format(home),
   BASENAME_CWD = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t"),
-  RUNTIMES = ("%s/jvm"):format(os.getenv("LOCAL_LIB")),
+  RUNTIMES = ("%s/jvm"):format(os.getenv("LOCAL_LIB") or home),
 }
 
 local root_files = {
