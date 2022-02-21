@@ -16,6 +16,7 @@ local strip = {
 local config = {}
 
 config.options = {
+  theme = require("plugin.themes.lualine"),
   component_separators = "",
   section_separators = "",
   disabled_filetypes = { "Outline" },
