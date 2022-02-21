@@ -28,15 +28,12 @@ for _, extension in pairs(custom.extension) do
 end
 
 config.sections = {
-  lualine_a = {},
   lualine_b = {},
   lualine_y = {},
-  lualine_z = {},
 }
 
+config.sections.lualine_a = { strip.L, align.left(mode) }
 config.sections.lualine_c = {
-  strip.L,
-  align.left(mode),
   spacer(),
   align.left(state.readonly),
   align.left(file.icon),
@@ -44,14 +41,12 @@ config.sections.lualine_c = {
   align.no(state.modified),
   { "diagnostics", sources = { "nvim_diagnostic" } },
 }
-
 config.sections.lualine_x = {
   align.right(git.diff),
   git.branch,
   align.right(file.location),
-  align.right(file.lines),
-  strip.R,
 }
+config.sections.lualine_z = { align.right(file.lines), strip.R }
 
 config.inactive_sections = {
   lualine_a = {},
