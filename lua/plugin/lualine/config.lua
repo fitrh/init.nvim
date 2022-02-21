@@ -27,10 +27,13 @@ for _, extension in pairs(custom.extension) do
   table.insert(config.extensions, extension)
 end
 
-config.sections = {
-  lualine_b = {},
-  lualine_y = {},
-}
+config.sections = {}
+config.inactive_sections = {}
+for _, v in ipairs({ "a", "b", "c", "x", "y", "z" }) do
+  local section = ("lualine_%s"):format(v)
+  config.sections[section] = {}
+  config.inactive_sections[section] = {}
+end
 
 config.sections.lualine_a = { strip.L, align.left(mode) }
 config.sections.lualine_c = {
@@ -48,13 +51,6 @@ config.sections.lualine_x = {
 }
 config.sections.lualine_z = { align.right(file.lines), strip.R }
 
-config.inactive_sections = {
-  lualine_a = {},
-  lualine_b = {},
-  lualine_c = { "%=", file.name },
-  lualine_x = {},
-  lualine_y = {},
-  lualine_z = {},
-}
+config.inactive_sections.lualine_c = { "%=", file.name }
 
 lualine.setup(config)
