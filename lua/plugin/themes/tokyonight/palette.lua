@@ -117,7 +117,7 @@ Palette.diff = {
 
 Palette.status = {
   info = scheme.blue2,
-  warning = scheme.yellow,
+  warn = scheme.yellow,
   hint = scheme.teal,
   error = scheme.red1,
 }
