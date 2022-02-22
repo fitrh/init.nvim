@@ -5,10 +5,10 @@ if not ok then
   return "auto"
 end
 
-theme.normal.a = { fg = palette.blue, bg = palette.bg_statusline }
-theme.insert.a = { fg = palette.green.primary, bg = palette.bg_statusline }
-theme.visual.a = { fg = palette.purple, bg = palette.bg_statusline }
-theme.replace.a = { fg = palette.red, bg = palette.bg_statusline }
-theme.command.a = { fg = palette.yellow, bg = palette.bg_statusline }
+theme.normal.a = { fg = palette.blue.primary, bg = palette.bg.dark }
+theme.insert.a = { fg = palette.green.primary, bg = palette.bg.dark }
+theme.visual.a = { fg = palette.magenta.secondary, bg = palette.bg.dark }
+theme.replace.a = { fg = palette.red.primary, bg = palette.bg.dark }
+theme.command.a = { fg = palette.yellow.primary, bg = palette.bg.dark }
 
 return theme
