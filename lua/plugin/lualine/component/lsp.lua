@@ -10,7 +10,7 @@ M.progress = {
     end
     return str
   end,
-  color = { fg = palette.cyan.darker, gui = "BOLD" },
+  color = { fg = palette and palette.cyan.darker or "#23EEAF", gui = "BOLD" },
   spinner_symbols = { " ", " ", " ", " ", " ", " " },
 }
 
