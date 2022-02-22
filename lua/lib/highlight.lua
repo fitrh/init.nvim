@@ -27,14 +27,24 @@ end
 ---@field bold boolean
 ---@field undercurl boolean
 ---@field underline boolean
+---@field strikethrough boolean
 ---@field reverse boolean
+---@field standout boolean
 
 ---Parse HighlightDef into highlight definition map
 ---
 ---@param hl HighlightDef
 ---@return table def # highlight definition map, see `:h nvim_get_hl_by_name`
 local function parse_def(hl)
-  local styles = { "italic", "bold", "underline", "undercurl", "reverse" }
+  local styles = {
+    "italic",
+    "bold",
+    "underline",
+    "undercurl",
+    "strikethrough",
+    "reverse",
+    "standout",
+  }
   local inherit = {}
 
   if hl.inherit then
@@ -49,7 +59,9 @@ local function parse_def(hl)
     bold = inherit.bold or false,
     underline = inherit.underline or false,
     undercurl = inherit.undercurl or false,
+    strikethrough = inherit.strikethrough or false,
     reverse = inherit.reverse or false,
+    standout = inherit.standout or false,
   }
 
   for _, style in pairs(styles) do
