@@ -110,7 +110,7 @@ Palette.bg = {
 }
 
 Palette.diff = {
-  addedd = scheme.gitSigns.add,
+  added = scheme.gitSigns.add,
   changed = scheme.gitSigns.change,
   deleted = scheme.gitSigns.delete,
 }
