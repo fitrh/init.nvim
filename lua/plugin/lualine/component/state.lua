@@ -8,7 +8,7 @@ return {
     cond = function()
       return vim.api.nvim_buf_get_option(0, "modified")
     end,
-    color = { fg = palette and palette.red.brighter or "#FFA0A0" },
+    color = { fg = palette.red.brighter },
   },
 
   readonly = {
@@ -22,6 +22,6 @@ return {
       local modifiable = opt(0, "modifiable")
       return (readonly or not modifiable) and not_terminal
     end,
-    color = { fg = palette and palette.red.secondary or "#FF234F" },
+    color = { fg = palette.red.secondary },
   },
 }

@@ -7,9 +7,9 @@ return {
       return vim.api.nvim_win_get_width(0) > 69
     end,
     diff_color = {
-      added = { fg = palette and palette.diff.added or "#72BC11" },
-      modified = { fg = palette and palette.diff.changed or "#1155AA" },
-      removed = { fg = palette and palette.diff.deleted or "#A01B2E" },
+      added = { fg = palette.diff.added },
+      modified = { fg = palette.diff.changed },
+      removed = { fg = palette.diff.deleted },
     },
     symbols = { added = " ", modified = " ", removed = " " },
     source = function()
@@ -30,9 +30,6 @@ return {
     cond = function()
       return vim.api.nvim_win_get_width(0) > 49
     end,
-    color = {
-      fg = palette and palette.magenta.secondary or "#A133E1",
-      gui = "BOLD",
-    },
+    color = { fg = palette.magenta.secondary, gui = "BOLD" },
   },
 }
