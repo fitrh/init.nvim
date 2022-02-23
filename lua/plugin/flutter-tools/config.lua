@@ -4,6 +4,7 @@ local env = {
 }
 
 require("flutter-tools").setup({
+  closing_tags = { prefix = "ﰪ " },
   lsp = {
     capabilities = require("lsp.capability"),
     handlers = require("lsp.handler").default(),
