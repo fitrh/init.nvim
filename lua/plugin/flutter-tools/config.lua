@@ -20,6 +20,12 @@ require("flutter-tools").setup({
       },
     },
     on_attach = require("lsp.attach").with.all,
+    color = {
+      enabled = true,
+      foreground = false,
+      background = true,
+      virtual_text = false,
+    },
   },
 })
 
