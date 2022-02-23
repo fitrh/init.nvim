@@ -1,6 +1,6 @@
 local env = {
   DART_SDK = os.getenv("DART_SDK"),
-  FLUTTER_ROOT = os.getenv("FLUTTER_ROOT"),
+  FLUTTER_ROOT = os.getenv("FLUTTER_ROOT") or os.getenv("FLUTTER_SDK"),
 }
 
 require("flutter-tools").setup({
