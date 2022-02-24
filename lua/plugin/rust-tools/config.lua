@@ -1,9 +1,5 @@
 require("rust-tools").setup({
   tools = {
-    inlay_hints = {
-      parameter_hints_prefix = " ",
-      other_hints_prefix = " ",
-    },
     hover_actions = { auto_focus = true },
   },
   server = {
