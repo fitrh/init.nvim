@@ -38,6 +38,7 @@ cmp.setup({
   experimental = { ghost_text = true },
   sources = cmp.config.sources({
     { name = "nvim_lsp", max_item_count = num_of_items },
+    { name = "nvim_lsp_signature_help" },
     { name = "nvim_lua", max_item_count = num_of_items / 2 },
     { name = "luasnip", max_item_count = num_of_items / 2 },
     { name = "path", max_item_count = num_of_items },
