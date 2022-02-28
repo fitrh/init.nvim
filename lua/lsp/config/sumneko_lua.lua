@@ -26,8 +26,7 @@ return {
       diagnostics = { globals = { "vim" } },
       workspace = {
         library = vim.api.nvim_get_runtime_file("lua", true),
-        maxPreload = 2000,
-        preloadFileSize = 1000
+        preloadFileSize = 1000,
       },
       telemetery = { enable = false },
     },
