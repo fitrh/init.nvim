@@ -1,6 +1,7 @@
 local devicons = require("nvim-web-devicons")
 
 devicons.set_default_icon("", "#6d8086")
+local icons = devicons.get_icons()
 
 devicons.setup({
   override = {
@@ -39,11 +40,7 @@ devicons.setup({
       color = "#8fa959",
       name = "JavaScript",
     },
-    python = {
-      icon = "",
-      color = "#3572A5",
-      name = "Python",
-    },
+    python = icons["py"],
     txt = {
       icon = "",
       color = "#6a9fb5",
