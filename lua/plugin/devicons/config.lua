@@ -41,6 +41,7 @@ devicons.setup({
       name = "JavaScript",
     },
     python = icons["py"],
+    ruby = icons["rb"],
     txt = {
       icon = "",
       color = "#6a9fb5",
