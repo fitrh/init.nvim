@@ -21,6 +21,9 @@ return {
 
   name = {
     "filename",
+    cond = function()
+      return vim.fn.expand("%:t") ~= ""
+    end,
     color = { gui = "BOLD" },
     fmt = function(str)
       return fmt.show_on_width(80, str, "%t")
