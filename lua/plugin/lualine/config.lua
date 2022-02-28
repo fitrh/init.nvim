@@ -39,7 +39,7 @@ config.sections.lualine_a = { strip.L, align.left(mode) }
 config.sections.lualine_c = {
   spacer(),
   align.left(state.readonly),
-  align.left(file.icon),
+  align.left(file.icon.active),
   align.left(file.name),
   align.no(state.modified),
   { "diagnostics", sources = { "nvim_diagnostic" } },
@@ -51,6 +51,6 @@ config.sections.lualine_x = {
 }
 config.sections.lualine_z = { align.right(file.lines), strip.R }
 
-config.inactive_sections.lualine_c = { "%=", file.name }
+config.inactive_sections.lualine_c = { "%=", file.icon.inactive, file.name }
 
 lualine.setup(config)
