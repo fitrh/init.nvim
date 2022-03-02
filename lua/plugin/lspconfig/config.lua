@@ -1,29 +1,29 @@
 local lsp = require("lspconfig")
-local default = require("lsp.config.default")
+local setup = require("lsp.config")
 
 local servers = {
-  bashls = default,
-  cssls = default,
+  bashls = setup.with("bash-language-server"),
+  cssls = setup.with("vscode-css-language-server"),
   denols = require("lsp.config.denols"),
   emmet_ls = require("lsp.config.emmet_ls"), -- FIX: Integration with auto pairs plugin
   gopls = require("lsp.config.gopls"),
   hls = require("lsp.config.hls"),
-  html = default,
-  intelephense = default,
+  html = setup.with("vscode-html-language-server"),
+  intelephense = setup.with("intelephense"),
   jsonls = require("lsp.config.jsonls"),
-  kotlin_language_server = default,
-  lemminx = require("lsp.config.lemminx"),
+  kotlin_language_server = setup.with("kotlin-language-server"),
+  lemminx = setup.with("lemminx"),
   omnisharp = require("lsp.config.omnisharp"),
-  phpactor = default,
+  phpactor = setup.with("phpactor"),
   pyright = require("lsp.config.pyright"),
   stylelint_lsp = require("lsp.config.stylelint"),
   sumneko_lua = require("lsp.config.sumneko_lua"),
   tailwindcss = require("lsp.config.tailwindcss"),
-  taplo = default,
+  taplo = setup.with("taplo-lsp"),
   texlab = require("lsp.config.texlab"),
   tsserver = require("lsp.config.tsserver"),
-  yamlls = default,
-  zls = default,
+  yamlls = setup.with("yaml-language-server"),
+  vls = setup.with("vls"),
 }
 
 for server, config in pairs(servers) do
