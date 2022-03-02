@@ -1,8 +1,13 @@
-return {
-  capabilities = require("lsp.capability"),
-  handlers = require("lsp.handler").default(),
-  settings = {
-    json = { schemas = require("schemastore").json.schemas() },
-  },
-  on_attach = require("lsp.attach").with.all,
-}
+local setup = require("lsp.config")
+local config = {}
+local ok, schemastore = pcall(require, "schemastore")
+
+if ok then
+  config.settings = {
+    json = {
+      schemas = schemastore.json.schemas(),
+    },
+  }
+end
+
+return setup.with("vscode-json-language-server", config)

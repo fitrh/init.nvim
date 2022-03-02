@@ -1,11 +1,8 @@
-local handler = require("lsp.handler")
-local attach = require("lsp.attach")
-local capabilities = require("lsp.capability")
+local setup = require("lsp.config")
+local bin = "gopls"
 
-return {
-  cmd = { "gopls", "serve" },
-  capabilities = capabilities,
-  handlers = handler.default(),
+return setup.with(bin, {
+  cmd = { bin, "serve" },
   settings = {
     gopls = {
       gofumpt = true, -- A stricter gofmt
@@ -29,5 +26,4 @@ return {
       },
     },
   },
-  on_attach = attach.with.all,
-}
+})

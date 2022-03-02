@@ -1,5 +1,8 @@
-return {
-  cmd = { "ls_emmet", "--stdio" },
+local setup = require("lsp.config")
+local bin = "ls_emmet"
+
+return setup.with(bin, {
+  cmd = { bin, "--stdio" },
   filetypes = {
     "css",
     "haml",
@@ -20,7 +23,4 @@ return {
     "xml",
     "xsl",
   },
-  capabilities = require("lsp.capability"),
-  handlers = require("lsp.handler").default(),
-  on_attach = require("lsp.attach").with.all,
-}
+})

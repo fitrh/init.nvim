@@ -1,11 +1,14 @@
-return {
-  root_dir = require("lspconfig.util").root_pattern(
+local setup = require("lsp.config")
+local ok, util = pcall(require, "lspconfig.util")
+local config = {}
+
+if ok then
+  config.root_dir = util.root_pattern(
     "tailwind.config.js",
     "tailwind.config.ts",
     "postcss.config.js",
     "postcss.config.ts"
-  ),
-  capabilities = require("lsp.capability"),
-  handlers = require("lsp.handler").default(),
-  on_attach = require("lsp.attach").with.all,
-}
+  )
+end
+
+return setup.with("tailwindcss-language-server", config)

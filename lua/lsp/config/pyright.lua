@@ -1,10 +1,6 @@
-local handler = require("lsp.handler")
-local attach = require("lsp.attach")
-local capabilities = require("lsp.capability")
+local setup = require("lsp.config")
 
-return {
-  capabilities = capabilities,
-  handlers = handler.default(),
+return setup.with("pyright-langserver", {
   settings = {
     python = {
       analysis = {
@@ -13,5 +9,4 @@ return {
       venvPath = ".",
     },
   },
-  on_attach = attach.with.all,
-}
+})

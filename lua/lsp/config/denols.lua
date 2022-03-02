@@ -1,19 +1,21 @@
-local has = require("lspconfig.util").root_pattern
+local setup = require("lsp.config")
+local ok, util = pcall(require, "lspconfig.util")
+local config = {}
 
-return {
-  root_dir = has(
+if ok then
+  config.root_dir = util.root_pattern(
     "mod.ts",
     "mod.js",
     "deps.ts",
     "deps.js",
     "deno.json",
     "deno.jsonc"
-  ),
-  capabilities = require("lsp.capability"),
-  handlers = require("lsp.handler").default(),
-  init_options = {
-    enable = true,
-    lint = true,
-  },
-  on_attach = require("lsp.attach").with.all,
+  )
+end
+
+config.init_options = {
+  enable = true,
+  lint = true,
 }
+
+return setup.with("deno", config)

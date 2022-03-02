@@ -1,6 +1,6 @@
-return {
-  capabilities = require("lsp.capability"),
-  handlers = require("lsp.handler").default(),
+local setup = require("lsp.config")
+
+return setup.with("typescript-language-server", {
   init_options = {
     hostInfo = "neovim",
     preferences = {
@@ -18,15 +18,17 @@ return {
   },
   on_attach = function(client, bufnr)
     local attach = require("lsp.attach")
-    local util = require("nvim-lsp-ts-utils")
+    local ok, util = pcall(require, "nvim-lsp-ts-utils")
     attach.without.formatting(client)
     attach.with.all(client, bufnr)
-    util.setup({
-      eslint_enable_diagnostics = true,
-      eslint_bin = "eslint_d",
-      enable_formatting = true,
-      formatter = "prettierd",
-    })
-    util.setup_client(client)
+    if ok then
+      util.setup({
+        eslint_enable_diagnostics = true,
+        eslint_bin = "eslint_d",
+        enable_formatting = true,
+        formatter = "prettierd",
+      })
+      util.setup_client(client)
+    end
   end,
-}
+})
