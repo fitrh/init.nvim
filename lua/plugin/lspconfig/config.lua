@@ -27,5 +27,7 @@ local servers = {
 }
 
 for server, config in pairs(servers) do
-  lsp[server].setup(config)
+  if config then
+    lsp[server].setup(config)
+  end
 end
