@@ -3,6 +3,8 @@ local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local action = null_ls.builtins.code_actions
 local condition = require("plugin.null-ls.condition")
+local code_w_msg = "[#{c}] #{m}"
+local plaintext = { "gitcommit", "markdown", "txt" }
 
 null_ls.setup({
   on_attach = require("lsp.attach").with.all,
@@ -22,24 +24,22 @@ null_ls.setup({
       extra_args = { "--cppcheck-build-dir=.cppcheck" },
     }),
     diagnostics.eslint_d.with({ condition = condition.eslint }),
-    diagnostics.flake8.with({ diagnostics_format = "[#{c}] #{m}" }),
+    diagnostics.flake8.with({ diagnostics_format = code_w_msg}),
     diagnostics.golangci_lint,
     diagnostics.markdownlint,
-    diagnostics.misspell.with({
-      filetypes = { "gitcommit", "markdown", "txt" },
-    }),
+    diagnostics.misspell.with({ filetypes = plaintext }),
     diagnostics.mypy.with({
+      diagnostics_format = code_w_msg,
       condition = condition.mypy,
-      diagnostics_format = "[#{c}] #{m}",
     }),
     diagnostics.phpcs,
     diagnostics.pylint.with({
-      diagnostics_format = "[#{c}] #{m}",
+      diagnostics_format = code_w_msg,
       condition = condition.pylint,
     }),
     diagnostics.selene.with({ condition = condition.selene }),
-    diagnostics.shellcheck.with({ diagnostics_format = "[#{c}] #{m}" }),
-    diagnostics.write_good.with({ filetypes = { "markdown", "gitcommit" } }),
+    diagnostics.shellcheck.with({ diagnostics_format = code_w_msg }),
+    diagnostics.write_good.with({ filetypes = plaintext }),
 
     action.gitrebase,
     action.shellcheck,
