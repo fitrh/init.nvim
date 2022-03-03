@@ -9,6 +9,7 @@ local plaintext = { "gitcommit", "markdown", "txt" }
 null_ls.setup({
   on_attach = require("lsp.attach").with.all,
   sources = {
+    -- formatter
     formatting.black,
     formatting.brittany,
     formatting.fish_indent,
@@ -19,6 +20,7 @@ null_ls.setup({
     formatting.shfmt.with({ extra_args = { "-i", "4", "-ci" } }),
     formatting.stylua.with({ condition = condition.stylua }),
 
+    -- linter
     diagnostics.cppcheck.with({
       condition = condition.cppcheck,
       extra_args = { "--cppcheck-build-dir=.cppcheck" },
@@ -41,6 +43,7 @@ null_ls.setup({
     diagnostics.shellcheck.with({ diagnostics_format = code_w_msg }),
     diagnostics.write_good.with({ filetypes = plaintext }),
 
+    -- code action
     action.gitrebase,
     action.shellcheck,
   },
