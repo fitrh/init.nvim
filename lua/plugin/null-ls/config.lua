@@ -26,7 +26,7 @@ null_ls.setup({
       extra_args = { "--cppcheck-build-dir=.cppcheck" },
     }),
     diagnostics.eslint_d.with({ condition = condition.eslint }),
-    diagnostics.flake8.with({ diagnostics_format = code_w_msg}),
+    diagnostics.flake8.with({ diagnostics_format = code_w_msg }),
     diagnostics.golangci_lint,
     diagnostics.markdownlint,
     diagnostics.misspell.with({ filetypes = plaintext }),
@@ -44,6 +44,7 @@ null_ls.setup({
     diagnostics.write_good.with({ filetypes = plaintext }),
 
     -- code action
+    action.eslint_d.with({ condition = condition.eslint }),
     action.gitrebase,
     action.shellcheck,
   },
