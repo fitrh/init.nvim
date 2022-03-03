@@ -10,7 +10,12 @@ null_ls.setup({
   on_attach = require("lsp.attach").with.all,
   sources = {
     -- formatter
-    formatting.black,
+    formatting.black.with({
+      extra_args = {
+        "--line-length",
+        vim.api.nvim_buf_get_option(0, "textwidth"),
+      },
+    }),
     formatting.brittany,
     formatting.fish_indent,
     formatting.isort.with({ extra_args = { "--profile", "black" } }),
