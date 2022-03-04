@@ -36,6 +36,3 @@ require("crates").setup({
     },
   },
 })
-
-require("plugin.crates.command")
-require("plugin.crates.keymap")
