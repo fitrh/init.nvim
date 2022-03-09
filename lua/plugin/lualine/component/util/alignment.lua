@@ -5,8 +5,9 @@ local function alignment(component, padding)
   if type(component) == "string" then
     component = { component }
   end
-  component.padding = padding
-  return component
+  local c = vim.deepcopy(component)
+  c.padding = padding
+  return c
 end
 
 local Align = {}
