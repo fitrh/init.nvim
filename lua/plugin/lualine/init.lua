@@ -1,11 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   requires = {
-    { "kyazdani42/nvim-web-devicons" },
-    {
-      "arkav/lualine-lsp-progress",
-      module = "lualine.components.lsp_progress",
-    },
+    { "kyazdani42/nvim-web-devicons", module = "nvim-web-devicons" },
   },
   config = function()
     require("plugin.lualine.config")
