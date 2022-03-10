@@ -7,16 +7,9 @@ return {
   },
 
   icon = {
-    active = {
-      "filetype",
-      colored = true,
-      icon_only = true,
-    },
-    inactive = {
-      "filetype",
-      colored = false,
-      icon_only = true,
-    },
+    "filetype",
+    colored = true,
+    icon_only = true,
   },
 
   name = {

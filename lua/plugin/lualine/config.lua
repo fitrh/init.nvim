@@ -1,5 +1,7 @@
 local lualine = require("lualine")
-local align = require("plugin.lualine.component.util.alignment")
+local util = require("plugin.lualine.component.util")
+local align = util.align
+local mod = util.mod
 local custom = {
   extension = require("plugin.lualine.extension"),
   component = require("plugin.lualine.component"),
@@ -12,6 +14,10 @@ local spacer = custom.component.spacer
 local strip = {
   L = custom.component.strip("left"),
   R = custom.component.strip("right"),
+}
+local icon = {
+  active = file.icon,
+  inactive = mod(file.icon, { colored = false, padding = 0 }),
 }
 local config = {}
 
@@ -39,7 +45,7 @@ config.sections.lualine_a = { strip.L, align.left(mode) }
 config.sections.lualine_c = {
   spacer(),
   align.left(state.readonly),
-  align.left(file.icon.active),
+  align.left(icon.active),
   align.left(file.name),
   align.no(state.modified),
   { "diagnostics", sources = { "nvim_diagnostic" } },
@@ -51,6 +57,6 @@ config.sections.lualine_x = {
 }
 config.sections.lualine_z = { align.right(file.lines), strip.R }
 
-config.inactive_sections.lualine_c = { "%=", file.icon.inactive, file.name }
+config.inactive_sections.lualine_c = { "%=", icon.inactive, file.name }
 
 lualine.setup(config)
