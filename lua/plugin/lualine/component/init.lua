@@ -28,9 +28,11 @@ function M.strip(alignment)
   }
 end
 
-M.mode = require("plugin.lualine.component.mode")
-M.file = require("plugin.lualine.component.file")
-M.state = require("plugin.lualine.component.state")
-M.git = require("plugin.lualine.component.git")
+local module = "plugin.lualine.component"
+M.mode = require(("%s.mode"):format(module))
+M.file = require(("%s.file"):format(module))
+M.state = require(("%s.state"):format(module))
+M.git = require(("%s.git"):format(module))
+M.diagnostic = require(("%s.diagnostic"):format(module))
 
 return M

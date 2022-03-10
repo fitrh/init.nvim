@@ -10,6 +10,7 @@ local mode = custom.component.mode
 local file = custom.component.file
 local state = custom.component.state
 local git = custom.component.git
+local diagnostic = custom.component.diagnostic
 local spacer = custom.component.spacer
 local strip = {
   L = custom.component.strip("left"),
@@ -48,7 +49,7 @@ config.sections.lualine_c = {
   align.left(icon.active),
   align.left(file.name),
   align.no(state.modified),
-  { "diagnostics", sources = { "nvim_diagnostic" } },
+  diagnostic.buffer,
 }
 config.sections.lualine_x = {
   align.right(git.diff),
