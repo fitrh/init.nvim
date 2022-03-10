@@ -2,7 +2,7 @@ local M = {}
 
 local component = {
   function()
-    return " %{expand('%:t')}"
+    return " %t"
   end,
   color = { gui = "BOLD" },
 }
