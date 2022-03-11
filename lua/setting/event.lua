@@ -39,8 +39,6 @@ augroup.setup({
     { events = "WinLeave", cmd = "set nocursorline" },
   },
   ["OnTerminalBuffer"] = {
-    events = "TermOpen",
-    { cmd = "setlocal ft=terminal" },
-    { cmd = "setlocal nonumber norelativenumber signcolumn=no" },
+    { events = "TermOpen", cmd = "set filetype=terminal" },
   },
 })
