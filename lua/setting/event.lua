@@ -40,5 +40,6 @@ augroup.setup({
   },
   ["OnTerminalBuffer"] = {
     { events = "TermOpen", cmd = "set filetype=terminal" },
+    { events = "TermOpen", cmd = "startinsert" },
   },
 })
