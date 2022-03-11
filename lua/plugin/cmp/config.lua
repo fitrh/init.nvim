@@ -1,4 +1,4 @@
-local num_of_items = vim.api.nvim_get_option("pumheight")
+local max_items = vim.api.nvim_get_option("pumheight")
 local cmp = require("cmp")
 local snippet = require("luasnip")
 
@@ -37,28 +37,27 @@ cmp.setup({
   },
   experimental = { ghost_text = true },
   sources = cmp.config.sources({
-    { name = "nvim_lsp", max_item_count = num_of_items },
-    { name = "nvim_lsp_signature_help" },
-    { name = "nvim_lua", max_item_count = num_of_items / 2 },
-    { name = "luasnip", max_item_count = num_of_items / 2 },
-    { name = "path", max_item_count = num_of_items },
+    { name = "nvim_lsp", max_item_count = max_items },
+    { name = "nvim_lua", max_item_count = max_items / 2 },
+    { name = "luasnip", max_item_count = max_items / 2 },
+    { name = "path", max_item_count = max_items },
   }, {
-    { name = "buffer", max_item_count = num_of_items / 2 },
+    { name = "buffer", max_item_count = max_items / 2 },
   }),
 })
 
 cmp.setup.cmdline("/", {
   sources = cmp.config.sources({
-    { name = "nvim_lsp_document_symbol", max_item_count = num_of_items },
+    { name = "nvim_lsp_document_symbol", max_item_count = max_items },
   }, {
-    { name = "buffer", max_item_count = num_of_items },
+    { name = "buffer", max_item_count = max_items },
   }),
 })
 
 cmp.setup.cmdline(":", {
   sources = cmp.config.sources({
-    { name = "cmdline", max_item_count = num_of_items },
+    { name = "cmdline", max_item_count = max_items },
   }, {
-    { name = "path", max_item_count = num_of_items },
+    { name = "path", max_item_count = max_items },
   }),
 })
