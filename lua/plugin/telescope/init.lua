@@ -26,8 +26,7 @@ return {
     "[lD",
     "[ls",
     "[lS",
-    { "n", "ca" },
-    "<Leader>ca",
+    "[a",
     "<Leader>e",
     "<Leader>ft",
     "<Leader>gf",
@@ -37,4 +36,5 @@ return {
     "<Leader>lo",
     "<Leader>m",
   },
+  module = "telescope",
 }
