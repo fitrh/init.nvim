@@ -38,5 +38,5 @@ return {
     "HopPatternCurrentLineAC",
     "HopPatternCurrentLineBC",
   },
-  keys = { "f", "F", "<M-f>" },
+  keys = { "f", "F", "f/" },
 }

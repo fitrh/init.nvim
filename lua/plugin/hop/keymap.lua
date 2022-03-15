@@ -3,6 +3,7 @@ local on = keymap.on_press
 local opt = keymap.opt
 
 keymap.bind({
+  on("f/"):exec("HopPattern"),
   on("ff"):exec("HopWord"),
   on("fw"):exec("HopWordMW"),
   on("fj"):exec("HopChar2AC"),
@@ -13,7 +14,6 @@ keymap.bind({
   on("Fk"):exec("HopWordBC"),
   on("Fl"):exec("HopWordCurrentLineAC"),
   on("Fh"):exec("HopWordCurrentLineBC"),
-  on("<M-f>"):exec("HopPattern"),
 }, {
   options = opt():noremap(),
 })
