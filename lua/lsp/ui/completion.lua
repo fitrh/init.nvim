@@ -29,7 +29,7 @@ local maps = {
 }
 
 function M.kind(args)
-  local opts = args or {}
+  local opts = args or { text = false, icon = "default" }
   local text = opts.text or nil
   local icon = opts.icon or nil
   local lp = opts.lp or false
