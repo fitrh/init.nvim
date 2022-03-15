@@ -19,10 +19,7 @@ cmp.setup({
   mapping = require("plugin.cmp.keymap").setup(cmp, snippet),
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = require("lsp.ui.completion").kind({
-        text = true,
-        icon = "default",
-      })[vim_item.kind]
+      vim_item.kind = require("lsp.ui.completion").kind()[vim_item.kind]
 
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
