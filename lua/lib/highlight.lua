@@ -59,7 +59,8 @@ local function parse(hl)
   local inherit = {}
 
   if hl.inherit then
-    inherit = api.get(hl.inherit, true) or {}
+    local ok, value = pcall(api.get, hl.inherit, true)
+    inherit = ok and value
   end
 
   local def = {
