@@ -11,22 +11,56 @@ local function tohex(str)
   return ("#%06x"):format(str)
 end
 
----Get the foreground color of `group_name` highlight group
----
----@param group_name string
+---@alias HighlightAttribute
+---| '"foreground"'
+---| '"background"'
+
+---Get the attributes of highlight group
+---@param attr HighlightAttribute
+---@param group string
+---@param fallbacks table
 ---@return string ##RRGGBB | NONE
-function Highlight.fg(group_name)
-  local hl = api.get(group_name, true)
-  return hl.foreground and tohex(hl.foreground) or "NONE"
+local function get(attr, group, fallbacks)
+  local hl = {}
+  -- validate the highlight group
+  hl.valid, hl.value = pcall(api.get, group, true)
+
+  -- if `group` is invalid or the `attr` is unavailable for `group`
+  if not hl.valid or not hl.value[attr] then
+    -- we are provide `fallbacks`
+    -- try extracting valid groups with `attr` available
+    if fallbacks then
+      for _, fallback in ipairs(fallbacks) do
+        hl.valid, hl.value = pcall(api.get, fallback, true)
+        if hl.valid and hl.value[attr] then
+          return tohex(hl.value[attr])
+        end
+      end
+    end
+
+    -- none of the groups provided are valid
+    return "NONE"
+  end
+
+  return tohex(hl.value[attr])
 end
 
----Get the background color of `group_name` highlight group
+---Get the foreground color of `from_group` highlight group
 ---
----@param group_name string
+---@param from_group string
+---@param or_fallbacks? table list of highlight groups
 ---@return string ##RRGGBB | NONE
-function Highlight.bg(group_name)
-  local hl = api.get(group_name, true)
-  return hl.background and tohex(hl.background) or "NONE"
+function Highlight.fg(from_group, or_fallbacks)
+  return get("foreground", from_group, or_fallbacks or nil)
+end
+
+---Get the background color of `from_group` highlight group
+---
+---@param from_group string
+---@param or_fallbacks? table list of highlight groups
+---@return string ##RRGGBB | NONE
+function Highlight.bg(from_group, or_fallbacks)
+  return get("background", from_group, or_fallbacks or nil)
 end
 
 ---@class HighlightDef
