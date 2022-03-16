@@ -1,2 +1,4 @@
-local opt = vim.opt_local
-opt.colorcolumn = ""
+local set = vim.opt_local
+
+set.colorcolumn = ""
+set.signcolumn = "no"
