@@ -18,6 +18,7 @@ cmp.setup({
   },
   mapping = require("plugin.cmp.keymap").setup(cmp, snippet),
   formatting = {
+    fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
       vim_item.kind = require("lsp.ui.completion").kind()[vim_item.kind]
 
