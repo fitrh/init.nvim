@@ -1,4 +1,5 @@
 local palette = require("plugin.themes.palette")
+local hi = require("lib.highlight")
 
 return {
   diff = {
@@ -7,9 +8,9 @@ return {
       return vim.api.nvim_win_get_width(0) > 69
     end,
     diff_color = {
-      added = { fg = palette.diff.added },
-      modified = { fg = palette.diff.changed },
-      removed = { fg = palette.diff.deleted },
+      added = { fg = hi.fg("GitSignsAdd", { "diffAdded" }) },
+      modified = { fg = hi.fg("GitSignsChange", { "diffChanged" }) },
+      removed = { fg = hi.fg("GitSignsDelete", { "diffRemoved" }) },
     },
     symbols = { added = " ", modified = " ", removed = " " },
     source = function()
