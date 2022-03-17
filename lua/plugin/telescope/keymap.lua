@@ -13,7 +13,7 @@ keymap.bind({
   lead("gf", "n"):exec("Telescope git_files"),
   lead("gc", "n"):exec("Telescope git_commits"),
   lead("gb", "n"):exec("Telescope git_branches"),
-  lead("gs", "n"):exec("Telescope git_status"),
+  on("gS", "n"):exec("Telescope git_status"),
   lead("m", "n"):exec("Telescope keymaps"),
   on("[ld", "n"):exec("Telescope diagnostics bufnr=0 theme=dropdown"),
   on("[lD", "n"):exec("Telescope diagnostics"),
