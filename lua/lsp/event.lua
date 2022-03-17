@@ -1,30 +1,30 @@
 local M = {}
 
-local augroup = require("lib.event.augroup")
+local augroup = require("lib.augroup")
 
-local function has(cmd)
-  return vim.fn.exists(cmd) ~= 0
-end
+function M.attach(client, bufnr)
+  local capable_of = client.resolved_capabilities
 
-function M.attach(client)
-  local capable = client.resolved_capabilities
-  augroup.setup({
-    ["HighlightOnCursor"] = {
-      expect = capable.document_highlight and has(":LspDocumentHighlight"),
-      filter = "<buffer>",
-      { events = "CursorHold", cmd = "LspDocumentHighlight" },
+  if capable_of.document_highlight then
+    local buf = vim.lsp.buf
+
+    augroup("HighlightOnCursor", {
+      { "CursorHold", callback = buf.document_highlight, buffer = bufnr },
       {
-        events = "CursorMoved,InsertEnter,BufLeave",
-        cmd = "LspDocumentClearRefs",
+        { "CursorMoved", "InsertEnter", "BufLeave" },
+        callback = buf.clear_references,
+        buffer = bufnr,
       },
-    },
-    ["CodelensRefresh"] = {
-      expect = capable.code_lens and has(":CodelensRefresh"),
-      events = "BufEnter,BufLeave,InsertEnter,InsertLeave",
-      filter = "<buffer>",
-      { cmd = "CodelensRefresh" },
-    },
-  })
+    })
+  end
+
+  if capable_of.code_lens then
+    augroup("CodelensRefresh", {
+      { "BufEnter", "BufLeave", "InsertEnter", "InsertLeave" },
+      callback = vim.lsp.codelens.refresh,
+      buffer = bufnr,
+    })
+  end
 end
 
 return M

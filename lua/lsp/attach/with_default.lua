@@ -16,6 +16,6 @@ return function(client, bufnr)
   command.codelens.attach(client)
   command.diagnostic.attach()
   keymap.attach(bufnr)
-  event.attach(client)
+  event.attach(client, bufnr)
   ui.diagnostic.attach()
 end
