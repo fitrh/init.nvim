@@ -35,6 +35,7 @@ local plugins = {
   require("plugin.headlines"),
   require("plugin.notify"),
   require("plugin.fidget"),
+  require("plugin.window-picker"),
   { "baskerville/vim-sxhkdrc", ft = "sxhkdrc" },
 }
 
