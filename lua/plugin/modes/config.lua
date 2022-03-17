@@ -8,6 +8,5 @@ config.colors = {
   visual = palette.magenta.secondary,
 }
 config.line_opacity = { insert = 0, visual = 0.2 }
-config.focus_only = true
 
 require("modes").setup(config)
