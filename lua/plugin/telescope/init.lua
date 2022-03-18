@@ -32,7 +32,7 @@ return {
     "<Leader>gf",
     "<Leader>gb",
     "<Leader>gc",
-    "<Leader>gs",
+    "gS",
     "<Leader>lo",
     "<Leader>m",
   },
