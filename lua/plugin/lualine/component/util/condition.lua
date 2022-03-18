@@ -6,9 +6,14 @@ local Condition = {}
 ---@return boolean
 function Condition.space_at_least(min)
   if vim.api.nvim_get_option("laststatus") == 3 then
-    return vim.api.nvim_get_option("columns") > min
+    return function()
+      return vim.api.nvim_get_option("columns") >= min
+    end
   end
-  return vim.api.nvim_win_get_width(0) > min
+
+  return function()
+    return vim.api.nvim_win_get_width(0) >= min
+  end
 end
 
 return Condition

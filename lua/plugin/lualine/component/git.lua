@@ -5,9 +5,7 @@ local condition = require("plugin.lualine.component.util").condition
 return {
   diff = {
     "diff",
-    cond = function()
-      condition.space_at_least(69)
-    end,
+    cond = condition.space_at_least(70),
     diff_color = {
       added = { fg = hi.fg("GitSignsAdd", { "diffAdded" }) },
       modified = { fg = hi.fg("GitSignsChange", { "diffChanged" }) },
@@ -29,9 +27,7 @@ return {
   branch = {
     "branch",
     icon = "",
-    cond = function()
-      condition.space_at_least(49)
-    end,
+    cond = condition.space_at_least(50),
     color = { fg = palette.magenta.secondary, gui = "BOLD" },
   },
 }
