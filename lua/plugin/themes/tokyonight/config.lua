@@ -29,6 +29,7 @@ local hlgroups = {
   DiagnosticSignWarn = { fg = c.warning, bold = true },
   DiagnosticSignInfo = { fg = c.info, bold = true },
   DiagnosticSignHint = { fg = c.hint, bold = true },
+  VertSplit = { fg = hi.bg("StatusLine"), cterm = { reverse = true } },
   GitSignsAddNr = { fg = c.gitSigns.add, bold = true },
   GitSignsChangeNr = { fg = c.gitSigns.change, bold = true },
   GitSignsDeleteNr = { fg = c.gitSigns.delete, bold = true },
