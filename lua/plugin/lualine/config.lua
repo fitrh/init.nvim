@@ -27,6 +27,7 @@ config.options = {
   component_separators = "",
   section_separators = "",
   disabled_filetypes = { "Outline" },
+  globalstatus = true,
 }
 
 config.extensions = { "quickfix" }
