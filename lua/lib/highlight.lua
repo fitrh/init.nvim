@@ -70,26 +70,46 @@ end
 ---@field special string
 ---@field italic boolean
 ---@field bold boolean
----@field undercurl boolean
 ---@field underline boolean
+---@field underlineline boolean
+---@field undercurl boolean
+---@field underdot boolean
+---@field underdash boolean
 ---@field strikethrough boolean
 ---@field reverse boolean
 ---@field standout boolean
+---@field default boolean
+---@field nocombine boolean
+---@field ctermfg number
+---@field ctermbg number
+---@field cterm table
 ---
 ---Parse HighlightDef into highlight definition map to be used by `nvim_set_hl`
 ---
 ---@param hl HighlightDef
 ---@return table def highlight definition map, see `:h nvim_get_hl_by_name`
 local function parse(hl)
-  local styles = {
+  local attributes = {
     "italic",
     "bold",
     "underline",
+    "underlineline",
     "undercurl",
+    "underdot",
+    "underdash",
     "strikethrough",
     "reverse",
     "standout",
+    "nocombine",
   }
+
+  local additional_attributes = {
+    "default",
+    "ctermfg",
+    "ctermbg",
+    "cterm",
+  }
+
   local inherit = {}
 
   if hl.inherit then
@@ -104,15 +124,25 @@ local function parse(hl)
     italic = inherit.italic or false,
     bold = inherit.bold or false,
     underline = inherit.underline or false,
+    underlineline = inherit.underlineline or false,
     undercurl = inherit.undercurl or false,
+    underdot = inherit.underdot or false,
+    underdash = inherit.underdash or false,
     strikethrough = inherit.strikethrough or false,
     reverse = inherit.reverse or false,
     standout = inherit.standout or false,
+    nocombine = inherit.nocombine or false,
   }
 
-  for _, style in pairs(styles) do
-    if hl[style] ~= nil then
-      def[style] = hl[style]
+  for _, attribute in pairs(attributes) do
+    if hl[attribute] ~= nil then
+      def[attribute] = hl[attribute]
+    end
+  end
+
+  for _, attribute in pairs(additional_attributes) do
+    if hl[attribute] ~= nil then
+      def[attribute] = hl[attribute]
     end
   end
 
