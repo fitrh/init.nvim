@@ -24,6 +24,6 @@ return {
   end,
   color = { gui = "BOLD" },
   fmt = function(str)
-    return fmt.show_on_width(80, str, string.sub(str, 1, 1))
+    return fmt.show_on(80, str, string.sub(str, 1, 1))
   end,
 }
