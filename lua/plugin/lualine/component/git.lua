@@ -1,11 +1,12 @@
 local palette = require("plugin.themes.palette")
 local hi = require("lib.highlight")
+local condition = require("plugin.lualine.component.util").condition
 
 return {
   diff = {
     "diff",
     cond = function()
-      return vim.api.nvim_win_get_width(0) > 69
+      condition.space_at_least(69)
     end,
     diff_color = {
       added = { fg = hi.fg("GitSignsAdd", { "diffAdded" }) },
@@ -29,7 +30,7 @@ return {
     "branch",
     icon = "",
     cond = function()
-      return vim.api.nvim_win_get_width(0) > 49
+      condition.space_at_least(49)
     end,
     color = { fg = palette.magenta.secondary, gui = "BOLD" },
   },
