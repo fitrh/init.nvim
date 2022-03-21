@@ -9,15 +9,15 @@ augroup("TrimAndMakeDir", {
 
 augroup("HighlightOnYank", { "TextYankPost", callback = vim.highlight.on_yank })
 
-augroup("CursorlineToggle", {
+augroup("CursorlineOnCurrentWindow", {
   {
-    "WinEnter",
+    { "WinEnter", "CmdlineLeave" },
     callback = function()
       vim.api.nvim_win_set_option(0, "cursorline", true)
     end,
   },
   {
-    "WinLeave",
+    { "WinLeave", "CmdlineEnter" },
     callback = function()
       vim.api.nvim_win_set_option(0, "cursorline", false)
     end,
