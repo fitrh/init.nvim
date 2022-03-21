@@ -78,8 +78,8 @@ keymap.bind({
   lead("=", "n"):send("<C-w>+"),
   lead("-", "n"):send("<C-w>-"),
 
-  -- open terminal
-  on("<M-`>"):exec("split term://$SHELL"),
+  -- open terminal buffer at the bottom with 14 rows height
+  on("<M-`>"):exec("botright 14split term://$SHELL"),
 
   --- search Behaviour
   -- Map "/" to Search current selected text
