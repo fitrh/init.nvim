@@ -17,7 +17,7 @@ local strip = {
   R = custom.component.strip("right"),
 }
 local icon = {
-  active = file.icon,
+  active = mod(file.icon, { cond = util.condition.not_modified }),
   inactive = mod(file.icon, { colored = false, padding = 0 }),
 }
 local config = {}
@@ -48,9 +48,9 @@ config.sections.lualine_c = {
   spacer(),
   align.left(state.readonly),
   align.left(icon.active),
+  align.left(state.modified),
   align.left(file.name),
-  align.no(state.modified),
-  diagnostic.buffer,
+  align.left(diagnostic.buffer),
 }
 config.sections.lualine_x = {
   align.right(git.diff),
