@@ -32,7 +32,7 @@ end
 ---
 ---Create group of user command
 ---
----@param args UserCommand
+---@param args CommandGroup
 function Command.group(args)
   local opts = args or {}
   local prefix = opts.prefix or nil
@@ -43,7 +43,7 @@ function Command.group(args)
     local name = prefix and ("%s%s"):format(prefix, v.name or "") or v.name
     options = options or v.opts
     buf = buf or v.buf
-    Command.add(name, v.cmd, { options = options, buf = buf })
+    Command.add(name, v.cmd, { opts = options, buf = buf })
   end
 end
 
