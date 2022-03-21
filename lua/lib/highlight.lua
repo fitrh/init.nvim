@@ -89,6 +89,14 @@ end
 ---@param hl HighlightDef
 ---@return table def highlight definition map, see `:h nvim_get_hl_by_name`
 local function parse(hl)
+  local def = {}
+
+  for _, attribute in pairs({ "default", "nocombine" }) do
+    if hl[attribute] ~= nil then
+      def[attribute] = hl[attribute]
+    end
+  end
+
   local attributes = {
     "italic",
     "bold",
@@ -100,11 +108,9 @@ local function parse(hl)
     "strikethrough",
     "reverse",
     "standout",
-    "nocombine",
   }
 
   local additional_attributes = {
-    "default",
     "ctermfg",
     "ctermbg",
     "cterm",
@@ -117,22 +123,19 @@ local function parse(hl)
     inherit = ok and value
   end
 
-  local def = {
-    foreground = hl.fg or inherit.foreground or "NONE",
-    background = hl.bg or inherit.background or "NONE",
-    special = hl.special or inherit.special or "NONE",
-    italic = inherit.italic or false,
-    bold = inherit.bold or false,
-    underline = inherit.underline or false,
-    underlineline = inherit.underlineline or false,
-    undercurl = inherit.undercurl or false,
-    underdot = inherit.underdot or false,
-    underdash = inherit.underdash or false,
-    strikethrough = inherit.strikethrough or false,
-    reverse = inherit.reverse or false,
-    standout = inherit.standout or false,
-    nocombine = inherit.nocombine or false,
-  }
+  def.foreground = hl.fg or inherit.foreground or "NONE"
+  def.background = hl.bg or inherit.background or "NONE"
+  def.special = hl.special or inherit.special or "NONE"
+  def.italic = inherit.italic or false
+  def.bold = inherit.bold or false
+  def.underline = inherit.underline or false
+  def.underlineline = inherit.underlineline or false
+  def.undercurl = inherit.undercurl or false
+  def.underdot = inherit.underdot or false
+  def.underdash = inherit.underdash or false
+  def.strikethrough = inherit.strikethrough or false
+  def.reverse = inherit.reverse or false
+  def.standout = inherit.standout or false
 
   for _, attribute in pairs(attributes) do
     if hl[attribute] ~= nil then
