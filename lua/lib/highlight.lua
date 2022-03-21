@@ -68,6 +68,7 @@ end
 ---@field fg string
 ---@field bg string
 ---@field special string
+---@field blend number
 ---@field italic boolean
 ---@field bold boolean
 ---@field underline boolean
@@ -112,6 +113,7 @@ local function parse(hl)
   end
 
   local attributes = {
+    "blend",
     "italic",
     "bold",
     "underline",
@@ -150,6 +152,12 @@ local function parse(hl)
   def.strikethrough = inherit.strikethrough or false
   def.reverse = inherit.reverse or false
   def.standout = inherit.standout or false
+
+  -- `blend` field is not set by default
+  -- set it only if the inherited group is set
+  if inherit.blend then
+    def.blend = inherit.blend
+  end
 
   for _, attribute in pairs(attributes) do
     if hl[attribute] ~= nil then
