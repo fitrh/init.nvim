@@ -34,16 +34,21 @@ end
 ---
 ---@param args CommandGroup
 function Command.group(args)
-  local opts = args or {}
-  local prefix = opts.prefix or nil
-  local options = opts.opts or nil
-  local buf = opts.buf or nil
-  local cmds = opts.cmds or {}
-  for _, v in ipairs(cmds) do
-    local name = prefix and ("%s%s"):format(prefix, v.name or "") or v.name
-    options = options or v.opts
-    buf = buf or v.buf
-    Command.add(name, v.cmd, { opts = options, buf = buf })
+  args = args or {}
+
+  local prefix = args.prefix or nil
+  local opts = args.opts or nil
+  local buf = args.buf or nil
+  local cmds = args.cmds or {}
+
+  for _, cmd in ipairs(cmds) do
+    local name = prefix or ""
+    name = ("%s%s"):format(prefix, cmd.name or "")
+
+    opts = opts or cmd.opts
+    buf = buf or cmd.buf
+
+    Command.add(name, cmd.cmd, { opts = opts, buf = buf })
   end
 end
 
