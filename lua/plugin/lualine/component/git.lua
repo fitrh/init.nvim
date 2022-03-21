@@ -1,11 +1,13 @@
 local palette = require("plugin.themes.palette")
 local hi = require("lib.highlight")
-local condition = require("plugin.lualine.component.util").condition
+local condition = require("plugin.lualine.component.util.condition")
 
 return {
   diff = {
     "diff",
-    cond = condition.space_at_least(70),
+    cond = function()
+      return condition.space_at_least(70)
+    end,
     diff_color = {
       added = { fg = hi.fg("GitSignsAdd", { "diffAdded" }) },
       modified = { fg = hi.fg("GitSignsChange", { "diffChanged" }) },
@@ -27,7 +29,9 @@ return {
   branch = {
     "branch",
     icon = "",
-    cond = condition.space_at_least(50),
+    cond = function()
+      return condition.space_at_least(50)
+    end,
     color = { fg = palette.magenta.secondary, gui = "BOLD" },
   },
 }
