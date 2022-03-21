@@ -11,7 +11,16 @@ opt.confirm = true -- raise a dialogue asking if you wish to save changed files
 opt.cursorline = true -- highlight current line
 opt.equalalways = true -- avoid resizing the main window when open a split
 opt.expandtab = true -- by default, always use space!
-opt.fillchars = { eob = " " } -- set empty line at the and of buffer to space
+opt.fillchars = {
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vert = "┃",
+  vertleft = "┫",
+  vertright = "┣",
+  verthoriz = "╋",
+  eob = " ", -- use 'space' for lines after the last buffer line in a window
+}
 opt.formatoptions:append({ "n" })
 opt.formatoptions:remove({ "t", "o", "2" })
 opt.guicursor = "n-c:hor50,i-ci-ve:ver25"
