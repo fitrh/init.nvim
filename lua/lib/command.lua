@@ -45,8 +45,8 @@ function Command.group(args)
     local name = prefix or ""
     name = ("%s%s"):format(prefix, cmd.name or "")
 
-    opts = opts or cmd.opts
-    buf = buf or cmd.buf
+    opts = cmd.opts or opts or nil
+    buf = cmd.buf or buf or false
 
     Command.add(name, cmd.cmd, { opts = opts, buf = buf })
   end
