@@ -94,10 +94,8 @@ keymap.bind({
 
   -- move Line
   on("<C-j>", "n"):exec("m .+1"),
-  on("<C-j>", "i"):exec("m .+1"),
   on("J", "v"):send(":m '>+1<CR>gv=gv"):with(opt():noremap():silent()),
   on("<C-k>", "n"):exec("m .-2"),
-  on("<C-k>", "i"):exec("m .-2"),
   on("K", "v"):send(":m '<-2<CR>gv=gv"):with(opt():noremap():silent()),
 
   -- join lines without changing cursor position
