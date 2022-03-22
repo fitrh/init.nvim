@@ -65,8 +65,6 @@ keymap.bind({
   -- easy next window jumping
   on("<M-Tab>", "n"):send("<C-w>w"),
   -- easy split
-  lead("h", "n"):exec("split"),
-  lead("v", "n"):exec("vsplit"),
   on("Zh", "n"):exec("leftabove vsplit"),
   on("Zj", "n"):exec("belowright split"),
   on("Zk", "n"):exec("aboveleft split"),
