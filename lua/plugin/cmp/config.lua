@@ -26,13 +26,14 @@ formatting.fields = { "kind", "abbr", "menu" }
 formatting.format = function(entry, vim_item)
   vim_item.kind = require("lsp.ui.completion").kind()[vim_item.kind]
 
-  vim_item.menu = ({
-    nvim_lsp = "[LSP]",
-    nvim_lua = "[Neovim Lua]",
-    luasnip = "[LuaSnip]",
-    buffer = "[Buffer]",
-    path = "[Path]",
+  local menu = ({
+    nvim_lsp = "LSP",
+    nvim_lua = "API",
+    luasnip = "Snippet",
+    buffer = "Buffer",
+    path = "Path",
   })[entry.source.name]
+  vim_item.menu = menu and ("━━ %s"):format(menu) or menu
 
   return vim_item
 end
