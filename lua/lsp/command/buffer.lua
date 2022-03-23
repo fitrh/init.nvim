@@ -3,6 +3,7 @@ local M = {}
 function M.attach(client)
   local capable = client.resolved_capabilities
   local command = require("lib.command")
+  local lsp = vim.lsp.buf
 
   if capable.document_formatting then
     local default = 5000
@@ -12,17 +13,17 @@ function M.attach(client)
       opts = { nargs = "?" },
       buf = true,
       cmds = {
-        { cmd = vim.lsp.buf.formatting },
+        { cmd = lsp.formatting },
         {
           name = "Seq",
           cmd = function(opts)
-            vim.lsp.buf.formatting_seq_sync({}, tonumber(opts.fargs[1]) or default)
+            lsp.formatting_seq_sync({}, tonumber(opts.fargs[1]) or default)
           end,
         },
         {
           name = "Sync",
           cmd = function(opts)
-            vim.lsp.buf.formatting_sync({}, tonumber(opts.fargs[1]) or default)
+            lsp.formatting_sync({}, tonumber(opts.fargs[1]) or default)
           end,
         },
       },
@@ -31,52 +32,44 @@ function M.attach(client)
 
   if capable.rename then
     command.add("LspRename", function()
-      vim.lsp.buf.rename()
+      lsp.rename()
     end, { buf = true })
   end
 
   if capable.signature_help then
-    command.add("LspSignatureHelp", vim.lsp.buf.signature_help, { buf = true })
+    command.add("LspSignatureHelp", lsp.signature_help, { buf = true })
   end
 
   if capable.code_action then
-    command.add("LspCodeAction", vim.lsp.buf.code_action, { buf = true })
+    command.add("LspCodeAction", lsp.code_action, { buf = true })
   end
 
   if capable.hover then
-    command.add("LspHover", vim.lsp.buf.hover, { buf = true })
+    command.add("LspHover", lsp.hover, { buf = true })
   end
 
   if capable.declaration then
-    command.add("LspGoToDeclaration", vim.lsp.buf.declaration, { buf = true })
+    command.add("LspGoToDeclaration", lsp.declaration, { buf = true })
   end
 
   if capable.goto_definition then
-    command.add("LspGoToDefinition", vim.lsp.buf.definition, { buf = true })
+    command.add("LspGoToDefinition", lsp.definition, { buf = true })
   end
 
   if capable.type_definition then
-    command.add(
-      "LspGoToTypeDefinition",
-      vim.lsp.buf.type_definition,
-      { buf = true }
-    )
+    command.add("LspGoToTypeDefinition", lsp.type_definition, { buf = true })
   end
 
   if capable.implementation then
-    command.add(
-      "LspListImplementation",
-      vim.lsp.buf.implementation,
-      { buf = true }
-    )
+    command.add("LspListImplementation", lsp.implementation, { buf = true })
   end
 
   if capable.find_references then
-    command.add("LspListReferences", vim.lsp.buf.references, { buf = true })
+    command.add("LspListReferences", lsp.references, { buf = true })
   end
 
   if capable.document_symbol then
-    command.add("LspListSymbols", vim.lsp.buf.document_symbol, { buf = true })
+    command.add("LspListSymbols", lsp.document_symbol, { buf = true })
   end
 
   if capable.document_highlight then
@@ -84,8 +77,8 @@ function M.attach(client)
       prefix = "LspDocument",
       buf = true,
       cmds = {
-        { name = "Highlight", cmd = vim.lsp.buf.document_highlight },
-        { name = "ClearRefs", cmd = vim.lsp.buf.clear_references },
+        { name = "Highlight", cmd = lsp.document_highlight },
+        { name = "ClearRefs", cmd = lsp.clear_references },
       },
     })
   end
@@ -98,13 +91,13 @@ function M.attach(client)
         {
           name = "Icoming",
           cmd = function()
-            vim.lsp.buf.incoming_calls()
+            lsp.incoming_calls()
           end,
         },
         {
           name = "Outgoing",
           cmd = function()
-            vim.lsp.buf.outging_calls()
+            lsp.outging_calls()
           end,
         },
       },
