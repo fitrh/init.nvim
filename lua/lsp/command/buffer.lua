@@ -5,33 +5,25 @@ function M.attach(client)
   local command = require("lib.command")
 
   if capable.document_formatting then
-    local function timeout(args)
-      local default = 5000
-      args = args ~= "" and args or default
-      if type(args) == "string" then
-        args = string.gsub(args, [["]], "")
-      end
-      return tonumber(args) or default
-    end
+    local default = 5000
 
     command.group({
       prefix = "LspFormat",
+      opts = { nargs = "?" },
       buf = true,
       cmds = {
         { cmd = vim.lsp.buf.formatting },
         {
           name = "Seq",
           cmd = function(opts)
-            vim.lsp.buf.formatting_seq_sync({}, timeout(opts.args))
+            vim.lsp.buf.formatting_seq_sync({}, tonumber(opts.fargs[1]) or default)
           end,
-          opts = { nargs = 1 },
         },
         {
           name = "Sync",
           cmd = function(opts)
-            vim.lsp.buf.formatting_sync({}, timeout(opts.args))
+            vim.lsp.buf.formatting_sync({}, tonumber(opts.fargs[1]) or default)
           end,
-          opts = { nargs = 1 },
         },
       },
     })
