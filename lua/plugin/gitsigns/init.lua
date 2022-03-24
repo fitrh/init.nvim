@@ -4,7 +4,7 @@ local M = {
   config = function()
     require("plugin.gitsigns.config")
   end,
-  keys = "gs",
+  keys = { "gs", "]c", "[c" },
   module = "gitsigns",
 }
 
