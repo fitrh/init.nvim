@@ -28,31 +28,30 @@ local toggle = {
 function M.attach(bufnr)
   local keymap = require("lib.keymap")
   local on = keymap.on_press
-  local lead = keymap.on_press_leader
   local opt = keymap.opt
 
   keymap.bind({
     on("]c", "n"):send(hunk.next):with(opt():expr()),
     on("[c", "n"):send(hunk.prev):with(opt():expr()),
-    on("ghs", "n"):exec(hunk.stage),
-    on("ghS", "n"):exec(hunk.stage_buffer),
-    on("ghs", "v"):exec(hunk.stage_selected),
-    on("ghu", "n"):exec(hunk.undo),
-    on("ghU", "n"):exec(hunk.reset_buffer),
-    on("ghr", "n"):exec(hunk.reset),
-    on("ghr", "v"):exec(hunk.reset_selected),
-    on("ghR", "n"):exec(hunk.reset_all),
-    on("ghp", "n"):exec(hunk.preview),
+    on("gss", "n"):exec(hunk.stage),
+    on("gsS", "n"):exec(hunk.stage_buffer),
+    on("gss", "v"):exec(hunk.stage_selected),
+    on("gsu", "n"):exec(hunk.undo),
+    on("gsU", "n"):exec(hunk.reset_buffer),
+    on("gsr", "n"):exec(hunk.reset),
+    on("gsr", "v"):exec(hunk.reset_selected),
+    on("gsR", "n"):exec(hunk.reset_all),
+    on("gsp", "n"):exec(hunk.preview),
     on("ih", "o"):exec(hunk.select),
     on("ih", "x"):exec(hunk.select),
-    on("gB", "n"):exec("Blame"),
-    on("gbl", "n"):exec(toggle.blame_win),
-    on("gt", "n"):exec(toggle.sign),
-    on("gnm", "n"):exec(toggle.numhl),
-    on("gll", "n"):exec(toggle.linehl),
-    on("gdl", "n"):exec(toggle.deleted),
-    on("gwd", "n"):exec(toggle.word_diff),
-    lead("gl", "n"):exec(toggle.blame),
+    on("gsB", "n"):exec("Blame"),
+    on("gsb", "n"):exec(toggle.blame_win),
+    on("gst", "n"):exec(toggle.sign),
+    on("gsn", "n"):exec(toggle.numhl),
+    on("gsL", "n"):exec(toggle.linehl),
+    on("gsd", "n"):exec(toggle.deleted),
+    on("gsw", "n"):exec(toggle.word_diff),
+    on("gsl", "n"):exec(toggle.blame),
   }, {
     bufnr = bufnr,
     options = opt():noremap(),
