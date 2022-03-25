@@ -57,10 +57,6 @@ keymap.bind({
   on("L"):send("g_"),
   on("<C-e>", "i"):send("<C-o>A"),
 
-  -- add line below / above current line
-  on("<C-l>j", "i"):send("<C-o>o"),
-  on("<C-l>k", "i"):send("<C-o>O"),
-
   --- window
   -- easy next window jumping
   on("<M-Tab>", "n"):send("<C-w>w"),
