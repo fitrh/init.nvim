@@ -1,6 +1,6 @@
 local M = {}
 
----@param width number #default = 1
+---@param width? number @default = 1
 ---@return table component
 function M.spacer(width)
   local spaces = string.rep(" ", width or 1)
@@ -13,10 +13,10 @@ function M.spacer(width)
 end
 
 ---@alias StripAlignment
----| '"left"' # Left align character -> `▌`.
----| '"right"' # Right align character -> `▐`.
+---| '"left"'
+---| '"right"'
 
----@param alignment StripAlignment
+---@param alignment? StripAlignment @default "left"
 ---@return table component
 function M.strip(alignment)
   local char = require("helper.sign").line.THIN[alignment or "left"]
