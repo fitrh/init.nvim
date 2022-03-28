@@ -1,7 +1,5 @@
-local keymap = require("lib.keymap")
-local lead = keymap.on_press_leader
-local opt = keymap.opt
+local keymap = require("sugar.keymap")
+local map, modifier = keymap.map, keymap.modifier
+local leader, ex = modifier.leader, modifier.ex
 
-keymap.bind({
-  lead("cc"):exec("ColorizerToggle"):with(opt():noremap()),
-})
+keymap.bind(map(leader("cc"), ex("ColorizerToggle")))

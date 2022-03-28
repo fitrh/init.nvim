@@ -15,7 +15,7 @@ gitsigns.setup({
     require("lib.command").add("Blame", function()
       gitsigns.blame_line({ full = true })
     end, { buf = bufnr })
-    require("plugin.gitsigns.keymap").attach(bufnr)
+    require("plugin.gitsigns.keymap").attach(gitsigns, bufnr)
   end,
   preview_config = { border = "rounded" },
   current_line_blame = true,

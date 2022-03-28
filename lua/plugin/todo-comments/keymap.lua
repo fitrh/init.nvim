@@ -1,11 +1,9 @@
-local keymap = require("lib.keymap")
-local on = keymap.on_press
+local keymap = require("sugar.keymap")
+local map, ex, n = keymap.map, keymap.modifier.ex, keymap.mode.normal
 
 keymap.bind({
-  on("[tq", "n"):exec("TodoQuickFix"),
-  on("[tl", "n"):exec("TodoLocList"),
-  on("[tt", "n"):exec("TodoTrouble"),
-  on("[lc", "n"):exec("TodoTelescope theme=ivy previewer=false"),
-}, {
-  options = keymap.opt():noremap(),
+  n(map("[tq", ex("TodoQuickFix"))),
+  n(map("[tl", ex("TodoLocList"))),
+  n(map("[tt", ex("TodoTrouble"))),
+  n(map("[lc", ex("TodoTelescope theme=ivy previewer=false"))),
 })

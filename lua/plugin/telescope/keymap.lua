@@ -1,26 +1,23 @@
-local keymap = require("lib.keymap")
-local on = keymap.on_press
-local lead = keymap.on_press_leader
-local opt = keymap.opt
+local keymap = require("sugar.keymap")
+local map, leader, n = keymap.map, keymap.modifier.leader, keymap.mode.normal
+
+local b = require("telescope.builtin")
+local t = require("telescope.themes")
 
 keymap.bind({
-  on("[]", "n"):exec("Telescope buffers"),
-  on("[p"):exec("Telescope find_files"),
-  on("[f"):exec("Telescope live_grep"),
-  lead("e"):exec("Telescope file_browser"),
-  lead("ft"):exec("Telescope filetypes"),
-  lead("lo"):exec("Telescope treesitter"),
-  lead("gf", "n"):exec("Telescope git_files"),
-  lead("gc", "n"):exec("Telescope git_commits"),
-  lead("gb", "n"):exec("Telescope git_branches"),
-  on("gS", "n"):exec("Telescope git_status"),
-  lead("m", "n"):exec("Telescope keymaps"),
-  on("[ld", "n"):exec("Telescope diagnostics bufnr=0 theme=dropdown"),
-  on("[lD", "n"):exec("Telescope diagnostics"),
-  on("[ls", "n"):exec("Telescope lsp_document_symbols"),
-  on("[lS", "n"):exec("Telescope lsp_workspace_symbols"),
-  on("[a", "n"):exec("Telescope lsp_code_actions"),
-  on("[a", "v"):exec("Telescope lsp_range_code_actions"),
-}, {
-  options = opt():noremap(),
+  n(map("[]", b.buffers)),
+  n(map("[p", b.find_files)),
+  n(map("[f", b.live_grep)),
+  n(map(leader("e"), b.file_browser)),
+  n(map(leader("ft"), b.filetypes)),
+  n(map(leader("lo"), b.treesitter)),
+  n(map(leader("gf"), b.git_files)),
+  n(map(leader("gc"), b.git_commits)),
+  n(map(leader("gb"), b.git_branches)),
+  n(map("gS", b.git_status)),
+  n(map(leader("m"), b.keymaps)),
+  n(map("[ld", function()
+    b.diagnostics(t.get_dropdown({ bufnr = 0 }))
+  end)),
+  n(map("[lD", b.diagnostics)),
 })

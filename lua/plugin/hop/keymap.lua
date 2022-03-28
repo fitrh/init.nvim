@@ -1,19 +1,16 @@
-local keymap = require("lib.keymap")
-local on = keymap.on_press
-local opt = keymap.opt
+local keymap = require("sugar.keymap")
+local map, ex = keymap.map, keymap.modifier.ex
 
 keymap.bind({
-  on("f/"):exec("HopPattern"),
-  on("ff"):exec("HopWord"),
-  on("fw"):exec("HopWordMW"),
-  on("fj"):exec("HopChar2AC"),
-  on("fk"):exec("HopChar2BC"),
-  on("fl"):exec("HopChar2CurrentLineAC"),
-  on("fh"):exec("HopChar2CurrentLineBC"),
-  on("Fj"):exec("HopWordAC"),
-  on("Fk"):exec("HopWordBC"),
-  on("Fl"):exec("HopWordCurrentLineAC"),
-  on("Fh"):exec("HopWordCurrentLineBC"),
-}, {
-  options = opt():noremap(),
+  map("f/", ex("HopPattern")),
+  map("ff", ex("HopWord")),
+  map("fw", ex("HopWordMW")),
+  map("fj", ex("HopChar2AC")),
+  map("fk", ex("HopChar2BC")),
+  map("fl", ex("HopChar2CurrentLineAC")),
+  map("fh", ex("HopChar2CurrentLineBC")),
+  map("Fj", ex("HopWordAC")),
+  map("Fk", ex("HopWordBC")),
+  map("Fl", ex("HopWordCurrentLineAC")),
+  map("Fh", ex("HopWordCurrentLineBC")),
 })

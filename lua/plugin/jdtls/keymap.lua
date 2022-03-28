@@ -1,22 +1,27 @@
 local M = {}
 
-function M.attach(bufnr)
-  local keymap = require("lib.keymap")
-  local on = keymap.on_press
-  local lead = keymap.on_press_leader
-  local opt = keymap.opt
+function M.attach(jdtls, bufnr)
+  local keymap = require("sugar.keymap")
+  local map, mode, leader = keymap.map, keymap.mode, keymap.modifier.leader
+  local n, v = mode.normal, mode.vselect
 
   keymap.bind({
-    on("goi", "n"):exec("JdtOrganizeImports"),
-    on("crv", "n"):exec("JdtExtractVariable"),
-    lead("rv", "v"):exec("JdtExtractVariableRange"),
-    on("crc", "n"):exec("JdtExtractConstant"),
-    lead("rc", "v"):exec("JdtExtractConstantRange"),
-    lead("rm", "v"):exec("JdtExtractMethod"),
-  }, {
-    bufnr = bufnr,
-    options = opt():noremap(),
-  })
+    n(map("goi", jdtls.organize_imports)),
+    n(map("crv", jdtls.extract_variable)),
+    n(map("crc", jdtls.extract_constant)),
+
+    v(map(leader("rv"), function()
+      jdtls.extract_variable(true)
+    end)),
+
+    v(map(leader("rc"), function()
+      jdtls.extract_constant(true)
+    end)),
+
+    v(map(leader("rm"), function()
+      jdtls.extract_method(true)
+    end)),
+  }, { buffer = bufnr })
 end
 
 return M

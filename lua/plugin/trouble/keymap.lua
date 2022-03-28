@@ -1,14 +1,14 @@
-local keymap = require("lib.keymap")
-local on = keymap.on_press
+local key = require("sugar.keymap")
+local map, n, ex = key.map, key.mode.normal, key.modifier.ex
 
-keymap.bind({
-  on("[xx", "n"):exec("TroubleToggle"),
-  on("[xd", "n"):exec("TroubleToggle document_diagnostics"),
-  on("[xw", "n"):exec("TroubleToggle workspace_diagnostics"),
-  on("[xl", "n"):exec("TroubleToggle loclist"),
-  on("[xq", "n"):exec("TroubleToggle quickfix"),
-  on("[xr", "n"):exec("TroubleToggle lsp_references"),
-  on("[xD", "n"):exec("TroubleToggle lsp_definitions"),
-  on("[xt", "n"):exec("TroubleToggle lsp_type_definitions"),
-  on("[xR", "n"):exec("TroubleRefresh"),
-}, { options = keymap.opt():noremap() })
+key.bind({
+  n(map("[xx", ex("TroubleToggle"))),
+  n(map("[xd", ex("TroubleToggle document_diagnostics"))),
+  n(map("[xw", ex("TroubleToggle workspace_diagnostics"))),
+  n(map("[xl", ex("TroubleToggle loclist"))),
+  n(map("[xq", ex("TroubleToggle quickfix"))),
+  n(map("[xr", ex("TroubleToggle lsp_references"))),
+  n(map("[xD", ex("TroubleToggle lsp_definitions"))),
+  n(map("[xt", ex("TroubleToggle lsp_type_definitions"))),
+  n(map("[xR", ex("TroubleRefresh"))),
+})

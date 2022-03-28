@@ -1,18 +1,16 @@
-local keymap = require("lib.keymap")
-local on = keymap.on_press
-local lead = keymap.on_press_leader
-local opt = keymap.opt
+local keymap = require("sugar.keymap")
+local map, mode, modifier = keymap.map, keymap.mode, keymap.modifier
+local n = mode.normal
+local leader, ex = modifier.leader, modifier.ex
 
 keymap.bind({
   -- Minimal tmux Integration behavior
-  on("<M-h>", "n"):exec("TmuxMoveH"),
-  on("<M-j>", "n"):exec("TmuxMoveJ"),
-  on("<M-k>", "n"):exec("TmuxMoveK"),
-  on("<M-l>", "n"):exec("TmuxMoveL"),
+  n(map("<M-h>", ex("TmuxMoveH"))),
+  n(map("<M-j>", ex("TmuxMoveJ"))),
+  n(map("<M-k>", ex("TmuxMoveK"))),
+  n(map("<M-l>", ex("TmuxMoveL"))),
 
   -- Minimal zen mode behavior
-  lead("zz", "n"):exec("ZenToggleFull"),
-  lead("nr", "n"):exec("ZenToggle"),
-}, {
-  options = opt():noremap(),
+  n(map(leader("zz"), ex("ZenToggleFull"))),
+  n(map(leader("nr"), ex("ZenToggle"))),
 })

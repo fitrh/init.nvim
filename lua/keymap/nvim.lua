@@ -1,132 +1,119 @@
-local keymap = require("lib.keymap")
-local on = keymap.on_press
-local lead = keymap.on_press_leader
-local opt = keymap.opt
+local keymap = require("sugar.keymap")
+local map, mode, modifier = keymap.map, keymap.mode, keymap.modifier
+local nop, leader, ex = modifier.nop, modifier.leader, modifier.ex
+local n, i, v, s, c, t =
+  mode.normal, mode.insert, mode.vselect, mode.select, mode.cmd, mode.terminal
 
 keymap.bind({
   -- TODO: add reload config keymap
 
   -- disable arrow key
-  on("<Up>"):disable(),
-  on("<Up>", "i"):disable(),
-  on("<Down>"):disable(),
-  on("<Down>", "i"):disable(),
-  on("<Left>"):disable(),
-  on("<Left>", "i"):disable(),
-  on("<Right>"):disable(),
-  on("<Right>", "i"):disable(),
+  nop(map("<Up>")),
+  nop(i(map("<Up>"))),
+  nop(map("<Down>")),
+  nop(i(map("<Down>"))),
+  nop(map("<Left>")),
+  nop(i(map("<Left>"))),
+  nop(map("<Right>")),
+  nop(i(map("<Right>"))),
 
   -- prevent entering ex-mode
-  on("gQ", "n"):disable(),
-  on("<M-Q>"):disable(),
+  nop(map("gQ")),
+  nop(map("<M-Q>")),
 
   -- easy escape
-  on("<M-q>"):send("<Esc>"),
-  on("<M-q>", "s"):send("<Esc>"),
-  on("<M-q>", "i"):send("<Esc>"),
-  on("<M-q>", "c"):send("<Esc>"),
-  on("<M-q>", "t"):send([[<C-\><C-n>]]),
-  on("<C-[>", "t"):send([[<C-\><C-n>]]),
+  map("<M-q>", "<Esc>"),
+  s(map("<M-q>", "<Esc>")),
+  i(map("<M-q>", "<Esc>")),
+  c(map("<M-q>", "<Esc>")),
+  t(map("<M-q>", [[<C-\><C-n>]])),
 
   -- easy save & quit
-  lead("<Space>"):exec("update"),
-  lead(";"):exec("x"),
-  lead("'"):exec("wall"),
-  on("[q"):exec("q"),
-  on("[Q"):exec("xall"),
+  map(leader("<Space>"), ex("update")),
+  map(leader(";"), ex("x")),
+  map(leader("'"), ex("wall")),
+  map("[q", ex("q")),
+  map("[Q", ex("xall")),
 
   --- buffer
   -- next & previous buffer
-  on("<S-Tab>", "n"):exec("bprevious"),
-  on("<Tab>", "n"):exec("bnext"),
+  n(map("<S-Tab>", ex("bprevious"))),
+  n(map("<Tab>", ex("bnext"))),
   -- close buffer without close window
-  lead("bq", "n"):exec("enew<BAR>bdelete #"),
+  n(map(leader("bq"), ex("enew<BAR>bdelete #"))),
   -- delete current buffer and move to the previous buffer
-  lead("bd", "n"):exec("bprevious<BAR>bdelete #"),
+  n(map(leader("bd"), ex("bprevious<BAR>bdelete #"))),
 
   -- toggle cursorline or cursorcolumn
-  on("<C-c>c", "n"):exec("set cursorcolumn!"),
-  on("<C-c>l", "n"):exec("set cursorline!"),
+  n(map("<C-c>c", ex("set cursorcolumn!"))),
+  n(map("<C-c>l", ex("set cursorline!"))),
 
   -- toggle number
-  lead("nn"):exec("set relativenumber!"),
-  lead("ln"):exec("set number!"),
+  map(leader("nn"), ex("set relativenumber!")),
+  map(leader("ln"), ex("set number!")),
 
   -- cursor movements
-  on("H"):send("^"),
-  on("L"):send("g_"),
-  on("<C-e>", "i"):send("<C-o>A"),
-
+  map("H", "^"), -- To the first non-blank character of the line
+  map("L", "g_"), -- To the last non-blank character of the line
+  --
   --- window
   -- easy next window jumping
-  on("<M-Tab>", "n"):send("<C-w>w"),
+  n(map("<M-Tab>", "<C-w>w")),
   -- easy split
-  on("Zh", "n"):exec("leftabove vsplit"),
-  on("Zj", "n"):exec("belowright split"),
-  on("Zk", "n"):exec("aboveleft split"),
-  on("Zl", "n"):exec("rightbelow vsplit"),
-  -- resize vertical split
-  lead(".", "n"):send("<C-w>>"),
-  lead(",", "n"):send("<C-w><"),
-  -- resize horizontal split
-  lead("=", "n"):send("<C-w>+"),
-  lead("-", "n"):send("<C-w>-"),
-
+  n(map("Zh", ex("leftabove vsplit"))),
+  n(map("Zj", ex("belowright split"))),
+  n(map("Zk", ex("aboveleft split"))),
+  n(map("Zl", ex("rightbelow vsplit"))),
   -- open terminal buffer at the bottom with 14 rows height
-  on("<M-`>"):exec("botright 14split term://$SHELL"),
+  n(map("<M-`>", ex("botright 14split term://$SHELL"))),
 
   --- search Behaviour
   -- Map "/" to Search current selected text
-  on("/", "v"):send('y/<C-r>"<CR>'),
+  v(map("/", [[y/<C-r>"<CR>]])),
   -- centering window when hit n/N
-  on("n", "n"):send("mnnzz"),
-  on("N", "n"):send("mnNzz"),
+  n(map("n", "mnnzz")),
+  n(map("N", "mnNzz")),
   -- if hlsearch is active, <CR> to clear it, otherwise <CR> is <CR>
-  on("<CR>")
-    :send('v:hlsearch ? "<Cmd>nohlsearch<CR>" : "<CR>"')
-    :with(opt():noremap():expr()),
+  map("<CR>", [[v:hlsearch ? "<Cmd>nohlsearch<CR>" : "<CR>"]], { expr = true }),
 
-  -- move Line
-  on("<C-j>", "n"):exec("m .+1"),
-  on("J", "v"):send(":m '>+1<CR>gv=gv"):with(opt():noremap():silent()),
-  on("<C-k>", "n"):exec("m .-2"),
-  on("K", "v"):send(":m '<-2<CR>gv=gv"):with(opt():noremap():silent()),
-
+  -- moves line
+  n(map("<C-j>", ex("m .+1"))),
+  v(map("J", ":m '>+1<CR>gv=gv", { silent = true })),
+  n(map("<C-k>", ex("m .-2"))),
+  v(map("K", ":m '<-2<CR>gv=gv", { silent = true })),
   -- join lines without changing cursor position
-  on("J", "n"):send("mzJ`z"),
+  n(map("J", "mzJ`z")),
 
   -- easy select-all
-  on("<C-a>", "n"):send("ggVG"):with(opt():noremap():silent()),
-  on("<C-a>", "i"):send("<Esc>ggVG"):with(opt():noremap():silent()),
+  n(map("<C-a>", "ggVG", { silent = true })),
+  i(map("<C-a>", "<Esc>ggVG", { silent = true })),
 
   -- tab page
-  lead("t", "n"):exec("tabnew"),
-  on("<M-[>", "n"):exec("tabprevious"),
-  on("<M-]>", "n"):exec("tabnext"),
-  lead("[", "n"):exec("-tabmove"),
-  lead("]", "n"):exec("+tabmove"),
+  n(map(leader("t"), ex("tabnew"))),
+  n(map("<M-[>", ex("tabprevious"))),
+  n(map("<M-]>", ex("tabnext"))),
+  n(map(leader("["), ex("-tabmove"))),
+  n(map(leader("]"), ex("+tabmove"))),
 
   -- Paste-Yank behavior
   -- By default, in visual-line mode, the selected line will be yanked,
   -- and replace the previous yanked line. This map to imporve that behaviour,
   -- after paste, select the yanked line, so it's easy to yank that line again
-  on("p", "v"):send("pgv"),
+  v(map("p", "pgv")),
   -- yank-Paste from clipboard
-  lead("p", "n"):send('"+p'),
-  lead("p", "v"):send('"+p'),
-  lead("P", "n"):send('"+P'),
-  lead("P", "v"):send('"+P'),
-  lead("y", "n"):send('"+y'),
-  lead("y", "v"):send('"+y'),
-  lead("Y", "n"):send('"+y$'),
-  lead("d", "v"):send('"+d'),
+  n(map(leader("p"), '"+p')),
+  v(map(leader("p"), '"+p')),
+  n(map(leader("P"), '"+P')),
+  v(map(leader("P"), '"+P')),
+  n(map(leader("y"), '"+y')),
+  v(map(leader("y"), '"+y')),
+  n(map(leader("Y"), '"+y$')),
+  n(map(leader("d"), '"+d')),
 
   -- reselect indented line
-  on("<", "v"):send("<gv"),
-  on(">", "v"):send(">gv"),
-  on("=", "v"):send("=gv"),
-  on("<BS>", "v"):send("<gv"),
-  on("<TAB>", "v"):send(">gv"),
-}, {
-  options = opt():noremap(),
+  v(map("<", "<gv")),
+  v(map(">", ">gv")),
+  v(map("=", "=gv")),
+  v(map("<BS>", "<gv")),
+  v(map("<TAB>", ">gv")),
 })
