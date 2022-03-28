@@ -20,19 +20,19 @@ local c = require("tokyonight.colors").setup(config)
 local hi = require("lib.highlight")
 
 local hlgroups = {
-  CursorLineNr = { fg = c.blue, bold = true },
+  CursorLineNr = { fg = c.blue },
   ColorColumn = { bg = c.bg_statusline },
   TabLineSel = { fg = c.fg, bg = c.bg },
   TabLine = { fg = c.fg_gutter, bg = c.bg_statusline },
   TabLineFill = { fg = c.fg_gutter, bg = c.bg_statusline },
-  DiagnosticSignError = { fg = c.error, bold = true },
-  DiagnosticSignWarn = { fg = c.warning, bold = true },
-  DiagnosticSignInfo = { fg = c.info, bold = true },
-  DiagnosticSignHint = { fg = c.hint, bold = true },
+  DiagnosticSignError = { fg = c.error },
+  DiagnosticSignWarn = { fg = c.warning },
+  DiagnosticSignInfo = { fg = c.info },
+  DiagnosticSignHint = { fg = c.hint },
   VertSplit = { fg = hi.bg("StatusLine"), cterm = { reverse = true } },
-  GitSignsAddNr = { fg = c.gitSigns.add, bold = true },
-  GitSignsChangeNr = { fg = c.gitSigns.change, bold = true },
-  GitSignsDeleteNr = { fg = c.gitSigns.delete, bold = true },
+  GitSignsAddNr = { fg = c.gitSigns.add },
+  GitSignsChangeNr = { fg = c.gitSigns.change },
+  GitSignsDeleteNr = { fg = c.gitSigns.delete },
   GitSignsDeleteLn = { fg = c.gitSigns.delete },
 }
 
