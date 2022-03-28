@@ -10,7 +10,7 @@ local M = {
     "ColorizerReloadAllBuffers",
     "ColorizerToggle",
   },
-  keys = { "n", "<Leader>cc" },
+  keys = "<Leader>cc",
 }
 
 return M
