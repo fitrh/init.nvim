@@ -18,4 +18,10 @@ neoscroll.setup({
   respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
   cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
   easing_function = "cubic",
+  pre_hook = function(_)
+    vim.api.nvim_win_set_option(0, "cursorline", false)
+  end,
+  post_hook = function(_)
+    vim.api.nvim_win_set_option(0, "cursorline", true)
+  end,
 })
