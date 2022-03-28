@@ -1,9 +1,12 @@
-local keymap = require("keymap.lsp")
 local event = require("lsp.event")
 local command = {
   buffer = require("lsp.command.buffer"),
   codelens = require("lsp.command.codelens"),
   diagnostic = require("lsp.command.diagnostic"),
+}
+local keymap = {
+  lsp = require("lsp.attach.with_keymap"),
+  diagnostic = require("lsp.attach.with_diagnostic_keymap"),
 }
 local ui = { diagnostic = require("lsp.ui.diagnostic") }
 
@@ -15,7 +18,8 @@ return function(client, bufnr)
   command.buffer.attach(client)
   command.codelens.attach(client)
   command.diagnostic.attach()
-  keymap.attach(bufnr)
+  keymap.lsp.attach(client, bufnr)
+  keymap.diagnostic.attach(bufnr)
   event.attach(client, bufnr)
   ui.diagnostic.attach()
 end
