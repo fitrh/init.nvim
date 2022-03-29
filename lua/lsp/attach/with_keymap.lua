@@ -23,7 +23,7 @@ function LspKeymap.attach(client, bufnr)
     call_hierarchy = n(map("]li", lsp.incoming_calls)),
     call_Hierarchy = n(map("]lo", lsp.outgoing_calls)),
     document_formatting = n(map(leader("<CR>"), function()
-      lsp.formatting_seq_sync({}, 5000)
+      lsp.formatting_seq_sync(nil, 5000)
       vim.schedule(function()
         vim.cmd("update")
       end)

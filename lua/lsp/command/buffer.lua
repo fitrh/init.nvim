@@ -17,13 +17,13 @@ function M.attach(client)
         {
           name = "Seq",
           cmd = function(opts)
-            lsp.formatting_seq_sync({}, tonumber(opts.fargs[1]) or default)
+            lsp.formatting_seq_sync(nil, tonumber(opts.fargs[1]) or default)
           end,
         },
         {
           name = "Sync",
           cmd = function(opts)
-            lsp.formatting_sync({}, tonumber(opts.fargs[1]) or default)
+            lsp.formatting_sync(nil, tonumber(opts.fargs[1]) or default)
           end,
         },
       },
