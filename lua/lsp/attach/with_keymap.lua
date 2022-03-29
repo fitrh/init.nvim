@@ -6,7 +6,8 @@ function LspKeymap.attach(client, bufnr)
 
   local keymap = require("sugar.keymap")
   local map = keymap.map
-  local leader, n = keymap.modifier.leader, keymap.mode.normal
+  local leader, mode = keymap.modifier.leader, keymap.mode
+  local n, v = mode.normal, mode.vselect
 
   local available_keymaps = {
     code_lens = n(map("gc", vim.lsp.codelens.run)),
@@ -26,6 +27,13 @@ function LspKeymap.attach(client, bufnr)
       vim.schedule(function()
         vim.cmd("update")
       end)
+    end)),
+    document_range_formatting = v(map(leader("<CR>"), function()
+      lsp.range_formatting(
+        nil,
+        { vim.fn.line("v"), -1 },
+        { vim.fn.line("."), -1 }
+      )
     end)),
   }
 
