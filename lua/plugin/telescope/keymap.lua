@@ -12,8 +12,8 @@ keymap.bind({
   n(map(leader("ft"), b.filetypes)),
   n(map(leader("lo"), b.treesitter)),
   n(map(leader("gf"), b.git_files)),
-  n(map(leader("gc"), b.git_commits)),
-  n(map(leader("gb"), b.git_branches)),
+  n(map("gC", b.git_commits)),
+  n(map("gB", b.git_branches)),
   n(map("gS", b.git_status)),
   n(map(leader("m"), b.keymaps)),
   n(map("[ld", function()
