@@ -15,7 +15,9 @@ function LspKeymap.attach(client, bufnr)
   if capable.document_formatting then
     bind(n(map(leader("<CR>"), function()
       lsp.formatting_seq_sync({}, 5000)
-      vim.cmd("update")
+      vim.schedule(function()
+        vim.cmd("update")
+      end)
     end, { buffer = bufnr })))
   end
 
