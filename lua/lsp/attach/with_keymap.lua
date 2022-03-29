@@ -10,6 +10,14 @@ function LspKeymap.attach(client, bufnr)
   local n, v = mode.normal, mode.vselect
 
   local available_keymaps = {
+    code_action = n(map("[a", lsp.code_action)),
+    code_Action = v(map("[a", function()
+      lsp.range_code_action(
+        nil,
+        { vim.fn.line("v"), -1 },
+        { vim.fn.line("."), -1 }
+      )
+    end)),
     code_lens = n(map("gc", vim.lsp.codelens.run)),
     rename = n(map("[rn", lsp.rename)),
     signature_help = n(map("[s", lsp.signature_help)),
@@ -20,6 +28,7 @@ function LspKeymap.attach(client, bufnr)
     implementation = n(map("]ll", lsp.implementation)),
     find_references = n(map("[ll", lsp.references)),
     document_symbol = n(map("]ls", lsp.document_symbol)),
+    workspace_symbol = n(map("]lS", lsp.workspace_symbol)),
     call_hierarchy = n(map("]li", lsp.incoming_calls)),
     call_Hierarchy = n(map("]lo", lsp.outgoing_calls)),
     document_formatting = n(map(leader("<CR>"), function()
