@@ -3,12 +3,13 @@ local map, leader, n = keymap.map, keymap.modifier.leader, keymap.mode.normal
 
 local b = require("telescope.builtin")
 local t = require("telescope.themes")
+local fb = require("telescope").extensions.file_browser
 
 keymap.bind({
   n(map("[]", b.buffers)),
   n(map("[p", b.find_files)),
   n(map("[f", b.live_grep)),
-  n(map(leader("e"), b.file_browser)),
+  n(map(leader("e"), fb.file_browser)),
   n(map(leader("ft"), b.filetypes)),
   n(map(leader("lo"), b.treesitter)),
   n(map(leader("gf"), b.git_files)),
