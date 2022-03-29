@@ -97,7 +97,7 @@ function M.attach(client)
         {
           name = "Outgoing",
           cmd = function()
-            lsp.outging_calls()
+            lsp.outgoing_calls()
           end,
         },
       },
