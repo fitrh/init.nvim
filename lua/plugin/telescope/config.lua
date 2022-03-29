@@ -68,11 +68,16 @@ telescope.setup({
       },
       prompt_prefix = "   ",
     },
-    git_files = {
-      path_display = { "smart" },
+    git_files = { prompt_prefix = "   ", path_display = { "smart" } },
+    git_commits = { prompt_prefix = "   ", theme = "dropdown" },
+    git_branches = {
+      prompt_prefix = "   ",
+      theme = "dropdown",
+      previewer = false,
     },
     git_status = {
       layout_config = { width = 0.5 },
+      prompt_prefix = "   ",
       path_display = { "smart" },
       previewer = false,
       git_icons = {
@@ -92,6 +97,16 @@ telescope.setup({
     lsp_range_code_actions = {
       prompt_prefix = " ﯧ  ",
       theme = "cursor",
+    },
+    lsp_document_symbols = {
+      layout_config = { width = 0.50 },
+      prompt_prefix = "   ",
+      theme = "dropdown",
+    },
+    lsp_workspace_symbols = {
+      layout_config = { height = 0.5 },
+      prompt_prefix = "   ",
+      theme = "ivy",
     },
     diagnostics = {
       layout_config = { height = 0.5 },
