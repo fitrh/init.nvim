@@ -24,6 +24,23 @@ augroup("CursorlineOnCurrentWindow", {
   },
 })
 
+augroup("RelativeNumberOnCurrentWindow", {
+  {
+    { "BufEnter", "WinEnter" },
+    callback = function()
+      if vim.api.nvim_win_get_option(0, "number") then
+        vim.api.nvim_win_set_option(0, "relativenumber", true)
+      end
+    end,
+  },
+  {
+    { "BufLeave", "WinLeave" },
+    callback = function()
+      vim.api.nvim_win_set_option(0, "relativenumber", false)
+    end,
+  },
+})
+
 augroup("OnTerminalBuffer", {
   "TermOpen",
   {
