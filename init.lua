@@ -1,2 +1,6 @@
-require("setting")
-require("keymap")
+require("init.variable")
+require("init.option")
+require("init.command")
+require("init.event")
+require("init.keymap.builtin")
+require("init.keymap.user")
