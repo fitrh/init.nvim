@@ -11,10 +11,6 @@ gitsigns.setup({
     changedelete = { text = sign.line.SHADE.light },
   },
   on_attach = function(bufnr)
-    -- NOTE: Wokraround until gitsigns command accept args
-    require("lib.command").add("Blame", function()
-      gitsigns.blame_line({ full = true })
-    end, { buf = bufnr })
     require("plugin.gitsigns.keymap").attach(gitsigns, bufnr)
   end,
   preview_config = { border = "rounded" },
