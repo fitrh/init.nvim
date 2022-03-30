@@ -73,14 +73,14 @@ function Keymap.modifier.ex(fn)
   return ("<Cmd>%s<CR>"):format(fn)
 end
 
----Function modifier to append `<Plug>` to `fn`
+---Function modifier to prepend `<Plug>` to `fn`
 ---@param fn string @ex command
 ---@return string
 function Keymap.modifier.plug(fn)
   return ("<Plug>%s"):format(fn)
 end
 
----Key modifier to append `<Leader>` to KeymapDef.lhs
+---Key modifier to prepend `<Leader>` to KeymapDef.lhs
 ---@param lhs string @KeymapDef.lhs
 ---@return string
 function Keymap.modifier.leader(lhs)
