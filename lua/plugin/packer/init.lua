@@ -22,6 +22,7 @@ local plugins = {
   -- require("plugin.autopairs"), -- FIXME: glitch on <CR>
   require("plugin.pears"), -- work best with treesitter
   require("plugin.telescope"),
+  require("plugin.dressing"),
   require("plugin.gitsigns"),
   require("plugin.outline"),
   require("plugin.neoscroll"),
