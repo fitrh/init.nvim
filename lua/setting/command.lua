@@ -1,7 +1,9 @@
 local command = require("lib.command")
 
 -- dir helper
-command.add("MakeDir", require("helper.dir").mk)
+command.add("MakeDir", function()
+  require("helper.dir").mk()
+end)
 
 -- tmux helper
 command.group({
@@ -38,7 +40,11 @@ command.group({
 command.group({
   prefix = "ZenToggle",
   cmds = {
-    { cmd = require("helper.zen").toggle },
+    {
+      cmd = function()
+        require("helper.zen").toggle()
+      end,
+    },
     {
       name = "Full",
       cmd = function()
