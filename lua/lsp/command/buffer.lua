@@ -2,7 +2,7 @@ local M = {}
 
 function M.attach(client)
   local capable = client.resolved_capabilities
-  local command = require("lib.command")
+  local command = require("sugar.command")
   local lsp = vim.lsp.buf
 
   if capable.document_formatting then

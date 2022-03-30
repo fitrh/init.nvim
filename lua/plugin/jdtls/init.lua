@@ -1,8 +1,8 @@
 return {
   "mfussenegger/nvim-jdtls",
   config = function()
-    local command = require("lib.command")
-    local augroup = require("lib.augroup")
+    local command = require("sugar.command")
+    local augroup = require("sugar.augroup")
     local config = require("plugin.jdtls.config")
 
     command.add("JdtStart", config)

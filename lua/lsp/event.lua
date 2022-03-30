@@ -1,6 +1,6 @@
 local M = {}
 
-local augroup = require("lib.augroup")
+local augroup = require("sugar.augroup")
 
 function M.attach(client, bufnr)
   local capable_of = client.resolved_capabilities

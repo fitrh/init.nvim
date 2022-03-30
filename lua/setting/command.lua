@@ -1,4 +1,4 @@
-local command = require("lib.command")
+local command = require("sugar.command")
 
 -- dir helper
 command.add("MakeDir", function()

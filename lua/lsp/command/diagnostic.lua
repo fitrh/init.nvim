@@ -9,7 +9,7 @@ local scope = { cursor = "cursor", line = "line" }
 function M.attach()
   local api = vim.diagnostic
 
-  require("lib.command").group({
+  require("sugar.command").group({
     prefix = "Diagnostic",
     buf = true,
     cmds = {

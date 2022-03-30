@@ -5,7 +5,7 @@ function M.attach(client)
     return nil
   end
 
-  require("lib.command").group({
+  require("sugar.command").group({
     prefix = "Codelens",
     buf = true,
     cmds = {

@@ -1,5 +1,5 @@
 local palette = require("plugin.themes.palette")
-local hi = require("lib.highlight")
+local hi = require("sugar.highlight")
 local condition = require("plugin.lualine.component.util.condition")
 
 return {

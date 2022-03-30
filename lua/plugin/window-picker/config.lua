@@ -1,5 +1,5 @@
 local window = require("window-picker")
-local hi = require("lib.highlight")
+local hi = require("sugar.highlight")
 local config = {}
 
 config.exclude = { Trouble = true }

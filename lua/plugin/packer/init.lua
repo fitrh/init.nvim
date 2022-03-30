@@ -44,7 +44,7 @@ local config = require("plugin.packer.config")
 packer.init(config.init)
 packer.startup(config.use(plugins))
 
-local augroup = require("lib.augroup")
+local augroup = require("sugar.augroup")
 augroup("OnPackerEvent", {
   "User PackerCompileDone",
   callback = function()

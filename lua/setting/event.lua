@@ -1,4 +1,4 @@
-local augroup = require("lib.augroup")
+local augroup = require("sugar.augroup")
 local dir = require("helper.dir")
 
 augroup("TrimAndMakeDir", {

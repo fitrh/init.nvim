@@ -1,7 +1,7 @@
 local M = {}
 
 function M.attach()
-  require("lib.command").group({
+  require("sugar.command").group({
     prefix = "Jdt",
     buf = true,
     cmds = {

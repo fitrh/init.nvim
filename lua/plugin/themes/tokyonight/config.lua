@@ -17,7 +17,7 @@ g.tokyonight_sidebars = config.sidebars
 vim.cmd("colorscheme tokyonight")
 
 local c = require("tokyonight.colors").setup(config)
-local hi = require("lib.highlight")
+local hi = require("sugar.highlight")
 
 local hlgroups = {
   CursorLineNr = { fg = c.blue },

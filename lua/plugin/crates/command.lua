@@ -1,6 +1,6 @@
 local crates = require("crates")
 
-require("lib.command").group({
+require("sugar.command").group({
   prefix = "Crates",
   cmds = {
     { name = "Refresh", cmd = crates.update },

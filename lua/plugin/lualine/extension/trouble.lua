@@ -1,4 +1,4 @@
-local hl = require("lib.highlight")
+local hl = require("sugar.highlight")
 local color = { fg = hl.fg("DiagnosticWarn"), gui = "BOLD" }
 local mod = require("plugin.lualine.component.util.mod")
 local component = require("plugin.lualine.component")
