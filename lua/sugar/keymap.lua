@@ -37,19 +37,9 @@ end
 ---@param keymap KeymapDef
 ---@param opts KeymapArgs
 local function set(keymap, opts)
-  local modes = ""
-
-  if type(keymap.mode) == "table" and next(keymap.mode) then
-    modes = {}
-    for _, mode in pairs(keymap.mode) do
-      if mode.enable then
-        table.insert(modes, mode.code)
-      end
-    end
-  end
-
+  keymap.mode = next(keymap.mode) and keymap.mode or ""
   keymap.opts = keymap.opts or opts or {}
-  vim.keymap.set(modes, keymap.lhs, keymap.rhs, keymap.opts)
+  vim.keymap.set(keymap.mode, keymap.lhs, keymap.rhs, keymap.opts)
 end
 
 ---Bind @keymaps using `vim.keymap.set` API
@@ -97,11 +87,10 @@ end
 
 ---Set @map.mode[@mode]
 ---@param mode string
----@param code string
 ---@param map KeymapDef
 ---@return KeymapDef
-local function mapmode(mode, code, map)
-  map.mode[mode] = { enable = true, code = code }
+local function mapmode(mode, map)
+  table.insert(map.mode, mode)
   return map
 end
 
@@ -109,63 +98,63 @@ end
 ---@param map KeymapDef
 ---@return KeymapDef definition
 function Keymap.mode.normal(map)
-  return mapmode("normal", "n", map)
+  return mapmode("n", map)
 end
 
 ---Assign insert mode(`i`) to @map
 ---@param map KeymapDef
 ---@return KeymapDef definition
 function Keymap.mode.insert(map)
-  return mapmode("insert", "i", map)
+  return mapmode("i", map)
 end
 
 ---Assign visual-select mode(`v`) to @map
 ---@param map KeymapDef
 ---@return KeymapDef definition
 function Keymap.mode.vselect(map)
-  return mapmode("visual-select", "v", map)
+  return mapmode("v", map)
 end
 
 ---Assign select mode(`s`) to @map
 ---@param map KeymapDef
 ---@return KeymapDef definition
 function Keymap.mode.select(map)
-  return mapmode("select", "s", map)
+  return mapmode("s", map)
 end
 
 ---Assign visual mode(`x`) to @map
 ---@param map KeymapDef
 ---@return KeymapDef definition
 function Keymap.mode.visual(map)
-  return mapmode("visual", "x", map)
+  return mapmode("x", map)
 end
 
 ---Assign operator-pending mode(`o`) to @map
 ---@param map KeymapDef
 ---@return KeymapDef definition
 function Keymap.mode.opending(map)
-  return mapmode("operator-pending", "o", map)
+  return mapmode("o", map)
 end
 
 ---Assign command-line mode(`c`) to @map
 ---@param map KeymapDef
 ---@return KeymapDef definition
 function Keymap.mode.cmd(map)
-  return mapmode("command-line", "c", map)
+  return mapmode("c", map)
 end
 
 ---Assign insert-commandline mode(`!`) to @map
 ---@param map KeymapDef
 ---@return KeymapDef definition
 function Keymap.mode.icmd(map)
-  return mapmode("insert-commandline", "!", map)
+  return mapmode("!", map)
 end
 
 ---Assign terminal mode(`t`) to @map
 ---@param map KeymapDef
 ---@return KeymapDef definition
 function Keymap.mode.terminal(map)
-  return mapmode("terminal", "t", map)
+  return mapmode("t", map)
 end
 
 return Keymap
