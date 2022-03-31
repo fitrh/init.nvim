@@ -1,13 +1,15 @@
 local dressing = require("dressing")
 local config = {}
+local pumblend = vim.api.nvim_get_option("pumblend")
 
 config.input = {
+  insert_only = false,
   anchor = "NW",
-  winblend = vim.api.nvim_get_option("pumblend"),
+  winblend = pumblend,
 }
 
 config.select = {
-  winblend = vim.api.nvim_get_option("pumblend"),
+  winblend = pumblend,
   format_item_override = {
     codeaction = function(action_tuple)
       local title = action_tuple[2].title:gsub("\r\n", "\\r\\n")
