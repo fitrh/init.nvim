@@ -8,7 +8,7 @@ local keymap = {
   lsp = require("lsp.attach.with_keymap"),
   diagnostic = require("lsp.attach.with_diagnostic_keymap"),
 }
-local ui = { diagnostic = require("lsp.ui.diagnostic") }
+local diagnostic = require("lsp.diagnostic")
 
 return function(client, bufnr)
   if client.resolved_capabilities.code_lens then
@@ -21,5 +21,5 @@ return function(client, bufnr)
   keymap.lsp.attach(client, bufnr)
   keymap.diagnostic.attach(bufnr)
   event.attach(client, bufnr)
-  ui.diagnostic.attach()
+  diagnostic.attach()
 end
