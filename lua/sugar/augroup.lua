@@ -31,6 +31,7 @@ return function(group, autocmds)
 
   group = api.augroup(group, {})
 
+  -- if there is only one autocommand
   if autocmds.callback or autocmds.command then
     local opts = { group = group }
     opts = pick(opts, autocmds, { "callback", "command" })
