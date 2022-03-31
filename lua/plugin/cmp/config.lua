@@ -3,6 +3,11 @@ local cmp = require("cmp")
 local snippet = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
 
+local const = {
+  BORDER_CHAR = require("const.BORDER_CHAR"),
+  LSP_KIND = require("const.LSP_KIND"),
+}
+
 local config = {
   preselect = cmp.PreselectMode.None,
   mapping = require("plugin.cmp.keymap").setup(cmp, snippet),
@@ -16,7 +21,7 @@ config.snippet = {
 }
 
 config.documentation = {
-  border = require("helper.border").rounded,
+  border = const.BORDER_CHAR.ROUNDED,
   maxwidth = 80,
   maxheight = 12,
 }
@@ -24,7 +29,7 @@ config.documentation = {
 local formatting = {}
 formatting.fields = { "kind", "abbr", "menu" }
 formatting.format = function(entry, vim_item)
-  vim_item.kind = require("lsp.ui.completion").kind()[vim_item.kind]
+  vim_item.kind = const.LSP_KIND[vim_item.kind].icon
 
   local menu = ({
     nvim_lsp = "LSP",

@@ -19,7 +19,7 @@ end
 ---@param alignment? StripAlignment @default "left"
 ---@return table component
 function M.strip(alignment)
-  local char = require("helper.sign").line.THIN[alignment or "left"]
+  local char = require("const.LINE_CHAR").THIN[alignment or "left"]
   return {
     function()
       return char

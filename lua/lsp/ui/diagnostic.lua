@@ -1,7 +1,7 @@
 local M = {}
 
 function M.attach(args)
-  local sign = require("helper.sign").diagnostic
+  local sign = require("const.DIAGNOSTIC_SIGN")
   local opts = args or {}
   local diagnostics = {
     Error = opts.e or sign.ERROR,

@@ -1,5 +1,5 @@
 local outline = require("symbols-outline")
-local kind = require("lsp.ui.completion").kind({ icon = "default" })
+local kind = require("const.LSP_KIND")
 
 outline.setup({
   highlight_hovered_item = true,
@@ -19,19 +19,19 @@ outline.setup({
   },
   lsp_blacklist = {},
   symbols = {
-    File = { icon = kind.File, hl = "TSURI" },
-    Module = { icon = kind.Module, hl = "TSNamespace" },
+    File = { icon = kind.File.icon, hl = "TSURI" },
+    Module = { icon = kind.Module.icon, hl = "TSNamespace" },
     Namespace = { icon = "", hl = "TSNamespace" },
     Package = { icon = "", hl = "TSNamespace" },
-    Class = { icon = kind.Class, hl = "TSType" },
-    Method = { icon = kind.Method, hl = "TSMethod" },
-    Property = { icon = kind.Property, hl = "TSMethod" },
-    Field = { icon = kind.Field, hl = "TSField" },
-    Constructor = { icon = kind.Constructor, hl = "TSConstructor" },
-    Enum = { icon = kind.Constructor, hl = "TSType" },
-    Interface = { icon = kind.Interface, hl = "TSType" },
-    Function = { icon = kind.Function, hl = "TSFunction" },
-    Variable = { icon = kind.Variable, hl = "TSConstant" },
+    Class = { icon = kind.Class.icon, hl = "TSType" },
+    Method = { icon = kind.Method.icon, hl = "TSMethod" },
+    Property = { icon = kind.Property.icon, hl = "TSMethod" },
+    Field = { icon = kind.Field.icon, hl = "TSField" },
+    Constructor = { icon = kind.Constructor.icon, hl = "TSConstructor" },
+    Enum = { icon = kind.Enum.icon, hl = "TSType" },
+    Interface = { icon = kind.Interface.icon, hl = "TSType" },
+    Function = { icon = kind.Function.icon, hl = "TSFunction" },
+    Variable = { icon = kind.Variable.icon, hl = "TSConstant" },
     Constant = { icon = "ﲀ", hl = "TSConstant" },
     String = { icon = "", hl = "TSString" },
     Number = { icon = "", hl = "TSNumber" },
@@ -40,11 +40,11 @@ outline.setup({
     Object = { icon = "⦿", hl = "TSType" },
     Key = { icon = "", hl = "TSType" },
     Null = { icon = "ﳠ", hl = "TSType" },
-    EnumMember = { icon = kind.EnumMember, hl = "TSField" },
-    Struct = { icon = kind.Struct, hl = "TSType" },
-    Event = { icon = kind.Event, hl = "TSType" },
-    Operator = { icon = kind.Operator, hl = "TSOperator" },
-    TypeParameter = { icon = kind.TypeParameter, hl = "TSParameter" },
+    EnumMember = { icon = kind.EnumMember.icon, hl = "TSField" },
+    Struct = { icon = kind.Struct.icon, hl = "TSType" },
+    Event = { icon = kind.Event.icon, hl = "TSType" },
+    Operator = { icon = kind.Operator.icon, hl = "TSOperator" },
+    TypeParameter = { icon = kind.TypeParameter.icon, hl = "TSParameter" },
   },
 })
 

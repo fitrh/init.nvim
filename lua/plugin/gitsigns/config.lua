@@ -1,13 +1,13 @@
 local gitsigns = require("gitsigns")
-local sign = require("helper.sign")
+local sign = require("const.LINE_CHAR")
 
 gitsigns.setup({
   signs = {
-    add = { text = sign.line.SHADE.light },
-    change = { text = sign.line.SHADE.light },
-    delete = { text = sign.line.SHADE.light },
-    topdelete = { text = sign.line.SHADE.light },
-    changedelete = { text = sign.line.SHADE.light },
+    add = { text = sign.SHADE.light },
+    change = { text = sign.SHADE.light },
+    delete = { text = sign.SHADE.light },
+    topdelete = { text = sign.SHADE.light },
+    changedelete = { text = sign.SHADE.light },
   },
   on_attach = function(bufnr)
     require("plugin.gitsigns.keymap").attach(gitsigns, bufnr)
