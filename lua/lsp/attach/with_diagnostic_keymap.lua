@@ -24,11 +24,11 @@ function DiagnosticKeymap.attach(bufnr)
       api.open_float(opts(scope.line))
     end)),
 
-    n(map("[d", function()
+    n(map("]d", function()
       api.goto_next({ float = opts(scope.cursor) })
     end)),
 
-    n(map("]d", function()
+    n(map("[d", function()
       api.goto_prev({ float = opts(scope.cursor) })
     end)),
 
