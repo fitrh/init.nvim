@@ -2,6 +2,7 @@ local crates = require("crates")
 
 require("sugar.command").group({
   prefix = "Crates",
+  buf = true,
   cmds = {
     { name = "Refresh", cmd = crates.update },
     { name = "Toggle", cmd = crates.toggle },
