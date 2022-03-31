@@ -9,7 +9,7 @@ set.completeopt:append({ "menuone", "noinsert" })
 set.conceallevel = 2 -- hide concealed text unless it has a custom replacement
 set.confirm = true -- raise a dialogue asking if you wish to save changed files
 set.cursorline = true -- highlight current line
-set.equalalways = true -- avoid resizing the main window when open a split
+set.equalalways = false -- avoid resizing the main window when open a split
 set.expandtab = true -- by default, always use space!
 set.fillchars = {
   horiz = "━",
