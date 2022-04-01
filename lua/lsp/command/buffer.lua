@@ -1,6 +1,6 @@
 local M = {}
 
-function M.attach(client)
+function M.attach(client, bufnr)
   local capable = client.resolved_capabilities
   local command = require("sugar.command")
   local lsp = vim.lsp.buf
@@ -11,7 +11,7 @@ function M.attach(client)
     command.group({
       prefix = "LspFormat",
       opts = { nargs = "?" },
-      buf = true,
+      buf = bufnr,
       cmds = {
         { cmd = lsp.formatting },
         {
@@ -33,49 +33,57 @@ function M.attach(client)
   if capable.rename then
     command.add("LspRename", function()
       lsp.rename()
-    end, { buf = true })
+    end, { buf = bufnr })
   end
 
   if capable.signature_help then
-    command.add("LspSignatureHelp", lsp.signature_help, { buf = true })
+    command.add("LspSignatureHelp", lsp.signature_help, { buf = bufnr })
   end
 
   if capable.code_action then
-    command.add("LspCodeAction", lsp.code_action, { buf = true })
+    command.add("LspCodeAction", lsp.code_action, { buf = bufnr })
   end
 
   if capable.hover then
-    command.add("LspHover", lsp.hover, { buf = true })
+    command.add("LspHover", lsp.hover, { buf = bufnr })
   end
 
   if capable.declaration then
-    command.add("LspGoToDeclaration", lsp.declaration, { buf = true })
+    command.add("LspGoToDeclaration", lsp.declaration, { buf = bufnr })
   end
 
   if capable.goto_definition then
-    command.add("LspGoToDefinition", lsp.definition, { buf = true })
+    command.add("LspGoToDefinition", lsp.definition, { buf = bufnr })
   end
 
   if capable.type_definition then
-    command.add("LspGoToTypeDefinition", lsp.type_definition, { buf = true })
+    command.add("LspGoToTypeDefinition", lsp.type_definition, { buf = bufnr })
   end
 
   if capable.implementation then
-    command.add("LspListImplementation", lsp.implementation, { buf = true })
+    command.add("LspListImplementation", lsp.implementation, { buf = bufnr })
   end
 
   if capable.find_references then
-    command.add("LspListReferences", lsp.references, { buf = true })
+    command.add("LspListReferences", lsp.references, { buf = bufnr })
   end
 
   if capable.document_symbol then
-    command.add("LspListSymbols", lsp.document_symbol, { buf = true })
+    command.add("LspListSymbols", lsp.document_symbol, { buf = bufnr })
+  end
+
+  if capable.workspace_symbol then
+    command.add(
+      "LspListWorkspaceSymbols",
+      lsp.workspace_symbol,
+      { buf = bufnr }
+    )
   end
 
   if capable.document_highlight then
     command.group({
       prefix = "LspDocument",
-      buf = true,
+      buf = bufnr,
       cmds = {
         { name = "Highlight", cmd = lsp.document_highlight },
         { name = "ClearRefs", cmd = lsp.clear_references },
@@ -86,7 +94,7 @@ function M.attach(client)
   if capable.call_hierarchy then
     command.group({
       prefix = "LspList",
-      buf = true,
+      buf = bufnr,
       cmds = {
         {
           name = "Icoming",

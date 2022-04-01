@@ -6,12 +6,12 @@ end
 
 local scope = { cursor = "cursor", line = "line" }
 
-function M.attach()
+function M.attach(bufnr)
   local api = vim.diagnostic
 
   require("sugar.command").group({
     prefix = "Diagnostic",
-    buf = true,
+    buf = bufnr,
     cmds = {
       {
         name = "ShowInLine",
