@@ -85,8 +85,8 @@ keymap.bind({
   n(map("J", "mzJ`z")),
 
   -- easy select-all
-  n(map("<C-a>", "ggVG", { silent = true })),
-  i(map("<C-a>", "<Esc>ggVG", { silent = true })),
+  n(map("gA", "ggVG", { silent = true })),
+  v(map("gA", "ggoG", { silent = true })),
 
   -- tab page
   n(map(leader("t"), ex("tabnew"))),
