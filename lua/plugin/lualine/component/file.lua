@@ -1,4 +1,5 @@
 local fmt = require("plugin.lualine.component.util.fmt")
+local condition = require("plugin.lualine.component.util.condition")
 
 return {
   type = {
@@ -32,6 +33,7 @@ return {
       return ("%%%sl,%%-%sc"):format(length, width)
     end,
     icon = "ﰙ",
+    cond = condition.not_empty_ft,
   },
 
   lines = {
@@ -39,6 +41,7 @@ return {
       return vim.api.nvim_buf_line_count(0)
     end,
     icon = "",
+    cond = condition.not_empty_ft,
     padding = 0,
   },
 }
