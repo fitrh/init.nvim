@@ -54,7 +54,8 @@ config.sections.lualine_c = {
 }
 config.sections.lualine_x = {
   align.right(git.diff),
-  git.branch,
+  align.right(git.branch),
+  mod(spacer(), { cond = util.condition.not_empty_buf }),
   align.right(file.location),
 }
 config.sections.lualine_z = { align.right(file.lines), strip.R }
