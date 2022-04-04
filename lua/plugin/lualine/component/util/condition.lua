@@ -23,4 +23,11 @@ function Condition.not_empty_ft()
   return vim.api.nvim_buf_get_option(0, "filetype") ~= ""
 end
 
+---Wrapping `not_empty_ft()` and add a condition to determine
+---if the buffer has more than one line
+---@return boolean
+function Condition.not_empty_buf()
+  return Condition.not_empty_ft() and vim.api.nvim_buf_line_count(0) > 1
+end
+
 return Condition

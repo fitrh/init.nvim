@@ -33,7 +33,7 @@ return {
       return ("%%%sl,%%-%sc"):format(length, width)
     end,
     icon = "ﰙ",
-    cond = condition.not_empty_ft,
+    cond = condition.not_empty_buf,
   },
 
   lines = {
@@ -41,7 +41,7 @@ return {
       return vim.api.nvim_buf_line_count(0)
     end,
     icon = "",
-    cond = condition.not_empty_ft,
+    cond = condition.not_empty_buf,
     padding = 0,
   },
 }
