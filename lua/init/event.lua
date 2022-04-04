@@ -1,10 +1,13 @@
 local augroup = require("sugar.augroup")
-local dir = require("helper.dir")
 
 augroup("TrimAndMakeDir", {
   "BufWritePre",
   { command = [[:%s/\s\+$//e]] },
-  { callback = dir.mk },
+  {
+    callback = function()
+      require("helper.dir").mk()
+    end,
+  },
 })
 
 augroup("HighlightOnYank", { "TextYankPost", callback = vim.highlight.on_yank })
