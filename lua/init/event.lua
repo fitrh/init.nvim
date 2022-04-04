@@ -11,13 +11,13 @@ augroup("HighlightOnYank", { "TextYankPost", callback = vim.highlight.on_yank })
 
 augroup("CursorlineOnCurrentWindow", {
   {
-    { "BufEnter", "FocusGained", "WinEnter" },
+    { "BufEnter", "WinEnter" },
     callback = function()
       vim.api.nvim_win_set_option(0, "cursorline", true)
     end,
   },
   {
-    { "BufLeave", "FocusLost", "WinLeave" },
+    { "BufLeave", "WinLeave" },
     callback = function()
       vim.api.nvim_win_set_option(0, "cursorline", false)
     end,
