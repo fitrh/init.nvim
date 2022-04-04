@@ -1,7 +1,6 @@
 local Condition = {}
 
 ---Determine whether the minimum required space is available
----
 ---@param min number #minimum space required
 ---@return boolean
 function Condition.space_at_least(min)
@@ -16,6 +15,12 @@ end
 ---@return boolean
 function Condition.not_modified()
   return not vim.api.nvim_buf_get_option(0, "modified")
+end
+
+---Determine whether the current buffer sets the `filetype` option
+---@return boolean
+function Condition.not_empty_ft()
+  return vim.api.nvim_buf_get_option(0, "filetype") ~= ""
 end
 
 return Condition
