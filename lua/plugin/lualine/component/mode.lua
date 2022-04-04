@@ -1,5 +1,3 @@
-local fmt = require("plugin.lualine.component.util.fmt")
-
 local modes = {
   n = "NRM",
   nt = "N·T",
@@ -24,6 +22,7 @@ return {
   end,
   color = { gui = "BOLD" },
   fmt = function(str)
+    local fmt = require("plugin.lualine.component.util.fmt")
     return fmt.show_on(80, str, string.sub(str, 1, 1))
   end,
 }
