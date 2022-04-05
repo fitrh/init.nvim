@@ -10,6 +10,9 @@ keymap.bind({
   n(map("[p", b.find_files)),
   n(map("[f", b.live_grep)),
   n(map(leader("e"), fb.file_browser)),
+  n(map(leader("k"), function()
+    fb.file_browser(t.get_dropdown({ previewer = false, files = false }))
+  end)),
   n(map(leader("ft"), b.filetypes)),
   n(map(leader("lo"), b.treesitter)),
   n(map(leader("gf"), b.git_files)),
