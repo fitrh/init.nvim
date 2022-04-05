@@ -77,9 +77,9 @@ keymap.bind({
   map("<CR>", [[v:hlsearch ? "<Cmd>nohlsearch<CR>" : "<CR>"]], { expr = true }),
 
   -- moves line
-  n(map("<C-j>", ex("m .+1"))),
+  n(map("<C-j>", ":m .+1<CR>==")),
   v(map("J", ":m '>+1<CR>gv=gv", { silent = true })),
-  n(map("<C-k>", ex("m .-2"))),
+  n(map("<C-k>", ":m .-2<CR>==")),
   v(map("K", ":m '<-2<CR>gv=gv", { silent = true })),
   -- join lines without changing cursor position
   n(map("J", "mzJ`z")),
