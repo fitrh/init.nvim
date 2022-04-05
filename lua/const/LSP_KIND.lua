@@ -7,7 +7,7 @@ return {
   Variable = { text = "Variable", icon = "" },
   Class = { text = "Class", icon = "" },
   Interface = { text = "Interface", icon = "ﰮ" },
-  Module = { text = "Module", icon = { "" } },
+  Module = { text = "Module", icon = "" },
   Property = { text = "Property", icon = "襁" },
   Unit = { text = "Unit", icon = "塞" },
   Value = { text = "Value", icon = "" },
