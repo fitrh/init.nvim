@@ -1,16 +1,42 @@
 local keymap = require("sugar.keymap")
-local map, ex = keymap.map, keymap.modifier.ex
+local map = keymap.map
+local hop = require("hop")
+local dir = require("hop.hint").HintDirection
+local opts = {
+  AC = { direction = dir.AFTER_CURSOR },
+  BC = { direction = dir.BEFORE_CURSOR },
+  AC_LINE = { direction = dir.AFTER_CURSOR, current_line_only = true },
+  BC_LINE = { direction = dir.BEFORE_CURSOR, current_line_only = true },
+}
 
 keymap.bind({
-  map("f/", ex("HopPattern")),
-  map("ff", ex("HopWord")),
-  map("fw", ex("HopWordMW")),
-  map("fj", ex("HopChar2AC")),
-  map("fk", ex("HopChar2BC")),
-  map("fl", ex("HopChar2CurrentLineAC")),
-  map("fh", ex("HopChar2CurrentLineBC")),
-  map("Fj", ex("HopWordAC")),
-  map("Fk", ex("HopWordBC")),
-  map("Fl", ex("HopWordCurrentLineAC")),
-  map("Fh", ex("HopWordCurrentLineBC")),
+  map("f/", hop.hint_patterns),
+  map("ff", hop.hint_words),
+  map("fw", function()
+    hop.hint_patterns({ multi_windows = true })
+  end),
+  map("fj", function()
+    hop.hint_char2(opts.AC)
+  end),
+  map("fk", function()
+    hop.hint_char2(opts.BC)
+  end),
+  map("fl", function()
+    hop.hint_char2(opts.AC_LINE)
+  end),
+  map("fh", function()
+    hop.hint_char2(opts.BC_LINE)
+  end),
+  map("Fj", function()
+    hop.hint_words(opts.AC)
+  end),
+  map("Fk", function()
+    hop.hint_words(opts.BC)
+  end),
+  map("Fl", function()
+    hop.hint_words(opts.AC_LINE)
+  end),
+  map("Fh", function()
+    hop.hint_words(opts.BC_LINE)
+  end),
 })
