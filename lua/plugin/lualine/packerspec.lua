@@ -6,6 +6,6 @@ return {
   config = function()
     require("plugin.lualine.config")
   end,
-  event = { "BufReadPost", "BufNewFile" },
+  event = "ColorScheme",
   module = "lualine",
 }
