@@ -20,7 +20,9 @@ local c = require("tokyonight.colors").setup(config)
 local u = require("tokyonight.util")
 local hi = require("sugar.highlight")
 
-local hlgroups = {
+---@type HighlightDef[]
+local highlights = {
+  -- Builtin
   CursorLineNr = { fg = c.blue },
   ColorColumn = { bg = c.bg_statusline },
   TabLineSel = { fg = c.fg, bg = c.bg },
@@ -31,6 +33,8 @@ local hlgroups = {
   DiagnosticSignInfo = { fg = c.info },
   DiagnosticSignHint = { fg = c.hint },
   VertSplit = { fg = hi.bg("StatusLine"), cterm = { reverse = true } },
+
+  -- Plugin
   GitSignsAddNr = { fg = c.gitSigns.add },
   GitSignsChangeNr = { fg = c.gitSigns.change },
   GitSignsDeleteNr = { fg = c.gitSigns.delete },
@@ -64,6 +68,6 @@ local hlgroups = {
   StatusLineRO = { inherit = "StatusLine", fg = c.red1 },
 }
 
-for group, hl in pairs(hlgroups) do
-  hi.set(group, hl)
+for group, def in pairs(highlights) do
+  hi.set(group, def)
 end
