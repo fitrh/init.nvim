@@ -8,6 +8,13 @@ local directions = {
   l = "R",
 }
 
+---@alias NvimTmuxDirection
+---| '"h"' #Left
+---| '"j"' #Down
+---| '"k"' #Up
+---| '"l"' #Right
+
+---@param direction NvimTmuxDirection
 function M.move(direction)
   local current_win = api.nvim_get_current_win()
 
