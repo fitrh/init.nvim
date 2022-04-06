@@ -3,5 +3,5 @@ return {
   config = function()
     require("plugin.modes.config")
   end,
-  event = { "BufReadPre", "BufNewFile" },
+  event = "ColorScheme",
 }
