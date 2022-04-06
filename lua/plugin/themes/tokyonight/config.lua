@@ -17,6 +17,7 @@ g.tokyonight_sidebars = config.sidebars
 vim.cmd("colorscheme tokyonight")
 
 local c = require("tokyonight.colors").setup(config)
+local u = require("tokyonight.util")
 local hi = require("sugar.highlight")
 
 local hlgroups = {
@@ -34,6 +35,33 @@ local hlgroups = {
   GitSignsChangeNr = { fg = c.gitSigns.change },
   GitSignsDeleteNr = { fg = c.gitSigns.delete },
   GitSignsDeleteLn = { fg = c.gitSigns.delete },
+  ModesCopy = { bg = hi.bg("IncSearch") },
+  ModesDelete = { bg = c.red },
+  ModesInsert = { bg = c.fg_dark },
+  ModesVisual = { bg = c.purple },
+  NotifyTRACEBorder = { link = "DiagnosticHint" },
+  NotifyTRACETitle = { link = "NotifyTRACEBorder" },
+  NotifyTRACEIcon = { link = "NotifyTRACEBorder" },
+  NotifyDEBUGBorder = { fg = c.fg_dark },
+  NotifyDEBUGTitle = { link = "NotifyDEBUGBorder" },
+  NotifyDEBUGIcon = { link = "NotifyDEBUGBorder" },
+  NotifyINFOBorder = { link = "DiagnosticInfo" },
+  NotifyINFOTitle = { link = "NotifyINFOBorder" },
+  NotifyINFOIcon = { link = "NotifyINFOBorder" },
+  NotifyWARNBorder = { link = "DiagnosticWarn" },
+  NotifyWARNTitle = { link = "NotifyWARNBorder" },
+  NotifyWARNIcon = { link = "NotifyWARNBorder" },
+  NotifyERRORBorder = { link = "DiagnosticError" },
+  NotifyERRORTitle = { link = "NotifyERRORBorder" },
+  NotifyERRORIcon = { link = "NotifyERRORBorder" },
+  StatusLineGitBranch = { inherit = "StatusLine", fg = c.purple },
+  StatusLineModified = { inherit = "StatusLine", fg = u.brighten(c.red, 0.2) },
+  StatusLineMNormal = { fg = c.blue },
+  StatusLineMInsert = { fg = c.green },
+  StatusLineMVisual = { fg = c.purple },
+  StatusLineMReplace = { fg = c.red },
+  StatusLineMCommand = { fg = c.yellow },
+  StatusLineRO = { inherit = "StatusLine", fg = c.red1 },
 }
 
 for group, hl in pairs(hlgroups) do
