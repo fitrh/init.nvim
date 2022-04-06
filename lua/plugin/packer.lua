@@ -26,7 +26,7 @@ local plugins = {
   require("plugin.gitsigns.packerspec"),
   require("plugin.outline.packerspec"),
   require("plugin.neoscroll.packerspec"),
-  require("plugin.themes.packerspec"),
+  require("plugin.colorscheme.packerspec"),
   require("plugin.devicons.packerspec"),
   require("plugin.lualine.packerspec"),
   require("plugin.colorizer.packerspec"),
