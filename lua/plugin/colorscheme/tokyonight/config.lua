@@ -20,7 +20,7 @@ local c = require("tokyonight.colors").setup(config)
 local u = require("tokyonight.util")
 local hi = require("sugar.highlight")
 
----@type HighlightDef[]
+---@type table<string, HighlightDef>
 local highlights = {
   -- Builtin
   CursorLineNr = { fg = c.blue },

@@ -7,7 +7,7 @@ require("github-theme").setup(config)
 local p = require("github-theme.palette").get_palette(config.theme_style)
 local hi = require("sugar.highlight")
 
----@type HighlightDef[]
+---@type table<string, HighlightDef>
 local highlights = {
   -- Builtin
   ColorColumn = { bg = p.bg2 },
