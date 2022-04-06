@@ -23,7 +23,7 @@ local icon = {
 local config = {}
 
 config.options = {
-  theme = require("plugin.themes.lualine"),
+  theme = require("plugin.lualine.theme"),
   component_separators = "",
   section_separators = "",
   disabled_filetypes = { "Outline" },
