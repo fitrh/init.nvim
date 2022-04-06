@@ -1,4 +1,5 @@
 local telescope = require("telescope")
+local layout = require("telescope.actions.layout")
 
 telescope.setup({
   defaults = {
@@ -11,6 +12,14 @@ telescope.setup({
     prompt_prefix = "   ",
     selection_caret = " ",
     dynamic_preview_title = true,
+    mappings = {
+      n = {
+        ["<M-p>"] = layout.toggle_preview,
+      },
+      i = {
+        ["<M-p>"] = layout.toggle_preview,
+      },
+    },
     file_ignore_patterns = {
       "%.class",
       "%.gif",
