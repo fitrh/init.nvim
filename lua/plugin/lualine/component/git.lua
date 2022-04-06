@@ -1,4 +1,3 @@
-local palette = require("plugin.themes.palette")
 local hi = require("sugar.highlight")
 local condition = require("plugin.lualine.component.util.condition")
 
@@ -32,6 +31,6 @@ return {
     cond = function()
       return condition.space_at_least(50)
     end,
-    color = { fg = palette.magenta.secondary, gui = "BOLD" },
+    color = { fg = hi.fg("StatusLineGitBranch", { "StatusLine" }) },
   },
 }
