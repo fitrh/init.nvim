@@ -59,6 +59,9 @@ keymap.bind({
   --- window
   -- easy next window jumping
   n(map("<M-Tab>", "<C-w>w")),
+  -- create new split window
+  n(map("<C-w>S", ex("new"))),
+  n(map("<C-w>V", ex("vnew"))),
   -- easy split
   n(map("Zh", ex("leftabove vsplit"))),
   n(map("Zj", ex("belowright split"))),
