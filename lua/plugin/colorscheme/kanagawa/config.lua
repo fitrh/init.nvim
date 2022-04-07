@@ -17,7 +17,7 @@ local highlights = {
   NormalFloat = { link = "Normal" },
   TabLine = { inherit = "StatusLine", fg = c.oldWhite },
   TabLineFill = { link = "TabLine" },
-  TabLineSel = { fg = c.fujiWhite, bg = c.sumInk1 },
+  TabLineSel = { fg = c.fujiWhite, bg = c.sumiInk1 },
   VertSplit = { fg = hi.bg("StatusLine") },
   WinSeparator = { link = "VertSplit" },
 
