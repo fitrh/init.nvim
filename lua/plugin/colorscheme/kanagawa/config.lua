@@ -13,6 +13,7 @@ local hi = require("sugar.highlight")
 local highlights = {
   -- Builtin
   FloatBorder = { link = "Normal" },
+  NonText = { inherit = "NonText", bold = false },
   NormalFloat = { link = "Normal" },
   TabLine = { inherit = "StatusLine", fg = c.oldWhite },
   TabLineFill = { link = "TabLine" },
