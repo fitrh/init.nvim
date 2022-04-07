@@ -22,6 +22,10 @@ local highlights = {
   WinSeparator = { link = "VertSplit" },
 
   -- Plugin
+  HopNextKey = { fg = c.peachRed, bold = true },
+  HopNextKey1 = { fg = c.springGreen, bold = true },
+  HopNextKey2 = { fg = c.waveBlue2 },
+  HopUnmatched = { fg = c.sumiInk4, special = c.sumiInk4 },
   ModesCopy = { bg = hi.bg("IncSearch") },
   ModesDelete = { bg = c.autumnRed },
   ModesInsert = { bg = c.fujiWhite },
