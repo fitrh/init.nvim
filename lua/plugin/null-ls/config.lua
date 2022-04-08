@@ -30,6 +30,7 @@ null_ls.setup({
       extra_args = { "--cppcheck-build-dir=.cppcheck" },
     }),
     diagnostics.eslint_d.with({ condition = condition.eslint }),
+    diagnostics.fish,
     diagnostics.flake8,
     diagnostics.golangci_lint,
     diagnostics.markdownlint,
