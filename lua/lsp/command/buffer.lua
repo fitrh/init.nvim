@@ -30,6 +30,14 @@ function M.attach(client, bufnr)
     })
   end
 
+  if capable.document_range_formatting then
+    command.add(
+      "LspFormatRange",
+      lsp.range_formatting,
+      { buf = bufnr, opts = { range = true } }
+    )
+  end
+
   if capable.rename then
     command.add("LspRename", function()
       lsp.rename()
