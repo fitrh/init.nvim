@@ -1,41 +1,41 @@
 local M = {}
 
-function M.attach()
+function M.attach(jdtls, bufnr)
   require("sugar.command").group({
     prefix = "Jdt",
-    buf = true,
+    buf = bufnr,
     cmds = {
-      { name = "OrganizeImports", cmd = require("jdtls").organize_imports },
-      { name = "ExtractVariable", cmd = require("jdtls").extract_variable },
+      { name = "OrganizeImports", cmd = jdtls.organize_imports },
+      { name = "ExtractVariable", cmd = jdtls.extract_variable },
       {
         name = "ExtractVariableRange",
         cmd = function()
-          require("jdtls").extract_variable(true)
+          jdtls.extract_variable(true)
         end,
       },
-      { name = "ExtractConstant", cmd = require("jdtls").extract_constant },
+      { name = "ExtractConstant", cmd = jdtls.extract_constant },
       {
         name = "ExtractConstantRange",
         cmd = function()
-          require("jdtls").extract_constant(true)
+          jdtls.extract_constant(true)
         end,
       },
       {
         name = "ExtractMethod",
         cmd = function()
-          require("jdtls").extract_method(true)
+          jdtls.extract_method(true)
         end,
       },
       {
         name = "TestClass",
         cmd = function()
-          require("jdtls").test_class(true)
+          jdtls.test_class(true)
         end,
       },
       {
         name = "TestNearestMethod",
         cmd = function()
-          require("jdtls").test_nearest_method(true)
+          jdtls.test_nearest_method(true)
         end,
       },
     },
