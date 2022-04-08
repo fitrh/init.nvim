@@ -17,12 +17,18 @@ local function pick(opts, spec, attr)
   return opts
 end
 
+---@class AuCmd
+---@field events string|table
+---@field pattern string|table
+---@field buffer boolean|number
+---@field callback function
+---@field command string
+
 ---Create autocommands group, wrapper of:
 --- - `nvim_create_augroup`
 --- - `nvim_create_autocmd`
----
 ---@param group string #Group name
----@param autocmds table #`autocmd` or list of `autocmd`
+---@param autocmds AuCmd|AuCmd[] #`autocmd` or list of `autocmd`
 return function(group, autocmds)
   local api = {
     augroup = vim.api.nvim_create_augroup,
