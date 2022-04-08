@@ -37,13 +37,7 @@ function LspKeymap.attach(client, bufnr)
         vim.cmd("update")
       end)
     end)),
-    document_range_formatting = v(map(leader("<CR>"), function()
-      lsp.range_formatting(
-        nil,
-        { vim.fn.line("v"), -1 },
-        { vim.fn.line("."), -1 }
-      )
-    end)),
+    document_range_formatting = v(map(leader("<CR>"), lsp.range_formatting)),
   }
 
   local keymaps = {}
