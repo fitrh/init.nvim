@@ -48,7 +48,9 @@ augroup("OnTerminalBuffer", {
   "TermOpen",
   {
     callback = function()
-      vim.api.nvim_buf_set_option(0, "filetype", "terminal")
+      if vim.api.nvim_buf_get_option(0, "filetype") == "" then
+        vim.api.nvim_buf_set_option(0, "filetype", "terminal")
+      end
     end,
   },
   { command = "startinsert" },
