@@ -5,7 +5,7 @@ local capabilities = require("lsp.capability")
 local Config = {}
 
 ---@class LspConfig
----@field cmd string|table
+---@field cmd string[]
 ---@field cmd_cwd string
 ---@field cmd_env table
 ---@field workspace_folder table
