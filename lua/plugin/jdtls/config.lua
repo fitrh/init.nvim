@@ -1,11 +1,3 @@
-local capabilities = require("lsp.capability")
-local jdtls = require("jdtls")
-local setup = require("jdtls.setup")
-
-local jdtls_capability = jdtls.extendedClientCapabilities
-capabilities.workspace.configuration = true
-jdtls_capability.resolveAdditionalTextEditsSupport = true
-
 local home = os.getenv("HOME")
 local env = {
   WORKSPACE = os.getenv("JAVA_WORKSPACE") or ("%s/java"):format(home),
@@ -49,11 +41,19 @@ local settings = {
   },
 }
 
+local capabilities = require("lsp.capability")
+local jdtls = require("jdtls")
+local setup = require("jdtls.setup")
+local bin = "jdtls"
+
+local jdtls_capability = jdtls.extendedClientCapabilities
+capabilities.workspace.configuration = true
+jdtls_capability.resolveAdditionalTextEditsSupport = true
+
 local config = {
   root_dir = setup.find_root(root_files),
-  cmd = { "jdtls", workspace },
+  cmd = { bin, workspace },
   capabilities = capabilities,
-  handlers = require("lsp.handler").default(),
   settings = settings,
   init_options = {
     extendedClientCapabilities = jdtls_capability,
@@ -64,7 +64,7 @@ local config = {
   on_attach = function(client, bufnr)
     require("lsp.attach").with.all(client, bufnr)
     setup.add_commands()
-    require("plugin.jdtls.command").attach()
+    require("plugin.jdtls.command").attach(jdtls, bufnr)
     require("plugin.jdtls.keymap").attach(jdtls, bufnr)
   end,
   flags = {
@@ -72,6 +72,7 @@ local config = {
     server_side_fuzzy_completion = true,
   },
 }
+config = require("lsp.config").with(bin, config)
 
 return function()
   jdtls.start_or_attach(config)
