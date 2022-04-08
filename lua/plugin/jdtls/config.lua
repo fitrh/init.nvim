@@ -75,5 +75,13 @@ local config = {
 config = require("lsp.config").with(bin, config)
 
 return function()
+  if not os.getenv("JAVA_HOME") or not os.getenv("JDTLS_HOME") then
+    return false
+  end
+
+  if not config then
+    return false
+  end
+
   jdtls.start_or_attach(config)
 end
