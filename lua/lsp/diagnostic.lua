@@ -1,3 +1,18 @@
+local function with_diagnostic_code(result)
+  local msg = result.message
+  local ends_w_dot = string.sub(msg, -1, -1) == "."
+
+  if ends_w_dot then
+    msg = string.sub(msg, 1, -2)
+  end
+
+  if result.code then
+    return ("%s [%s]"):format(msg, result.code)
+  end
+
+  return msg
+end
+
 local M = {}
 
 function M.attach(args)
@@ -23,6 +38,7 @@ function M.attach(args)
     virtual_text = false,
     float = {
       source = "always",
+      format = with_diagnostic_code,
     },
     severity_sort = true,
   })
