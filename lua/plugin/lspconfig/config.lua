@@ -23,7 +23,7 @@ local servers = {
   texlab = require("lsp.config.texlab"),
   tsserver = require("lsp.config.tsserver"),
   yamlls = setup.with("yaml-language-server"),
-  vls = setup.with("vls"),
+  vls = setup.with("vls", { cmd = { "vls" } }),
 }
 
 for server, config in pairs(servers) do

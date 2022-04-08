@@ -36,6 +36,7 @@ local M = {
     "typescript",
     "typescriptreact",
     "vb",
+    "vlang",
     "vue",
     "xml",
     "xsd",
