@@ -85,7 +85,7 @@ end
 ---@field ctermbg number
 ---@field cterm table
 ---@field link boolean|string
----
+
 ---Parse HighlightDef into highlight definition map to be used by `nvim_set_hl`
 ---@param hl HighlightDef
 ---@return table def highlight definition map, see `:h nvim_get_hl_by_name`
