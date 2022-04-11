@@ -7,12 +7,13 @@ require("github-theme").setup(config)
 local p = require("github-theme.palette").get_palette(config.theme_style)
 local hi = require("sugar.highlight")
 
+hi.set("StatusLine", { bg = p.bg2, fg = p.fg })
+
 ---@type table<string, HighlightDef>
 local highlights = {
   -- Builtin
   ColorColumn = { bg = p.bg2 },
   CursorLineNr = { fg = p.bright_blue },
-  StatusLine = { bg = p.bg2, fg = p.fg },
   TabLineSel = { fg = p.fg, bg = p.bg, bold = true },
   TabLine = { inherit = "StatusLine", fg = p.fg_dark },
   TabLineFill = { link = "TabLine" },
