@@ -38,7 +38,7 @@ formatting.format = function(entry, vim_item)
     buffer = "Buffer",
     path = "Path",
   })[entry.source.name]
-  vim_item.menu = menu and ("━━ %s"):format(menu) or menu
+  vim_item.menu = menu and ("━ %s"):format(menu) or menu
 
   return vim_item
 end
