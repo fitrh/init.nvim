@@ -30,9 +30,9 @@ function Command.add(name, cmd, opts)
 
   if buf then
     local nr = type(buf) == "number" and buf or 0
-    vim.api.nvim_buf_add_user_command(nr, name, cmd, options)
+    vim.api.nvim_buf_create_user_command(nr, name, cmd, options)
   else
-    vim.api.nvim_add_user_command(name, cmd, options)
+    vim.api.nvim_create_user_command(name, cmd, options)
   end
 end
 
