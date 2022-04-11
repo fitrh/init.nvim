@@ -26,17 +26,9 @@ local highlights = {
   TabLineSel = { fg = c.fg, bg = c.bg },
   TabLine = { fg = c.fg_gutter, bg = c.bg_statusline },
   TabLineFill = { fg = c.fg_gutter, bg = c.bg_statusline },
-  DiagnosticSignError = { fg = c.error },
-  DiagnosticSignWarn = { fg = c.warning },
-  DiagnosticSignInfo = { fg = c.info },
-  DiagnosticSignHint = { fg = c.hint },
   VertSplit = { fg = hi.bg("StatusLine"), cterm = { reverse = true } },
 
   -- Plugin
-  GitSignsAddNr = { fg = c.gitSigns.add },
-  GitSignsChangeNr = { fg = c.gitSigns.change },
-  GitSignsDeleteNr = { fg = c.gitSigns.delete },
-  GitSignsDeleteLn = { fg = c.gitSigns.delete },
   ModesCopy = { bg = hi.bg("IncSearch") },
   ModesDelete = { bg = c.red },
   ModesInsert = { bg = c.fg_dark },
