@@ -85,10 +85,8 @@ end
 ---@field ctermbg number
 ---@field cterm table
 ---@field link boolean|string
----@field dest string
 ---
 ---Parse HighlightDef into highlight definition map to be used by `nvim_set_hl`
----
 ---@param hl HighlightDef
 ---@return table def highlight definition map, see `:h nvim_get_hl_by_name`
 local function parse(hl)
@@ -100,16 +98,13 @@ local function parse(hl)
     end
   end
 
-  if hl.link then
-    if type(hl.link) == "string" then
-      def.link = hl.link
-      return def
-    end
-
-    if hl.dest and type(hl.dest) == "string" then
-      def.link = hl.dest
-      return def
-    end
+  if
+    hl.link
+    and type(hl.link) == "string"
+    and pcall(api.get, hl.link, true)
+  then
+    def.link = hl.link
+    return def
   end
 
   local attributes = {
