@@ -10,7 +10,12 @@ augroup("TrimAndMakeDir", {
   },
 })
 
-augroup("HighlightOnYank", { "TextYankPost", callback = vim.highlight.on_yank })
+augroup("HighlightOnYank", {
+  "TextYankPost",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 
 augroup("CursorlineOnCurrentWindow", {
   {
