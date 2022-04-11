@@ -5,7 +5,13 @@ function Condition.cppcheck(util)
 end
 
 function Condition.eslint(util)
-  local rc = { ".eslintrc.js", ".eslintrc.yml", ".eslintrc.json" }
+  local rc = {
+    ".eslintrc.js",
+    ".eslintrc.cjs",
+    ".eslintrc.yaml",
+    ".eslintrc.yml",
+    ".eslintrc.json",
+  }
   return util.root_has_file(rc)
 end
 
