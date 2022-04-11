@@ -20,7 +20,7 @@ local hi = require("sugar.highlight")
 
 ---@type table<string, HighlightDef>
 local highlights = {
-  -- Builtin
+  -- highlight-default
   CursorLineNr = { fg = c.blue },
   ColorColumn = { bg = c.bg_statusline },
   TabLineSel = { fg = c.fg, bg = c.bg },
@@ -28,7 +28,7 @@ local highlights = {
   TabLineFill = { fg = c.fg_gutter, bg = c.bg_statusline },
   VertSplit = { fg = hi.bg("StatusLine"), cterm = { reverse = true } },
 
-  -- Plugin
+  -- plugin
   ModesCopy = { bg = hi.bg("IncSearch") },
   ModesDelete = { bg = c.red },
   ModesInsert = { bg = c.fg_dark },
@@ -50,12 +50,12 @@ local highlights = {
   NotifyERRORIcon = { link = "NotifyERRORBorder" },
   StatusLineGitBranch = { inherit = "StatusLine", fg = c.purple },
   StatusLineModified = { inherit = "StatusLine", fg = u.brighten(c.red, 0.2) },
+  StatusLineRO = { inherit = "StatusLine", fg = c.red1 },
   StatusLineMNormal = { fg = c.blue },
   StatusLineMInsert = { fg = c.green },
   StatusLineMVisual = { fg = c.purple },
   StatusLineMReplace = { fg = c.red },
   StatusLineMCommand = { fg = c.yellow },
-  StatusLineRO = { inherit = "StatusLine", fg = c.red1 },
 }
 
 for group, def in pairs(highlights) do

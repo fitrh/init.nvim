@@ -11,7 +11,7 @@ local hi = require("sugar.highlight")
 
 ---@type table<string, HighlightDef>
 local highlights = {
-  -- Builtin
+  -- highlight-default
   FloatBorder = { link = "Normal" },
   NonText = { inherit = "NonText", bold = false },
   NormalFloat = { link = "Normal" },
@@ -21,7 +21,7 @@ local highlights = {
   VertSplit = { fg = hi.bg("StatusLine") },
   WinSeparator = { link = "VertSplit" },
 
-  -- Plugin
+  -- plugin
   HopNextKey = { fg = c.peachRed, bold = true },
   HopNextKey1 = { fg = c.springGreen, bold = true },
   HopNextKey2 = { fg = c.waveBlue2 },
@@ -47,12 +47,12 @@ local highlights = {
   NotifyERRORIcon = { link = "NotifyERRORBorder" },
   StatusLineGitBranch = { inherit = "StatusLine", fg = c.springViolet1 },
   StatusLineModified = { inherit = "StatusLine", fg = c.autumnRed },
+  StatusLineRO = { inherit = "StatusLine", fg = c.samuraiRed },
   StatusLineMNormal = { fg = c.crystalBlue },
   StatusLineMInsert = { fg = c.autumnGreen },
   StatusLineMVisual = { fg = c.oniViolet },
   StatusLineMReplace = { fg = c.autumnRed },
   StatusLineMCommand = { fg = c.boatYellow2 },
-  StatusLineRO = { inherit = "StatusLine", fg = c.samuraiRed },
 }
 
 for group, def in pairs(highlights) do

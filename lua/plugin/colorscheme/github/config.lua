@@ -11,7 +11,7 @@ hi.set("StatusLine", { bg = p.bg2, fg = p.fg })
 
 ---@type table<string, HighlightDef>
 local highlights = {
-  -- Builtin
+  -- highlight-default
   ColorColumn = { bg = p.bg2 },
   CursorLineNr = { fg = p.bright_blue },
   TabLineSel = { fg = p.fg, bg = p.bg, bold = true },
@@ -19,7 +19,7 @@ local highlights = {
   TabLineFill = { link = "TabLine" },
   VertSplit = { fg = p.bg2 },
 
-  -- Plugin
+  -- plugin
   FidgetTask = { inherit = "Comment", italic = false },
   ModesCopy = { bg = p.warning },
   ModesDelete = { bg = p.red },
@@ -27,12 +27,12 @@ local highlights = {
   ModesVisual = { bg = p.bright_magenta },
   StatusLineGitBranch = { inherit = "StatusLine", fg = p.magenta },
   StatusLineModified = { inherit = "StatusLine", fg = p.bright_red },
+  StatusLineRO = { inherit = "StatusLine", fg = p.red },
   StatusLineMNormal = { fg = p.bright_blue },
   StatusLineMInsert = { fg = p.green },
   StatusLineMVisual = { fg = p.bright_magenta },
   StatusLineMReplace = { fg = p.red },
   StatusLineMCommand = { fg = p.yellow },
-  StatusLineRO = { inherit = "StatusLine", fg = p.red },
 }
 
 for group, def in pairs(highlights) do
