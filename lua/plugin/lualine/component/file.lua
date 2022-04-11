@@ -9,6 +9,16 @@ return {
 
   icon = {
     "filetype",
+    fmt = function(str)
+      if
+        vim.api.nvim_buf_get_option(0, "filetype") == ""
+        and vim.api.nvim_buf_get_name(0) ~= ""
+      then
+        return "default"
+      end
+
+      return str
+    end,
     colored = true,
     icon_only = true,
   },
