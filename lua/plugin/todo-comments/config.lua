@@ -17,7 +17,7 @@ todo.setup({
   colors = {
     hack = { "Function" },
     link = { "FloatBorder" },
-    success = { "healthSuccess" },
+    success = { "healthSuccess", "DiagnosticInfo" },
     default = { "Identifier" },
   },
 })
