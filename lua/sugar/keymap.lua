@@ -47,6 +47,10 @@ end
 ---@param keymaps KeymapDef|KeymapDef[]
 ---@param opts KeymapArgs @global opts
 function Keymap.bind(keymaps, opts)
+  if not next(keymaps) then
+    return
+  end
+
   if type(next(keymaps)) == "number" then
     for _, keymap in ipairs(keymaps) do
       set(keymap, opts)
