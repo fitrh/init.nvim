@@ -18,6 +18,7 @@ local servers = {
   pyright = require("lsp.config.pyright"),
   stylelint_lsp = require("lsp.config.stylelint"),
   sumneko_lua = require("lsp.config.sumneko_lua"),
+  svelte = require("lsp.config.svelte"),
   tailwindcss = require("lsp.config.tailwindcss"),
   taplo = setup.with("taplo"),
   texlab = require("lsp.config.texlab"),
