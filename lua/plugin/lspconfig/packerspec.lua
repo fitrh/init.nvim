@@ -30,6 +30,7 @@ local M = {
     "slim",
     "sss",
     "stylus",
+    "svelte",
     "svg",
     "tex",
     "toml",
