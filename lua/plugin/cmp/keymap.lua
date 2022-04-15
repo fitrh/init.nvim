@@ -1,14 +1,5 @@
 local M = {}
 
-local function has_words_before()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0
-    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
-        :sub(col, col)
-        :match("%s")
-      == nil
-end
-
 function M.setup(cmp, snippet)
   local map = cmp.mapping
 
@@ -21,16 +12,14 @@ function M.setup(cmp, snippet)
     ["<C-e>"] = map.abort(),
     ["<C-y>"] = map.confirm({ select = true }),
     ["<CR>"] = map.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
-    ["<Tab>"] = map(function(fallback)
+    ["<C-j>"] = map(function(fallback)
       if snippet.expand_or_jumpable() then
         snippet.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
       else
         fallback()
       end
     end, { "i", "s" }),
-    ["<S-Tab>"] = map(function(fallback)
+    ["<C-k>"] = map(function(fallback)
       if snippet.jumpable(-1) then
         snippet.jump(-1)
       else
