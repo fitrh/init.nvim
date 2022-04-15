@@ -10,16 +10,18 @@ local function has_words_before()
 end
 
 function M.setup(cmp, snippet)
+  local map = cmp.mapping
+
   return {
-    ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-    ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.abort(),
-    ["<C-y>"] = cmp.mapping.confirm({ select = true }),
-    ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ["<C-p>"] = map(map.select_prev_item(), { "i", "c" }),
+    ["<C-n>"] = map(map.select_next_item(), { "i", "c" }),
+    ["<C-b>"] = map.scroll_docs(-4),
+    ["<C-f>"] = map.scroll_docs(4),
+    ["<C-Space>"] = map.complete(),
+    ["<C-e>"] = map.abort(),
+    ["<C-y>"] = map.confirm({ select = true }),
+    ["<CR>"] = map.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
+    ["<Tab>"] = map(function(fallback)
       if snippet.expand_or_jumpable() then
         snippet.expand_or_jump()
       elseif has_words_before() then
@@ -27,20 +29,14 @@ function M.setup(cmp, snippet)
       else
         fallback()
       end
-    end, {
-      "i",
-      "s",
-    }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    end, { "i", "s" }),
+    ["<S-Tab>"] = map(function(fallback)
       if snippet.jumpable(-1) then
         snippet.jump(-1)
       else
         fallback()
       end
-    end, {
-      "i",
-      "s",
-    }),
+    end, { "i", "s" }),
   }
 end
 
