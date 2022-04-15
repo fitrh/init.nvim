@@ -20,10 +20,12 @@ config.snippet = {
   end,
 }
 
-config.documentation = {
-  border = const.BORDER_CHAR.ROUNDED,
-  maxwidth = 80,
-  maxheight = 12,
+config.window = {
+  documentation = {
+    border = const.BORDER_CHAR.ROUNDED,
+    max_width = 80,
+    max_height = 12,
+  },
 }
 
 local formatting = {}
