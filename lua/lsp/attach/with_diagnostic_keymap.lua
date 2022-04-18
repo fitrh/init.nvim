@@ -33,6 +33,7 @@ function DiagnosticKeymap.attach(bufnr)
     end)),
 
     n(map(leader("ll"), api.setloclist)),
+    n(map(leader("lL"), api.setqflist)),
   }
 
   keymap.bind(keymaps, { buffer = true })

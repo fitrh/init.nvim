@@ -38,6 +38,7 @@ function M.attach(bufnr)
         end,
       },
       { name = "LocList", cmd = api.setloclist },
+      { name = "QfList", cmd = api.setqflist },
     },
   })
 end
