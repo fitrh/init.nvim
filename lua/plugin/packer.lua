@@ -49,6 +49,10 @@ local augroup = require("sugar.augroup")
 augroup("OnPackerEvent", {
   "User PackerCompileDone",
   callback = function()
-    vim.notify("Compiled", "success", { title = "packer.nvim" })
+    vim.notify(
+      (" Compiled at %s"):format(os.date()),
+      vim.log.levels.INFO,
+      { title = "packer.nvim" }
+    )
   end,
 })
