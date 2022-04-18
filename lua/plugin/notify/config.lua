@@ -10,6 +10,7 @@ config.max_height = function()
   return math.floor(math.max(vim.api.nvim_get_option("lines") / 3, 4))
 end
 
+config.level = "TRACE"
 config.timeout = 3000
 config.icons = {
   ERROR = sign.ERROR,
