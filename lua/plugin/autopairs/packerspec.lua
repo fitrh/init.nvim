@@ -3,5 +3,5 @@ return {
   config = function()
     require("plugin.autopairs.config")
   end,
-  event = "InsertCharPre",
+  event = "InsertEnter",
 }
