@@ -20,8 +20,7 @@ local plugins = {
   require("plugin.kommentary.packerspec"),
   require("plugin.hop.packerspec"),
   require("plugin.cmp.packerspec"),
-  -- require("plugin.autopairs.packerspec"), -- FIXME: glitch on <CR>
-  require("plugin.pears.packerspec"), -- work best with treesitter
+  require("plugin.autopairs.packerspec"),
   require("plugin.telescope.packerspec"),
   require("plugin.dressing.packerspec"),
   require("plugin.gitsigns.packerspec"),
