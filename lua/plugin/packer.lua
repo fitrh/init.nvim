@@ -2,6 +2,7 @@ vim.cmd("packadd packer.nvim")
 
 local plugins = {
   { "nvim-lua/plenary.nvim", module = "plenary" },
+  { "gpanders/editorconfig.nvim", event = { "BufReadPost", "BufNewFile" } },
   { "ray-x/lsp_signature.nvim", module = "lsp_signature" },
   { "yamatsum/nvim-nonicons", module = "nvim-nonicons" },
   { "jose-elias-alvarez/nvim-lsp-ts-utils", module = "nvim-lsp-ts-utils" },
