@@ -86,19 +86,9 @@ config.pickers = {
     previewer = false,
   },
   git_status = {
-    layout_config = { width = 0.5 },
+    layout_config = { horizontal = { preview_width = 0.55 } },
     prompt_prefix = "   ",
     path_display = { "smart" },
-    previewer = false,
-    git_icons = {
-      added = "",
-      changed = "",
-      copied = "",
-      deleted = "",
-      renamed = "",
-      unmerged = "",
-      untracked = "",
-    },
   },
   lsp_code_actions = {
     prompt_prefix = " ﯧ  ",
