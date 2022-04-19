@@ -108,6 +108,9 @@ config.pickers = {
     prompt_prefix = "   ",
     theme = "ivy",
   },
+  lsp_references = { theme = "dropdown" },
+  lsp_implementations = { theme = "dropdown" },
+  lsp_definitions = { theme = "dropdown" },
   diagnostics = {
     layout_config = { height = 0.5 },
     prompt_prefix = "   ",
