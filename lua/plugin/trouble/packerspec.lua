@@ -11,6 +11,7 @@ return {
     "TroubleToggle",
     "TroubleRefresh",
   },
+  ft = { "qf" },
   keys = {
     { "n", "[xx" },
     { "n", "[xd" },
@@ -22,5 +23,6 @@ return {
     { "n", "[xt" },
     { "n", "[xR" },
   },
+  event = { "DiagnosticChanged" },
   module = "trouble",
 }
