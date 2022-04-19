@@ -9,6 +9,7 @@ local plugins = {
   { "b0o/schemastore.nvim", ft = { "json", "jsonc" } },
   require("plugin.filetype.packerspec"),
   require("plugin.treesitter.packerspec"),
+  require("plugin.treesitter-context.packerspec"),
   require("plugin.lspconfig.packerspec"),
   require("plugin.clangdext.packerspec"),
   require("plugin.jdtls.packerspec"),
