@@ -53,6 +53,10 @@ conf.setup({
     },
   },
   indent = { enable = true },
+
+  -- extra modules
+
+  -- nvim-treesitter-refactor
   refactor = {
     smart_rename = {
       enable = true,
@@ -68,6 +72,28 @@ conf.setup({
         list_definitions_toc = "gO",
         goto_next_usage = "]u",
         goto_previous_usage = "[u",
+      },
+    },
+  },
+
+  -- nvim-treesitter-textobjects
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["aB"] = "@block.outer",
+        ["iB"] = "@block.inner",
+        ["ic"] = "@conditional.inner",
+        ["ac"] = "@conditional.outer",
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["al"] = "@loop.outer",
+        ["il"] = "@loop.inner",
+        ["is"] = "@statement.inner",
+        ["as"] = "@statement.outer",
+        ["aC"] = "@class.outer",
+        ["iC"] = "@class.inner",
       },
     },
   },
