@@ -18,6 +18,9 @@ return {
   end,
   cmd = "Telescope",
   keys = {
+    "gb",
+    "gf",
+    "gF",
     "[",
     "]",
     "<Leader>k",

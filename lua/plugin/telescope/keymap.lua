@@ -6,9 +6,9 @@ local t = require("telescope.themes")
 local fb = require("telescope").extensions.file_browser
 
 keymap.bind({
-  n(map("[]", b.buffers)),
-  n(map("[p", b.find_files)),
-  n(map("[f", b.live_grep)),
+  n(map("gb", b.buffers)),
+  n(map("gf", b.find_files)),
+  n(map("gF", b.live_grep)),
   n(map(leader("e"), fb.file_browser)),
   n(map(leader("k"), function()
     fb.file_browser(t.get_dropdown({ previewer = false, files = false }))
