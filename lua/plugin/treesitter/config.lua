@@ -97,4 +97,10 @@ conf.setup({
       },
     },
   },
+
+  -- nvim-ts-context-commentstring
+  context_commentstring = { enable = true },
+
+  -- nvim-ts-autotag
+  autotag = { enable = true },
 })
