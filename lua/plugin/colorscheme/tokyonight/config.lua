@@ -56,6 +56,7 @@ local highlights = {
   StatusLineMVisual = { fg = c.purple },
   StatusLineMReplace = { fg = c.red },
   StatusLineMCommand = { fg = c.yellow },
+  TreesitterContext = { link = "LspReferenceText" },
 }
 
 for group, def in pairs(highlights) do
