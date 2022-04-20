@@ -1,15 +1,23 @@
 return {
-  "karb94/neoscroll.nvim",
+  "declancm/cinnamon.nvim",
   config = function()
-    require("plugin.neoscroll.config")
+    require("plugin.cinnamon.config")
   end,
   keys = {
+    "n",
+    "N",
+    "gg",
+    "GG",
+    "}",
+    "{",
     "<C-u>",
     "<C-d>",
     "<C-f>",
     "<C-b>",
     "<C-y>",
     "<C-e>",
+    "<C-o>",
+    "<C-i>",
     "zt",
     "zz",
     "zb",
