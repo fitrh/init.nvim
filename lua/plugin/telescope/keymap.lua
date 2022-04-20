@@ -11,7 +11,9 @@ keymap.bind({
   n(map("gF", b.live_grep)),
   n(map(leader("e"), fb.file_browser)),
   n(map(leader("k"), function()
-    fb.file_browser(t.get_dropdown({ previewer = false, files = false }))
+    fb.file_browser(
+      t.get_dropdown({ previewer = false, files = false, display_stat = false })
+    )
   end)),
   n(map(leader("ft"), b.filetypes)),
   n(map(leader("lo"), b.treesitter)),
