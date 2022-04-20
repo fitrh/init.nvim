@@ -25,6 +25,7 @@ local plugins = {
   require("plugin.dressing.packerspec"),
   require("plugin.gitsigns.packerspec"),
   require("plugin.cinnamon.packerspec"),
+  require("plugin.numb.packerspec"),
   require("plugin.colorscheme.packerspec"),
   require("plugin.devicons.packerspec"),
   require("plugin.lualine.packerspec"),
