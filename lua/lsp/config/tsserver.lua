@@ -17,18 +17,6 @@ return setup.with("typescript-language-server", {
     },
   },
   on_attach = function(client, bufnr)
-    local attach = require("lsp.attach")
-    local ok, util = pcall(require, "nvim-lsp-ts-utils")
-    attach.without.formatting(client)
-    attach.with.all(client, bufnr)
-    if ok then
-      util.setup({
-        eslint_enable_diagnostics = true,
-        eslint_bin = "eslint_d",
-        enable_formatting = true,
-        formatter = "prettierd",
-      })
-      util.setup_client(client)
-    end
+    require("lsp.attach").with.all(client, bufnr)
   end,
 })

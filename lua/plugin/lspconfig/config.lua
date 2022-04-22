@@ -22,7 +22,6 @@ local servers = {
   tailwindcss = require("lsp.config.tailwindcss"),
   taplo = setup.with("taplo"),
   texlab = require("lsp.config.texlab"),
-  tsserver = require("lsp.config.tsserver"),
   yamlls = setup.with("yaml-language-server"),
   vls = setup.with("vls", { cmd = { "vls" } }),
 }
