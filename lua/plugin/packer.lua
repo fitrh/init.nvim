@@ -30,6 +30,7 @@ local plugins = {
   require("plugin.colorscheme.packerspec"),
   require("plugin.devicons.packerspec"),
   require("plugin.lualine.packerspec"),
+  require("plugin.incline.packerspec"),
   require("plugin.colorizer.packerspec"),
   require("plugin.modes.packerspec"),
   require("plugin.todo-comments.packerspec"),
