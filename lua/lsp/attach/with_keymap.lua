@@ -18,19 +18,19 @@ function LspKeymap.attach(client, bufnr)
         { vim.fn.line("."), -1 }
       )
     end)),
-    code_lens = n(map("gc", vim.lsp.codelens.run)),
-    rename = n(map("[rn", lsp.rename)),
+    code_lens = n(map("gcl", vim.lsp.codelens.run)),
+    rename = n(map("grn", lsp.rename)),
     signature_help = n(map("[s", lsp.signature_help)),
     hover = n(map("K", lsp.hover)),
-    declaration = n(map("]D", lsp.declaration)),
-    goto_definition = n(map("[D", lsp.definition)),
-    type_definition = n(map("[T", lsp.type_definition)),
-    implementation = n(map("]ll", lsp.implementation)),
-    find_references = n(map("[ll", lsp.references)),
-    document_symbol = n(map("]ls", lsp.document_symbol)),
-    workspace_symbol = n(map("]lS", lsp.workspace_symbol)),
-    call_hierarchy = n(map("]li", lsp.incoming_calls)),
-    call_Hierarchy = n(map("]lo", lsp.outgoing_calls)),
+    declaration = n(map("god", lsp.declaration)),
+    goto_definition = n(map("goD", lsp.definition)),
+    type_definition = n(map("got", lsp.type_definition)),
+    implementation = n(map("gli", lsp.implementation)),
+    find_references = n(map("glr", lsp.references)),
+    document_symbol = n(map("gls", lsp.document_symbol)),
+    workspace_symbol = n(map("glS", lsp.workspace_symbol)),
+    call_hierarchy = n(map("gci", lsp.incoming_calls)),
+    call_Hierarchy = n(map("gco", lsp.outgoing_calls)),
     document_formatting = n(map(leader("<CR>"), function()
       lsp.formatting_seq_sync(nil, 5000)
       vim.schedule(function()
