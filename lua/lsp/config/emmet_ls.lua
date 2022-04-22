@@ -18,6 +18,7 @@ return setup.with(bin, {
     "slim",
     "sss",
     "stylus",
+    "svelte",
     "typescript",
     "typescriptreact",
     "xml",
