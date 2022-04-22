@@ -35,4 +35,7 @@ require("flutter-tools").setup(config)
 local ok, telescope = pcall(require, "telescope")
 if ok and telescope.load_extension then
   telescope.load_extension("flutter")
+  vim.keymap.set({ "n" }, "<Leader>fl", function()
+    telescope.extensions.flutter.commands()
+  end, { silent = true, buffer = true })
 end
