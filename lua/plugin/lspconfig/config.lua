@@ -7,6 +7,7 @@ local servers = {
   denols = require("lsp.config.denols"),
   emmet_ls = require("lsp.config.emmet_ls"), -- FIX: Integration with auto pairs plugin
   gopls = require("lsp.config.gopls"),
+  gradle_ls = setup.with("gradle-language-server"),
   hls = require("lsp.config.hls"),
   html = setup.with("vscode-html-language-server"),
   intelephense = setup.with("intelephense"),

@@ -9,6 +9,7 @@ local M = {
     "css",
     "go",
     "gomod",
+    "groovy",
     "haml",
     "handlebars",
     "haskell",
