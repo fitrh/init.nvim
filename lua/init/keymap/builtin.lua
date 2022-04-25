@@ -27,6 +27,7 @@ keymap.bind({
   i(map("<M-q>", "<Esc>")),
   c(map("<M-q>", "<Esc>")),
   t(map("<M-q>", [[<C-\><C-n>]])),
+  t(map("<Esc>", [[<C-\><C-n>]])),
 
   -- easy save & quit
   map(leader("<Space>"), ex("update")),
