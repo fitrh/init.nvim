@@ -3,6 +3,8 @@ local f = null_ls.builtins.formatting
 local d = null_ls.builtins.diagnostics
 local a = null_ls.builtins.code_actions
 local c = require("plugin.null-ls.condition")
+
+local js = { "svelte" }
 local plaintext = { "gitcommit", "markdown", "txt" }
 
 null_ls.setup({
@@ -19,7 +21,7 @@ null_ls.setup({
     f.fish_indent,
     f.isort.with({ extra_args = { "--profile", "black" } }),
     f.markdownlint,
-    f.prettierd.with({ condition = c.prettier }),
+    f.prettierd.with({ condition = c.prettier, extra_filetypes = js }),
     f.shellharden,
     f.shfmt.with({ extra_args = { "-i", "4", "-ci" } }),
     f.stylua.with({ condition = c.stylua }),
@@ -29,7 +31,7 @@ null_ls.setup({
       condition = c.cppcheck,
       extra_args = { "--cppcheck-build-dir=.cppcheck" },
     }),
-    d.eslint_d.with({ condition = c.eslint }),
+    d.eslint_d.with({ condition = c.eslint, extra_filetypes = js }),
     d.fish,
     d.flake8,
     d.golangci_lint,
@@ -43,7 +45,7 @@ null_ls.setup({
     d.write_good.with({ filetypes = plaintext }),
 
     -- code action
-    a.eslint_d.with({ condition = c.eslint }),
+    a.eslint_d.with({ condition = c.eslint, extra_filetypes = js }),
     a.gitrebase,
     a.shellcheck,
   },
