@@ -25,9 +25,7 @@ config.lsp.settings = {
 }
 config.lsp.color = {
   enabled = true,
-  foreground = false,
-  background = true,
-  virtual_text = false,
+  virtual_text_str = config.closing_tags.prefix,
 }
 
 require("flutter-tools").setup(config)
