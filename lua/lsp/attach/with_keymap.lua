@@ -10,14 +10,18 @@ function LspKeymap.attach(client, bufnr)
   local n, v = mode.normal, mode.vselect
 
   local available_keymaps = {
-    code_action = n(map("[a", lsp.code_action)),
-    code_Action = v(map("[a", function()
-      lsp.range_code_action(
-        nil,
-        { vim.fn.line("v"), -1 },
-        { vim.fn.line("."), -1 }
-      )
-    end)),
+    code_action = function()
+      return {
+        n(map("[a", lsp.code_action)),
+        v(map("[a", function()
+          lsp.range_code_action(
+            nil,
+            { vim.fn.line("v"), -1 },
+            { vim.fn.line("."), -1 }
+          )
+        end)),
+      }
+    end,
     code_lens = n(map("gcl", vim.lsp.codelens.run)),
     rename = n(map("grn", lsp.rename)),
     signature_help = n(map("[s", lsp.signature_help)),
@@ -29,8 +33,12 @@ function LspKeymap.attach(client, bufnr)
     find_references = n(map("glr", lsp.references)),
     document_symbol = n(map("gls", lsp.document_symbol)),
     workspace_symbol = n(map("glS", lsp.workspace_symbol)),
-    call_hierarchy = n(map("gci", lsp.incoming_calls)),
-    call_Hierarchy = n(map("gco", lsp.outgoing_calls)),
+    call_hierarchy = function()
+      return {
+        n(map("gci", lsp.incoming_calls)),
+        n(map("gco", lsp.outgoing_calls)),
+      }
+    end,
     document_formatting = n(map(leader("<CR>"), function()
       lsp.formatting_seq_sync(nil, 5000)
       vim.schedule(function()
@@ -42,8 +50,14 @@ function LspKeymap.attach(client, bufnr)
 
   local keymaps = {}
   for capability, keydef in pairs(available_keymaps) do
-    if capable[(capability):lower()] then
-      table.insert(keymaps, keydef)
+    if capable[capability] then
+      if type(keydef) == "function" then
+        for _, def in ipairs(keydef()) do
+          table.insert(keymaps, def)
+        end
+      else
+        table.insert(keymaps, keydef)
+      end
     end
   end
 
