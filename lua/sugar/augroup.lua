@@ -23,6 +23,9 @@ end
 ---@field buffer boolean|number
 ---@field callback function
 ---@field command string
+---@field desc string
+---@field once boolean @defaults to false
+---@field nested boolean @defaults to false
 
 ---Create autocommands group, wrapper of:
 --- - `nvim_create_augroup`
