@@ -11,7 +11,7 @@ hi.set("StatusLine", { bg = c.dark1, fg = c.light2 })
 ---@type table<string, HighlightDef>
 local highlights = {
   -- highlight-default
-  CursorLineNr = { bg = bg, fg = c.bright_yellow },
+  CursorLineNr = { fg = c.bright_yellow },
   DiagnosticSignInfo = { inherit = "DiagnosticSignInfo", bg = "NONE" },
   DiagnosticSignWarn = { inherit = "DiagnosticSignWarn", bg = "NONE" },
   DiagnosticSignHint = { inherit = "DiagnosticSignHint", bg = "NONE" },
@@ -20,7 +20,7 @@ local highlights = {
   DiffChange = { inherit = "DiffChange", reverse = false },
   DiffDelete = { inherit = "DiffDelete", reverse = false },
   DiffText = { inherit = "DiffText", reverse = false },
-  LineNr = { bg = bg, fg = c.light3 },
+  LineNr = { fg = c.light3 },
   NormalFloat = { link = "Normal" },
   SignColumn = { link = "LineNr" },
   VertSplit = { fg = hi.bg("StatusLine"), cterm = { reverse = true } },
