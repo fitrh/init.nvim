@@ -16,7 +16,7 @@ require("crates").setup({
   popup = {
     autofocus = true, -- focus the versions popup when opening it
     border = "rounded", -- same as nvim_open_win config.border
-    version_date = true, -- display when a version was released
+    show_version_date = true, -- display when a version was released
     max_height = 10,
     min_width = 20,
     text = {
@@ -25,7 +25,7 @@ require("crates").setup({
       prerelease = " 裂%s ",
       yanked = " 戀%s ",
       feature = "   %s ",
-      date = " %s ",
+      version_date = " %s ",
     },
     highlight = {
       title = "Title",
