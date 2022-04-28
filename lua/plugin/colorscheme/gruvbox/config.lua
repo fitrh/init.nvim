@@ -23,6 +23,7 @@ local highlights = {
   LineNr = { fg = c.light3 },
   NormalFloat = { link = "Normal" },
   SignColumn = { link = "LineNr" },
+  TabLineSel = { inherit = "TabLineSel", bg = bg },
   VertSplit = { fg = hi.bg("StatusLine"), cterm = { reverse = true } },
 
   -- health
