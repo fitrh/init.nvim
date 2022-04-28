@@ -27,7 +27,8 @@ local modes = {
 
 return {
   function()
-    return modes[vim.api.nvim_get_mode().mode]
+    local mode = vim.api.nvim_get_mode().mode
+    return modes[mode] or mode
   end,
   color = { gui = "BOLD" },
   fmt = function(str)
