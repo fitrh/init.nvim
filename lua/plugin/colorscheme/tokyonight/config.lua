@@ -28,6 +28,9 @@ local highlights = {
   TabLineFill = { fg = c.fg_gutter, bg = c.bg_statusline },
   VertSplit = { fg = hi.bg("StatusLine"), cterm = { reverse = true } },
 
+  -- treesitter
+  TSConstBuiltin = { fg = c.red },
+
   -- plugin
   ModesCopy = { bg = hi.bg("IncSearch") },
   ModesDelete = { bg = c.red },
