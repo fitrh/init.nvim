@@ -1,13 +1,16 @@
 require("incline").setup({
   window = {
-    placement = {
-      vertical = "bottom",
-    },
-    margin = {
-      horizontal = 0,
+    options = {
+      winblend = vim.api.nvim_get_option("pumblend"),
     },
   },
   hide = {
     focused_win = true,
+  },
+  highlight = {
+    groups = {
+      InclineNormal = "StatusLine",
+      InclineNormalNC = "StatusLineNC",
+    },
   },
 })
