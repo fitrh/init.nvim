@@ -1,16 +1,20 @@
-require("incline").setup({
-  window = {
-    options = {
-      winblend = vim.api.nvim_get_option("pumblend"),
-    },
+local config = {}
+
+config.window = {
+  options = {
+    winblend = vim.api.nvim_get_option("pumblend"),
   },
-  hide = {
-    focused_win = true,
+}
+
+config.hide = {
+  focused_win = true,
+}
+
+config.highlight = {
+  groups = {
+    InclineNormal = "StatusLine",
+    InclineNormalNC = "StatusLineNC",
   },
-  highlight = {
-    groups = {
-      InclineNormal = "StatusLine",
-      InclineNormalNC = "StatusLineNC",
-    },
-  },
-})
+}
+
+require("incline").setup(config)
