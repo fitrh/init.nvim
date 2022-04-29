@@ -90,14 +90,6 @@ config.pickers = {
     prompt_prefix = "   ",
     path_display = { "smart" },
   },
-  lsp_code_actions = {
-    prompt_prefix = " ﯧ  ",
-    theme = "cursor",
-  },
-  lsp_range_code_actions = {
-    prompt_prefix = " ﯧ  ",
-    theme = "cursor",
-  },
   lsp_document_symbols = {
     layout_config = { width = 0.50 },
     prompt_prefix = "   ",
