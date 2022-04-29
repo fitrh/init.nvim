@@ -21,5 +21,11 @@ return {
     "zt",
     "zz",
     "zb",
+    "ze",
+    "zs",
+    "zl",
+    "zL",
+    "zh",
+    "zH"
   },
 }
