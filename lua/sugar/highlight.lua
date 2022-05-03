@@ -185,4 +185,12 @@ function Highlight.link(dest, source)
   api.set(0, dest, { link = source })
 end
 
+---Set colorscheme
+---@param groups HighlightDef[]
+function Highlight.colorscheme(groups)
+  for _, group in ipairs(groups) do
+    Highlight.set(group[1], group)
+  end
+end
+
 return Highlight
