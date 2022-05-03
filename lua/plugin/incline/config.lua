@@ -62,11 +62,4 @@ config.hide = {
   focused_win = true,
 }
 
-config.highlight = {
-  groups = {
-    InclineNormal = "StatusLine",
-    InclineNormalNC = "StatusLineNC",
-  },
-}
-
 require("incline").setup(config)
