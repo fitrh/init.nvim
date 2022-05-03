@@ -26,7 +26,7 @@ return {
   name = {
     "filename",
     cond = function()
-      return vim.fn.expand("%:t") ~= ""
+      return vim.api.nvim_buf_get_name(0) ~= ""
     end,
     color = { gui = "BOLD" },
     fmt = function(str)
