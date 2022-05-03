@@ -33,6 +33,8 @@ local highlights = {
   LspSignatureActiveParameter = { fg = c.accent },
 
   -- plugin
+  InclineNormal = { link = "StatusLine" },
+  InclineNormalNC = { inherit = "StatusLine", fg = hi.fg("NonText") },
   ModesCopy = { bg = c.darkyellow },
   ModesDelete = { bg = c.red },
   ModesInsert = { bg = c.darkgreen },

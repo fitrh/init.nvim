@@ -21,6 +21,8 @@ local highlights = {
 
   -- plugin
   FidgetTask = { inherit = "Comment", italic = false },
+  InclineNormal = { link = "StatusLine" },
+  InclineNormalNC = { inherit = "StatusLine", fg = hi.fg("Comment") },
   ModesCopy = { bg = p.warning },
   ModesDelete = { bg = p.red },
   ModesInsert = { bg = p.fg_gutter },

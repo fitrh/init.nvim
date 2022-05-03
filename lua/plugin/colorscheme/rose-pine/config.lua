@@ -34,6 +34,8 @@ local highlights = {
   HopNextKey1 = { fg = c.gold, bold = true },
   HopNextKey2 = { fg = c.pine },
   HopUnmatched = { fg = c.muted, special = c.muted },
+  InclineNormal = { link = "StatusLine" },
+  InclineNormalNC = { inherit = "StatusLine", fg = hi.fg("NonText") },
   StatusLineGitBranch = { inherit = "StatusLine", fg = c.iris },
   StatusLineModified = { inherit = "StatusLine", fg = c.love },
   StatusLineRO = { inherit = "StatusLine", fg = c.love },

@@ -41,6 +41,8 @@ local highlights = {
   GitSignsDelete = { inherit = "GitSignsDelete", bg = "NONE" },
   GitSignsDeleteLn = { fg = hi.fg("DiffDelete"), reverse = true },
   GitSignsDeleteInline = { fg = c.faded_red, bold = true, reverse = true },
+  InclineNormal = { link = "StatusLine" },
+  InclineNormalNC = { inherit = "StatusLine", fg = hi.fg("Comment") },
   ModesCopy = { bg = hi.fg("IncSearch") },
   ModesDelete = { bg = c.bright_red },
   ModesInsert = { bg = c.bright_blue },

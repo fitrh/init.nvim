@@ -32,6 +32,8 @@ local highlights = {
   TSConstBuiltin = { fg = c.red },
 
   -- plugin
+  InclineNormal = { link = "StatusLine" },
+  InclineNormalNC = { link = "StatusLineNC" },
   ModesCopy = { bg = hi.bg("IncSearch") },
   ModesDelete = { bg = c.red },
   ModesInsert = { bg = c.fg_dark },
