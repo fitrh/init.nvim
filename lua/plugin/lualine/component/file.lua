@@ -23,6 +23,39 @@ return {
     icon_only = true,
   },
 
+  path = function(opts)
+    opts = opts or { trunc = false, start = nil, ends = nil }
+    return {
+      function()
+        local i = 1
+        local path = vim.fn.expand("%:h")
+        local path_split = vim.split(path, "/")
+
+        if opts.trunc then
+          local on = opts.trunc.on and opts.trunc.on or 2
+          i = #path_split > on and #path_split - (on - 1) or i
+        end
+
+        path = table.concat(path_split, " / ", i)
+
+        if i > 1 and opts.trunc.with then
+          path = ("%s%s"):format(opts.trunc.with, path)
+        end
+
+        if opts.ends then
+          path = ("%s%s"):format(path, opts.ends)
+        end
+
+        return path
+      end,
+      color = "StatusLinePath",
+      cond = function()
+        local path = vim.fn.expand("%:h")
+        return path ~= "" and path ~= "."
+      end,
+    }
+  end,
+
   name = {
     "filename",
     cond = function()
@@ -32,7 +65,7 @@ return {
     fmt = function(str)
       return fmt.show_on(80, str, "%t")
     end,
-    path = 1, -- relative path
+    path = 0, -- relative path
     file_status = false,
   },
 
