@@ -31,6 +31,9 @@ hi.colorscheme({
   -- lsp-highlight
   { "LspSignatureActiveParameter", fg = c.accent },
 
+  -- diagnostic
+  { "DiagnosticWarn", fg = c.yellow },
+
   -- plugin
   { "InclineNormal", link = "StatusLine" },
   { "InclineNormalNC", inherit = "StatusLine", fg = hi.fg("NonText") },
