@@ -37,6 +37,7 @@ hi.colorscheme({
   { "InclineNormalNC", inherit = "StatusLine", fg = hi.fg("NonText") },
   { "StatusLineGitBranch", inherit = "StatusLine", fg = c.iris },
   { "StatusLineModified", inherit = "StatusLine", fg = c.love },
+  { "StatusLinePath", inherit = "StatusLine", fg = hi.fg("Comment") },
   { "StatusLineRO", inherit = "StatusLine", fg = c.love },
   { "StatusLineMNormal", fg = c.rose },
   { "StatusLineMInsert", fg = c.foam },

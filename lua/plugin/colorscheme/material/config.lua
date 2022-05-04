@@ -55,6 +55,7 @@ hi.colorscheme({
   { "NotifyERRORIcon", link = "NotifyERRORBorder" },
   { "StatusLineGitBranch", inherit = "StatusLine", fg = c.purple },
   { "StatusLineModified", inherit = "StatusLine", fg = c.red },
+  { "StatusLinePath", inherit = "StatusLine", fg = hi.fg("Comment") },
   { "StatusLineRO", inherit = "StatusLine", fg = c.darkred },
   { "StatusLineMNormal", fg = c.accent },
   { "StatusLineMInsert", fg = c.green },

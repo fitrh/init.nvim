@@ -27,6 +27,7 @@ hi.colorscheme({
   { "ModesVisual", bg = p.bright_magenta },
   { "StatusLineGitBranch", inherit = "StatusLine", fg = p.magenta },
   { "StatusLineModified", inherit = "StatusLine", fg = p.bright_red },
+  { "StatusLinePath", inherit = "StatusLine", fg = hi.fg("Comment") },
   { "StatusLineRO", inherit = "StatusLine", fg = p.red },
   { "StatusLineMNormal", fg = p.bright_blue },
   { "StatusLineMInsert", fg = p.green },

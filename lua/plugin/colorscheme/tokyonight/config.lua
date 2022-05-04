@@ -58,6 +58,7 @@ hi.colorscheme({
     inherit = "StatusLine",
     fg = u.brighten(c.red, 0.2),
   },
+  { "StatusLinePath", link = "StatusLineNC" },
   { "StatusLineRO", inherit = "StatusLine", fg = c.red1 },
   { "StatusLineMNormal", fg = c.blue },
   { "StatusLineMInsert", fg = c.green },
