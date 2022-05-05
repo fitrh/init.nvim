@@ -24,6 +24,7 @@ null_ls.setup({
     f.prettierd.with({ condition = c.prettier, extra_filetypes = js }),
     f.shellharden,
     f.shfmt.with({ extra_args = { "-i", "4", "-ci" } }),
+    f.stylelint.with({ condition = c.stylelint }),
     f.stylua.with({ condition = c.stylua }),
 
     -- linter
@@ -42,6 +43,7 @@ null_ls.setup({
     d.pylint.with({ condition = c.pylint }),
     d.selene.with({ condition = c.selene }),
     d.shellcheck,
+    d.stylelint.with({ condition = c.stylelint }),
     d.write_good.with({ filetypes = plaintext }),
 
     -- code action

@@ -32,6 +32,17 @@ function Condition.selene(util)
   return util.root_has_file({ "selene.toml" })
 end
 
+function Condition.stylelint(util)
+  return util.root_has_file({
+    ".stylelintrc",
+    ".stylelintrc.json",
+    ".stylelintrc.yml",
+    ".stylelintrc.js",
+    "stylelint.config.js",
+    "stylelint.config.cjs",
+  })
+end
+
 function Condition.stylua(util)
   return util.root_has_file({ "stylua.toml", ".stylua.toml" })
 end
