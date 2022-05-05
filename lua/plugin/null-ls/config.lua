@@ -35,7 +35,7 @@ null_ls.setup({
     d.eslint_d.with({ condition = c.eslint, extra_filetypes = js }),
     d.fish,
     d.flake8,
-    d.golangci_lint,
+    d.golangci_lint.with({ condition = c.golangci }),
     d.markdownlint,
     d.misspell.with({ filetypes = plaintext }),
     d.mypy.with({ condition = c.mypy }),

@@ -15,6 +15,16 @@ function Condition.eslint(util)
   return util.root_has_file(rc)
 end
 
+function Condition.golangci(util)
+  local rc = {
+    ".golangci.yml",
+    ".golangci.yaml",
+    ".golangci.toml",
+    ".golangci.json",
+  }
+  return util.root_has_file(rc)
+end
+
 function Condition.mypy(util)
   return util.root_has_file({ "mypy.ini", ".mypy.ini" })
 end
