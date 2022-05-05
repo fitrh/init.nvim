@@ -62,5 +62,5 @@ hi.colorscheme({
   { "StatusLineMVisual", fg = c.purple },
   { "StatusLineMReplace", fg = c.red },
   { "StatusLineMCommand", fg = c.yellow },
-  { "TreesitterContext", link = "LspReferenceText" },
+  { "TreesitterContext", inherit = "LspReferenceText", underline = false },
 })
