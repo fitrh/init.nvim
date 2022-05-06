@@ -7,7 +7,7 @@ return {
     "n",
     "N",
     "gg",
-    "GG",
+    "G",
     "}",
     "{",
     "<C-u>",
@@ -28,4 +28,5 @@ return {
     "zh",
     "zH"
   },
+  event = "WinScrolled"
 }
