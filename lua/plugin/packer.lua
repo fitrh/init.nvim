@@ -5,6 +5,7 @@ local plugins = {
   { "gpanders/editorconfig.nvim", event = { "BufReadPost", "BufNewFile" } },
   { "ray-x/lsp_signature.nvim", module = "lsp_signature" },
   { "b0o/schemastore.nvim", ft = { "json", "jsonc" } },
+  { "themaxmarchuk/tailwindcss-colors.nvim", module = "tailwindcss-colors" },
   require("plugin.filetype.packerspec"),
   require("plugin.treesitter.packerspec"),
   require("plugin.treesitter-context.packerspec"),
