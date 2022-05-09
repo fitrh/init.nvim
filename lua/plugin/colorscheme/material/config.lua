@@ -9,6 +9,9 @@ require("material").setup({
     keywords = true,
   },
   async_loading = false,
+  disable = {
+    colored_cursor = true,
+  },
 })
 
 vim.cmd([[colorscheme material]])
