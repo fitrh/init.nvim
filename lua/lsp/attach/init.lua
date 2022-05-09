@@ -8,8 +8,4 @@ M.with = {
   all = require("lsp.attach.with_all_extension"),
 }
 
-M.without = {
-  formatting = require("lsp.attach.without_formatting"),
-}
-
 return M
