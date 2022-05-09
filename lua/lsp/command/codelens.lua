@@ -1,7 +1,7 @@
 local M = {}
 
 function M.attach(client, bufnr)
-  if not client.resolved_capabilities.code_lens then
+  if not client.supports_method("textDocument/codeLens") then
     return nil
   end
 

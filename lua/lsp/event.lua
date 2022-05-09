@@ -3,9 +3,9 @@ local M = {}
 local augroup = require("sugar.augroup")
 
 function M.attach(client, bufnr)
-  local capable_of = client.resolved_capabilities
+  local support = client.supports_method
 
-  if capable_of.document_highlight then
+  if support("textDocument/documentHighlight") then
     local buf = vim.lsp.buf
 
     augroup("HighlightOnCursor", {
@@ -18,7 +18,7 @@ function M.attach(client, bufnr)
     })
   end
 
-  if capable_of.code_lens then
+  if support("textDocument/codeLens") then
     augroup("CodelensRefresh", {
       { "BufEnter", "BufLeave", "InsertEnter", "InsertLeave" },
       callback = vim.lsp.codelens.refresh,

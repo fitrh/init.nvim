@@ -11,7 +11,7 @@ local keymap = {
 local diagnostic = require("lsp.diagnostic")
 
 return function(client, bufnr)
-  if client.resolved_capabilities.code_lens then
+  if client.supports_method("textDocument/codeLens") then
     vim.lsp.codelens.refresh()
   end
   command.buffer.attach(client, bufnr)
