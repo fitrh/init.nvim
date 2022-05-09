@@ -56,6 +56,7 @@ config.window = {
   options = {
     winblend = vim.api.nvim_get_option("pumblend"),
   },
+  zindex = 25,
 }
 
 config.hide = {
