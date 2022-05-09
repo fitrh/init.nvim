@@ -38,7 +38,7 @@ function LspKeymap.attach(client, bufnr)
       }
     end,
     ["textDocument/formatting"] = n(map(leader("<CR>"), function()
-      lsp.formatting_seq_sync(nil, 5000)
+      lsp.format({ bufnr = bufnr, timeout_ms = 5000 })
       vim.schedule(function()
         vim.cmd("update")
       end)

@@ -13,17 +13,16 @@ function M.attach(client, bufnr)
       opts = { nargs = "?" },
       buf = bufnr,
       cmds = {
-        { cmd = lsp.formatting },
         {
-          name = "Seq",
           cmd = function(opts)
-            lsp.formatting_seq_sync(nil, tonumber(opts.fargs[1]) or default)
+            local timeout = tonumber(opts.fargs[1]) or default
+            lsp.format({ bufnr = bufnr, timeout_ms = timeout })
           end,
         },
         {
-          name = "Sync",
-          cmd = function(opts)
-            lsp.formatting_sync(nil, tonumber(opts.fargs[1]) or default)
+          name = "Async",
+          cmd = function()
+            lsp.format({ bufnr = bufnr, async = true })
           end,
         },
       },
