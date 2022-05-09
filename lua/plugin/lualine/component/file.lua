@@ -1,4 +1,5 @@
 local condition = require("plugin.lualine.component.util.condition")
+local hi = require("sugar.highlight")
 local File = {}
 
 File.type = {
@@ -81,7 +82,7 @@ File.location = {
     local width = #tostring(vim.api.nvim_buf_get_option(0, "textwidth"))
     return ("%%%sl,%%-%sc"):format(length, width)
   end,
-  icon = "ﰙ",
+  icon = { "ﰙ", color = { fg = hi.fg("NonText") } },
   cond = condition.not_empty_buf,
 }
 
