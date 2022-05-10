@@ -57,6 +57,13 @@ cmp.setup.cmdline("/", {
 })
 
 cmp.setup.cmdline(":", {
+  formatting = {
+    fields = { "abbr" },
+    format = function(_, vim_item)
+      vim_item.kind = nil
+      return vim_item
+    end,
+  },
   sources = cmp.config.sources({
     { name = "cmdline", max_item_count = max_items },
   }, {
