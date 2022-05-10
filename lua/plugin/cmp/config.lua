@@ -30,18 +30,9 @@ config.window = {
 
 local formatting = {}
 formatting.fields = { "kind", "abbr", "menu" }
-formatting.format = function(entry, vim_item)
+formatting.format = function(_, vim_item)
+  vim_item.menu = vim_item.kind
   vim_item.kind = const.LSP_KIND[vim_item.kind].icon
-
-  local menu = ({
-    nvim_lsp = "LSP",
-    nvim_lua = "API",
-    luasnip = "Snippet",
-    buffer = "Buffer",
-    path = "Path",
-  })[entry.source.name]
-  vim_item.menu = menu and ("━ %s"):format(menu) or menu
-
   return vim_item
 end
 config.formatting = formatting
