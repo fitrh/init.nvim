@@ -41,8 +41,13 @@ null_ls.setup({
     d.mypy.with({ condition = c.mypy }),
     d.phpcs,
     d.pylint.with({ condition = c.pylint }),
+    d.revive.with({
+      args = { "-config", "revive.toml", "-formatter", "json", "./..." },
+      condition = c.revive,
+    }),
     d.selene.with({ condition = c.selene }),
     d.shellcheck,
+    d.staticcheck.with({ condition = c.staticcheck }),
     d.stylelint.with({ condition = c.stylelint }),
     d.write_good.with({ filetypes = plaintext }),
 

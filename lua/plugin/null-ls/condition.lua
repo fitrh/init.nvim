@@ -38,8 +38,16 @@ function Condition.pylint(util)
   return util.root_has_file({ "pylintrc", ".pylintrc" })
 end
 
+function Condition.revive(util)
+  return util.root_has_file({ "revive.toml" })
+end
+
 function Condition.selene(util)
   return util.root_has_file({ "selene.toml" })
+end
+
+function Condition.staticcheck(util)
+  return util.root_has_file({ "staticcheck.conf" })
 end
 
 function Condition.stylelint(util)
