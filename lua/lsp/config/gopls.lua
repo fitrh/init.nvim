@@ -18,11 +18,13 @@ return setup.with(bin, {
       },
       usePlaceholders = true, -- enables placeholders for function parameters or struct fields in completion responses
       analyses = {
+        -- SEE: https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
         fieldalignment = true, -- find structs that would use less memory if their fields were sorted
         nilness = true, -- check for redundant or impossible nil comparisons
         shadow = true, -- check for possible unintended shadowing of variables
         unusedparams = true, -- check for unused parameters of functions
         unusedwrite = true, -- checks for unused writes, an instances of writes to struct fields and arrays that are never read
+        useany = true, -- check for constraints that could be simplified to "any"
       },
     },
   },
