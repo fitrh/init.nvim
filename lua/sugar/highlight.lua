@@ -85,8 +85,8 @@ end
 
 ---@class HighlightDef
 ---@field inherit string
----@field fg string
----@field bg string
+---@field fg string|fun():string
+---@field bg string|fun():string
 ---@field special string
 ---@field blend number
 ---@field italic boolean
@@ -152,6 +152,14 @@ local function parse(hl)
   if hl.inherit then
     local ok, value = pcall(api.get, hl.inherit, true)
     inherit = ok and value
+  end
+
+  if type(hl.fg) == "function" then
+    hl.fg = hl.fg()
+  end
+
+  if type(hl.bg) == "function" then
+    hl.bg = hl.bg()
   end
 
   def.foreground = hl.fg or inherit.foreground or "NONE"
