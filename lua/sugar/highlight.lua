@@ -63,6 +63,26 @@ function Highlight.bg(from_group, or_fallbacks)
   return get("background", from_group, or_fallbacks or nil)
 end
 
+---@class GetAttribute
+---@field bg fun():string @#RRGGBB | NONE
+---@field fg fun():string @#RRGGBB | NONE
+
+---Get table of highlight group attributes
+---
+---@param from_group string
+---@param or_fallbacks? table list of highlight groups
+---@return GetAttribute
+function Highlight.get(from_group, or_fallbacks)
+  return {
+    bg = function()
+      return get("background", from_group, or_fallbacks or nil)
+    end,
+    fg = function()
+      return get("foreground", from_group, or_fallbacks or nil)
+    end,
+  }
+end
+
 ---@class HighlightDef
 ---@field inherit string
 ---@field fg string
