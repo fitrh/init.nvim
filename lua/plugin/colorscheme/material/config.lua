@@ -19,16 +19,15 @@ vim.cmd([[colorscheme material]])
 local c = require("material.colors")
 local hi = require("sugar.highlight")
 
-hi.set("StatusLine", { fg = c.text, bg = c.bg_alt })
-
 hi.colorscheme({
   -- highlight-default
   { "ColorColumn", link = "StatusLine" },
   { "CursorLine", bg = c.highlight },
+  { "StatusLine", fg = c.text, bg = c.bg_alt },
   { "TabLine", link = "StatusLine" },
   { "TablineFill", link = "TabLine" },
   { "TabLineSel", inherit = "Normal", fg = c.accent },
-  { "VertSplit", fg = hi.bg("StatusLine"), cterm = { reverse = true } },
+  { "VertSplit", fg = hi.get("StatusLine").bg, cterm = { reverse = true } },
   { "WinSeparator", link = "VertSplit" },
 
   -- lsp-highlight
