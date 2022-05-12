@@ -1,5 +1,5 @@
 return {
-  "lewis6991/nvim-treesitter-context",
+  "nvim-treesitter/nvim-treesitter-context",
   after = "nvim-treesitter",
   requires = {
     { "nvim-treesitter/nvim-treesitter", module = "nvim-treesitter" },
