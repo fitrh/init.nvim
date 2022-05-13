@@ -11,12 +11,14 @@ local keymap = {
 local diagnostic = require("lsp.diagnostic")
 
 return function(client, bufnr)
+  command.buffer.attach(client, bufnr)
+  command.diagnostic.attach(bufnr)
+
   if client.supports_method("textDocument/codeLens") then
     vim.lsp.codelens.refresh()
+    command.codelens.attach(bufnr)
   end
-  command.buffer.attach(client, bufnr)
-  command.codelens.attach(client, bufnr)
-  command.diagnostic.attach(bufnr)
+
   keymap.lsp.attach(client, bufnr)
   keymap.diagnostic.attach(bufnr)
   event.attach(client, bufnr)

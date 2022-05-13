@@ -1,10 +1,6 @@
 local M = {}
 
-function M.attach(client, bufnr)
-  if not client.supports_method("textDocument/codeLens") then
-    return nil
-  end
-
+function M.attach(bufnr)
   require("sugar.command").group({
     prefix = "Codelens",
     buf = bufnr,
