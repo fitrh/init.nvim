@@ -49,8 +49,6 @@ require("dial.config").augends:register_group({
       cyclic = true,
     }),
     augend.semver.alias.semver,
-    augend.paren.alias.quote,
-    augend.paren.alias.brackets,
     augend.date.alias["%Y/%m/%d"],
     augend.date.alias["%m/%d/%Y"],
     augend.date.alias["%d/%m/%Y"],
