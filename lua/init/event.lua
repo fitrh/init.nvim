@@ -1,68 +1,52 @@
-local augroup = require("sugar.augroup")
+local event = require("sugar.event")
+local augroup, autocmd = event.augroup, event.autocmd
 
 augroup("TrimAndMakeDir", {
-  "BufWritePre",
-  {
-    callback = function()
+  autocmd("BufWritePre", "*", {
+    function()
       local cursor = vim.api.nvim_win_get_cursor(0)
       vim.cmd([[:%s/\s\+$//e]])
       vim.api.nvim_win_set_cursor(0, cursor)
     end,
-  },
-  {
-    callback = function()
+    function()
       require("helper.dir").mk()
     end,
-  },
+  }),
 })
 
 augroup("HighlightOnYank", {
-  "TextYankPost",
-  callback = function()
+  autocmd("TextYankPost", "*", function()
     vim.highlight.on_yank()
-  end,
+  end),
 })
 
 augroup("CursorlineOnCurrentWindow", {
-  {
-    { "BufEnter", "WinEnter" },
-    callback = function()
-      vim.api.nvim_win_set_option(0, "cursorline", true)
-    end,
-  },
-  {
-    { "BufLeave", "WinLeave" },
-    callback = function()
-      vim.api.nvim_win_set_option(0, "cursorline", false)
-    end,
-  },
+  autocmd({ "BufEnter", "WinEnter" }, "*", function()
+    vim.api.nvim_win_set_option(0, "cursorline", true)
+  end),
+  autocmd({ "BufLeave", "WinLeave" }, "*", function()
+    vim.api.nvim_win_set_option(0, "cursorline", false)
+  end),
 })
 
 augroup("RelativeNumberOnCurrentWindow", {
-  {
-    { "BufEnter", "WinEnter" },
-    callback = function()
-      if vim.api.nvim_win_get_option(0, "number") then
-        vim.api.nvim_win_set_option(0, "relativenumber", true)
-      end
-    end,
-  },
-  {
-    { "BufLeave", "WinLeave" },
-    callback = function()
-      vim.api.nvim_win_set_option(0, "relativenumber", false)
-    end,
-  },
+  autocmd({ "BufEnter", "WinEnter" }, "*", function()
+    if vim.api.nvim_win_get_option(0, "number") then
+      vim.api.nvim_win_set_option(0, "relativenumber", true)
+    end
+  end),
+  autocmd({ "BufLeave", "WinLeave" }, "*", function()
+    vim.api.nvim_win_set_option(0, "relativenumber", false)
+  end),
 })
 
 augroup("OnTerminalBuffer", {
-  "TermOpen",
-  {
-    callback = function()
+  autocmd("TermOpen", "*", {
+    function()
       if vim.api.nvim_buf_get_option(0, "filetype") == "" then
         vim.api.nvim_buf_set_option(0, "filetype", "terminal")
       end
     end,
-  },
-  { command = "startinsert" },
+    "startinsert",
+  }),
 })

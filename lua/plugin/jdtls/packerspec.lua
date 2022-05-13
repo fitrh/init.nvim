@@ -2,11 +2,11 @@ return {
   "mfussenegger/nvim-jdtls",
   config = function()
     local command = require("sugar.command")
-    local augroup = require("sugar.augroup")
+    local event = require("sugar.event")
     local config = require("plugin.jdtls.config")
 
     command.add("JdtStart", config)
-    augroup("AttachJDTLS", { "FileType", callback = config, pattern = "java" })
+    event.augroup("AttachJDTLS", { event.autocmd("FileType", "java", config) })
   end,
   ft = { "java" },
   module = "jdtls",
