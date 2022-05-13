@@ -40,6 +40,7 @@ null_ls.setup({
     d.misspell.with({ filetypes = plaintext }),
     d.mypy.with({ condition = c.mypy }),
     d.phpcs,
+    d.phpstan.with({ condition = c.phpstan }),
     d.pylint.with({ condition = c.pylint }),
     d.revive.with({
       args = { "-config", "revive.toml", "-formatter", "json", "./..." },

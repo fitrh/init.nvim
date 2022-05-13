@@ -29,6 +29,10 @@ function Condition.mypy(util)
   return util.root_has_file({ "mypy.ini", ".mypy.ini" })
 end
 
+function Condition.phpstan(util)
+  return util.root_has_file({ "phpstan.neon", "phpstan.neon.dist" })
+end
+
 function Condition.prettier(util)
   local rc = { ".prettierrc", ".prettierrc.yml", ".prettierrc.json" }
   return util.root_has_file(rc)
