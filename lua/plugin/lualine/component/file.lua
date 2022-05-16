@@ -43,6 +43,7 @@ File.path = function(opts)
 
       if opts.trunc then
         local on = opts.trunc.on and opts.trunc.on or 2
+        -- the `- 1` is required because lua is 1-indexed
         i = #path_split > on and #path_split - (on - 1) or i
       end
 
