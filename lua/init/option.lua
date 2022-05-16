@@ -30,7 +30,7 @@ set.fillchars = {
 set.guicursor = "n-c:hor50,i-ci-ve:ver25" -- horizontal in normal, vertical in insert
 set.hidden = true -- enable switching unsaved buffer
 set.ignorecase = true -- use case-insensitive in search
-set.laststatus = 0 -- disable statusline
+set.laststatus = 3 -- use global status line
 set.nrformats:append({ "alpha" }) -- increment/decrement for alphabet
 set.number = true -- enable line number
 set.numberwidth = 1 -- default number of columns to use for line number
