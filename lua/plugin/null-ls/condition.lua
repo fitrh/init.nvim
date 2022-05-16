@@ -4,6 +4,10 @@ function Condition.cppcheck(util)
   return util.root_has_file({ ".cppcheck" })
 end
 
+function Condition.djlint(util)
+  return util.root_has_file({ ".djlintrc" })
+end
+
 function Condition.eslint(util)
   local rc = {
     ".eslintrc.js",
