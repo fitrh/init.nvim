@@ -22,6 +22,7 @@ null_ls.setup({
     f.fish_indent,
     f.isort.with({ extra_args = { "--profile", "black" } }),
     f.markdownlint,
+    f.phpcbf,
     f.prettierd.with({ condition = c.prettier, extra_filetypes = js }),
     f.shellharden,
     f.shfmt.with({ extra_args = { "-i", "4", "-ci" } }),
