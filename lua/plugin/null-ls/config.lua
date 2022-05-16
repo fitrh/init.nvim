@@ -1,56 +1,42 @@
 local null_ls = require("null-ls")
-local c = require("plugin.null-ls.condition")
-
-local js = { "svelte" }
-local plaintext = { "gitcommit", "markdown", "txt" }
 
 local formatter = {
-  black = { extra_args = { "--line-length", vim.bo.textwidth } },
-  brittany = {},
-  djlint = { condition = c.djlint },
-  fish_indent = {},
-  isort = { extra_args = { "--profile", "black" } },
-  markdownlint = {},
-  phpcbf = {},
-  prettierd = { condition = c.prettier, extra_filetypes = js },
-  shellharden = {},
-  shfmt = { extra_args = { "-i", "4", "-ci" } },
-  stylelint = { condition = c.stylelint },
-  stylua = { condition = c.stylua },
+  "black",
+  "brittany",
+  "djlint",
+  "fish_indent",
+  "isort",
+  "markdownlint",
+  "phpcbf",
+  "prettierd",
+  "shellharden",
+  "shfmt",
+  "stylelint",
+  "stylua",
 }
 
 local diagnostic = {
-  cppcheck = {
-    condition = c.cppcheck,
-    extra_args = { "--cppcheck-build-dir=.cppcheck" },
-  },
-  djlint = { condition = c.djlint },
-  eslint_d = { condition = c.eslint, extra_filetypes = js },
-  fish = {},
-  flake8 = {},
-  golangci_lint = { condition = c.golangci },
-  markdownlint = {},
-  misspell = { filetypes = plaintext },
-  mypy = { condition = c.mypy },
-  phpcs = {},
-  phpstan = { condition = c.phpstan },
-  pylint = { condition = c.pylint },
-  revive = {
-    args = { "-config", "revive.toml", "-formatter", "json", "./..." },
-    condition = c.revive,
-  },
-  selene = { condition = c.selene },
-  shellcheck = {},
-  staticcheck = { condition = c.staticcheck },
-  stylelint = { condition = c.stylelint },
-  write_good = { filetypes = plaintext },
+  "cppcheck",
+  "djlint",
+  "eslint_d",
+  "fish",
+  "flake8",
+  "golangci_lint",
+  "markdownlint",
+  "misspell",
+  "mypy",
+  "phpcs",
+  "phpstan",
+  "pylint",
+  "revive",
+  "selene",
+  "shellcheck",
+  "staticcheck",
+  "stylelint",
+  "write_good",
 }
 
-local code_action = {
-  eslint_d = { condition = c.eslint, extra_filetypes = js },
-  gitrebase = {},
-  shellcheck = {},
-}
+local code_action = { "eslint_d", "gitrebase", "shellcheck" }
 
 local registered_sources = {}
 for builtin, sources in pairs({
@@ -58,11 +44,10 @@ for builtin, sources in pairs({
   diagnostics = diagnostic,
   code_actions = code_action,
 }) do
-  for source, config in pairs(sources) do
-    table.insert(
-      registered_sources,
-      null_ls.builtins[builtin][source].with(config)
-    )
+  for _, source in ipairs(sources) do
+    local config = require("plugin.null-ls.with")[source] or {}
+    source = null_ls.builtins[builtin][source].with(config)
+    table.insert(registered_sources, source)
   end
 end
 
