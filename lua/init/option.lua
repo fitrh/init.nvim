@@ -20,8 +20,6 @@ set.fillchars = {
   verthoriz = "╋",
   eob = " ", -- use 'space' for lines after the last buffer line in a window
 }
-set.formatoptions:append({ "n" })
-set.formatoptions:remove({ "t", "o", "2" })
 set.guicursor = "n-c:hor50,i-ci-ve:ver25"
 set.hidden = true -- enable switching unsaved buffer
 set.ignorecase = true
