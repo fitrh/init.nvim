@@ -38,7 +38,7 @@ File.path = function(opts)
   return {
     function()
       local i = 1
-      local path = vim.fn.expand("%:h")
+      local path = vim.fn.expand("%:.:h")
       local path_split = vim.split(path, "/")
 
       if opts.trunc then
@@ -60,7 +60,7 @@ File.path = function(opts)
     end,
     color = "StatusLinePath",
     cond = function()
-      local path = vim.fn.expand("%:h")
+      local path = vim.fn.expand("%:.:h")
       return path ~= "" and path ~= "."
     end,
   }
