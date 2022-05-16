@@ -4,6 +4,10 @@ return {
     require("plugin.cinnamon.config")
   end,
   keys = {
+    "*",
+    "g*",
+    "#",
+    "g#",
     "n",
     "N",
     "gg",
