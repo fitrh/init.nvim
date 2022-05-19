@@ -20,6 +20,7 @@ return {
     "javascript",
     "javascriptreact",
     "json",
+    "kotlin",
     "lua",
     "markdown",
     "php",

@@ -46,6 +46,10 @@ With.isort = {
   extra_args = { "--profile", "black" },
 }
 
+With.ktlint = {
+  timeout = 10000,
+}
+
 With.misspell = {
   filetypes = plaintext,
 }
