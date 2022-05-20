@@ -71,5 +71,5 @@ hi.colorscheme({
   { "StatusLineMVisual", fg = c.bright_orange },
   { "StatusLineMReplace", fg = c.bright_aqua },
   { "StatusLineMCommand", fg = c.bright_red },
-  { "TreesitterContext", inherit = "LspReferenceText", underline = false },
+  { "TreesitterContext", bg = hi.get("StatusLine").bg },
 })
