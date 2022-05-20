@@ -36,6 +36,8 @@ hi.colorscheme({
   -- plugin
   { "InclineNormal", link = "StatusLine" },
   { "InclineNormalNC", inherit = "StatusLine", fg = hi.fg("NonText") },
+  { "LTSymbolDetail", link = "Comment" },
+  { "LTSymbolJump", link = "LspReferenceText" },
   { "ModesCopy", bg = c.darkyellow },
   { "ModesDelete", bg = c.red },
   { "ModesInsert", bg = c.darkgreen },

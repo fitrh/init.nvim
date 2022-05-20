@@ -35,6 +35,8 @@ hi.colorscheme({
   { "HopUnmatched", fg = c.muted, special = c.muted },
   { "InclineNormal", link = "StatusLine" },
   { "InclineNormalNC", inherit = "StatusLine", fg = hi.fg("NonText") },
+  { "LTSymbolDetail", link = "Comment" },
+  { "LTSymbolJump", link = "LspReferenceText" },
   { "StatusLineGitBranch", inherit = "StatusLine", fg = c.iris },
   { "StatusLineModified", inherit = "StatusLine", fg = c.love },
   { "StatusLinePath", inherit = "StatusLine", fg = hi.fg("Comment") },

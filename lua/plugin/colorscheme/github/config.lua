@@ -22,6 +22,8 @@ hi.colorscheme({
   { "FidgetTask", inherit = "Comment", italic = false },
   { "InclineNormal", link = "StatusLine" },
   { "InclineNormalNC", inherit = "StatusLine", fg = hi.fg("Comment") },
+  { "LTSymbolDetail", link = "Comment" },
+  { "LTSymbolJump", link = "LspReferenceText" },
   { "ModesCopy", bg = p.warning },
   { "ModesDelete", bg = p.red },
   { "ModesInsert", bg = p.fg_gutter },

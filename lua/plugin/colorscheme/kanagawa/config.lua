@@ -27,6 +27,8 @@ hi.colorscheme({
   { "HopUnmatched", fg = c.sumiInk4, special = c.sumiInk4 },
   { "InclineNormal", link = "StatusLine" },
   { "InclineNormalNC", inherit = "StatusLineNC", fg = hi.fg("NonText") },
+  { "LTSymbolDetail", link = "Comment" },
+  { "LTSymbolJump", link = "LspReferenceText" },
   { "ModesCopy", bg = hi.bg("IncSearch") },
   { "ModesDelete", bg = c.autumnRed },
   { "ModesInsert", bg = c.fujiWhite },

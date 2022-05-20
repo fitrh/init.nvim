@@ -29,6 +29,8 @@ hi.colorscheme({
   -- plugin
   { "InclineNormal", link = "StatusLine" },
   { "InclineNormalNC", link = "StatusLineNC" },
+  { "LTSymbolDetail", link = "Comment" },
+  { "LTSymbolJump", link = "LspReferenceText" },
   { "ModesCopy", bg = hi.bg("IncSearch") },
   { "ModesDelete", bg = c.red },
   { "ModesInsert", bg = c.fg_dark },
