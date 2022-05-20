@@ -1,16 +1,12 @@
 local config = {
   style = "night",
-  lualineBold = false,
   darkFloat = false,
   darkSidebar = false,
-  sidebars = { "Outline" },
 }
 
 vim.g.tokyonight_style = config.style
-vim.g.tokyonight_lualine_bold = config.lualineBold
 vim.g.tokyonight_dark_float = config.darkFloat
 vim.g.tokyonight_dark_sidebar = config.darkSidebar
-vim.g.tokyonight_sidebars = config.sidebars
 
 require("tokyonight").colorscheme()
 
