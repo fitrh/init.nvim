@@ -7,7 +7,7 @@ require("litee.lib").setup({
 
 require("litee.symboltree").setup({
   icon_set = "nerd",
-  hide_cursor = true,
+  hide_cursor = false,
   on_open = "panel",
   keymaps = {
     close = "q",
@@ -16,7 +16,7 @@ require("litee.symboltree").setup({
 
 require("litee.calltree").setup({
   icon_set = "nerd",
-  hide_cursor = true,
+  hide_cursor = false,
   on_open = "panel",
   keymaps = {
     close = "q",
