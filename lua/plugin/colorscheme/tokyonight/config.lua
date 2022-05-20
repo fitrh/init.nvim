@@ -18,9 +18,9 @@ hi.colorscheme({
   -- highlight-default
   { "CursorLineNr", fg = c.blue },
   { "ColorColumn", bg = c.bg_statusline },
-  { "TabLineSel", fg = c.fg, bg = c.bg },
-  { "TabLine", fg = c.fg_gutter, bg = c.bg_statusline },
-  { "TabLineFill", fg = c.fg_gutter, bg = c.bg_statusline },
+  { "TabLineSel", link = "Normal" },
+  { "TabLine", link = "StatusLineNC" },
+  { "TabLineFill", link = "TabLine" },
   { "VertSplit", fg = hi.bg("StatusLine"), cterm = { reverse = true } },
 
   -- treesitter
