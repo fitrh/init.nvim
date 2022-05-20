@@ -4,7 +4,7 @@ return {
     config = function()
       require("plugin.litee.config")
     end,
-    event = "User LspRequest",
+    event = "LspAttach",
   },
   {
     "ldelossa/litee-symboltree.nvim",
