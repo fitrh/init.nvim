@@ -61,6 +61,7 @@ config.window = {
 
 config.hide = {
   focused_win = true,
+  cursorline = true,
 }
 
 require("incline").setup(config)
