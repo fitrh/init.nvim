@@ -1,28 +1,18 @@
-local env = {
-  DART_SDK = os.getenv("DART_SDK"),
-  FLUTTER_ROOT = os.getenv("FLUTTER_ROOT") or os.getenv("FLUTTER_SDK"),
-}
-
-local setup = require("lsp.config")
 local config = {}
+
+local FLUTTER_ROOT = os.getenv("FLUTTER_ROOT") or os.getenv("FLUTTER_SDK")
+if FLUTTER_ROOT then
+  config.flutter_path = ("%s/bin/flutter"):format(FLUTTER_ROOT)
+end
+
 config.closing_tags = { prefix = "ﰪ " }
 
-config.lsp = setup.with("flutter")
+config.lsp = require("lsp.config").with("flutter")
 if not config.lsp then
   return false
 end
 
-config.lsp.settings = {
-  dart = {
-    devToolsBrowser = "default",
-    enableServerSnippets = true,
-    flutterSdkPath = env.FLUTTER_ROOT,
-    previewLsp = true,
-    sdkPath = env.DART_SDK,
-    renameFilesWithClasses = "prompt",
-    triggerSignatureHelpAutomatically = true,
-  },
-}
+config.lsp.settings = { renameFilesWithClasses = "prompt" }
 config.lsp.color = {
   enabled = true,
   virtual_text_str = config.closing_tags.prefix,
