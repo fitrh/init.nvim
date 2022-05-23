@@ -4,13 +4,12 @@ return {
     require("plugin.kommentary.config")
     require("plugin.kommentary.keymap")
   end,
-  setup = function()
-    vim.g.kommentary_create_default_mappings = false
-  end,
   keys = {
     "<Plug>kommentary_line_default",
     "<Plug>kommentary_visual_default",
     "<Plug>kommentary_motion_default",
+    "gc",
+    { "v", "gc" },
     { "n", "<Leader>/" },
     { "v", "<Leader>/" },
     { "n", "<Leader>c" },
