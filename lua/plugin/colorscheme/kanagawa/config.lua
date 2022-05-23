@@ -16,7 +16,7 @@ hi.colorscheme({
   { "NormalFloat", link = "Normal" },
   { "TabLine", inherit = "StatusLine", fg = c.oldWhite },
   { "TabLineFill", link = "TabLine" },
-  { "TabLineSel", fg = c.fujiWhite, bg = c.sumiInk1 },
+  { "TabLineSel", link = "Normal" },
   { "VertSplit", fg = hi.bg("StatusLine") },
   { "WinSeparator", link = "VertSplit" },
 
@@ -57,5 +57,9 @@ hi.colorscheme({
   { "StatusLineMVisual", fg = c.oniViolet },
   { "StatusLineMReplace", fg = c.autumnRed },
   { "StatusLineMCommand", fg = c.boatYellow2 },
+  { "TabLineModified", inherit = "TabLine", fg = c.autumnRed },
+  { "TabLineSep", link = "TabLine" },
+  { "TabLineModifiedSel", inherit = "TabLineSel", fg = c.autumnRed },
+  { "TabLineSepSel", inherit = "TabLineSel", fg = c.crystalBlue },
   { "TreesitterContext", bg = hi.bg("StatusLine") },
 })

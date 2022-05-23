@@ -63,5 +63,9 @@ hi.colorscheme({
   { "StatusLineMVisual", fg = c.purple },
   { "StatusLineMReplace", fg = c.red },
   { "StatusLineMCommand", fg = c.yellow },
+  { "TabLineModified", inherit = "TabLine", fg = c.red },
+  { "TabLineSep", link = "TabLine" },
+  { "TabLineModifiedSel", inherit = "TabLineSel", fg = c.red },
+  { "TabLineSepSel", inherit = "TabLineSel", fg = c.blue },
   { "TreesitterContext", bg = hi.bg("StatusLine") },
 })

@@ -16,7 +16,7 @@ hi.colorscheme({
   -- highlight-default
   { "ColorColumn", link = "StatusLine" },
   { "NormalFloat", link = "Normal" },
-  { "TabLineSel", fg = c.text, bg = c.base },
+  { "TabLineSel", link = "Normal" },
   { "VertSplit", fg = hi.bg("StatusLine"), cterm = { reverse = true } },
 
   -- health
@@ -46,5 +46,9 @@ hi.colorscheme({
   { "StatusLineMVisual", fg = c.iris },
   { "StatusLineMReplace", fg = c.pine },
   { "StatusLineMCommand", fg = c.love },
+  { "TabLineModified", inherit = "TabLine", fg = c.love },
+  { "TabLineSep", link = "TabLine" },
+  { "TabLineModifiedSel", inherit = "TabLineSel", fg = c.love },
+  { "TabLineSepSel", inherit = "TabLineSel", fg = c.rose },
   { "TreesitterContext", bg = hi.bg("StatusLine") },
 })

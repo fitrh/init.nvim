@@ -13,7 +13,7 @@ hi.colorscheme({
   { "CursorLineNr", fg = p.bright_blue },
   { "NonText", fg = p.fg_dark },
   { "StatusLine", bg = p.bg2, fg = p.fg },
-  { "TabLineSel", fg = p.fg, bg = p.bg, bold = true },
+  { "TabLineSel", link = "Normal" },
   { "TabLine", inherit = "StatusLine", fg = p.fg_dark },
   { "TabLineFill", link = "TabLine" },
   { "VertSplit", fg = p.bg2 },
@@ -37,5 +37,9 @@ hi.colorscheme({
   { "StatusLineMVisual", fg = p.bright_magenta },
   { "StatusLineMReplace", fg = p.red },
   { "StatusLineMCommand", fg = p.yellow },
+  { "TabLineModified", inherit = "TabLine", fg = p.red },
+  { "TabLineSep", link = "TabLine" },
+  { "TabLineModifiedSel", inherit = "TabLineSel", fg = p.red },
+  { "TabLineSepSel", inherit = "TabLineSel", fg = p.bright_blue },
   { "TreesitterContext", bg = hi.get("StatusLine").bg },
 })
