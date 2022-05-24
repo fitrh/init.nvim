@@ -5,7 +5,6 @@ local config = {}
 config.defaults = {
   layout_strategy = "flex",
   layout_config = {
-    height = 0.8,
     horizontal = { preview_width = 80 },
   },
   winblend = vim.api.nvim_get_option("pumblend"),
