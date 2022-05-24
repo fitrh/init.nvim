@@ -56,9 +56,10 @@ config.defaults = {
 
 config.pickers = {
   find_files = {
-    layout_config = { height = 0.60 },
+    layout_config = { height = 0.50 },
     path_display = { "smart" },
     theme = "ivy",
+    previewer = false,
   },
   buffers = {
     prompt_prefix = "   ",
