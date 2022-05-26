@@ -97,8 +97,6 @@ keymap.bind({
   -- tab page
   n(map(leader("t"), ex("tabnew"))),
   n(map("g!", ex("tabe %"))), -- open current buffer as a new tabpage
-  n(map("<M-[>", ex("tabprevious"))),
-  n(map("<M-]>", ex("tabnext"))),
   n(map(leader("["), ex("-tabmove"))),
   n(map(leader("]"), ex("+tabmove"))),
 
