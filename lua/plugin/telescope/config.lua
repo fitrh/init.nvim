@@ -11,6 +11,7 @@ config.defaults = {
   prompt_prefix = "   ",
   selection_caret = " ",
   dynamic_preview_title = true,
+  results_title = false,
   mappings = {
     n = {
       ["<M-p>"] = layout.toggle_preview,
