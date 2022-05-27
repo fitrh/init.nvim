@@ -1,8 +1,10 @@
 local State = {}
 
+local icon = require("const.ICON").STATE
+
 State.modified = {
   function()
-    return ""
+    return icon.MODIFIED
   end,
   cond = function()
     return vim.api.nvim_buf_get_option(0, "modified")
@@ -12,7 +14,7 @@ State.modified = {
 
 State.readonly = {
   function()
-    return ""
+    return icon.READONLY
   end,
   cond = function()
     local opt = vim.api.nvim_buf_get_option
