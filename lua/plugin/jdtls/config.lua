@@ -26,9 +26,15 @@ local settings = {
       useBlocks = true,
     },
     implementationsCodeLens = { enabled = true },
+    inlayhints = {
+      parameterNames = { enabled = true },
+    },
     referencesCodeLens = { enabled = true },
     saveActions = { organizeImports = true },
     signatureHelp = { enabled = true },
+    symbols = {
+      includeSourceMethodDeclarations = true,
+    },
   },
 }
 
