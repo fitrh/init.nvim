@@ -2,7 +2,7 @@ local setup = require("lsp.config")
 local config = {
   settings = {
     texlab = {
-      diagnosticsDelay = 250,
+      diagnosticsDelay = vim.api.nvim_get_option("updatetime"),
     },
   },
 }
