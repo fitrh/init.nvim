@@ -6,6 +6,13 @@ local config = {
   },
 }
 
+if vim.fn.executable("chktex") == 1 then
+  config.settings.texlab.chktex = {
+    onOpenAndSave = true,
+    onEdit = false,
+  }
+end
+
 if vim.fn.executable("tectonic") == 1 then
   config.settings.texlab.build = {
     executable = "tectonic",
