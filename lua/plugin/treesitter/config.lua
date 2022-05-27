@@ -38,6 +38,7 @@ conf.setup({
     "toml",
     "tsx",
     "typescript",
+    "v",
     "vim",
     "vue",
     "yaml",
