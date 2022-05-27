@@ -1,8 +1,7 @@
-local home = os.getenv("HOME")
 local env = {
-  WORKSPACE = os.getenv("JAVA_WORKSPACE") or ("%s/java"):format(home),
+  WORKSPACE = os.getenv("JAVA_WORKSPACE"),
   BASENAME_CWD = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t"),
-  RUNTIMES = os.getenv("JAVA_RUNTIMES") or home,
+  RUNTIMES = os.getenv("JAVA_RUNTIMES"),
 }
 
 local root_files = {
@@ -16,13 +15,6 @@ local root_files = {
   { "build.gradle", "build.gradle.kts" },
 } or vim.fn.getcwd()
 
-local workspace = ("%s/%s"):format(env.WORKSPACE, env.BASENAME_CWD)
-
-local runtimes = {
-  { name = "JavaSE-11", path = ("%s/jdk-11"):format(env.RUNTIMES) },
-  { name = "JavaSE-17", path = ("%s/jdk-17"):format(env.RUNTIMES) },
-}
-
 local settings = {
   java = { -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
     codeGeneration = {
@@ -33,13 +25,21 @@ local settings = {
       },
       useBlocks = true,
     },
-    configuration = { runtimes = runtimes },
     implementationsCodeLens = { enabled = true },
     referencesCodeLens = { enabled = true },
     saveActions = { organizeImports = true },
     signatureHelp = { enabled = true },
   },
 }
+
+if env.RUNTIMES then
+  settings.java.configuration = {
+    runtimes = {
+      { name = "JavaSE-11", path = ("%s/jdk-11"):format(env.RUNTIMES) },
+      { name = "JavaSE-17", path = ("%s/jdk-17"):format(env.RUNTIMES) },
+    },
+  }
+end
 
 local capabilities = require("lsp.capability")
 local jdtls = require("jdtls")
@@ -50,9 +50,15 @@ local jdtls_capability = jdtls.extendedClientCapabilities
 capabilities.workspace.configuration = true
 jdtls_capability.resolveAdditionalTextEditsSupport = true
 
+local cmd = { bin }
+if env.WORKSPACE then
+  local workspace = ("%s/%s"):format(env.WORKSPACE, env.BASENAME_CWD)
+  table.insert(cmd, workspace)
+end
+
 local config = {
   root_dir = setup.find_root(root_files),
-  cmd = { bin, workspace },
+  cmd = cmd,
   capabilities = capabilities,
   settings = settings,
   init_options = {
