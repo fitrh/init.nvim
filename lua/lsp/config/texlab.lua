@@ -17,6 +17,8 @@ if vim.fn.executable("tectonic") == 1 then
   config.settings.texlab.build = {
     executable = "tectonic",
     args = {
+      "-X",
+      "compile",
       "%f",
       "--synctex",
       "--keep-logs",
