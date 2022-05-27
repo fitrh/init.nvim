@@ -1,4 +1,3 @@
-local setup = require("lsp.config")
 local config = {
   settings = {
     texlab = {
@@ -20,4 +19,4 @@ if vim.fn.executable("tectonic") == 1 then
   }
 end
 
-return setup.with("texlab", config)
+return require("lsp.config").with("texlab", config)
