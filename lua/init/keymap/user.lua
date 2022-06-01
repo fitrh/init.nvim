@@ -1,7 +1,6 @@
 local keymap = require("sugar.keymap")
-local map, mode, modifier = keymap.map, keymap.mode, keymap.modifier
+local map, mode = keymap.map, keymap.mode
 local n = mode.normal
-local leader = modifier.leader
 
 keymap.bind({
   -- Minimal tmux Integration behavior
