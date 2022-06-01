@@ -14,11 +14,25 @@ function M.attach(gitsigns, bufnr)
       return "<Ignore>"
     end, { expr = true })),
 
+    n(map("]C", function()
+      vim.schedule(function()
+        gitsigns.next_hunk({ preview = true })
+      end)
+      return "<Ignore>"
+    end, { expr = true })),
+
     n(map("[c", function()
       if vim.wo.diff then
         return "[c"
       end
       vim.schedule(gitsigns.prev_hunk)
+      return "<Ignore>"
+    end, { expr = true })),
+
+    n(map("[C", function()
+      vim.schedule(function()
+        gitsigns.prev_hunk({ preview = true })
+      end)
       return "<Ignore>"
     end, { expr = true })),
 
