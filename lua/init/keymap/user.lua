@@ -20,9 +20,9 @@ keymap.bind({
 
   -- Minimal zen mode behavior
   n(map(leader("zz"), function()
-    require("helper.zen").toggle()
+    require("helper.zen").toggle({ laststatus = true })
   end)),
   n(map(leader("nr"), function()
-    require("helper.zen").toggle({ laststatus = true })
+    require("helper.zen").toggle()
   end)),
 })
