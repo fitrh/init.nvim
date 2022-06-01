@@ -68,11 +68,11 @@ local function zen(enter)
     -- when we exit zen mode, we return to the previous tabpage
     vim.cmd("-tabe %")
     local main = {
-      win = api.nvim_get_current_win(),
-      buf = api.nvim_buf_get_number(0),
+      win = { nr = api.nvim_get_current_win() },
+      buf = { nr = api.nvim_buf_get_number(0) },
     }
-    api.nvim_win_set_option(main.win, "winhighlight", pad.winhl)
-    api.nvim_win_set_cursor(main.win, cursorpos)
+    api.nvim_win_set_option(main.win.nr, "winhighlight", pad.winhl)
+    api.nvim_win_set_cursor(main.win.nr, cursorpos)
     vim.cmd("normal! zz")
     pad.width = math.floor(columns / 5)
     opt(enter)
@@ -85,14 +85,14 @@ local function zen(enter)
         pad.win[side] = api.nvim_get_current_win()
         api.nvim_win_set_option(pad.win[side], "winhighlight", pad.winhl)
         opt(enter, { win = true })
-        api.nvim_set_current_win(main.win)
+        api.nvim_set_current_win(main.win.nr)
       end
 
-      local main_win_width = api.nvim_win_get_width(main.win)
-      local main_buf_textwidth = api.nvim_buf_get_option(main.buf, "textwidth")
+      main.win.width = api.nvim_win_get_width(main.win.nr)
+      main.buf.textwidth = api.nvim_buf_get_option(main.buf.nr, "textwidth")
       -- main window must have a width at least equal to 'textwidth'
-      if main_win_width < main_buf_textwidth then
-        local delta = main_buf_textwidth - main_win_width
+      if main.win.width < main.buf.textwidth then
+        local delta = main.buf.textwidth - main.win.width
         pad.width = math.floor((2 * pad.width - delta) / 2)
         for _, id in pairs(pad.win) do
           api.nvim_win_set_width(id, pad.width)
