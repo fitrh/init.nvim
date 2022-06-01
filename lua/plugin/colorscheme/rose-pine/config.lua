@@ -51,4 +51,5 @@ hi.colorscheme({
   { "TabLineModifiedSel", inherit = "TabLineSel", fg = c.love },
   { "TabLineSepSel", inherit = "TabLineSel", fg = c.rose },
   { "TreesitterContext", bg = hi.bg("StatusLine") },
+  { "WinSeparatorZen", fg = hi.bg("Normal") },
 })
