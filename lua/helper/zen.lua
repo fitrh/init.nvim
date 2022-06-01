@@ -18,8 +18,8 @@ option.global = {
 
 option.window = {
   { name = "colorcolumn", disable_value = "" },
-  { name = "number", disable_value = false },
-  { name = "relativenumber", disable_value = false },
+  { name = "number" },
+  { name = "relativenumber" },
   { name = "signcolumn", disable_value = "no" },
 }
 
