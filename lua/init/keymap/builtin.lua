@@ -81,7 +81,12 @@ keymap.bind({
   n(map("n", "mnnzz")),
   n(map("N", "mnNzz")),
   -- if hlsearch is active, <CR> to clear it, otherwise <CR> is <CR>
-  map("<CR>", [[v:hlsearch ? "<Cmd>nohlsearch<CR>" : "<CR>"]], { expr = true }),
+  n(map("<CR>", function()
+    if vim.v.hlsearch == 1 then
+      return "<Cmd>nohlsearch<CR>"
+    end
+    return "<CR>"
+  end, { expr = true })),
 
   -- moves line
   n(map("<C-j>", ":m .+1<CR>==")),
