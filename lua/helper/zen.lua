@@ -15,7 +15,7 @@ option.global = {
   { name = "showtabline", disable_value = 0 },
 }
 
-option.window = {
+option.win = {
   { name = "colorcolumn", disable_value = "" },
   { name = "number" },
   { name = "relativenumber" },
@@ -45,7 +45,7 @@ local function opt(zen, scope)
   end
 
   if scope.win then
-    for _, win in ipairs(option.window) do
+    for _, win in ipairs(option.win) do
       local value = zen and win.disable_value or state[win.name] or not zen
       api.nvim_win_set_option(0, win.name, value)
     end
@@ -63,22 +63,22 @@ local pad = {
   disable_opt = { "buflisted", "modifiable" },
 }
 
-local window = { main = {}, pad = {} }
+local win = { main = {}, pad = {} }
 
-function window.main.create()
+function win.main.create()
   local cursorpos = api.nvim_win_get_cursor(0)
   -- open current window as new tabpage, before current tabpage
   -- when we exit zen mode, we return to the previous tabpage
   vim.cmd("-tabe %")
-  window.main.nr = api.nvim_get_current_win()
-  window.main.buf = { nr = api.nvim_buf_get_number(0) }
-  api.nvim_win_set_option(window.main.nr, "winhighlight", pad.winhl)
-  api.nvim_win_set_cursor(window.main.nr, cursorpos)
+  win.main.nr = api.nvim_get_current_win()
+  win.main.buf = { nr = api.nvim_buf_get_number(0) }
+  api.nvim_win_set_option(win.main.nr, "winhighlight", pad.winhl)
+  api.nvim_win_set_cursor(win.main.nr, cursorpos)
   vim.cmd("normal! zz")
   opt(true)
 end
 
-function window.pad.create(side)
+function win.pad.create(side)
   vim.cmd(("%s %dvnew"):format(pad.cmd[side], pad.width))
   pad.buf[side] = api.nvim_buf_get_number(0)
   pad.win[side] = api.nvim_get_current_win()
@@ -90,11 +90,11 @@ function window.pad.create(side)
   end
 
   pad.exist = true
-  api.nvim_set_current_win(window.main.nr)
+  api.nvim_set_current_win(win.main.nr)
 end
 
-function window.pad.adjust(id)
-  local delta = window.main.buf.textwidth - window.main.width
+function win.pad.adjust(id)
+  local delta = win.main.buf.tw - win.main.width
   api.nvim_win_set_width(id, math.floor((2 * pad.width - delta) / 2))
 end
 
@@ -103,28 +103,25 @@ local function zen(enter)
   local textwidth = api.nvim_buf_get_option(0, "textwidth")
 
   if enter then
-    window.main.create()
+    win.main.create()
     pad.width = math.floor(columns / 5)
 
     if columns < textwidth or pad.width <= api.nvim_get_option("winwidth") then
       pad.exist = false
       return
     end
-    window.pad.create("left")
-    window.pad.create("right")
+    win.pad.create("left")
+    win.pad.create("right")
 
-    window.main.width = api.nvim_win_get_width(window.main.nr)
-    window.main.buf.textwidth = api.nvim_buf_get_option(
-      window.main.buf.nr,
-      "textwidth"
-    )
+    win.main.width = api.nvim_win_get_width(win.main.nr)
+    win.main.buf.tw = api.nvim_buf_get_option(win.main.buf.nr, "textwidth")
 
     -- main window must have a width at least equal to 'textwidth'
-    if window.main.width >= window.main.buf.textwidth then
+    if win.main.width >= win.main.buf.tw then
       return
     end
-    window.pad.adjust(pad.win.left)
-    window.pad.adjust(pad.win.right)
+    win.pad.adjust(pad.win.left)
+    win.pad.adjust(pad.win.right)
     return
   end
 
