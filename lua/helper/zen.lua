@@ -56,6 +56,7 @@ local pad = {
   cmd = { left = "leftabove", right = "rightbelow" },
   width = 0,
   winhl = "VertSplit:WinSeparatorZen,WinSeparator:WinSeparatorZen",
+  disable_opt = { "buflisted", "modifiable" },
 }
 
 local function zen(enter)
@@ -85,6 +86,11 @@ local function zen(enter)
         pad.win[side] = api.nvim_get_current_win()
         api.nvim_win_set_option(pad.win[side], "winhighlight", pad.winhl)
         opt(enter, { win = true })
+
+        for _, bufopt in ipairs(pad.disable_opt) do
+          api.nvim_buf_set_option(pad.buf[side], bufopt, false)
+        end
+
         api.nvim_set_current_win(main.win.nr)
       end
 
