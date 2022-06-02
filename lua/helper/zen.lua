@@ -79,6 +79,14 @@ function win.main.create()
   opt(true)
 end
 
+function win.main.restore()
+  local cursorpos = api.nvim_win_get_cursor(0)
+  vim.cmd("tabclose")
+  opt(not state.zen)
+  api.nvim_set_option("winwidth", state.winwidth)
+  api.nvim_win_set_cursor(0, cursorpos)
+end
+
 function win.pad.create(side)
   vim.cmd(("%s %dvnew"):format(pad.cmd[side], pad.width))
   pad.buf[side] = api.nvim_buf_get_number(0)
@@ -92,6 +100,14 @@ function win.pad.create(side)
 
   pad.exist = true
   api.nvim_set_current_win(win.main.nr)
+end
+
+function win.pad.destroy()
+  if pad.exist then
+    for _, id in pairs(pad.buf) do
+      api.nvim_buf_delete(id, { force = true })
+    end
+  end
 end
 
 function win.pad.adjust()
@@ -131,16 +147,8 @@ local function zen(enter)
     return
   end
 
-  local cursorpos = api.nvim_win_get_cursor(0)
-  if pad.exist then
-    for _, id in pairs(pad.buf) do
-      api.nvim_buf_delete(id, { force = true })
-    end
-  end
-  vim.cmd("tabclose")
-  opt(false)
-  api.nvim_win_set_cursor(0, cursorpos)
-  api.nvim_set_option("winwidth", state.winwidth)
+  win.pad.destroy()
+  win.main.restore()
 end
 
 local Zen = {}
