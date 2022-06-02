@@ -54,6 +54,7 @@ end
 
 -- window padding state
 local pad = {
+  exist = false,
   buf = { left = nil, right = nil },
   win = { left = nil, right = nil },
   cmd = { left = "leftabove", right = "rightbelow" },
@@ -62,63 +63,80 @@ local pad = {
   disable_opt = { "buflisted", "modifiable" },
 }
 
+local window = { main = {}, pad = {} }
+
+function window.main.create()
+  local cursorpos = api.nvim_win_get_cursor(0)
+  -- open current window as new tabpage, before current tabpage
+  -- when we exit zen mode, we return to the previous tabpage
+  vim.cmd("-tabe %")
+  window.main.nr = api.nvim_get_current_win()
+  window.main.buf = { nr = api.nvim_buf_get_number(0) }
+  api.nvim_win_set_option(window.main.nr, "winhighlight", pad.winhl)
+  api.nvim_win_set_cursor(window.main.nr, cursorpos)
+  vim.cmd("normal! zz")
+  opt(true)
+end
+
+function window.pad.create(side)
+  vim.cmd(("%s %dvnew"):format(pad.cmd[side], pad.width))
+  pad.buf[side] = api.nvim_buf_get_number(0)
+  pad.win[side] = api.nvim_get_current_win()
+  api.nvim_win_set_option(pad.win[side], "winhighlight", pad.winhl)
+  opt(true, { win = true })
+
+  for _, bufopt in ipairs(pad.disable_opt) do
+    api.nvim_buf_set_option(pad.buf[side], bufopt, false)
+  end
+
+  pad.exist = true
+  api.nvim_set_current_win(window.main.nr)
+end
+
+function window.pad.adjust(id)
+  local delta = window.main.buf.textwidth - window.main.width
+  api.nvim_win_set_width(id, math.floor((2 * pad.width - delta) / 2))
+end
+
 local function zen(enter)
   local columns = api.nvim_get_option("columns")
   local textwidth = api.nvim_buf_get_option(0, "textwidth")
 
   if enter then
-    local cursorpos = api.nvim_win_get_cursor(0)
-    -- open current window as new tabpage, before current tabpage
-    -- when we exit zen mode, we return to the previous tabpage
-    vim.cmd("-tabe %")
-    local main = {
-      win = { nr = api.nvim_get_current_win() },
-      buf = { nr = api.nvim_buf_get_number(0) },
-    }
-    api.nvim_win_set_option(main.win.nr, "winhighlight", pad.winhl)
-    api.nvim_win_set_cursor(main.win.nr, cursorpos)
-    vim.cmd("normal! zz")
+    window.main.create()
     pad.width = math.floor(columns / 5)
-    opt(enter)
 
-    if columns > textwidth then
-      -- create left-right padding window
-      for side, cmd in pairs(pad.cmd) do
-        vim.cmd(("%s %dvnew"):format(cmd, pad.width))
-        pad.buf[side] = api.nvim_buf_get_number(0)
-        pad.win[side] = api.nvim_get_current_win()
-        api.nvim_win_set_option(pad.win[side], "winhighlight", pad.winhl)
-        opt(enter, { win = true })
-
-        for _, bufopt in ipairs(pad.disable_opt) do
-          api.nvim_buf_set_option(pad.buf[side], bufopt, false)
-        end
-
-        api.nvim_set_current_win(main.win.nr)
-      end
-
-      main.win.width = api.nvim_win_get_width(main.win.nr)
-      main.buf.textwidth = api.nvim_buf_get_option(main.buf.nr, "textwidth")
-      -- main window must have a width at least equal to 'textwidth'
-      if main.win.width < main.buf.textwidth then
-        local delta = main.buf.textwidth - main.win.width
-        pad.width = math.floor((2 * pad.width - delta) / 2)
-        for _, id in pairs(pad.win) do
-          api.nvim_win_set_width(id, pad.width)
-        end
-      end
+    if columns < textwidth or pad.width <= api.nvim_get_option("winwidth") then
+      pad.exist = false
+      return
     end
-  else
-    local cursorpos = api.nvim_win_get_cursor(0)
-    if (columns > textwidth) and pad.buf.left and pad.buf.right then
-      for _, id in pairs(pad.buf) do
-        api.nvim_buf_delete(id, { force = true })
-      end
+    window.pad.create("left")
+    window.pad.create("right")
+
+    window.main.width = api.nvim_win_get_width(window.main.nr)
+    window.main.buf.textwidth = api.nvim_buf_get_option(
+      window.main.buf.nr,
+      "textwidth"
+    )
+
+    -- main window must have a width at least equal to 'textwidth'
+    if window.main.width >= window.main.buf.textwidth then
+      return
     end
-    vim.cmd("tabclose")
-    opt(false)
-    api.nvim_win_set_cursor(0, cursorpos)
+    window.pad.adjust(pad.win.left)
+    window.pad.adjust(pad.win.right)
+    return
   end
+
+  local cursorpos = api.nvim_win_get_cursor(0)
+  if pad.exist then
+    for _, id in pairs(pad.buf) do
+      api.nvim_buf_delete(id, { force = true })
+    end
+  end
+  vim.cmd("tabclose")
+  opt(false)
+  api.nvim_win_set_cursor(0, cursorpos)
 end
 
 local Zen = {}
