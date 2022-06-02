@@ -22,6 +22,6 @@ keymap.bind({
     require("helper.zen").enter()
   end)),
   n(map("gzz", function()
-    require("helper.zen").enter({ show = { laststatus = true } })
+    require("helper.zen").toggle({ laststatus = true })
   end)),
 })

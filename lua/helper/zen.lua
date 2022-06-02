@@ -2,6 +2,7 @@ local api = vim.api
 
 local state = {
   zen = false,
+  partial = false,
   colorcolumn = api.nvim_win_get_option(0, "colorcolumn"),
   laststatus = api.nvim_get_option("laststatus"),
   showtabline = api.nvim_get_option("showtabline"),
@@ -146,6 +147,24 @@ function Zen.enter(args)
   end
 
   state.zen = enter
+  state.partial = opts.partial
+end
+
+function Zen.toggle(show)
+  show = show or {}
+
+  if not state.zen then
+    Zen.enter({ show = show, partial = true })
+    return
+  end
+
+  for _, zen_opt in ipairs(option.zen) do
+    api.nvim_set_option(
+      zen_opt.name,
+      state.partial and zen_opt.disable_value or state[zen_opt.name]
+    )
+  end
+  state.partial = not state.partial
 end
 
 return Zen
