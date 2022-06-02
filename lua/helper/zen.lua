@@ -7,6 +7,7 @@ local state = {
   laststatus = api.nvim_get_option("laststatus"),
   showtabline = api.nvim_get_option("showtabline"),
   signcolumn = api.nvim_win_get_option(0, "signcolumn"),
+  winwidth = api.nvim_get_option("winwidth"),
 }
 
 local option = {}
@@ -93,9 +94,15 @@ function win.pad.create(side)
   api.nvim_set_current_win(win.main.nr)
 end
 
-function win.pad.adjust(id)
+function win.pad.adjust()
   local delta = win.main.buf.tw - win.main.width
-  api.nvim_win_set_width(id, math.floor((2 * pad.width - delta) / 2))
+  pad.width = math.floor((2 * pad.width - delta) / 2)
+
+  for _, id in pairs(pad.win) do
+    api.nvim_win_set_width(id, pad.width)
+  end
+
+  api.nvim_set_option("winwidth", pad.width)
 end
 
 local function zen(enter)
@@ -120,8 +127,7 @@ local function zen(enter)
     if win.main.width >= win.main.buf.tw then
       return
     end
-    win.pad.adjust(pad.win.left)
-    win.pad.adjust(pad.win.right)
+    win.pad.adjust()
     return
   end
 
@@ -134,6 +140,7 @@ local function zen(enter)
   vim.cmd("tabclose")
   opt(false)
   api.nvim_win_set_cursor(0, cursorpos)
+  api.nvim_set_option("winwidth", state.winwidth)
 end
 
 local Zen = {}
