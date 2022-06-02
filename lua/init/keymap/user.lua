@@ -19,9 +19,9 @@ keymap.bind({
 
   -- Minimal zen mode behavior
   n(map("gZ", function()
-    require("helper.zen").toggle({ laststatus = true })
+    require("helper.zen").enter()
   end)),
   n(map("gzz", function()
-    require("helper.zen").toggle()
+    require("helper.zen").enter({ show = { laststatus = true } })
   end)),
 })

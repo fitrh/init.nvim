@@ -1,5 +1,3 @@
-local M = {}
-
 local api = vim.api
 
 local state = {
@@ -21,6 +19,10 @@ option.window = {
   { name = "number" },
   { name = "relativenumber" },
   { name = "signcolumn", disable_value = "no" },
+}
+
+option.zen = {
+  { name = "laststatus", disable_value = 0 },
 }
 
 ---Manage option for zen window
@@ -118,19 +120,32 @@ local function zen(enter)
   end
 end
 
-function M.toggle(args)
+local Zen = {}
+
+function Zen.enter(args)
   local opts = args or {}
-  local active = not state.zen
+  local enter = not state.zen
 
-  zen(active)
+  zen(enter)
 
-  if opts.laststatus then
-    api.nvim_set_option("laststatus", active and 0 or state.laststatus)
-  elseif state.zen then
-    api.nvim_set_option("laststatus", state.laststatus)
+  local show = opts.show or {}
+  for _, zen_opt in ipairs(option.zen) do
+    local opt_state = state[zen_opt.name]
+
+    if state.zen then
+      api.nvim_set_option(zen_opt.name, opt_state)
+    else
+      local value = opt_state
+
+      if enter and not show[zen_opt.name] then
+        value = zen_opt.disable_value
+      end
+
+      api.nvim_set_option(zen_opt.name, value)
+    end
   end
 
-  state.zen = active
+  state.zen = enter
 end
 
-return M
+return Zen
