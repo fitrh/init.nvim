@@ -1,7 +1,3 @@
-local handler = require("lsp.handler")
-local attach = require("lsp.attach")
-local capabilities = require("lsp.capability")
-
 local Config = {}
 
 ---@class LspConfig
@@ -27,9 +23,11 @@ function Config.with(bin, opts)
   end
 
   local config = {
-    capabilities = capabilities,
-    handlers = handler.default(),
-    on_attach = attach.with.all,
+    capabilities = require("lsp.capability"),
+    handlers = require("lsp.handler").default(),
+    on_attach = function(client, bufnr)
+      require("lsp.attach").with.all(client, bufnr)
+    end,
   }
 
   if opts then
