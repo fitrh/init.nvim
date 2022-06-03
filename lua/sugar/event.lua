@@ -1,12 +1,12 @@
-local filter_map = {
+local FILTER_TYPE = {
   ["number"] = "buffer",
   ["string"] = "pattern",
   ["table"] = "pattern",
 }
-local fn_map = {
+local ACTION_TYPE = {
   ["function"] = "callback",
   ["string"] = "command",
-  ["table"] = "fn_map",
+  ["table"] = "action_list",
 }
 
 local Event = {}
@@ -17,18 +17,18 @@ local Event = {}
 ---@field buffer number
 ---@field callback function
 ---@field command string
----@field fn_map table
+---@field action_list table
 
 ---Create autocmd specification
 ---@param events string|table @autocmd-events
 ---@param filter number|string|table @autocmd-pattern | buffer number of autocmd-buflocal
----@param fn string|function|table @ex-command | callback | or list of both
+---@param action string|function|table @ex-command | callback | or list of both
 ---@return AutoCmdSpec autocmd
-function Event.autocmd(events, filter, fn)
+function Event.autocmd(events, filter, action)
   return {
     events = events,
-    [filter_map[type(filter)]] = filter,
-    [fn_map[type(fn)]] = fn,
+    [FILTER_TYPE[type(filter)]] = filter,
+    [ACTION_TYPE[type(action)]] = action,
   }
 end
 
@@ -86,16 +86,16 @@ function Event.augroup(group, autocmds)
   clear(group, autocmds)
 
   for _, autocmd in ipairs(autocmds) do
-    if autocmd.fn_map then
+    if autocmd.action_list then
       -- It means the autocmd have multiple `fn`
       local filter = autocmd.pattern or autocmd.buffer
 
-      local fn_autocmds = {}
-      for _, fn in ipairs(autocmd.fn_map) do
-        table.insert(fn_autocmds, Event.autocmd(autocmd.events, filter, fn))
+      local autocmd_list = {}
+      for _, action in ipairs(autocmd.action_list) do
+        table.insert(autocmd_list, Event.autocmd(autocmd.events, filter, action))
       end
 
-      Event.augroup(group, fn_autocmds)
+      Event.augroup(group, autocmd_list)
     else
       vim.api.nvim_create_autocmd(autocmd.events, create_opts(group, autocmd))
     end
