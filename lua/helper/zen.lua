@@ -101,6 +101,7 @@ function win.pad.create(side)
   vim.cmd(("%s %dvnew"):format(pad.cmd[side], pad.width))
   pad.buf[side] = api.nvim_buf_get_number(0)
   pad.win[side] = api.nvim_get_current_win()
+  api.nvim_win_set_var(pad.win[side], "nocursorline", true)
   api.nvim_win_set_option(pad.win[side], "winhighlight", pad.winhl)
   opt(true, { win = true })
 
