@@ -70,7 +70,6 @@ local config = {
   end,
   flags = {
     allow_incremental_sync = true,
-    server_side_fuzzy_completion = true,
   },
 }
 config = require("lsp.config").with(bin, config)
