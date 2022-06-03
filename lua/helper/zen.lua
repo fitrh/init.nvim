@@ -61,7 +61,18 @@ local pad = {
   cmd = { left = "leftabove", right = "rightbelow" },
   width = 0,
   winhl = "VertSplit:WinSeparatorZen,WinSeparator:WinSeparatorZen",
-  disable_opt = { "buflisted", "modifiable" },
+  opt = {
+    buf = {
+      { "bufhidden", "wipe" },
+      { "buflisted", false },
+      { "buftype", "nofile" },
+      { "modifiable", false },
+    },
+    win = {
+      { "cursorline", false },
+      { "winfixwidth", true },
+    },
+  },
 }
 
 local win = { main = {}, pad = {} }
@@ -94,8 +105,12 @@ function win.pad.create(side)
   api.nvim_win_set_option(pad.win[side], "winhighlight", pad.winhl)
   opt(true, { win = true })
 
-  for _, bufopt in ipairs(pad.disable_opt) do
-    api.nvim_buf_set_option(pad.buf[side], bufopt, false)
+  for _, bufopt in ipairs(pad.opt.buf) do
+    api.nvim_buf_set_option(pad.buf[side], bufopt[1], bufopt[2])
+  end
+
+  for _, winopt in ipairs(pad.opt.win) do
+    api.nvim_win_set_option(pad.win[side], winopt[1], winopt[2])
   end
 
   pad.exist = true
