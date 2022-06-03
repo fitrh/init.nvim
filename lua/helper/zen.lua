@@ -55,7 +55,6 @@ end
 
 -- window padding state
 local pad = {
-  exist = false,
   buf = { left = nil, right = nil },
   win = { left = nil, right = nil },
   cmd = { left = "leftabove", right = "rightbelow" },
@@ -113,16 +112,7 @@ function win.pad.create(side)
     api.nvim_win_set_option(pad.win[side], winopt[1], winopt[2])
   end
 
-  pad.exist = true
   api.nvim_set_current_win(win.main.nr)
-end
-
-function win.pad.destroy()
-  if pad.exist then
-    for _, id in pairs(pad.buf) do
-      api.nvim_buf_delete(id, { force = true })
-    end
-  end
 end
 
 function win.pad.adjust()
@@ -145,7 +135,6 @@ local function zen(enter)
     pad.width = math.floor(columns / 5)
 
     if columns < textwidth or pad.width <= api.nvim_get_option("winwidth") then
-      pad.exist = false
       return
     end
     win.pad.create("left")
@@ -162,7 +151,6 @@ local function zen(enter)
     return
   end
 
-  win.pad.destroy()
   win.main.restore()
 end
 
