@@ -1,11 +1,11 @@
-local M = {}
+local Attach = {}
 
-M.with = {
+Attach.with = {
   default = require("lsp.attach.with_default"),
-  lsp = {
+  extension = {
     signature = require("lsp.attach.with_lsp_signature"),
   },
   all = require("lsp.attach.with_all_extension"),
 }
 
-return M
+return Attach
