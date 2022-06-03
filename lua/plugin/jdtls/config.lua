@@ -4,17 +4,6 @@ local env = {
   RUNTIMES = os.getenv("JAVA_RUNTIMES"),
 }
 
-local root_files = {
-  -- Single-module projects
-  {
-    "pom.xml", -- Maven
-    "settings.gradle", -- Gradle
-    "settings.gradle.kts", -- Gradle
-  },
-  -- Multi-module projects
-  { "build.gradle", "build.gradle.kts" },
-} or vim.fn.getcwd()
-
 local settings = {
   java = { -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
     codeGeneration = {
@@ -63,7 +52,7 @@ if env.WORKSPACE then
 end
 
 local config = {
-  root_dir = setup.find_root(root_files),
+  root_dir = setup.find_root({ "gradlew", "pom.xml" }) or vim.fn.getcwd(),
   cmd = cmd,
   capabilities = capabilities,
   settings = settings,
