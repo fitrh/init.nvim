@@ -31,7 +31,7 @@ end
 ---@param groups table
 ---@return string hex @#RRGGBB attr value
 local function fallback(attr, groups)
-  for _, group in ipairs(groups) do
+  for _, group in ipairs(groups or {}) do
     local valid, value = pcall(api.get, group, true)
     if valid and value[attr] then
       return hex(value[attr])
@@ -51,8 +51,6 @@ end
 ---@param fallbacks table
 ---@return string ##RRGGBB | NONE
 local function get(attr, group, fallbacks)
-  fallbacks = fallbacks or {}
-
   local valid, value = pcall(api.get, group, true)
   if not valid then
     return fallback(attr, fallbacks)
