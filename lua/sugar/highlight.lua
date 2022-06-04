@@ -4,6 +4,22 @@ local api = {
   get = vim.api.nvim_get_hl_by_name,
 }
 
+---@class RGBTable
+---@field r number
+---@field g number
+---@field b number
+
+---Convert hex (#RRGGBB) to RGBTable { r, g, b }
+---@param hex string @#RRGGBB
+---@return RGBTable
+local function rgb(hex)
+  hex = hex:gsub("#", "")
+  local r = hex:sub(1, 2)
+  local g = hex:sub(3, 4)
+  local b = hex:sub(5, 6)
+  return { r = tonumber(r, 16), g = tonumber(g, 16), b = tonumber(b, 16) }
+end
+
 ---Convert RGB decimal to hexadecimal (#RRGGBB)
 ---@param dec number|string
 ---@return string color @#RRGGBB
@@ -45,8 +61,25 @@ local function get(attr, group, fallbacks)
   return value[attr] and hex(value[attr]) or fallback(attr, fallbacks)
 end
 
+---Blend `top` over `bottom` to get pseudo-transparent color
+---@param top string @hex color (#RRGGBB)
+---@param bottom string @hex color (#RRGGBB)
+---@param alpha number @blend intensity, float (0.0 - 1.0) or integer (0 - 100)
+---@return string @#RRGGBB
+function Highlight.blend(top, bottom, alpha)
+  alpha = alpha > 1 and (alpha / 100) or alpha
+  bottom = rgb(bottom)
+  top = rgb(top)
+
+  local function blend(c)
+    c = (alpha * top[c] + ((1 - alpha) * bottom[c]))
+    return math.floor(math.min(math.max(0, c), 255) + 0.5)
+  end
+
+  return ("#%02X%02X%02X"):format(blend("r"), blend("g"), blend("b"))
+end
+
 ---Get the foreground color of `from_group` highlight group
----
 ---@param from_group string
 ---@param or_fallbacks? table list of highlight groups
 ---@return string ##RRGGBB | NONE
@@ -55,7 +88,6 @@ function Highlight.fg(from_group, or_fallbacks)
 end
 
 ---Get the background color of `from_group` highlight group
----
 ---@param from_group string
 ---@param or_fallbacks? table list of highlight groups
 ---@return string ##RRGGBB | NONE
@@ -68,7 +100,6 @@ end
 ---@field fg fun():string @#RRGGBB | NONE
 
 ---Get table of highlight group attributes
----
 ---@param from_group string
 ---@param or_fallbacks? table list of highlight groups
 ---@return GetAttribute
@@ -198,7 +229,6 @@ local function parse(hl)
 end
 
 ---Create or set highlight group using vim.api.nvim_set_hl
----
 ---@param name string #highlight group name
 ---@param def HighlightDef #table of HighlightDef
 function Highlight.set(name, def)
@@ -206,7 +236,6 @@ function Highlight.set(name, def)
 end
 
 ---Link `dest` to `source` highlight group
----
 ---@param dest string #highlight group name
 ---@param source string #highlight group name to be linked
 function Highlight.link(dest, source)
