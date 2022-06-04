@@ -9,8 +9,8 @@ config.settings = {
 }
 
 config.on_attach = function(client, bufnr)
-  require("lsp.attach").with.all(client, bufnr)
-  require("plugin.rust-tools.keymap").attach(bufnr)
+  require("config.lsp.attach").with.all(client, bufnr)
+  require("config.plugin.rust-tools.keymap").attach(bufnr)
 end
 
 local client = require("config.lsp.server").with(bin, config)
