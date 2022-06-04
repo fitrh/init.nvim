@@ -22,7 +22,7 @@ hi.colorscheme({
   { "SignColumn", link = "LineNr" },
   { "StatusLine", bg = c.dark1, fg = c.light2 },
   { "TabLineSel", inherit = "TabLineSel", bg = bg },
-  { "VertSplit", fg = hi.bg("StatusLine"), cterm = { reverse = true } },
+  { "VertSplit", fg = hi.get("StatusLine").bg },
 
   -- health
   { "healthError", link = "DiagnosticError" },
