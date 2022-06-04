@@ -4,11 +4,25 @@ local api = {
   get = vim.api.nvim_get_hl_by_name,
 }
 
----Convert to hexadecimal (#RRGGBB)
----@param str string
----@return string color ##RRGGBB
-local function tohex(str)
-  return ("#%06x"):format(str)
+---Convert RGB decimal to hexadecimal (#RRGGBB)
+---@param dec number|string
+---@return string color @#RRGGBB
+local function hex(dec)
+  return ("#%06x"):format(dec)
+end
+
+---@param attr HighlightAttribute
+---@param groups table
+---@return string hex @#RRGGBB attr value
+local function fallback(attr, groups)
+  for _, group in ipairs(groups) do
+    local valid, value = pcall(api.get, group, true)
+    if valid and value[attr] then
+      return hex(value[attr])
+    end
+  end
+
+  return "NONE"
 end
 
 ---@alias HighlightAttribute
@@ -21,28 +35,14 @@ end
 ---@param fallbacks table
 ---@return string ##RRGGBB | NONE
 local function get(attr, group, fallbacks)
-  local hl = {}
-  -- validate the highlight group
-  hl.valid, hl.value = pcall(api.get, group, true)
+  fallbacks = fallbacks or {}
 
-  -- if `group` is invalid or the `attr` is unavailable for `group`
-  if not hl.valid or not hl.value[attr] then
-    -- we are provide `fallbacks`
-    -- try extracting valid groups with `attr` available
-    if fallbacks then
-      for _, fallback in ipairs(fallbacks) do
-        hl.valid, hl.value = pcall(api.get, fallback, true)
-        if hl.valid and hl.value[attr] then
-          return tohex(hl.value[attr])
-        end
-      end
-    end
-
-    -- none of the groups provided are valid
-    return "NONE"
+  local valid, value = pcall(api.get, group, true)
+  if not valid then
+    return fallback(attr, fallbacks)
   end
 
-  return tohex(hl.value[attr])
+  return value[attr] and hex(value[attr]) or fallback(attr, fallbacks)
 end
 
 ---Get the foreground color of `from_group` highlight group
