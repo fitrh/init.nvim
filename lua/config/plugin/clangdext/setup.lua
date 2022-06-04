@@ -1,6 +1,6 @@
 local config = {}
 
-config.server = require("config.lsp.client.clangd")
+config.server = require("config.lsp.server.clangd")
 
 if not config.server then
   return false

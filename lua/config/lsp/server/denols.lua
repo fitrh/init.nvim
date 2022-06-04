@@ -17,4 +17,4 @@ config.init_options = {
   lint = true,
 }
 
-return require("config.lsp.client").with("deno", config)
+return require("config.lsp.server").with("deno", config)

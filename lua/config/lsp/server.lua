@@ -1,6 +1,6 @@
-local Client = {}
+local Server = {}
 
----@class LspConfig
+---@class ServerConfig
 ---@field cmd string[]
 ---@field cmd_cwd string
 ---@field cmd_env table
@@ -15,9 +15,9 @@ local Client = {}
 
 ---Base configuration for `vim.lsp.start_client`
 ---@param bin string #binary executable name
----@param opts LspConfig #`vim.lsp.start_client` config
----@return table LspConfig
-function Client.with(bin, opts)
+---@param opts ServerConfig #`vim.lsp.start_client` config
+---@return table ServerConfig
+function Server.with(bin, opts)
   if vim.fn.executable(bin) ~= 1 then
     return false
   end
@@ -39,4 +39,4 @@ function Client.with(bin, opts)
   return config
 end
 
-return Client
+return Server

@@ -20,4 +20,4 @@ config.init_options = {
   semanticHighlighting = true,
 }
 
-return require("config.lsp.client").with(bin, config)
+return require("config.lsp.server").with(bin, config)

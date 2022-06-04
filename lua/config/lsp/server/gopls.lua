@@ -1,6 +1,6 @@
 local bin = "gopls"
 
-return require("config.lsp.client").with(bin, {
+return require("config.lsp.server").with(bin, {
   cmd = { bin, "serve" },
   settings = {
     gopls = {

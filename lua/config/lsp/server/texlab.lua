@@ -28,4 +28,4 @@ if vim.fn.executable("tectonic") == 1 then
   }
 end
 
-return require("config.lsp.client").with("texlab", config)
+return require("config.lsp.server").with("texlab", config)

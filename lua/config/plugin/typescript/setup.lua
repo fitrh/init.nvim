@@ -1,4 +1,4 @@
-local client = require("config.lsp.client.tsserver")
+local client = require("config.lsp.server.tsserver")
 if not client then
   return false
 end

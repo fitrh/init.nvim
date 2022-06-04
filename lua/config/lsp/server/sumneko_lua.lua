@@ -9,7 +9,7 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-return require("config.lsp.client").with(bin, {
+return require("config.lsp.server").with(bin, {
   cmd = { bin, "-E", main },
   settings = {
     Lua = {

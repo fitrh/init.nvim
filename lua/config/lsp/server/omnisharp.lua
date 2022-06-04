@@ -4,6 +4,6 @@ end
 
 local bin = ("%s/omnisharp/run"):format(os.getenv("DOTNET_ROOT"))
 
-return require("config.lsp.client").with(bin, {
+return require("config.lsp.server").with(bin, {
   cmd = { bin, "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
 })

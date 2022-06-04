@@ -20,4 +20,4 @@ config.settings.svelte = {
   },
 }
 
-return require("config.lsp.client").with("svelteserver", config)
+return require("config.lsp.server").with("svelteserver", config)

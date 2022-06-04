@@ -1,4 +1,4 @@
-return require("config.lsp.client").with("haskell-language-server-wrapper", {
+return require("config.lsp.server").with("haskell-language-server-wrapper", {
   settings = {
     haskell = {
       formattingProvider = "brittany",

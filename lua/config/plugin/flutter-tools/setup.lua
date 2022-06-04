@@ -7,7 +7,7 @@ end
 
 config.closing_tags = { prefix = "ﰪ " }
 
-config.lsp = require("config.lsp.client").with("flutter")
+config.lsp = require("config.lsp.server").with("flutter")
 if not config.lsp then
   return false
 end

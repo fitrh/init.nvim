@@ -1,4 +1,4 @@
-return require("config.lsp.client").with("typescript-language-server", {
+return require("config.lsp.server").with("typescript-language-server", {
   init_options = {
     hostInfo = "neovim",
     preferences = {

@@ -72,7 +72,7 @@ local config = {
     allow_incremental_sync = true,
   },
 }
-config = require("config.lsp.client").with(bin, config)
+config = require("config.lsp.server").with(bin, config)
 
 return function()
   if not os.getenv("JAVA_HOME") or not config then

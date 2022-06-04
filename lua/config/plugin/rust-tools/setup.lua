@@ -13,7 +13,7 @@ config.on_attach = function(client, bufnr)
   require("plugin.rust-tools.keymap").attach(bufnr)
 end
 
-local client = require("config.lsp.client").with(bin, config)
+local client = require("config.lsp.server").with(bin, config)
 if not client then
   return false
 end

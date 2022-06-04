@@ -9,4 +9,4 @@ if ok then
   }
 end
 
-return require("config.lsp.client").with("vscode-json-language-server", config)
+return require("config.lsp.server").with("vscode-json-language-server", config)

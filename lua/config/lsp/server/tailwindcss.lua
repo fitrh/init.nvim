@@ -23,4 +23,4 @@ config.on_attach = function(client, bufnr)
   end
 end
 
-return require("config.lsp.client").with("tailwindcss-language-server", config)
+return require("config.lsp.server").with("tailwindcss-language-server", config)
