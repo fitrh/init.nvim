@@ -11,6 +11,16 @@ gitsigns.setup({
   },
   on_attach = function(bufnr)
     require("config.plugin.gitsigns.keymap").attach(gitsigns, bufnr)
+
+    local hi = require("sugar.highlight")
+    local bottom = hi.bg("LineNr", { "Normal", "SignColumn", "NormalFloat" })
+
+    for _, kind in ipairs({ "Add", "Change", "Delete" }) do
+      local group = ("GitSigns%sNr"):format(kind)
+      local inherit = ("GitSigns%s"):format(kind)
+      local bg = hi.blend(hi.fg(inherit), bottom, 0.1)
+      hi.set(group, { inherit = inherit, bg = bg })
+    end
   end,
   preview_config = { border = "rounded" },
   current_line_blame = true,
