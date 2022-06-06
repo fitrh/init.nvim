@@ -37,6 +37,7 @@ keymap.bind({
   map("[Q", ex("xall")),
 
   --- buffer
+  n(map("<C-w>Q", ex("bdelete"))),
   -- next & previous buffer
   n(map("<S-Tab>", ex("bprevious"))),
   n(map("<Tab>", ex("bnext"))),
