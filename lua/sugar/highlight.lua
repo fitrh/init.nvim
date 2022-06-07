@@ -28,9 +28,10 @@ local function hex(dec)
 end
 
 ---@param attr HighlightAttribute
----@param groups table
+---@param groups table @highlight group list
+---@param color? number|string
 ---@return string hex @#RRGGBB attr value
-local function fallback(attr, groups)
+local function fallback(attr, groups, color)
   for _, group in ipairs(groups or {}) do
     local valid, value = pcall(api.get, group, true)
     if valid and value[attr] then
@@ -38,7 +39,7 @@ local function fallback(attr, groups)
     end
   end
 
-  return "NONE"
+  return color and color or "NONE"
 end
 
 ---@alias HighlightAttribute
@@ -48,15 +49,19 @@ end
 ---Get the attributes of highlight group
 ---@param attr HighlightAttribute
 ---@param group string
----@param fallbacks table
+---@param fallbacks? table @highlight group list
+---@param color? number|string @fallback color
 ---@return string ##RRGGBB | NONE
-local function get(attr, group, fallbacks)
+local function get(attr, group, fallbacks, color)
   local valid, value = pcall(api.get, group, true)
   if not valid then
-    return fallback(attr, fallbacks)
+    if not fallbacks and color then
+      return color
+    end
+    return fallback(attr, fallbacks, color)
   end
 
-  return value[attr] and hex(value[attr]) or fallback(attr, fallbacks)
+  return value[attr] and hex(value[attr]) or fallback(attr, fallbacks, color)
 end
 
 ---Blend `top` over `bottom` to get pseudo-transparent color
@@ -79,18 +84,20 @@ end
 
 ---Get the foreground color of `from_group` highlight group
 ---@param from_group string
----@param or_fallbacks? table list of highlight groups
+---@param or_fallbacks? table @list of fallback highlight groups
+---@param or_color? string @fallback color
 ---@return string ##RRGGBB | NONE
-function Highlight.fg(from_group, or_fallbacks)
-  return get("foreground", from_group, or_fallbacks or nil)
+function Highlight.fg(from_group, or_fallbacks, or_color)
+  return get("foreground", from_group, or_fallbacks, or_color)
 end
 
 ---Get the background color of `from_group` highlight group
 ---@param from_group string
----@param or_fallbacks? table list of highlight groups
+---@param or_fallbacks? table @list of fallback highlight groups
+---@param or_color? string @fallback color
 ---@return string ##RRGGBB | NONE
-function Highlight.bg(from_group, or_fallbacks)
-  return get("background", from_group, or_fallbacks or nil)
+function Highlight.bg(from_group, or_fallbacks, or_color)
+  return get("background", from_group, or_fallbacks, or_color)
 end
 
 ---@class GetAttribute
@@ -99,15 +106,16 @@ end
 
 ---Get table of highlight group attributes
 ---@param from_group string
----@param or_fallbacks? table list of highlight groups
+---@param or_fallbacks? table @list of fallback highlight groups
+---@param or_color? string @fallback color
 ---@return GetAttribute
-function Highlight.get(from_group, or_fallbacks)
+function Highlight.get(from_group, or_fallbacks, or_color)
   return {
     bg = function()
-      return get("background", from_group, or_fallbacks or nil)
+      return get("background", from_group, or_fallbacks, or_color)
     end,
     fg = function()
-      return get("foreground", from_group, or_fallbacks or nil)
+      return get("foreground", from_group, or_fallbacks, or_color)
     end,
   }
 end
