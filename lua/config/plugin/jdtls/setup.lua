@@ -1,6 +1,6 @@
 local env = {
   WORKSPACE = os.getenv("JAVA_WORKSPACE"),
-  BASENAME_CWD = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t"),
+  BASENAME_CWD = vim.fn.fnamemodify(vim.loop.cwd(), ":p:h:t"),
   RUNTIMES = os.getenv("JAVA_RUNTIMES"),
 }
 
@@ -52,7 +52,7 @@ if env.WORKSPACE then
 end
 
 local config = {
-  root_dir = setup.find_root({ "gradlew", "pom.xml" }) or vim.fn.getcwd(),
+  root_dir = setup.find_root({ "gradlew", "pom.xml" }) or vim.loop.cwd(),
   cmd = cmd,
   capabilities = capabilities,
   settings = settings,
