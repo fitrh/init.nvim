@@ -8,7 +8,7 @@ function M.setup(cmp, snippet)
     ["<C-n>"] = map(map.select_next_item(), { "i", "c" }),
     ["<C-b>"] = map.scroll_docs(-4),
     ["<C-f>"] = map.scroll_docs(4),
-    ["<C-Space>"] = map.complete(),
+    ["<C-l>"] = map.complete(),
     ["<C-e>"] = map.abort(),
     ["<C-y>"] = map.confirm({ select = true }),
     ["<CR>"] = map.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
