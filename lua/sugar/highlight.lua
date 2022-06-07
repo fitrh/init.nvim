@@ -71,8 +71,8 @@ end
 ---@return string @#RRGGBB
 function Highlight.blend(top, bottom, alpha)
   alpha = alpha > 1 and (alpha / 100) or alpha
-  bottom = rgb(bottom)
-  top = rgb(top)
+  bottom = rgb(type(bottom) == "function" and bottom() or bottom)
+  top = rgb(type(top) == "function" and top() or top)
 
   local function blend(c)
     c = (alpha * top[c] + ((1 - alpha) * bottom[c]))
