@@ -22,7 +22,7 @@ hi.colorscheme({
   { "SignColumn", link = "LineNr" },
   { "StatusLine", bg = c.dark1, fg = c.light2 },
   { "TabLineSel", inherit = "TabLineSel", bg = bg },
-  { "VertSplit", fg = hi.get("StatusLine").bg },
+  { "VertSplit", fg = hi.bg("StatusLine") },
 
   -- health
   { "healthError", link = "DiagnosticError" },
@@ -75,6 +75,6 @@ hi.colorscheme({
   { "TabLineSep", link = "TabLine" },
   { "TabLineModifiedSel", inherit = "TabLineSel", fg = c.bright_red },
   { "TabLineSepSel", inherit = "TabLineSel", fg = c.bright_blue },
-  { "TreesitterContext", bg = hi.get("StatusLine").bg },
+  { "TreesitterContext", bg = hi.bg("StatusLine") },
   { "WinSeparatorZen", fg = hi.bg("Normal") },
 })

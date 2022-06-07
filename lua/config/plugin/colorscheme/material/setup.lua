@@ -27,7 +27,7 @@ hi.colorscheme({
   { "TabLine", link = "StatusLine" },
   { "TablineFill", link = "TabLine" },
   { "TabLineSel", inherit = "Normal", fg = c.accent },
-  { "VertSplit", fg = hi.get("StatusLine").bg, cterm = { reverse = true } },
+  { "VertSplit", fg = hi.bg("StatusLine"), cterm = { reverse = true } },
   { "WinSeparator", link = "VertSplit" },
 
   -- lsp-highlight
@@ -70,6 +70,6 @@ hi.colorscheme({
   { "TabLineSep", link = "TabLine" },
   { "TabLineModifiedSel", inherit = "TabLineSel", fg = c.red },
   { "TabLineSepSel", inherit = "TabLineSel", fg = c.accent },
-  { "TreesitterContext", bg = hi.get("StatusLine").bg },
+  { "TreesitterContext", bg = hi.bg("StatusLine") },
   { "WinSeparatorZen", fg = hi.bg("Normal") },
 })

@@ -68,56 +68,42 @@ end
 ---@param top string @hex color (#RRGGBB)
 ---@param bottom string @hex color (#RRGGBB)
 ---@param alpha number @blend intensity, float (0.0 - 1.0) or integer (0 - 100)
----@return string @#RRGGBB
+---@return fun():string @#RRGGBB
 function Highlight.blend(top, bottom, alpha)
-  alpha = alpha > 1 and (alpha / 100) or alpha
-  bottom = rgb(type(bottom) == "function" and bottom() or bottom)
-  top = rgb(type(top) == "function" and top() or top)
+  return function()
+    alpha = alpha > 1 and (alpha / 100) or alpha
+    bottom = rgb(type(bottom) == "function" and bottom() or bottom)
+    top = rgb(type(top) == "function" and top() or top)
 
-  local function blend(c)
-    c = (alpha * top[c] + ((1 - alpha) * bottom[c]))
-    return math.floor(math.min(math.max(0, c), 255) + 0.5)
+    local function blend(c)
+      c = (alpha * top[c] + ((1 - alpha) * bottom[c]))
+      return math.floor(math.min(math.max(0, c), 255) + 0.5)
+    end
+
+    return ("#%02X%02X%02X"):format(blend("r"), blend("g"), blend("b"))
   end
-
-  return ("#%02X%02X%02X"):format(blend("r"), blend("g"), blend("b"))
 end
 
 ---Get the foreground color of `from_group` highlight group
 ---@param from_group string
 ---@param or_fallbacks? table @list of fallback highlight groups
 ---@param or_color? string @fallback color
----@return string ##RRGGBB | NONE
+---@return fun():string ##RRGGBB | NONE
 function Highlight.fg(from_group, or_fallbacks, or_color)
-  return get("foreground", from_group, or_fallbacks, or_color)
+  return function()
+    return get("foreground", from_group, or_fallbacks, or_color)
+  end
 end
 
 ---Get the background color of `from_group` highlight group
 ---@param from_group string
 ---@param or_fallbacks? table @list of fallback highlight groups
 ---@param or_color? string @fallback color
----@return string ##RRGGBB | NONE
+---@return fun():string ##RRGGBB | NONE
 function Highlight.bg(from_group, or_fallbacks, or_color)
-  return get("background", from_group, or_fallbacks, or_color)
-end
-
----@class GetAttribute
----@field bg fun():string @#RRGGBB | NONE
----@field fg fun():string @#RRGGBB | NONE
-
----Get table of highlight group attributes
----@param from_group string
----@param or_fallbacks? table @list of fallback highlight groups
----@param or_color? string @fallback color
----@return GetAttribute
-function Highlight.get(from_group, or_fallbacks, or_color)
-  return {
-    bg = function()
-      return get("background", from_group, or_fallbacks, or_color)
-    end,
-    fg = function()
-      return get("foreground", from_group, or_fallbacks, or_color)
-    end,
-  }
+  return function()
+    return get("background", from_group, or_fallbacks, or_color)
+  end
 end
 
 ---@class HighlightDef

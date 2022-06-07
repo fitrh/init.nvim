@@ -1,5 +1,5 @@
 local hl = require("sugar.highlight")
-local color = { fg = hl.fg("DiagnosticWarn"), gui = "BOLD" }
+local color = { fg = hl.fg("DiagnosticWarn")(), gui = "BOLD" }
 local mod = require("config.plugin.lualine.component.util.mod")
 local component = require("config.plugin.lualine.component")
 local diagnostic = component.diagnostic.workspace

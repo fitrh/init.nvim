@@ -87,7 +87,7 @@ File.location = {
     local width = #tostring(vim.api.nvim_buf_get_option(0, "textwidth"))
     return ("%%%sl,%%-%sc"):format(length, width)
   end,
-  icon = { "ﰙ", color = { fg = hi.fg("NonText") } },
+  icon = { "ﰙ", color = { fg = hi.fg("NonText")() } },
   cond = function()
     return when().not_empty_buf()
   end,
