@@ -50,3 +50,12 @@ augroup("OnTerminalBuffer", {
     "startinsert",
   }),
 })
+
+augroup("SetTabLine", {
+  autocmd("TabNew", "*", function()
+    vim.api.nvim_set_option(
+      "tabline",
+      [[%{%v:lua.require("config.option.tabline").draw()%}]]
+    )
+  end),
+})
