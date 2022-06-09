@@ -234,12 +234,23 @@ function Highlight.link(dest, source)
   api.set(0, dest, { link = source })
 end
 
+---@class HighlightCallbackParam
+---@field set fun(name:string, def:HighlightDef)
+---@field link fun(dest:string, source:string)
+---@field fg fun(group:string, fallback_groups:table, fallback_color:string)
+---@field bg fun(group:string, fallback_groups:table, fallback_color:string)
+---@field blend fun(top:string|fun(), bottom:string|fun(), alpha:number)
+
 ---Set colorscheme
----@param groups HighlightDef[]
-function Highlight.colorscheme(groups)
-  for _, group in ipairs(groups) do
-    Highlight.set(group[1], group)
-  end
+---@param callback fun(h:HighlightCallbackParam)
+function Highlight.colorscheme(callback)
+  callback({
+    set = Highlight.set,
+    link = Highlight.link,
+    fg = Highlight.fg,
+    bg = Highlight.bg,
+    blend = Highlight.blend,
+  })
 end
 
 return Highlight

@@ -12,61 +12,61 @@ require("tokyonight").colorscheme()
 
 local c = require("tokyonight.colors").setup(config)
 local u = require("tokyonight.util")
-local hi = require("sugar.highlight")
 
-hi.colorscheme({
+require("sugar.highlight").colorscheme(function(h)
+  local set, link, bg, blend = h.set, h.link, h.bg, h.blend
+
   -- highlight-default
-  { "CursorLineNr", fg = c.blue },
-  { "ColorColumn", bg = c.bg_statusline },
-  { "TabLineSel", link = "Normal" },
-  { "TabLine", link = "StatusLineNC" },
-  { "TabLineFill", link = "TabLine" },
-  { "VertSplit", fg = hi.bg("StatusLine"), cterm = { reverse = true } },
+  set("CursorLineNr", { fg = c.blue })
+  set("ColorColumn", { bg = c.bg_statusline })
+  link("TabLineSel", "Normal")
+  link("TabLine", "StatusLineNC")
+  link("TabLineFill", "TabLine")
+  set("VertSplit", { fg = c.bg_statusline, cterm = { reverse = true } })
 
   -- treesitter
-  { "TSConstBuiltin", fg = c.red },
+  set("TSConstBuiltin", { fg = c.red })
 
   -- plugin
-  { "InclineNormal", link = "StatusLine" },
-  { "InclineNormalNC", link = "StatusLineNC" },
-  { "LTSymbolDetail", link = "Comment" },
-  { "LTSymbolJump", link = "LspReferenceText" },
-  { "ModesCopy", bg = hi.bg("IncSearch") },
-  { "ModesDelete", bg = c.red },
-  { "ModesInsert", bg = c.fg_dark },
-  { "ModesVisual", bg = c.purple },
-  { "NotifyTRACEBorder", link = "DiagnosticHint" },
-  { "NotifyTRACETitle", link = "NotifyTRACEBorder" },
-  { "NotifyTRACEIcon", link = "NotifyTRACEBorder" },
-  { "NotifyDEBUGBorder", fg = c.fg_dark },
-  { "NotifyDEBUGTitle", link = "NotifyDEBUGBorder" },
-  { "NotifyDEBUGIcon", link = "NotifyDEBUGBorder" },
-  { "NotifyINFOBorder", link = "DiagnosticInfo" },
-  { "NotifyINFOTitle", link = "NotifyINFOBorder" },
-  { "NotifyINFOIcon", link = "NotifyINFOBorder" },
-  { "NotifyWARNBorder", link = "DiagnosticWarn" },
-  { "NotifyWARNTitle", link = "NotifyWARNBorder" },
-  { "NotifyWARNIcon", link = "NotifyWARNBorder" },
-  { "NotifyERRORBorder", link = "DiagnosticError" },
-  { "NotifyERRORTitle", link = "NotifyERRORBorder" },
-  { "NotifyERRORIcon", link = "NotifyERRORBorder" },
-  { "StatusLineGitBranch", inherit = "StatusLine", fg = c.purple },
-  {
+  link("InclineNormal", "StatusLine")
+  link("InclineNormalNC", "StatusLineNC")
+  link("LTSymbolDetail", "Comment")
+  link("LTSymbolJump", "LspReferenceText")
+  set("ModesCopy", { bg = bg("IncSearch") })
+  set("ModesDelete", { bg = c.red })
+  set("ModesInsert", { bg = c.green })
+  set("ModesVisual", { bg = c.purple })
+  link("NotifyTRACEBorder", "DiagnosticHint")
+  link("NotifyTRACETitle", "NotifyTRACEBorder")
+  link("NotifyTRACEIcon", "NotifyTRACEBorder")
+  set("NotifyDEBUGBorder", { fg = c.fg_dark })
+  link("NotifyDEBUGTitle", "NotifyDEBUGBorder")
+  link("NotifyDEBUGIcon", "NotifyDEBUGBorder")
+  link("NotifyINFOBorder", "DiagnosticInfo")
+  link("NotifyINFOTitle", "NotifyINFOBorder")
+  link("NotifyINFOIcon", "NotifyINFOBorder")
+  link("NotifyWARNBorder", "DiagnosticWarn")
+  link("NotifyWARNTitle", "NotifyWARNBorder")
+  link("NotifyWARNIcon", "NotifyWARNBorder")
+  link("NotifyERRORBorder", "DiagnosticError")
+  link("NotifyERRORTitle", "NotifyERRORBorder")
+  link("NotifyERRORIcon", "NotifyERRORBorder")
+  set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.purple })
+  set(
     "StatusLineModified",
-    inherit = "StatusLine",
-    fg = u.brighten(c.red, 0.2),
-  },
-  { "StatusLinePath", link = "StatusLineNC" },
-  { "StatusLineRO", inherit = "StatusLine", fg = c.red1 },
-  { "StatusLineMNormal", fg = c.blue },
-  { "StatusLineMInsert", fg = c.green },
-  { "StatusLineMVisual", fg = c.purple },
-  { "StatusLineMReplace", fg = c.red },
-  { "StatusLineMCommand", fg = c.yellow },
-  { "TabLineModified", inherit = "TabLine", fg = c.red },
-  { "TabLineSep", link = "TabLine" },
-  { "TabLineModifiedSel", inherit = "TabLineSel", fg = c.red },
-  { "TabLineSepSel", inherit = "TabLineSel", fg = c.blue },
-  { "TreesitterContext", bg = hi.bg("StatusLine") },
-  { "WinSeparatorZen", fg = hi.bg("Normal") },
-})
+    { inherit = "StatusLine", fg = u.brighten(c.red, 0.2) }
+  )
+  link("StatusLinePath", "StatusLineNC")
+  set("StatusLineRO", { inherit = "StatusLine", fg = c.red1 })
+  set("StatusLineMNormal", { fg = c.blue })
+  set("StatusLineMInsert", { fg = c.green })
+  set("StatusLineMVisual", { fg = c.purple })
+  set("StatusLineMReplace", { fg = c.red })
+  set("StatusLineMCommand", { fg = c.yellow })
+  set("TabLineModified", { inherit = "TabLine", fg = c.red })
+  link("TabLineSep", "TabLine")
+  set("TabLineModifiedSel", { inherit = "TabLineSel", fg = c.red })
+  set("TabLineSepSel", { inherit = "TabLineSel", fg = c.blue })
+  set("TreesitterContext", { bg = c.bg_statusline })
+  set("WinSeparatorZen", { fg = c.bg })
+end)

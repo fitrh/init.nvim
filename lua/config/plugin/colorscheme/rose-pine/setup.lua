@@ -6,50 +6,51 @@ local theme = require("rose-pine")
 theme.setup(config)
 theme.colorscheme()
 
-local hi = require("sugar.highlight")
 local c = require("rose-pine.palette")
 
-hi.colorscheme({
+require("sugar.highlight").colorscheme(function (h)
+  local set, link, fg, bg = h.set, h.link, h.fg, h.bg
+
   -- syntax, SEE: :help W18
-  { "Comment", inherit = "Comment", italic = true },
+  set("Comment", { inherit = "Comment", italic = true })
 
   -- highlight-default
-  { "ColorColumn", link = "StatusLine" },
-  { "NormalFloat", link = "Normal" },
-  { "TabLineSel", link = "Normal" },
-  { "VertSplit", fg = hi.bg("StatusLine"), cterm = { reverse = true } },
+  link("ColorColumn", "StatusLine")
+  link("NormalFloat", "Normal")
+  link("TabLineSel", "Normal")
+  set("VertSplit", { fg = bg("StatusLine"), cterm = { reverse = true } })
 
   -- health
-  { "healthError", link = "DiagnosticError" },
-  { "healthSuccess", fg = c.pine },
-  { "healthWarning", link = "DiagnosticWarn" },
+  link("healthError", "DiagnosticError")
+  set("healthSuccess", { fg = c.pine })
+  link("healthWarning", "DiagnosticWarn")
 
   -- treesitter
-  { "TSParameter", inherit = "TSParameter", italic = true },
-  { "TSKeyword", inherit = "TSKeyword", italic = true },
+  set("TSParameter", { inherit = "TSParameter", italic = true })
+  set("TSKeyword", { inherit = "TSKeyword", italic = true })
 
   -- plugin
-  { "HopNextKey", fg = c.love, bold = true },
-  { "HopNextKey1", fg = c.gold, bold = true },
-  { "HopNextKey2", fg = c.pine },
-  { "HopUnmatched", fg = c.muted, special = c.muted },
-  { "InclineNormal", link = "StatusLine" },
-  { "InclineNormalNC", inherit = "StatusLine", fg = hi.fg("NonText") },
-  { "LTSymbolDetail", link = "Comment" },
-  { "LTSymbolJump", link = "LspReferenceText" },
-  { "StatusLineGitBranch", inherit = "StatusLine", fg = c.iris },
-  { "StatusLineModified", inherit = "StatusLine", fg = c.love },
-  { "StatusLinePath", inherit = "StatusLine", fg = hi.fg("Comment") },
-  { "StatusLineRO", inherit = "StatusLine", fg = c.love },
-  { "StatusLineMNormal", fg = c.rose },
-  { "StatusLineMInsert", fg = c.foam },
-  { "StatusLineMVisual", fg = c.iris },
-  { "StatusLineMReplace", fg = c.pine },
-  { "StatusLineMCommand", fg = c.love },
-  { "TabLineModified", inherit = "TabLine", fg = c.love },
-  { "TabLineSep", link = "TabLine" },
-  { "TabLineModifiedSel", inherit = "TabLineSel", fg = c.love },
-  { "TabLineSepSel", inherit = "TabLineSel", fg = c.rose },
-  { "TreesitterContext", bg = hi.bg("StatusLine") },
-  { "WinSeparatorZen", fg = hi.bg("Normal") },
-})
+  set("HopNextKey", { fg = c.love, bold = true })
+  set("HopNextKey1", { fg = c.gold, bold = true })
+  set("HopNextKey2", { fg = c.pine })
+  set("HopUnmatched", { fg = c.muted, special = c.muted })
+  link("InclineNormal", "StatusLine")
+  set("InclineNormalNC", { inherit = "StatusLine", fg = fg("NonText") })
+  link("LTSymbolDetail", "Comment")
+  link("LTSymbolJump", "LspReferenceText")
+  set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.iris })
+  set("StatusLineModified", { inherit = "StatusLine", fg = c.love })
+  set("StatusLinePath", { inherit = "StatusLine", fg = fg("Comment") })
+  set("StatusLineRO", { inherit = "StatusLine", fg = c.love })
+  set("StatusLineMNormal", { fg = c.rose })
+  set("StatusLineMInsert", { fg = c.foam })
+  set("StatusLineMVisual", { fg = c.iris })
+  set("StatusLineMReplace", { fg = c.pine })
+  set("StatusLineMCommand", { fg = c.love })
+  set("TabLineModified", { inherit = "TabLine", fg = c.love })
+  link("TabLineSep", "TabLine")
+  set("TabLineModifiedSel", { inherit = "TabLineSel", fg = c.love })
+  set("TabLineSepSel", { inherit = "TabLineSel", fg = c.rose })
+  set("TreesitterContext", { bg = bg("StatusLine") })
+  set("WinSeparatorZen", { fg = bg("Normal") })
+end)

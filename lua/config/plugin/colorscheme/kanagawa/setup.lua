@@ -7,60 +7,61 @@ require("kanagawa").setup(config)
 vim.cmd("colorscheme kanagawa")
 
 local c = require("kanagawa.colors").setup()
-local hi = require("sugar.highlight")
 
-hi.colorscheme({
+require("sugar.highlight").colorscheme(function(h)
+  local set, link, fg, bg = h.set, h.link, h.fg, h.bg
+
   -- highlight-default
-  { "FloatBorder", link = "Normal" },
-  { "NonText", inherit = "NonText", bold = false },
-  { "NormalFloat", link = "Normal" },
-  { "TabLine", inherit = "StatusLine", fg = c.oldWhite },
-  { "TabLineFill", link = "TabLine" },
-  { "TabLineSel", link = "Normal" },
-  { "VertSplit", fg = hi.bg("StatusLine") },
-  { "WinSeparator", link = "VertSplit" },
+  link("FloatBorder", "Normal")
+  set("NonText", { inherit = "NonText", bold = false })
+  link("NormalFloat", "Normal")
+  set("TabLine", { inherit = "StatusLine", fg = c.oldWhite })
+  link("TabLineFill", "TabLine")
+  link("TabLineSel", "Normal")
+  set("VertSplit", { fg = bg("StatusLine") })
+  link("WinSeparator", "VertSplit")
 
   -- plugin
-  { "HopNextKey", fg = c.peachRed, bold = true },
-  { "HopNextKey1", fg = c.springGreen, bold = true },
-  { "HopNextKey2", fg = c.waveBlue2 },
-  { "HopUnmatched", fg = c.sumiInk4, special = c.sumiInk4 },
-  { "InclineNormal", link = "StatusLine" },
-  { "InclineNormalNC", inherit = "StatusLineNC", fg = hi.fg("NonText") },
-  { "LTSymbolDetail", link = "Comment" },
-  { "LTSymbolJump", link = "LspReferenceText" },
-  { "ModesCopy", bg = hi.bg("IncSearch") },
-  { "ModesDelete", bg = c.autumnRed },
-  { "ModesInsert", bg = c.fujiWhite },
-  { "ModesVisual", bg = c.oniViolet },
-  { "NotifyTRACEBorder", link = "DiagnosticHint" },
-  { "NotifyTRACETitle", link = "NotifyTRACEBorder" },
-  { "NotifyTRACEIcon", link = "NotifyTRACEBorder" },
-  { "NotifyDEBUGBorder", fg = c.fujiGray },
-  { "NotifyDEBUGTitle", link = "NotifyDEBUGBorder" },
-  { "NotifyDEBUGIcon", link = "NotifyDEBUGBorder" },
-  { "NotifyINFOBorder", link = "DiagnosticInfo" },
-  { "NotifyINFOTitle", link = "NotifyINFOBorder" },
-  { "NotifyINFOIcon", link = "NotifyINFOBorder" },
-  { "NotifyWARNBorder", link = "DiagnosticWarn" },
-  { "NotifyWARNTitle", link = "NotifyWARNBorder" },
-  { "NotifyWARNIcon", link = "NotifyWARNBorder" },
-  { "NotifyERRORBorder", link = "DiagnosticError" },
-  { "NotifyERRORTitle", link = "NotifyERRORBorder" },
-  { "NotifyERRORIcon", link = "NotifyERRORBorder" },
-  { "StatusLineGitBranch", inherit = "StatusLine", fg = c.springViolet1 },
-  { "StatusLineModified", inherit = "StatusLine", fg = c.autumnRed },
-  { "StatusLinePath", inherit = "StatusLine", fg = hi.fg("Comment") },
-  { "StatusLineRO", inherit = "StatusLine", fg = c.samuraiRed },
-  { "StatusLineMNormal", fg = c.crystalBlue },
-  { "StatusLineMInsert", fg = c.autumnGreen },
-  { "StatusLineMVisual", fg = c.oniViolet },
-  { "StatusLineMReplace", fg = c.autumnRed },
-  { "StatusLineMCommand", fg = c.boatYellow2 },
-  { "TabLineModified", inherit = "TabLine", fg = c.autumnRed },
-  { "TabLineSep", link = "TabLine" },
-  { "TabLineModifiedSel", inherit = "TabLineSel", fg = c.autumnRed },
-  { "TabLineSepSel", inherit = "TabLineSel", fg = c.crystalBlue },
-  { "TreesitterContext", bg = hi.bg("StatusLine") },
-  { "WinSeparatorZen", fg = hi.bg("Normal") },
-})
+  set("HopNextKey", { fg = c.peachRed, bold = true })
+  set("HopNextKey1", { fg = c.springGreen, bold = true })
+  set("HopNextKey2", { fg = c.waveBlue2 })
+  set("HopUnmatched", { fg = c.sumiInk4, special = c.sumiInk4 })
+  link("InclineNormal", "StatusLine")
+  set("InclineNormalNC", { inherit = "StatusLineNC", fg = fg("NonText") })
+  link("LTSymbolDetail", "Comment")
+  link("LTSymbolJump", "LspReferenceText")
+  set("ModesCopy", { bg = bg("IncSearch") })
+  set("ModesDelete", { bg = c.autumnRed })
+  set("ModesInsert", { bg = c.fujiWhite })
+  set("ModesVisual", { bg = c.oniViolet })
+  link("NotifyTRACEBorder", "DiagnosticHint")
+  link("NotifyTRACETitle", "NotifyTRACEBorder")
+  link("NotifyTRACEIcon", "NotifyTRACEBorder")
+  set("NotifyDEBUGBorder", { fg = c.fujiGray })
+  link("NotifyDEBUGTitle", "NotifyDEBUGBorder")
+  link("NotifyDEBUGIcon", "NotifyDEBUGBorder")
+  link("NotifyINFOBorder", "DiagnosticInfo")
+  link("NotifyINFOTitle", "NotifyINFOBorder")
+  link("NotifyINFOIcon", "NotifyINFOBorder")
+  link("NotifyWARNBorder", "DiagnosticWarn")
+  link("NotifyWARNTitle", "NotifyWARNBorder")
+  link("NotifyWARNIcon", "NotifyWARNBorder")
+  link("NotifyERRORBorder", "DiagnosticError")
+  link("NotifyERRORTitle", "NotifyERRORBorder")
+  link("NotifyERRORIcon", "NotifyERRORBorder")
+  set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.springViolet1 })
+  set("StatusLineModified", { inherit = "StatusLine", fg = c.autumnRed })
+  set("StatusLinePath", { inherit = "StatusLine", fg = fg("Comment") })
+  set("StatusLineRO", { inherit = "StatusLine", fg = c.samuraiRed })
+  set("StatusLineMNormal", { fg = c.crystalBlue })
+  set("StatusLineMInsert", { fg = c.autumnGreen })
+  set("StatusLineMVisual", { fg = c.oniViolet })
+  set("StatusLineMReplace", { fg = c.autumnRed })
+  set("StatusLineMCommand", { fg = c.boatYellow2 })
+  set("TabLineModified", { inherit = "TabLine", fg = c.autumnRed })
+  link("TabLineSep", "TabLine")
+  set("TabLineModifiedSel", { inherit = "TabLineSel", fg = c.autumnRed })
+  set("TabLineSepSel", { inherit = "TabLineSel", fg = c.crystalBlue })
+  set("TreesitterContext", { bg = bg("StatusLine") })
+  set("WinSeparatorZen", { fg = bg("Normal") })
+end)
