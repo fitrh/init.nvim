@@ -65,8 +65,8 @@ local function get(attr, group, fallbacks, color)
 end
 
 ---Blend `top` over `bottom` to get pseudo-transparent color
----@param top string @hex color (#RRGGBB)
----@param bottom string @hex color (#RRGGBB)
+---@param top string|fun():string @hex color (#RRGGBB)
+---@param bottom string|fun():string @hex color (#RRGGBB)
 ---@param alpha number @blend intensity, float (0.0 - 1.0) or integer (0 - 100)
 ---@return fun():string @#RRGGBB
 function Highlight.blend(top, bottom, alpha)
