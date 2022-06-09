@@ -35,6 +35,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("LspSignatureActiveParameter", { fg = c.accent })
 
   -- plugin
+  link("CmpDocumentationBorder", "LineNr")
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("NonText") })
   link("LTSymbolDetail", "Comment")

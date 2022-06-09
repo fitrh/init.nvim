@@ -28,6 +28,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("TSConstBuiltin", { fg = c.red })
 
   -- plugin
+  link("CmpDocumentationBorder", "LineNr")
   link("InclineNormal", "StatusLine")
   link("InclineNormalNC", "StatusLineNC")
   link("LTSymbolDetail", "Comment")
