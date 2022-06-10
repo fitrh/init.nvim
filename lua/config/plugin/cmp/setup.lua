@@ -4,7 +4,6 @@ local snippet = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
 
 local const = {
-  BORDER_CHAR = require("const.BORDER_CHAR"),
   LSP_KIND = require("const.LSP_KIND"),
 }
 
@@ -21,8 +20,13 @@ config.snippet = {
 }
 
 config.window = {
+  completion = {
+    border = "rounded",
+    winhighlight = "FloatBorder:CmpDocumentationBorder,Search:None",
+  },
   documentation = {
-    border = const.BORDER_CHAR.ROUNDED,
+    border = "rounded",
+    winhighlight = "FloatBorder:CmpDocumentationBorder,Search:None",
     max_width = 80,
     max_height = 12,
   },
