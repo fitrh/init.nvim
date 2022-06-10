@@ -9,6 +9,8 @@ gitsigns.setup({
     topdelete = { text = sign.SHADE.medium },
     changedelete = { text = sign.SHADE.medium },
   },
+  signcolumn = false,
+  numhl = true,
   on_attach = function(bufnr)
     require("config.plugin.gitsigns.keymap").attach(gitsigns, bufnr)
 
