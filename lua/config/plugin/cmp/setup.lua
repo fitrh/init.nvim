@@ -30,7 +30,13 @@ config.window = {
 local LSP_KIND = require("const.LSP_KIND")
 local formatting = {}
 formatting.fields = { "kind", "abbr", "menu" }
-formatting.format = function(_, item)
+formatting.format = function(entry, item)
+  item.menu_hl_group = ({
+    nvim_lua = "TSConstBuiltin",
+    luasnip = "TSComment",
+    buffer = "TSString",
+    path = "Directory",
+  })[entry.source.name] or ("CmpItemKind%s"):format(item.kind)
   item.menu = item.kind
   item.kind = LSP_KIND[item.kind].icon
   return item
