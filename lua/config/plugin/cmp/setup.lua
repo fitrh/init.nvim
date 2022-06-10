@@ -39,6 +39,12 @@ formatting.format = function(entry, item)
   })[entry.source.name] or ("CmpItemKind%s"):format(item.kind)
   item.menu = item.kind
   item.kind = LSP_KIND[item.kind].icon
+
+  local half_win_width = math.floor(vim.api.nvim_win_get_width(0) / 2)
+  if vim.api.nvim_strwidth(item.abbr) > half_win_width then
+    item.abbr = ("%s…"):format(item.abbr:sub(1, half_win_width))
+  end
+
   return item
 end
 config.formatting = formatting
