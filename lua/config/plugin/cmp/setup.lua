@@ -1,11 +1,6 @@
-local max_items = vim.api.nvim_get_option("pumheight")
 local cmp = require("cmp")
 local snippet = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
-
-local const = {
-  LSP_KIND = require("const.LSP_KIND"),
-}
 
 local config = {
   preselect = cmp.PreselectMode.None,
@@ -32,15 +27,17 @@ config.window = {
   },
 }
 
+local LSP_KIND = require("const.LSP_KIND")
 local formatting = {}
 formatting.fields = { "kind", "abbr", "menu" }
-formatting.format = function(_, vim_item)
-  vim_item.menu = vim_item.kind
-  vim_item.kind = const.LSP_KIND[vim_item.kind].icon
-  return vim_item
+formatting.format = function(_, item)
+  item.menu = item.kind
+  item.kind = LSP_KIND[item.kind].icon
+  return item
 end
 config.formatting = formatting
 
+local max_items = vim.api.nvim_get_option("pumheight")
 config.sources = cmp.config.sources({
   { name = "nvim_lsp", max_item_count = max_items },
   { name = "nvim_lua", max_item_count = max_items / 2 },
@@ -63,9 +60,9 @@ cmp.setup.cmdline("/", {
 cmp.setup.cmdline(":", {
   formatting = {
     fields = { "abbr" },
-    format = function(_, vim_item)
-      vim_item.kind = nil
-      return vim_item
+    format = function(_, item)
+      item.kind = nil
+      return item
     end,
   },
   sources = cmp.config.sources({
