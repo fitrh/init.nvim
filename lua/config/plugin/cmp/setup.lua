@@ -14,19 +14,6 @@ config.snippet = {
   end,
 }
 
-config.window = {
-  completion = {
-    border = "rounded",
-    winhighlight = "FloatBorder:CmpDocumentationBorder,Search:None",
-  },
-  documentation = {
-    border = "rounded",
-    winhighlight = "FloatBorder:CmpDocumentationBorder,Search:None",
-    max_width = 80,
-    max_height = 12,
-  },
-}
-
 local LSP_KIND = require("const.LSP_KIND")
 local formatting = {}
 formatting.fields = { "kind", "abbr", "menu" }
@@ -58,6 +45,19 @@ config.sources = cmp.config.sources({
 }, {
   { name = "buffer", max_item_count = max_items / 2 },
 })
+
+config.window = {
+  completion = {
+    border = "rounded",
+    winhighlight = "FloatBorder:CmpDocumentationBorder,Search:None",
+  },
+  documentation = {
+    border = "rounded",
+    winhighlight = "FloatBorder:CmpDocumentationBorder,Search:None",
+    max_width = 80,
+    max_height = 12,
+  },
+}
 
 cmp.setup(config)
 
