@@ -33,7 +33,6 @@ set.ignorecase = true -- use case-insensitive in search
 set.laststatus = 3 -- use global status line
 set.nrformats:append({ "alpha" }) -- increment/decrement for alphabet
 set.number = true -- enable line number
-set.numberwidth = 1 -- default number of columns to use for line number
 set.pastetoggle = "<F2>" -- toggling paste mode when press this key
 set.path:remove({ "/usr/include" })
 set.path:append({ "**" }) -- search in current directory recursively
