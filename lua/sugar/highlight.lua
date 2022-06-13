@@ -237,8 +237,8 @@ end
 ---@class HighlightCallbackParam
 ---@field set fun(name:string, def:HighlightDef)
 ---@field link fun(dest:string, source:string)
----@field fg fun(group:string, fallback_groups:table, fallback_color:string)
----@field bg fun(group:string, fallback_groups:table, fallback_color:string)
+---@field fg fun(group:string, fallback_groups?:table, fallback_color?:string)
+---@field bg fun(group:string, fallback_groups?:table, fallback_color?:string)
 ---@field blend fun(top:string|fun(), bottom:string|fun(), alpha:number)
 
 ---Set colorscheme
