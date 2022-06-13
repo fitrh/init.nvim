@@ -65,8 +65,8 @@ keymap.bind({
   n(map("<C-w>S", ex("new"))),
   n(map("<C-w>V", ex("vnew"))),
   -- open current window as a new tabpage
-  n(map("<C-w>t", ex("tabe %"))),
-  n(map("<C-w>T", ex("-tabe %"))),
+  n(map("<C-w>gt", ex("tabe %"))),
+  n(map("<C-w>gT", ex("-tabe %"))),
   -- easy split
   n(map("Zh", ex("leftabove vsplit"))),
   n(map("Zj", ex("belowright split"))),
