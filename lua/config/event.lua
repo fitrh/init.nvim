@@ -53,9 +53,7 @@ augroup("OnTerminalBuffer", {
 
 augroup("SetTabLine", {
   autocmd("TabNew", "*", function()
-    vim.api.nvim_set_option(
-      "tabline",
-      [[%{%v:lua.require("config.option.tabline").draw()%}]]
-    )
+    local value = [[%{%v:lua.require("config.option.tabline").draw()%}]]
+    vim.api.nvim_set_option("tabline", value)
   end),
 })
