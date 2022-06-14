@@ -7,7 +7,7 @@ local M = {
   hint_scheme = "DiagnosticHint",
   extra_trigger_chars = { "(", "{", "," },
   padding = " ",
-  tranparency = vim.api.nvim_get_option("pumblend"),
+  transparency = vim.api.nvim_get_option("pumblend"),
   toggle_key = "<M-x>",
 }
 
