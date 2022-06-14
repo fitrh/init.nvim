@@ -40,7 +40,6 @@ local plugins = {
   require("config.plugin.headlines.packerspec"),
   require("config.plugin.notify.packerspec"),
   require("config.plugin.fidget.packerspec"),
-  require("config.plugin.window-picker.packerspec"),
   { "baskerville/vim-sxhkdrc", ft = "sxhkdrc" },
 }
 
