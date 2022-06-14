@@ -57,3 +57,13 @@ augroup("SetTabLine", {
     vim.api.nvim_set_option("tabline", value)
   end),
 })
+
+augroup("SetSynMaxCol", {
+  autocmd("OptionSet", "textwidth", function()
+    vim.api.nvim_buf_set_option(0, "synmaxcol", tonumber(vim.v.option_new))
+  end),
+  autocmd("BufEnter", "*", function()
+    local textwidth = vim.api.nvim_buf_get_option(0, "textwidth")
+    vim.api.nvim_buf_set_option(0, "synmaxcol", tonumber(textwidth))
+  end),
+})
