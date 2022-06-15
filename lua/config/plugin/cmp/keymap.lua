@@ -9,7 +9,7 @@ function M.setup(cmp, snippet)
     ["<C-b>"] = map.scroll_docs(-4),
     ["<C-f>"] = map.scroll_docs(4),
     ["<C-l>"] = map.complete(),
-    ["<C-e>"] = map.abort(),
+    ["<C-e>"] = map(map.abort(), { "i", "c" }),
     ["<C-y>"] = map.confirm({ select = true }),
     ["<CR>"] = map.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
     ["<C-j>"] = map(function(fallback)
