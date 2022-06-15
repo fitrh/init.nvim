@@ -15,17 +15,36 @@ config.snippet = {
 }
 
 local LSP_KIND = require("const.LSP_KIND")
+
+local source_hl = {
+  nvim_lua = "TSConstBuiltin",
+  luasnip = "TSComment",
+  buffer = "TSString",
+  path = "Directory",
+}
+
+require("sugar.highlight").colorscheme(function(h)
+  local base = h.bg("Normal")
+  for kind, _ in pairs(LSP_KIND) do
+    local inherit = ("CmpItemKind%s"):format(kind)
+    local group = ("%sIcon"):format(inherit)
+    local fallback = { ("TS%s"):format(kind), "CmpItemKindDefault" }
+    local bg = h.blend(h.fg(inherit, fallback), base, 0.15)
+    h.set(group, { inherit = inherit, bg = bg })
+  end
+end)
+
 local formatting = {}
 formatting.fields = { "kind", "abbr", "menu" }
 formatting.format = function(entry, item)
-  item.menu_hl_group = ({
-    nvim_lua = "TSConstBuiltin",
-    luasnip = "TSComment",
-    buffer = "TSString",
-    path = "Directory",
-  })[entry.source.name] or ("CmpItemKind%s"):format(item.kind)
-  item.menu = item.kind
-  item.kind = LSP_KIND[item.kind].icon
+  local kind = item.kind
+  local kind_hl_group = ("CmpItemKind%s"):format(kind)
+
+  item.kind_hl_group = ("%sIcon"):format(kind_hl_group)
+  item.kind = (" %s "):format(LSP_KIND[kind].icon)
+
+  item.menu_hl_group = source_hl[entry.source.name] or kind_hl_group
+  item.menu = kind
 
   local half_win_width = math.floor(vim.api.nvim_win_get_width(0) / 2)
   if vim.api.nvim_strwidth(item.abbr) > half_win_width then
@@ -50,6 +69,7 @@ config.window = {
   completion = {
     border = "rounded",
     winhighlight = "FloatBorder:CmpDocumentationBorder,Search:None",
+    side_padding = 0,
   },
   documentation = {
     border = "rounded",
@@ -82,4 +102,9 @@ cmp.setup.cmdline(":", {
   }, {
     { name = "path", max_item_count = max_items },
   }),
+  window = {
+    completion = {
+      side_padding = 1,
+    },
+  },
 })
