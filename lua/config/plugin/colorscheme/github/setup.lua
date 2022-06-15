@@ -6,8 +6,8 @@ require("github-theme").setup(config)
 
 local p = require("github-theme.palette").get_palette(config.theme_style)
 
-require("sugar.highlight").colorscheme(function (h)
-  local set, link, fg, bg = h.set, h.link, h.fg, h.bg
+require("sugar.highlight").colorscheme(function(h)
+  local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
 
   -- highlight-default
   set("ColorColumn", { bg = p.bg2 })
@@ -24,6 +24,10 @@ require("sugar.highlight").colorscheme(function (h)
   set("FidgetTask", { inherit = "Comment", italic = false })
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("Comment") })
+  set("InclineWinNr", {
+    fg = p.bright_blue,
+    bg = blend(p.bright_blue, p.bg2, 0.1),
+  })
   link("LTSymbolDetail", "Comment")
   link("LTSymbolJump", "LspReferenceText")
   set("ModesCopy", { bg = p.warning })

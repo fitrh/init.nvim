@@ -19,7 +19,7 @@ vim.cmd([[colorscheme material]])
 local c = require("material.colors")
 
 require("sugar.highlight").colorscheme(function(h)
-  local set, link, fg, bg = h.set, h.link, h.fg, h.bg
+  local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
 
   -- highlight-default
   link("ColorColumn", "StatusLine")
@@ -38,6 +38,10 @@ require("sugar.highlight").colorscheme(function(h)
   link("CmpDocumentationBorder", "LineNr")
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("NonText") })
+  set("InclineWinNr", {
+    fg = fg("CursorLineNr"),
+    bg = blend(fg("CursorLineNr"), bg("StatusLine"), 0.1),
+  })
   link("LTSymbolDetail", "Comment")
   link("LTSymbolJump", "LspReferenceText")
   set("ModesCopy", { bg = c.darkyellow })

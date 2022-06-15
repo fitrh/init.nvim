@@ -43,6 +43,10 @@ require("sugar.highlight").colorscheme(function(h)
   set("GitSignsDeleteInline", { bg = blend(fg("GitSignsDelete"), normal_bg, 0.05) })
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("Comment") })
+  set("InclineWinNr", {
+    fg = c.bright_yellow,
+    bg = blend(c.bright_yellow, bg("StatusLine"), 0.1),
+  })
   link("LTSymbolDetail", "Comment")
   link("LTSymbolJump", "LspReferenceText")
   set("ModesCopy", { bg = fg("IncSearch") })

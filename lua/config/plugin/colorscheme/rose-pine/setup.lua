@@ -8,8 +8,8 @@ theme.colorscheme()
 
 local c = require("rose-pine.palette")
 
-require("sugar.highlight").colorscheme(function (h)
-  local set, link, fg, bg = h.set, h.link, h.fg, h.bg
+require("sugar.highlight").colorscheme(function(h)
+  local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
 
   -- syntax, SEE: :help W18
   set("Comment", { inherit = "Comment", italic = true })
@@ -37,6 +37,10 @@ require("sugar.highlight").colorscheme(function (h)
   set("HopUnmatched", { fg = c.muted, special = c.muted })
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("NonText") })
+  set("InclineWinNr", {
+    fg = fg("CursorLineNr"),
+    bg = blend(fg("CursorLineNr"), bg("StatusLine"), 0.1),
+  })
   link("LTSymbolDetail", "Comment")
   link("LTSymbolJump", "LspReferenceText")
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.iris })

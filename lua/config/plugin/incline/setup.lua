@@ -10,6 +10,7 @@ end
 
 config.window = {
   margin = { horizontal = { left = 1, right = 0 } },
+  padding = { left = 0, right = 1 },
   options = {
     winblend = vim.api.nvim_get_option("pumblend"),
   },

@@ -9,7 +9,7 @@ vim.cmd("colorscheme kanagawa")
 local c = require("kanagawa.colors").setup()
 
 require("sugar.highlight").colorscheme(function(h)
-  local set, link, fg, bg = h.set, h.link, h.fg, h.bg
+  local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
 
   -- highlight-default
   link("FloatBorder", "Normal")
@@ -29,6 +29,10 @@ require("sugar.highlight").colorscheme(function(h)
   set("HopUnmatched", { fg = c.sumiInk4, special = c.sumiInk4 })
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLineNC", fg = fg("NonText") })
+  set("InclineWinNr", {
+    fg = fg("CursorLineNr"),
+    bg = blend(fg("CursorLineNr"), bg("StatusLine"), 0.1),
+  })
   link("LTSymbolDetail", "Comment")
   link("LTSymbolJump", "LspReferenceText")
   set("ModesCopy", { bg = bg("IncSearch") })

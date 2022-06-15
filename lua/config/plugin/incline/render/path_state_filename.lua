@@ -13,7 +13,7 @@ local function get_path(win, buf)
   local path = table.concat(file_path, sep, 1, #file_path - 1) -- formatted relative path, but omit the filename
 
   if file_path_width > half_win_width then
-    local i = file_path_width - half_win_width
+    local i = (file_path_width - half_win_width) + 4
     local trunc_char = (path:sub(i, i) == " ") and "…" or "… "
     path = ("%s%s"):format(trunc_char, path:sub(i))
   end
@@ -22,7 +22,13 @@ local function get_path(win, buf)
 end
 
 return function(props)
-  local render_result = {}
+  local render_result = {
+    {
+      (" %d "):format(vim.api.nvim_win_get_number(props.win)),
+      group = "InclineWinNr",
+    },
+    " ",
+  }
   local buf = props.buf
   local opt = vim.api.nvim_buf_get_option
 
