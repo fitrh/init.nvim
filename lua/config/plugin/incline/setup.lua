@@ -5,7 +5,7 @@ config.render = function(props)
     return "[No Name]"
   end
 
-  return require("config.plugin.incline.render.path_state_filename")(props)
+  return require("config.plugin.incline.render.inactive")(props)
 end
 
 config.window = {
