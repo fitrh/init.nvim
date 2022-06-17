@@ -5,16 +5,20 @@ devicons.set_default_icon("", "#6d8086")
 
 icon.default = devicons.get_icons()
 icon.override = {
+  ["build.gradle"] = { icon = "ﳄ", color = "#02303a", name = "Gradle" },
   ["Cargo.toml"] = { icon = "", color = "#dea584", name = "CargoTOML" },
   ["Cargo.lock"] = { icon = "", color = "#9e5f27", name = "CargoLock" },
-  config = { icon = "", color = "#ECECEC", name = "Config" },
-  fish = { icon = "", color = "#59ccff", name = "Fish" }, -- new
+  config = { icon = "", color = "#ececec", name = "Config" },
+  fish = { icon = "", color = "#59ccff", name = "Fish" },
+  gradlew = { icon = "ﳄ", name = "Gradle" },
+  ["gradlew.bat"] = { icon = "ﳄ", name = "Gradle" },
   javascript = { icon = "", color = "#8fa959", name = "JavaScript" },
   log = { icon = "", color = "#41535b", name = "Log" },
   make = { icon = "", color = "#e37933", name = "Make" },
   ["package.json"] = { icon = "", color = "#8fa959", name = "PkgJSON" },
   python = icon.default["py"],
   ruby = icon.default["rb"],
+  ["settings.gradle"] = { icon = "ﳄ", name = "Gradle" },
   txt = { icon = "", color = "#6a9fb5", name = "TXT" },
   v = { icon = "", color = "#5d88c0", name = "V" },
   vlang = { icon = "", color = "#5d88c0", name = "Vlang" },
