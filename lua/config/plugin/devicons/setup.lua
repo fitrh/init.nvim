@@ -20,10 +20,10 @@ icon.override = {
   ruby = icon.default["rb"],
   ["settings.gradle"] = { icon = "ﳄ", name = "Gradle" },
   txt = { icon = "", color = "#6a9fb5", name = "TXT" },
-  v = { icon = "", color = "#5d88c0", name = "V" },
-  vlang = { icon = "", color = "#5d88c0", name = "Vlang" },
-  vv = { icon = "", color = "#5d88c0", name = "Vv" },
-  vsh = { icon = "", color = "#5d88c0", name = "Vsh" },
+  v = { icon = "", color = "#5d88c0", name = "Vlang" },
+  vlang = { icon = "", name = "Vlang" },
+  vv = { icon = "", name = "Vlang" },
+  vsh = { icon = "", name = "Vlang" },
 }
 
 devicons.setup({
