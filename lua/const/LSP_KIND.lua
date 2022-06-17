@@ -1,8 +1,39 @@
-return {
+local LspKind = {}
+
+LspKind.Symbol = {
+  File = { text = "File", icon = "" },
+  Module = { text = "Module", icon = "" },
+  Namespace = { text = "Namespace", icon = "" },
+  Package = { text = "Package", icon = "" },
+  Class = { text = "Class", icon = "" },
+  Method = { text = "Method", icon = "" },
+  Property = { text = "Property", icon = "" },
+  Field = { text = "Field", icon = "" },
+  Constructor = { text = "Constructor", icon = "" },
+  Enum = { text = "Enum", icon = "" },
+  Interface = { text = "Interface", icon = "" },
+  Function = { text = "Function", icon = "" },
+  Variable = { text = "Variable", icon = "" },
+  Constant = { text = "Constant", icon = "" },
+  String = { text = "String", icon = "ﱕ" },
+  Number = { text = "Number", icon = "" },
+  Boolean = { text = "Boolean", icon = "" },
+  Array = { text = "Array", icon = "" },
+  Object = { text = "Object", icon = "" },
+  Key = { text = "Key", icon = "" },
+  Null = { text = "Null", icon = "" },
+  EnumMember = { text = "EnumMember", icon = "" },
+  Struct = { text = "Struct", icon = "" },
+  Event = { text = "Event", icon = "ﯓ" },
+  Operator = { text = "Operator", icon = "" },
+  TypeParameter = { text = "TypeParameter", icon = "" },
+}
+
+LspKind.Completion = {
   Text = { text = "Text", icon = "" },
   Method = { text = "Method", icon = "" },
   Function = { text = "Function", icon = "" },
-  Constructor = { text = "Constructor", icon = "ﭧ" },
+  Constructor = { text = "Constructor", icon = "" },
   Field = { text = "Field", icon = "" },
   Variable = { text = "Variable", icon = "" },
   Class = { text = "Class", icon = "" },
@@ -25,3 +56,5 @@ return {
   Operator = { text = "Operator", icon = "" },
   TypeParameter = { text = "TypeParameter", icon = "" },
 }
+
+return LspKind
