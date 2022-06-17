@@ -2,10 +2,17 @@ local M = {}
 
 function M.setup(cmp, snippet)
   local map = cmp.mapping
+  local select_only = { behavior = cmp.SelectBehavior.Select }
 
   return {
-    ["<C-p>"] = map(map.select_prev_item(), { "i", "c" }),
-    ["<C-n>"] = map(map.select_next_item(), { "i", "c" }),
+    ["<C-p>"] = map({
+      i = map.select_prev_item(select_only),
+      c = map.select_prev_item(),
+    }),
+    ["<C-n>"] = map({
+      i = map.select_next_item(select_only),
+      c = map.select_next_item(),
+    }),
     ["<C-b>"] = map.scroll_docs(-4),
     ["<C-f>"] = map.scroll_docs(4),
     ["<C-l>"] = map.complete(),
