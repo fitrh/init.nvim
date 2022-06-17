@@ -14,6 +14,8 @@ config.snippet = {
   end,
 }
 
+config.completion = { keyword_length = 3 }
+
 local LSP_KIND = require("const.LSP_KIND")
 
 local source_hl = {
@@ -81,6 +83,7 @@ config.window = {
 cmp.setup(config)
 
 cmp.setup.cmdline("/", {
+  completion = { keyword_length = 1 },
   sources = cmp.config.sources({
     { name = "nvim_lsp_document_symbol", max_item_count = max_items },
   }, {
@@ -89,6 +92,7 @@ cmp.setup.cmdline("/", {
 })
 
 cmp.setup.cmdline(":", {
+  completion = { keyword_length = 1 },
   formatting = {
     fields = { "abbr" },
     format = function(_, item)
