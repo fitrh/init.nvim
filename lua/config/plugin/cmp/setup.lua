@@ -67,8 +67,7 @@ config.sources = cmp.config.sources({
 
 config.window = {
   completion = {
-    border = "rounded",
-    winhighlight = "FloatBorder:CmpDocumentationBorder,Search:None",
+    winhighlight = "Normal:Pmenu,FloatBorder:CmpDocumentationBorder,Search:None",
     side_padding = 0,
   },
   documentation = {
