@@ -14,6 +14,7 @@ local servers = {
   jsonls = require("config.lsp.server.jsonls"),
   kotlin_language_server = server_config.with("kotlin-language-server"),
   lemminx = server_config.with("lemminx"),
+  marksman = server_config.with("marksman"),
   omnisharp = require("config.lsp.server.omnisharp"),
   phpactor = server_config.with("phpactor"),
   pyright = require("config.lsp.server.pyright"),

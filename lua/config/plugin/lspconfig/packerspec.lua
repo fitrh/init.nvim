@@ -23,6 +23,7 @@ local M = {
     "kotlin",
     "less",
     "lua",
+    "markdown",
     "php",
     "pug",
     "python",
