@@ -57,15 +57,15 @@ formatting.format = function(entry, item)
 end
 config.formatting = formatting
 
-local max_items = vim.api.nvim_get_option("pumheight")
-config.sources = cmp.config.sources({
-  { name = "nvim_lsp", max_item_count = max_items },
-  { name = "nvim_lua", max_item_count = max_items / 2 },
-  { name = "luasnip", max_item_count = max_items / 2 },
-  { name = "path", max_item_count = max_items },
-}, {
-  { name = "buffer", max_item_count = max_items / 2 },
-})
+local max = vim.api.nvim_get_option("pumheight")
+local half = math.floor(max / 2)
+config.sources = {
+  { name = "nvim_lsp", max_item_count = max, group_index = 1 },
+  { name = "nvim_lua", max_item_count = half, group_index = 1 },
+  { name = "luasnip", max_item_count = half, group_index = 1 },
+  { name = "path", max_item_count = max, group_index = 1 },
+  { name = "buffer", max_item_count = half, group_index = 2 },
+}
 
 config.window = {
   completion = {
@@ -84,11 +84,14 @@ cmp.setup(config)
 
 cmp.setup.cmdline("/", {
   completion = { keyword_length = 1 },
-  sources = cmp.config.sources({
-    { name = "nvim_lsp_document_symbol", max_item_count = max_items },
-  }, {
-    { name = "buffer", max_item_count = max_items },
-  }),
+  sources = {
+    {
+      name = "nvim_lsp_document_symbol",
+      max_item_count = max,
+      group_index = 1,
+    },
+    { name = "buffer", max_item_count = max, group_index = 2 },
+  },
 })
 
 cmp.setup.cmdline(":", {
@@ -100,11 +103,10 @@ cmp.setup.cmdline(":", {
       return item
     end,
   },
-  sources = cmp.config.sources({
-    { name = "cmdline", max_item_count = max_items },
-  }, {
-    { name = "path", max_item_count = max_items },
-  }),
+  sources = {
+    { name = "cmdline", max_item_count = max, group_index = 1 },
+    { name = "path", max_item_count = max, group_index = 2 },
+  },
   window = {
     completion = {
       side_padding = 1,
