@@ -30,6 +30,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("TSKeyword", { inherit = "TSKeyword", italic = true })
 
   -- plugin
+  link("CmpCursorLine", "CursorLine")
   link("CmpDocumentationBorder", "LineNr")
   set("HopNextKey", { fg = c.love, bold = true })
   set("HopNextKey1", { fg = c.gold, bold = true })

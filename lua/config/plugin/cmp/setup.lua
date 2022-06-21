@@ -69,7 +69,7 @@ config.sources = {
 
 config.window = {
   completion = {
-    winhighlight = "Normal:Pmenu,FloatBorder:CmpDocumentationBorder,Search:None",
+    winhighlight = "Normal:Pmenu,FloatBorder:CmpDocumentationBorder,CursorLine:CmpCursorLine,Search:None",
     side_padding = 0,
   },
   documentation = {
