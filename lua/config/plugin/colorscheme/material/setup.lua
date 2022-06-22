@@ -22,7 +22,7 @@ require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
 
   -- highlight-default
-  link("ColorColumn", "StatusLine")
+  set("ColorColumn", { bg = blend(c.bg_alt, c.bg, 0.3) })
   set("CursorLine", { bg = c.highlight })
   set("StatusLine", { fg = c.text, bg = c.bg_alt })
   link("TabLine", "StatusLine")

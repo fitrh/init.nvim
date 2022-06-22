@@ -12,6 +12,7 @@ require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
 
   -- highlight-default
+  set("ColorColumn", { bg = blend(bg("StatusLine"), bg("Normal"), 0.3) })
   link("FloatBorder", "Normal")
   set("NonText", { inherit = "NonText", bold = false })
   link("NormalFloat", "Normal")

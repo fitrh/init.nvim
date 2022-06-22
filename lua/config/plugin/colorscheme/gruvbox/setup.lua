@@ -9,6 +9,7 @@ require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
 
   -- highlight-default
+  set("ColorColumn", { bg = blend(bg("ColorColumn"), normal_bg, 0.1) })
   set("CursorLine", { bg = blend(bg("CursorLine"), normal_bg, 0.3) })
   set("CursorLineNr", { fg = c.bright_yellow })
   set("DiagnosticSignInfo", { inherit = "DiagnosticSignInfo", bg = "NONE" })

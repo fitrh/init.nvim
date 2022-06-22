@@ -15,7 +15,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("Comment", { inherit = "Comment", italic = true })
 
   -- highlight-default
-  link("ColorColumn", "StatusLine")
+  set("ColorColumn", { bg = blend(bg("StatusLine"), bg("Normal"), 0.4) })
   link("NormalFloat", "Normal")
   link("TabLineSel", "Normal")
   set("VertSplit", { fg = bg("StatusLine"), cterm = { reverse = true } })
