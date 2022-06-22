@@ -85,12 +85,8 @@ cmp.setup(config)
 cmp.setup.cmdline("/", {
   completion = { keyword_length = 1 },
   sources = {
-    {
-      name = "nvim_lsp_document_symbol",
-      max_item_count = max,
-      group_index = 1,
-    },
-    { name = "buffer", max_item_count = max, group_index = 2 },
+    { name = "nvim_lsp_document_symbol", max_item_count = max },
+    { name = "buffer", max_item_count = half },
   },
 })
 
@@ -103,10 +99,7 @@ cmp.setup.cmdline(":", {
       return item
     end,
   },
-  sources = {
-    { name = "cmdline", max_item_count = max, group_index = 1 },
-    { name = "path", max_item_count = max, group_index = 2 },
-  },
+  sources = { { name = "cmdline" }, { name = "path" } },
   window = {
     completion = {
       side_padding = 1,
