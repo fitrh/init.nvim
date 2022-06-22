@@ -1,8 +1,6 @@
 return {
   "mfussenegger/nvim-jdtls",
   config = function()
-    local command = require("sugar.command")
-    local event = require("sugar.event")
     local config = require("config.plugin.jdtls.setup")
       or function()
         vim.notify("JDT.LS Configuration Failed", vim.log.levels.WARN, {
@@ -10,8 +8,10 @@ return {
         })
       end
 
-    command.add("JdtStart", config)
-    event.augroup("AttachJDTLS", { event.autocmd("FileType", "java", config) })
+    require("sugar.command").add("JdtStart", config)
+    require("sugar.augroup")("AttachJDTLS", function(autocmd)
+      autocmd("FileType", "java", config)
+    end)
   end,
   ft = { "java" },
   module = "jdtls",

@@ -1,7 +1,6 @@
-local event = require("sugar.event")
-local augroup, autocmd = event.augroup, event.autocmd
+local augroup = require("sugar.augroup")
 
-augroup("TrimAndMakeDir", {
+augroup("TrimAndMakeDir", function(autocmd)
   autocmd("BufWritePre", "*", {
     function()
       local cursor = vim.api.nvim_win_get_cursor(0)
@@ -11,36 +10,36 @@ augroup("TrimAndMakeDir", {
     function()
       require("helper.dir").mk()
     end,
-  }),
-})
+  })
+end)
 
-augroup("HighlightOnYank", {
+augroup("HighlightOnYank", function(autocmd)
   autocmd("TextYankPost", "*", function()
     vim.highlight.on_yank()
-  end),
-})
+  end)
+end)
 
-augroup("CursorlineOnCurrentWindow", {
+augroup("CursorlineOnCurrentWindow", function(autocmd)
   autocmd({ "BufEnter", "WinEnter" }, "*", function()
     vim.api.nvim_win_set_option(0, "cursorline", not vim.w.nocursorline)
-  end),
+  end)
   autocmd({ "BufLeave", "WinLeave" }, "*", function()
     vim.api.nvim_win_set_option(0, "cursorline", false)
-  end),
-})
+  end)
+end)
 
-augroup("RelativeNumberOnCurrentWindow", {
+augroup("RelativeNumberOnCurrentWindow", function(autocmd)
   autocmd({ "BufEnter", "WinEnter" }, "*", function()
     if vim.api.nvim_win_get_option(0, "number") then
       vim.api.nvim_win_set_option(0, "relativenumber", true)
     end
-  end),
+  end)
   autocmd({ "BufLeave", "WinLeave" }, "*", function()
     vim.api.nvim_win_set_option(0, "relativenumber", false)
-  end),
-})
+  end)
+end)
 
-augroup("OnTerminalBuffer", {
+augroup("OnTerminalBuffer", function(autocmd)
   autocmd("TermOpen", "*", {
     function()
       if vim.api.nvim_buf_get_option(0, "filetype") == "" then
@@ -48,22 +47,22 @@ augroup("OnTerminalBuffer", {
       end
     end,
     "startinsert",
-  }),
-})
+  })
+end)
 
-augroup("SetTabLine", {
+augroup("SetTabLine", function(autocmd)
   autocmd("TabNew", "*", function()
     local value = [[%{%v:lua.require("config.option.tabline").draw()%}]]
     vim.api.nvim_set_option("tabline", value)
-  end),
-})
+  end)
+end)
 
-augroup("SetSynMaxCol", {
+augroup("SetSynMaxCol", function(autocmd)
   autocmd("OptionSet", "textwidth", function()
     vim.api.nvim_buf_set_option(0, "synmaxcol", tonumber(vim.v.option_new))
-  end),
+  end)
   autocmd("BufEnter", "*", function()
     local textwidth = vim.api.nvim_buf_get_option(0, "textwidth")
     vim.api.nvim_buf_set_option(0, "synmaxcol", tonumber(textwidth))
-  end),
-})
+  end)
+end)

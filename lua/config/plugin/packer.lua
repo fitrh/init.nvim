@@ -48,13 +48,12 @@ local setup = require("config.plugin.packer.setup")
 packer.init(setup.init)
 packer.startup(setup.use(plugins))
 
-local event = require("sugar.event")
-event.augroup("OnPackerEvent", {
-  event.autocmd("User", "PackerCompileDone", function()
+require("sugar.augroup")("OnPackerEvent", function(autocmd)
+  autocmd("User", "PackerCompileDone", function()
     vim.notify(
       (" Compiled at %s"):format(os.date()),
       vim.log.levels.INFO,
       { title = "packer.nvim" }
     )
-  end),
-})
+  end)
+end)
