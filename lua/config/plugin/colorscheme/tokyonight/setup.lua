@@ -15,6 +15,7 @@ local u = require("tokyonight.util")
 
 require("sugar.highlight").colorscheme(function(h)
   local set, link, bg, blend = h.set, h.link, h.bg, h.blend
+  local br_red = u.brighten(c.red, 0.2)
 
   -- highlight-default
   set("CursorLineNr", { fg = c.blue })
@@ -55,10 +56,7 @@ require("sugar.highlight").colorscheme(function(h)
   link("NotifyERRORTitle", "NotifyERRORBorder")
   link("NotifyERRORIcon", "NotifyERRORBorder")
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.purple })
-  set("StatusLineModified", {
-    inherit = "StatusLine",
-    fg = u.brighten(c.red, 0.2),
-  })
+  set("StatusLineModified", { inherit = "StatusLine", fg = br_red })
   link("StatusLinePath", "StatusLineNC")
   set("StatusLineRO", { inherit = "StatusLine", fg = c.red1 })
   set("StatusLineMNormal", { fg = c.blue })
@@ -66,9 +64,9 @@ require("sugar.highlight").colorscheme(function(h)
   set("StatusLineMVisual", { fg = c.purple })
   set("StatusLineMReplace", { fg = c.red })
   set("StatusLineMCommand", { fg = c.yellow })
-  set("TabLineModified", { inherit = "TabLine", fg = c.red })
+  set("TabLineModified", { inherit = "TabLine", fg = br_red })
   link("TabLineSep", "TabLine")
-  set("TabLineModifiedSel", { inherit = "TabLineSel", fg = c.red })
+  set("TabLineModifiedSel", { inherit = "TabLineSel", fg = br_red })
   set("TabLineSepSel", { inherit = "TabLineSel", fg = c.blue })
   set("TreesitterContext", { bg = c.bg_statusline })
   set("WinSeparatorZen", { fg = c.bg })
