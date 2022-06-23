@@ -1,7 +1,7 @@
 local Icon = {}
 
 Icon.STATE = {
-  MODIFIED = "●",
+  MODIFIED = "",
   READONLY = "",
 }
 
