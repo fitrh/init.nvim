@@ -3,11 +3,11 @@ local sign = require("const.LINE_CHAR")
 
 gitsigns.setup({
   signs = {
-    add = { text = sign.SHADE.medium },
-    change = { text = sign.SHADE.medium },
-    delete = { text = sign.SHADE.medium },
-    topdelete = { text = sign.SHADE.medium },
-    changedelete = { text = sign.SHADE.medium },
+    add = { text = sign.HALF.right },
+    change = { text = sign.HALF.right },
+    delete = { text = sign.HALF.right },
+    topdelete = { text = sign.HALF.right },
+    changedelete = { text = sign.HALF.right },
   },
   signcolumn = false,
   numhl = true,
