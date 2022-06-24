@@ -61,10 +61,9 @@ local max = vim.api.nvim_get_option("pumheight")
 local half = math.floor(max / 2)
 config.sources = {
   { name = "nvim_lsp", max_item_count = max, group_index = 1 },
-  { name = "nvim_lua", max_item_count = half, group_index = 1 },
-  { name = "luasnip", max_item_count = half, group_index = 1 },
-  { name = "path", max_item_count = max, group_index = 1 },
-  { name = "buffer", max_item_count = half, group_index = 2 },
+  { name = "luasnip", max_item_count = half, group_index = 2 },
+  { name = "path", max_item_count = max, group_index = 2 },
+  { name = "buffer", max_item_count = half, group_index = 3 },
 }
 
 config.window = {
@@ -81,6 +80,16 @@ config.window = {
 }
 
 cmp.setup(config)
+
+cmp.setup.filetype("lua", {
+  sources = {
+    { name = "nvim_lsp", max_item_count = max, group_index = 1 },
+    { name = "nvim_lua", max_item_count = max, group_index = 1 },
+    { name = "luasnip", max_item_count = half, group_index = 2 },
+    { name = "path", max_item_count = max, group_index = 3 },
+    { name = "buffer", max_item_count = half, group_index = 4 },
+  },
+})
 
 cmp.setup.cmdline("/", {
   completion = { keyword_length = 1 },
