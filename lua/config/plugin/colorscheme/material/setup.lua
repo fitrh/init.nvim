@@ -23,7 +23,7 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- highlight-default
   set("ColorColumn", { bg = blend(c.bg_alt, c.bg, 0.3) })
-  set("CursorLine", { bg = c.highlight })
+  set("CursorLine", { bg = blend(c.highlight, c.bg, 0.3) })
   set("StatusLine", { fg = c.text, bg = c.bg_alt })
   link("TabLine", "StatusLine")
   link("TablineFill", "TabLine")
