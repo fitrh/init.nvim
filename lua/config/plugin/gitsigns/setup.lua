@@ -18,10 +18,17 @@ gitsigns.setup({
       local base = h.bg("LineNr", { "Normal", "SignColumn", "NormalFloat" })
 
       for _, kind in ipairs({ "Add", "Change", "Delete" }) do
-        local group = ("GitSigns%sNr"):format(kind)
         local inherit = ("GitSigns%s"):format(kind)
-        local bg = h.blend(h.fg(inherit), base, 0.1)
-        h.set(group, { inherit = inherit, bg = bg })
+        h.set(("GitSigns%sNr"):format(kind), {
+          inherit = inherit,
+          bg = h.blend(h.fg(inherit), base, 0.15),
+        })
+        h.set(("GitSigns%sLn"):format(kind), {
+          bg = h.blend(h.fg(inherit), base, 0.05),
+        })
+        h.set(("GitSigns%sInline"):format(kind), {
+          bg = h.blend(h.fg(inherit), base, 0.25),
+        })
       end
     end)
   end,

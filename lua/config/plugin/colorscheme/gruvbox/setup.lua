@@ -36,18 +36,8 @@ require("sugar.highlight").colorscheme(function(h)
   link("CmpCursorLine", "CursorLine")
   link("CmpDocumentationBorder", "LineNr")
   set("GitSignsAdd", { inherit = "GitSignsAdd", bg = "NONE" })
-  set("GitSignsAddLn", { bg = blend(fg("GitSignsAdd"), normal_bg, 0.15) })
-  set("GitSignsAddInline", { bg = blend(fg("GitSignsAdd"), normal_bg, 0.05) })
   set("GitSignsChange", { inherit = "GitSignsChange", bg = "NONE" })
-  set("GitSignsChangeLn", { bg = blend(fg("GitSignsChange"), normal_bg, 0.15) })
-  set("GitSignsChangeInline", {
-    bg = blend(fg("GitSignsChange"), normal_bg, 0.05),
-  })
   set("GitSignsDelete", { inherit = "GitSignsDelete", bg = "NONE" })
-  set("GitSignsDeleteLn", { bg = blend(fg("GitSignsDelete"), normal_bg, 0.15) })
-  set("GitSignsDeleteInline", {
-    bg = blend(fg("GitSignsDelete"), normal_bg, 0.05),
-  })
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("Comment") })
   set("InclineWinNr", {
