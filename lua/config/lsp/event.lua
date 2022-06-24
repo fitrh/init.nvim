@@ -2,17 +2,35 @@ local M = {}
 
 function M.attach(client, bufnr)
   local support = client.supports_method
+  local lsp = vim.lsp
   local augroup = require("sugar.augroup")
 
   if support("textDocument/documentHighlight") then
-    local buf = vim.lsp.buf
     augroup({ "HighlightOnCursor", false }, function(autocmd)
-      autocmd("CursorHold", bufnr, buf.document_highlight)
+      autocmd("CursorHold", bufnr, lsp.buf.document_highlight)
       autocmd(
         { "CursorMoved", "InsertEnter", "BufLeave" },
         bufnr,
-        buf.clear_references
+        lsp.buf.clear_references
       )
+    end)
+  end
+
+  if support("textDocument/formatting") then
+    augroup({ "FormatOnSave", false }, function(autocmd)
+      autocmd("BufWritePre", bufnr, function()
+        local format_on_save = vim.b[bufnr].format_on_save
+        if format_on_save then
+          if type(format_on_save) ~= "table" then
+            format_on_save = {}
+          end
+
+          lsp.buf.format({
+            timeout_ms = format_on_save.timeout_ms or 1000,
+            bufnr = bufnr,
+          })
+        end
+      end)
     end)
   end
 
@@ -21,7 +39,7 @@ function M.attach(client, bufnr)
       autocmd(
         { "BufEnter", "BufLeave", "InsertEnter", "InsertLeave" },
         bufnr,
-        vim.lsp.codelens.refresh
+        lsp.codelens.refresh
       )
     end)
   end
