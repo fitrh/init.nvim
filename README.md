@@ -1,4 +1,6 @@
-# Lives under my `$XDG_CONFIG_HOME/nvim`
+# init.nvim
+
+What's under my `$XDG_CONFIG_HOME/nvim`
 
 ## Requirements
 
