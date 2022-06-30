@@ -28,6 +28,7 @@ config.setup({
     "lua",
     "make",
     "markdown",
+    "markdown_inline",
     "ninja",
     "php",
     "python",
