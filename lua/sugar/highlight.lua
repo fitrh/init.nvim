@@ -115,10 +115,10 @@ end
 ---@field italic boolean
 ---@field bold boolean
 ---@field underline boolean
----@field underlineline boolean
+---@field underdouble boolean
 ---@field undercurl boolean
----@field underdot boolean
----@field underdash boolean
+---@field underdotted boolean
+---@field underdashed boolean
 ---@field strikethrough boolean
 ---@field reverse boolean
 ---@field standout boolean
@@ -155,10 +155,10 @@ local function parse(hl)
     "italic",
     "bold",
     "underline",
-    "underlineline",
+    "underdouble",
     "undercurl",
-    "underdot",
-    "underdash",
+    "underdotted",
+    "underdashed",
     "strikethrough",
     "reverse",
     "standout",
@@ -191,10 +191,10 @@ local function parse(hl)
   def.italic = inherit.italic or false
   def.bold = inherit.bold or false
   def.underline = inherit.underline or false
-  def.underlineline = inherit.underlineline or false
+  def.underdouble = inherit.underdouble or false
   def.undercurl = inherit.undercurl or false
-  def.underdot = inherit.underdot or false
-  def.underdash = inherit.underdash or false
+  def.underdotted = inherit.underdotted or false
+  def.underdashed = inherit.underdashed or false
   def.strikethrough = inherit.strikethrough or false
   def.reverse = inherit.reverse or false
   def.standout = inherit.standout or false
