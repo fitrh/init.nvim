@@ -14,7 +14,7 @@ local c = require("tokyonight.colors").setup(config)
 local u = require("tokyonight.util")
 
 require("sugar.highlight").colorscheme(function(h)
-  local set, link, bg, blend = h.set, h.link, h.bg, h.blend
+  local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
   local br_red = u.brighten(c.red, 0.2)
 
   -- highlight-default
@@ -73,6 +73,9 @@ require("sugar.highlight").colorscheme(function(h)
   link("TabLineSep", "TabLine")
   set("TabLineModifiedSel", { inherit = "TabLineSel", fg = br_red })
   set("TabLineSepSel", { inherit = "TabLineSel", fg = c.blue })
+  set("TelescopeNormal", { bg = c.bg_statusline })
+  set("TelescopeTitle", { inherit = "Visual", fg = fg("Normal") })
+  set("TelescopeBorder", { bg = c.bg_statusline, fg = c.bg_statusline })
   set("TreesitterContext", { bg = c.bg_statusline })
   set("WinSeparatorZen", { fg = c.bg })
 end)
