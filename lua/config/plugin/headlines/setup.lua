@@ -10,6 +10,7 @@ config.markdown = {
     "Headline6",
   },
   dash_string = "━",
+  quote_string = "▓",
   fat_headlines = false,
 }
 
