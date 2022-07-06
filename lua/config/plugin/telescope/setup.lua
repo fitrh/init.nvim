@@ -7,7 +7,6 @@ config.defaults = {
   layout_config = {
     horizontal = { preview_width = 80 },
   },
-  winblend = vim.api.nvim_get_option("pumblend"),
   prompt_prefix = "   ",
   selection_caret = " ",
   dynamic_preview_title = true,
