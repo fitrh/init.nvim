@@ -2,7 +2,7 @@ local style = "hard"
 vim.g.gruvbox_contrast_dark = style
 require("gruvbox").load()
 
-local c = require("gruvbox.colors")
+local c = require("gruvbox.palette")
 local normal_bg = style == "medium" and c.dark0 or c["dark0_" .. style]
 
 require("sugar.highlight").colorscheme(function(h)
