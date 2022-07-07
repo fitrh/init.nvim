@@ -1,29 +1,57 @@
 local keymap = require("sugar.keymap")
 local map, leader, n = keymap.map, keymap.modifier.leader, keymap.mode.normal
 
-local b = require("telescope.builtin")
-local t = require("telescope.themes")
-local fb = require("telescope").extensions.file_browser
-
 keymap.bind({
-  n(map("gb", b.buffers)),
-  n(map("gf", b.find_files)),
-  n(map("gF", b.live_grep)),
-  n(map(leader("e"), fb.file_browser)),
+  n(map("gb", function()
+    require("telescope.builtin").buffers()
+  end)),
+  n(map("gf", function()
+    require("telescope.builtin").find_files()
+  end)),
+  n(map("gF", function()
+    require("telescope.builtin").live_grep()
+  end)),
+  n(map(leader("e"), function()
+    require("telescope").extensions.file_browser.file_browser()
+  end)),
   n(map(leader("k"), function()
-    fb.file_browser(
-      t.get_dropdown({ previewer = false, files = false, display_stat = false })
+    require("telescope").extensions.file_browser.file_browser(
+      require("telescope.themes").get_dropdown({
+        previewer = false,
+        files = false,
+        display_stat = false,
+      })
     )
   end)),
-  n(map(leader("ft"), b.filetypes)),
-  n(map(leader("lo"), b.treesitter)),
-  n(map(leader("gf"), b.git_files)),
-  n(map("gC", b.git_commits)),
-  n(map("gB", b.git_branches)),
-  n(map("gS", b.git_status)),
-  n(map(leader("m"), b.keymaps)),
-  n(map("[ld", function()
-    b.diagnostics(t.get_dropdown({ bufnr = 0 }))
+  n(map(leader("ft"), function()
+    require("telescope.builtin").filetypes()
   end)),
-  n(map("[lD", b.diagnostics)),
+  n(map(leader("lo"), function()
+    require("telescope.builtin").treesitter()
+  end)),
+  n(map(leader("gf"), function()
+    require("telescope.builtin").git_files()
+  end)),
+  n(map("gC", function()
+    require("telescope.builtin").git_commits()
+  end)),
+  n(map("gB", function()
+    require("telescope.builtin").git_branches()
+  end)),
+  n(map("gS", function()
+    require("telescope.builtin").git_status()
+  end)),
+  n(map(leader("m"), function()
+    require("telescope.builtin").keymaps()
+  end)),
+  n(map("[ld", function()
+    require("telescope.builtin").diagnostics(
+      require("telescope.themes").get_dropdown({
+        bufnr = 0,
+      })
+    )
+  end)),
+  n(map("[lD", function()
+    require("telescope.builtin").diagnostics()
+  end)),
 })
