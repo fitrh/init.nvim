@@ -1,5 +1,4 @@
 local telescope = require("telescope")
-local layout = require("telescope.actions.layout")
 local config = {}
 
 config.defaults = {
@@ -13,10 +12,13 @@ config.defaults = {
   results_title = false,
   mappings = {
     n = {
-      ["<M-p>"] = layout.toggle_preview,
+      ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
     },
     i = {
-      ["<M-p>"] = layout.toggle_preview,
+      ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
+      ["<C-[>"] = require("telescope.actions").close,
+      ["<C-j>"] = require("telescope.actions").cycle_history_next,
+      ["<C-k>"] = require("telescope.actions").cycle_history_prev,
     },
   },
   file_ignore_patterns = {
