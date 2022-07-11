@@ -13,7 +13,6 @@ icon.override = {
   gradlew = { icon = "ﳄ", name = "Gradle" },
   ["gradlew.bat"] = { icon = "ﳄ", name = "Gradle" },
   javascript = { icon = "", color = "#8fa959", name = "JavaScript" },
-  log = { icon = "", color = "#41535b", name = "Log" },
   make = { icon = "", color = "#e37933", name = "Make" },
   ["package.json"] = { icon = "", color = "#8fa959", name = "PkgJSON" },
   python = icon.default["py"],
