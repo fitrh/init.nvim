@@ -6,7 +6,6 @@ local plugins = {
   { "ray-x/lsp_signature.nvim", module = "lsp_signature" },
   { "b0o/schemastore.nvim", ft = { "json", "jsonc" } },
   { "themaxmarchuk/tailwindcss-colors.nvim", module = "tailwindcss-colors" },
-  require("config.plugin.filetype.packerspec"),
   require("config.plugin.treesitter.packerspec"),
   require("config.plugin.treesitter-context.packerspec"),
   require("config.plugin.lspconfig.packerspec"),
