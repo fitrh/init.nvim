@@ -70,6 +70,11 @@ pickers.buffers = {
   path_display = { "smart" },
   theme = "dropdown",
   previewer = false,
+  mappings = {
+    i = {
+      ["<C-d>"] = require("telescope.actions").delete_buffer,
+    },
+  },
 }
 
 pickers.live_grep = {
