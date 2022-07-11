@@ -5,6 +5,13 @@ function M.attach(jdtls, bufnr)
     prefix = "Jdt",
     buf = bufnr,
     cmds = {
+      {
+        name = "BuildProjects",
+        opts = { nargs = "?" },
+        cmd = function(opts)
+          jdtls.build_projects(opts.fargs[1])
+        end,
+      },
       { name = "OrganizeImports", cmd = jdtls.organize_imports },
       { name = "ExtractVariable", cmd = jdtls.extract_variable },
       {
@@ -36,6 +43,13 @@ function M.attach(jdtls, bufnr)
         name = "TestNearestMethod",
         cmd = function()
           jdtls.test_nearest_method(true)
+        end,
+      },
+      {
+        name = "UpdateProjectsConfig",
+        opts = { nargs = "?" },
+        cmd = function(opts)
+          jdtls.update_projects_config(opts.fargs[1])
         end,
       },
     },
