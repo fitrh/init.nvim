@@ -9,6 +9,7 @@ local M = {
   padding = " ",
   transparency = vim.api.nvim_get_option("pumblend"),
   toggle_key = "<M-x>",
+  select_signature_key = "<C-n>",
 }
 
 return M
