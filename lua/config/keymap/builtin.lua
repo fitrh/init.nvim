@@ -36,6 +36,15 @@ keymap.bind({
   map("[q", ex("q")),
   map("[Q", ex("xall")),
 
+  -- cmdline without arrows
+  c(map("<C-a>", "<Home>")),
+  c(map("<C-f>", "<Right>")),
+  c(map("<C-b>", "<Left>")),
+  c(map("<M-f>", "<S-Right>")),
+  c(map("<M-b>", "<S-Left>")),
+  c(map("C-p>", "<Up>")),
+  c(map("C-n>", "<Down>")),
+
   --- buffer
   n(map("<C-w>Q", ex("bdelete"))),
   -- next & previous buffer
