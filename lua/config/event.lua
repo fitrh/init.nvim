@@ -68,7 +68,7 @@ augroup("SetSynMaxCol", function(autocmd)
 end)
 
 augroup("MacroRecording", function(autocmd)
-  local opts = { title = "Macro", icon = "", timeout = 1000 }
+  local opts = { title = "Macro", icon = "", timeout = 250 }
   autocmd("RecordingEnter", "*", function()
     local msg = (" 壘Recording @%s"):format(vim.fn.reg_recording())
     vim.notify(msg, vim.log.levels.INFO, opts)
