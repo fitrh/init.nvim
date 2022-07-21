@@ -1,6 +1,5 @@
 local set = vim.opt
 
-set.backup = false -- but do not persist backup after successful write
 set.backupcopy = "auto" -- best option for backup strategy
 set.breakindent = true
 set.colorcolumn = { "+1" } -- draw a vertical ruler at (textwidth + 1)th column
