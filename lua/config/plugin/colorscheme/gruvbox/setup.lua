@@ -1,16 +1,14 @@
-local style = "hard"
-vim.g.gruvbox_contrast_dark = style
-require("gruvbox").load()
-
-local c = require("gruvbox.palette")
-local normal_bg = style == "medium" and c.dark0 or c["dark0_" .. style]
+local gruvbox = require("gruvbox")
+gruvbox.setup({ contrast = "hard" })
+gruvbox.load()
 
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
+  local c = require("gruvbox.palette")
 
   -- highlight-default
-  set("ColorColumn", { bg = blend(bg("ColorColumn"), normal_bg, 0.1) })
-  set("CursorColumn", { bg = blend(bg("CursorLine"), normal_bg, 0.3) })
+  set("ColorColumn", { bg = blend(bg("ColorColumn"), bg("Normal"), 0.1) })
+  set("CursorColumn", { bg = blend(bg("CursorLine"), bg("Normal"), 0.3) })
   link("CursorLine", "CursorColumn")
   set("CursorLineNr", { fg = c.bright_yellow })
   set("DiagnosticSignInfo", { inherit = "DiagnosticSignInfo", bg = "NONE" })
@@ -25,7 +23,7 @@ require("sugar.highlight").colorscheme(function(h)
   link("NormalFloat", "Normal")
   link("SignColumn", "LineNr")
   set("StatusLine", { bg = c.dark1, fg = c.light2 })
-  set("TabLineSel", { inherit = "TabLineSel", bg = normal_bg })
+  set("TabLineSel", { inherit = "TabLineSel", bg = bg("Normal") })
   set("VertSplit", { fg = bg("StatusLine") })
 
   -- health
