@@ -139,6 +139,7 @@ config.extensions = {
   file_browser = {
     prompt_prefix = "   ",
     hide_parent_dir = true,
+    collapse_dirs = true,
   },
   fzf = {},
 }
