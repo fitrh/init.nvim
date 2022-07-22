@@ -30,7 +30,7 @@ return {
     "zl",
     "zL",
     "zh",
-    "zH"
+    "zH",
   },
-  event = "WinScrolled"
+  event = { "CmdlineEnter", "WinScrolled" },
 }
