@@ -9,16 +9,10 @@ require("litee.symboltree").setup({
   icon_set = "nerd",
   hide_cursor = false,
   on_open = "panel",
-  keymaps = {
-    close = "q",
-  },
 })
 
 require("litee.calltree").setup({
   icon_set = "nerd",
   hide_cursor = false,
   on_open = "panel",
-  keymaps = {
-    close = "q",
-  },
 })
