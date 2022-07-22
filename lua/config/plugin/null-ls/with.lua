@@ -66,6 +66,12 @@ With.phpstan = {
   end,
 }
 
+With.pint = {
+  condition = function(u)
+    return u.root_has_file({ "pint.json" })
+  end,
+}
+
 With.pylint = {
   condition = function(u)
     return u.root_has_file({ "pylintrc", ".pylintrc" })

@@ -9,6 +9,7 @@ local formatter = {
   "ktlint",
   "markdownlint",
   "phpcbf",
+  "pint",
   "prettierd",
   "shellharden",
   "shfmt",
