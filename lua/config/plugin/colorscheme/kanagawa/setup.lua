@@ -13,7 +13,8 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- highlight-default
   set("ColorColumn", { bg = blend(bg("StatusLine"), bg("Normal"), 0.3) })
-  set("CursorLine", { bg = blend(bg("CursorLine"), bg("Normal"), 0.2) })
+  set("CursorColumn", { bg = blend(bg("CursorLine"), bg("Normal"), 0.2) })
+  link("CursorLine", "CursorColumn")
   link("FloatBorder", "Normal")
   set("NonText", { inherit = "NonText", bold = false })
   link("NormalFloat", "Normal")

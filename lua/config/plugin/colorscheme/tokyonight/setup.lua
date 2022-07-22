@@ -18,9 +18,10 @@ require("sugar.highlight").colorscheme(function(h)
   local br_red = u.brighten(c.red, 0.2)
 
   -- highlight-default
-  set("CursorLine", { bg = blend(c.blue, c.bg, 0.05) })
-  set("CursorLineNr", { fg = c.blue })
   set("ColorColumn", { bg = blend(c.bg_statusline, c.bg, 0.4) })
+  set("CursorColumn", { bg = blend(c.blue, c.bg, 0.05) })
+  link("CursorLine", "CursorColumn")
+  set("CursorLineNr", { fg = c.blue })
   link("TabLineSel", "Normal")
   link("TabLine", "StatusLineNC")
   link("TabLineFill", "TabLine")
