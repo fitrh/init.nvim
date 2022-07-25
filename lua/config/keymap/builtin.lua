@@ -36,7 +36,9 @@ keymap.bind({
   map("[q", ex("q")),
   map("[Q", ex("xall")),
 
-  -- cmdline without arrows
+  -- cmdline without arrows and tab
+  nop(c(map("<Tab>"))),
+  nop(c(map("<S-Tab>"))),
   c(map("<C-a>", "<Home>")),
   c(map("<C-f>", "<Right>")),
   c(map("<C-b>", "<Left>")),
