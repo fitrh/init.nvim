@@ -42,8 +42,8 @@ keymap.bind({
   c(map("<C-b>", "<Left>")),
   c(map("<M-f>", "<S-Right>")),
   c(map("<M-b>", "<S-Left>")),
-  c(map("C-p>", "<Up>")),
-  c(map("C-n>", "<Down>")),
+  c(map("<C-p>", "<Up>")),
+  c(map("<C-n>", "<Down>")),
 
   --- buffer
   n(map("<C-w>Q", ex("bdelete"))),
