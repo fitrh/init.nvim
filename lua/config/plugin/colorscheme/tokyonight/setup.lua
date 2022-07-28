@@ -77,6 +77,10 @@ require("sugar.highlight").colorscheme(function(h)
   set("TelescopeNormal", { bg = c.bg_statusline })
   set("TelescopeTitle", { inherit = "Visual", fg = fg("Normal"), bold = true })
   set("TelescopeBorder", { bg = c.bg_statusline, fg = c.bg_statusline })
-  set("TreesitterContext", { bg = c.bg_statusline })
+  set("TreesitterContext", { inherit = "ColorColumn", bold = true })
+  set("TreesitterContextLineNumber", {
+    inherit = "TreesitterContext",
+    fg = fg("LineNr"),
+  })
   set("WinSeparatorZen", { fg = c.bg })
 end)
