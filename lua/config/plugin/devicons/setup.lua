@@ -1,10 +1,10 @@
 local devicons = require("nvim-web-devicons")
-local icon = {}
-
 devicons.set_default_icon("", "#6d8086")
 
+local icon = {}
 icon.default = devicons.get_icons()
 icon.override = {
+  [".envrc"] = icon.default[".env"],
   ["build.gradle"] = { icon = "ﳄ", color = "#02303a", name = "Gradle" },
   ["Cargo.toml"] = { icon = "", color = "#dea584", name = "CargoTOML" },
   ["Cargo.lock"] = { icon = "", color = "#9e5f27", name = "CargoLock" },
