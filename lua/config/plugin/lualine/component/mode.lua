@@ -3,6 +3,7 @@ local modes = {
   niI = "N·I", -- i_CTRL_O
   niR = "N·R", -- R_CTRL_O
   niV = "NRV", -- gR_CTRL_O
+  no = "NOP",
   nt = "N·T",
   i = "INS",
   ix = "I·X", -- i_CTRL_X
