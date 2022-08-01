@@ -8,6 +8,7 @@ local extension = {
 
 local filename = {
   [".env"] = "config",
+  [".envrc"] = "config",
 }
 
 vim.filetype.add({
