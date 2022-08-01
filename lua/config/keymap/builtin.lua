@@ -103,10 +103,10 @@ keymap.bind({
   end, { expr = true })),
 
   -- moves line
-  n(map("<C-j>", ":m .+1<CR>==")),
+  n(map("<C-j>", ":m .+1<CR>==", { silent = true })),
   i(map("<M-j>", "<Esc>:m .+1<CR>==gi", { silent = true })),
   v(map("J", ":m '>+1<CR>gv=gv", { silent = true })),
-  n(map("<C-k>", ":m .-2<CR>==")),
+  n(map("<C-k>", ":m .-2<CR>==", { silent = true })),
   i(map("<M-k>", "<Esc>:m .-2<CR>==gi", { silent = true })),
   v(map("K", ":m '<-2<CR>gv=gv", { silent = true })),
   -- join lines without changing cursor position
