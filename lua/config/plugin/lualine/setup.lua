@@ -46,7 +46,7 @@ end
 config.sections.lualine_a = { strip.L, align.left(mode) }
 config.sections.lualine_c = {
   spacer(),
-  align.left(file.path({ trunc = { on = 2, with = "… / " }, ends = " /" })),
+  align.left(file.path({ trunc = { with = "… / " }, ends = " /" })),
   align.left(state.readonly),
   align.left(icon.active),
   align.left(state.modified),
