@@ -29,6 +29,7 @@ return {
     "<Leader>gf",
     "<Leader>lo",
     "<Leader>m",
+    "<Leader>h",
     "gS",
     "gC",
     "gB",

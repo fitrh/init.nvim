@@ -5,6 +5,9 @@ keymap.bind({
   n(map("gb", function()
     require("telescope.builtin").buffers()
   end)),
+  n(map(leader("h"), function()
+    require("telescope.builtin").help_tags()
+  end)),
   n(map("gf", function()
     require("telescope.builtin").find_files()
   end)),

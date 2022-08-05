@@ -77,6 +77,12 @@ pickers.buffers = {
   },
 }
 
+pickers.help_tags = {
+  prompt_prefix = " 龎 ",
+  theme = "dropdown",
+  previewer = false,
+}
+
 pickers.live_grep = {
   layout_config = {
     anchor = "N",
