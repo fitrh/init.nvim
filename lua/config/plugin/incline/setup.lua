@@ -22,4 +22,19 @@ config.hide = {
   cursorline = true,
 }
 
+if config.hide.cursorline then
+  require("sugar.augroup")("InclineMoveToScondLine", function(autocmd)
+    autocmd("BufRead", "*", function()
+      if
+        vim.api.nvim_win_get_cursor(0)[1] > 1
+        or vim.api.nvim_buf_line_count(0) < 2
+      then
+        return
+      end
+
+      vim.api.nvim_win_set_cursor(0, { 2, 0 })
+    end)
+  end)
+end
+
 require("incline").setup(config)
