@@ -13,8 +13,16 @@ return require("config.lsp.server").with(bin, {
   cmd = { bin, "-E", main },
   settings = {
     Lua = {
+      completion = {
+        callSnippet = "Both",
+        keywordSnippet = "Both",
+      },
       diagnostics = { globals = { "vim" } },
       format = { enable = false },
+      hint = {
+        enable = true,
+        setType = true,
+      },
       runtime = {
         path = runtime_path,
         version = "LuaJIT",
