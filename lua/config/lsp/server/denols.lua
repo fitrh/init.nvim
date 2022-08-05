@@ -17,4 +17,6 @@ config.init_options = {
   lint = true,
 }
 
+config.single_file_support = false
+
 return require("config.lsp.server").with("deno", config)
