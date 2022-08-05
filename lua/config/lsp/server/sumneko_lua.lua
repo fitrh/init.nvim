@@ -18,6 +18,7 @@ return require("config.lsp.server").with(bin, {
         path = runtime_path,
       },
       diagnostics = { globals = { "vim" } },
+      format = { enable = false },
       workspace = {
         library = vim.api.nvim_get_runtime_file("lua", true),
         preloadFileSize = 1000,
