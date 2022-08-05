@@ -13,17 +13,17 @@ return require("config.lsp.server").with(bin, {
   cmd = { bin, "-E", main },
   settings = {
     Lua = {
-      runtime = {
-        version = "LuaJIT",
-        path = runtime_path,
-      },
       diagnostics = { globals = { "vim" } },
       format = { enable = false },
+      runtime = {
+        path = runtime_path,
+        version = "LuaJIT",
+      },
+      telemetery = { enable = false },
       workspace = {
         library = vim.api.nvim_get_runtime_file("lua", true),
         preloadFileSize = 1000,
       },
-      telemetery = { enable = false },
     },
   },
 })
