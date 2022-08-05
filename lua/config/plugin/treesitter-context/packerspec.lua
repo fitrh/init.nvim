@@ -5,6 +5,8 @@ return {
     { "nvim-treesitter/nvim-treesitter", module = "nvim-treesitter" },
   },
   config = function()
-    require("treesitter-context").setup({})
+    require("treesitter-context").setup({
+      enable = false,
+    })
   end,
 }
