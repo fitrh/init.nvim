@@ -26,6 +26,7 @@ set.fillchars = {
   verthoriz = "╋",
   foldopen = "",
   foldclose = "",
+  diff = "/",
   eob = " ", -- use 'space' for lines after the last buffer line in a window
 }
 set.guicursor = "n-c:hor50,i-ci-ve:ver25" -- horizontal in normal, vertical in insert
