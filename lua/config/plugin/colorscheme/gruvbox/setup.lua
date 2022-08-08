@@ -71,6 +71,11 @@ require("sugar.highlight").colorscheme(function(h)
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.bright_purple })
   set("StatusLineModified", { inherit = "StatusLine", fg = c.bright_red })
   set("StatusLinePath", { inherit = "StatusLine", fg = fg("Comment") })
+  set("StatusLinePathSep", {
+    inherit = "StatusLine",
+    fg = c.light4,
+    bold = true,
+  })
   set("StatusLineRO", { inherit = "StatusLine", fg = c.faded_red })
   set("StatusLineMNormal", { fg = c.bright_yellow })
   set("StatusLineMInsert", { fg = c.bright_blue })
