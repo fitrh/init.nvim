@@ -27,39 +27,35 @@ File.icon = {
   icon_only = true,
 }
 
----@class FilePathTruncOpts
----@field on number @show number-path after truncated, default: 2
----@field with string @truncation prefix
-
 ---@class FilePathOpts
----@field trunc boolean|FilePathTruncOpts
----@field ends string @component suffix
+---@field trunc boolean|number @show n-last path part after truncated, default: 2
+---@field sep string @separator for each part
 
 ---@param opts FilePathOpts
 ---@return table component
 File.path = function(opts)
-  opts = opts or { trunc = false, ends = nil }
+  opts = opts or { trunc = false, sep = nil }
   return {
     function()
       local i = 1
       local path = vim.fn.expand("%:.:h")
       local path_split = vim.split(path, "/")
+      local sep = opts.sep or "/"
+      sep = ("%%#StatusLinePathSep#%s%%#StatusLinePath#"):format(sep)
 
       if opts.trunc then
-        local on = opts.trunc.on or 2
+        opts.trunc = type(opts.trunc) ~= "number" and 2 or opts.trunc
         -- the `- 1` is required because lua is 1-indexed
-        i = #path_split > on and #path_split - (on - 1) or i
+        i = #path_split > opts.trunc and #path_split - (opts.trunc - 1) or i
       end
 
-      path = table.concat(path_split, " / ", i)
+      path = table.concat(path_split, (" %s "):format(sep), i)
 
-      if i > 1 and opts.trunc.with then
-        path = ("%s%s"):format(opts.trunc.with, path)
+      if i > 1 and opts.trunc then
+        path = ("%s%s"):format(("… %s "):format(sep), path)
       end
 
-      if opts.ends then
-        path = ("%s%s"):format(path, opts.ends)
-      end
+      path = ("%s%s"):format(path, (" %s"):format(sep))
 
       return path
     end,
