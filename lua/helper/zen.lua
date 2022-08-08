@@ -85,13 +85,13 @@ function win.main.create()
   win.main.buf = { nr = api.nvim_buf_get_number(0) }
   api.nvim_win_set_option(win.main.nr, "winhighlight", pad.winhl)
   api.nvim_win_set_cursor(win.main.nr, cursorpos)
-  vim.cmd("normal! zz")
+  vim.cmd.normal({ "zz", bang = true })
   opt(true)
 end
 
 function win.main.restore()
   local cursorpos = api.nvim_win_get_cursor(0)
-  vim.cmd("tabclose")
+  vim.cmd.tabclose()
   opt(not state.zen)
   api.nvim_set_option("winwidth", state.winwidth)
   api.nvim_win_set_cursor(0, cursorpos)

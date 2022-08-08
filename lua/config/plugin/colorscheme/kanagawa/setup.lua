@@ -4,7 +4,7 @@ config.globalStatus = true
 
 require("kanagawa").setup(config)
 
-vim.cmd("colorscheme kanagawa")
+vim.cmd.colorscheme("kanagawa")
 
 local c = require("kanagawa.colors").setup()
 

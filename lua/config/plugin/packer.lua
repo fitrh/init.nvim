@@ -1,4 +1,4 @@
-vim.cmd("packadd packer.nvim")
+vim.cmd.packadd("packer.nvim")
 
 local plugins = {
   { "nvim-lua/plenary.nvim", module = "plenary" },

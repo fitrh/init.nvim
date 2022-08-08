@@ -40,7 +40,7 @@ function LspKeymap.attach(client, bufnr)
     ["textDocument/formatting"] = n(map(leader("<CR>"), function()
       lsp.format({ bufnr = bufnr, timeout_ms = 5000 })
       vim.schedule(function()
-        vim.cmd("update")
+        vim.cmd.update()
       end)
     end)),
     ["textDocument/rangeFormatting"] = v(
