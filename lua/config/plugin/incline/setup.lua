@@ -22,7 +22,7 @@ config.hide = {
   cursorline = true,
 }
 
-if config.hide.cursorline then
+if config.hide and config.hide.cursorline then
   require("sugar.augroup")("InclineMoveToScondLine", function(autocmd)
     autocmd("BufRead", "*", function()
       if
