@@ -5,7 +5,7 @@ config.render = function(props)
     return "[No Name]"
   end
 
-  return require("config.plugin.incline.render.inactive")(props)
+  return require("config.plugin.incline.render.unfocus")(props)
 end
 
 config.window = {
