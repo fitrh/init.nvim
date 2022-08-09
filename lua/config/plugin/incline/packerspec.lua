@@ -3,5 +3,5 @@ return {
   config = function()
     require("config.plugin.incline.setup")
   end,
-  event = { "WinNew" },
+  event = { "WinNew", "CursorMoved" },
 }

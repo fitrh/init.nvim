@@ -5,6 +5,18 @@ config.render = function(props)
     return "[No Name]"
   end
 
+  if props.focused then
+    if not vim.api.nvim_buf_get_var(props.buf, "lsp_attached") then
+      return nil
+    end
+
+    if not vim.api.nvim_buf_get_var(props.buf, "nvim_navic_attached") then
+      return nil
+    end
+
+    return require("config.plugin.incline.render.focus")()
+  end
+
   return require("config.plugin.incline.render.unfocus")(props)
 end
 
@@ -18,7 +30,6 @@ config.window = {
 }
 
 config.hide = {
-  focused_win = true,
   cursorline = true,
 }
 
