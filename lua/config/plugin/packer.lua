@@ -32,6 +32,7 @@ local plugins = {
   require("config.plugin.devicons.packerspec"),
   require("config.plugin.lualine.packerspec"),
   require("config.plugin.incline.packerspec"),
+  require("config.plugin.navic.packerspec"),
   require("config.plugin.colorizer.packerspec"),
   require("config.plugin.modes.packerspec"),
   require("config.plugin.todo-comments.packerspec"),
