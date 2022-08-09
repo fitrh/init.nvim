@@ -27,6 +27,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("FidgetTask", { inherit = "Comment", italic = false })
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("Comment") })
+  set("InclineSep", { fg = fg("LineNr"), bold = true })
   set("InclineWinNr", {
     fg = p.bright_blue,
     bg = blend(p.bright_blue, p.bg2, 0.1),

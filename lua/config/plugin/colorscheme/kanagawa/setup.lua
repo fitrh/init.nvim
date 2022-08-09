@@ -33,6 +33,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("HopUnmatched", { fg = c.sumiInk4, special = c.sumiInk4 })
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLineNC", fg = fg("NonText") })
+  set("InclineSep", { fg = fg("LineNr"), bold = true })
   set("InclineWinNr", {
     fg = fg("CursorLineNr"),
     bg = blend(fg("CursorLineNr"), bg("StatusLine"), 0.1),
