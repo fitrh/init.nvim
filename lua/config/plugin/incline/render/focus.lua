@@ -34,16 +34,15 @@ return function()
   end
 
   local symbols = navic.get_data()
-  local separator = { "  ", group = "InclineSep" }
-  local result = {}
-
-  if #symbols == 0 then
+  if #symbols < 1 then
     return nil
   end
 
+  local separator = { "  ", group = "InclineSep" }
+  local result = {}
   for i, symbol in ipairs(symbols) do
-    local item = {}
-    table.insert(item, { symbol.icon, group = hl[symbol.type] })
+    local item = { { symbol.icon, group = hl[symbol.type] } }
+
     local name = symbol.name
     local name_width = vim.api.nvim_strwidth(name)
     if name_width > 20 then
@@ -56,12 +55,7 @@ return function()
     if i < #symbols then
       table.insert(item, separator)
     end
-
     table.insert(result, item)
-  end
-
-  if #result < 1 then
-    return nil
   end
 
   if #result > 4 then
