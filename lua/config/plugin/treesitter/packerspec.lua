@@ -5,7 +5,6 @@ return {
     config = function()
       require("config.plugin.treesitter.setup")
     end,
-    module = "nvim-treesitter",
     ft = {
       "bash",
       "bib",

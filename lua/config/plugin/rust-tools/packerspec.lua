@@ -4,5 +4,4 @@ return {
     require("config.plugin.rust-tools.setup")
   end,
   ft = { "rust" },
-  module = "rust-tools",
 }

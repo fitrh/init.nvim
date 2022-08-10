@@ -7,5 +7,4 @@ return {
   end,
   ft = "dart",
   event = "BufRead pubspec.yaml",
-  module = "flutter-tools",
 }

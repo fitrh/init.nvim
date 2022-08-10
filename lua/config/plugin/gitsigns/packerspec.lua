@@ -5,7 +5,6 @@ local M = {
     require("config.plugin.gitsigns.setup")
   end,
   keys = { "gs", "]c", "]C", "[c", "[C" },
-  module = "gitsigns",
 }
 
 return M

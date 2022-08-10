@@ -14,5 +14,4 @@ return {
     end)
   end,
   ft = { "java" },
-  module = "jdtls",
 }

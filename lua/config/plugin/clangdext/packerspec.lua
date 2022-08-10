@@ -5,5 +5,4 @@ return {
     require("config.plugin.clangdext.setup")
   end,
   ft = { "c", "cpp" },
-  module = "clangd_extensions",
 }

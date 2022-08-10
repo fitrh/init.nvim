@@ -24,5 +24,4 @@ return {
     { "n", "[xR" },
   },
   event = { "DiagnosticChanged" },
-  module = "trouble",
 }

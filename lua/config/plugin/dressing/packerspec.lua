@@ -5,5 +5,4 @@ return {
     require("config.plugin.dressing.setup")
   end,
   event = { "BufReadPost", "BufNewFile" },
-  module = "dressing",
 }
