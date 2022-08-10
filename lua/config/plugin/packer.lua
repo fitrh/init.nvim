@@ -9,7 +9,7 @@ local plugins = {
   require("config.plugin.treesitter.packerspec"),
   require("config.plugin.treesitter-context.packerspec"),
   require("config.plugin.lspconfig.packerspec"),
-  require("config.plugin.clangdext.packerspec"),
+  require("config.plugin.clangd_extensions.packerspec"),
   require("config.plugin.jdtls.packerspec"),
   require("config.plugin.rust-tools.packerspec"),
   require("config.plugin.flutter-tools.packerspec"),
