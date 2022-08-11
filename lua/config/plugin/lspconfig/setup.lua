@@ -16,7 +16,6 @@ local servers = {
   lemminx = server_config.with("lemminx"),
   marksman = server_config.with("marksman"),
   omnisharp = require("config.lsp.server.omnisharp"),
-  phpactor = server_config.with("phpactor"),
   pyright = require("config.lsp.server.pyright"),
   sumneko_lua = require("config.lsp.server.sumneko_lua"),
   svelte = require("config.lsp.server.svelte"),

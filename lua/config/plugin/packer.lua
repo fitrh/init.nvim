@@ -15,6 +15,7 @@ local plugins = {
   require("config.plugin.flutter-tools.packerspec"),
   require("config.plugin.typescript.packerspec"),
   require("config.plugin.crates.packerspec"),
+  require("config.plugin.phpactor.packerspec"),
   require("config.plugin.null-ls.packerspec"),
   require("config.plugin.litee.packerspec"),
   require("config.plugin.sandwich.packerspec"),
