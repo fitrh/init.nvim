@@ -28,8 +28,8 @@ function M.setup(cmp, snippet)
         end
       end,
     }),
-    ["<C-b>"] = map.scroll_docs(-4),
-    ["<C-f>"] = map.scroll_docs(4),
+    ["<C-u>"] = map.scroll_docs(-4),
+    ["<C-d>"] = map.scroll_docs(4),
     ["<C-l>"] = map.complete(),
     ["<C-e>"] = map(map.abort(), { "i", "c" }),
     ["<C-y>"] = map.confirm({ select = true }),
