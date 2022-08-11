@@ -49,6 +49,7 @@ return {
       "yaml",
       "zig",
     },
+    event = { "User TelescopePreviewerLoaded" },
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
