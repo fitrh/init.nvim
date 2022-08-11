@@ -16,6 +16,7 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- highlight-default
   set("ColorColumn", { bg = blend(bg("StatusLine"), bg("Normal"), 0.4) })
+  link("Folded", "LineNr")
   link("NormalFloat", "Normal")
   link("TabLineSel", "Normal")
   set("VertSplit", { fg = bg("StatusLine"), cterm = { reverse = true } })
