@@ -1,6 +1,9 @@
 local set = vim.opt
 
+set.backup = true -- always persist backup file
 set.backupcopy = "auto" -- best option for backup strategy
+set.backupdir = ("%s/backup//"):format(vim.fn.stdpath("state"))
+set.backupskip:append({ "*/.git/*" }) -- file patterns to ignore by 'backup'
 set.breakindent = true
 set.colorcolumn = { "+1" } -- draw a vertical ruler at (textwidth + 1)th column
 set.complete:remove({
