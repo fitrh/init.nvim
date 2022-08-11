@@ -58,3 +58,55 @@ keymap.bind({
     require("telescope.builtin").diagnostics()
   end)),
 })
+
+require("sugar.augroup")("TelescopeLSPKeymap", function(autocmd)
+  autocmd("LspAttach", "*", function(args)
+    if not args.data then
+      return
+    end
+
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local method_map = {
+      ["textDocument/documentSymbol"] = {
+        key = "[ls",
+        fn = function()
+          require("telescope.builtin").lsp_document_symbols()
+        end,
+      },
+      ["workspace/symbol"] = {
+        key = "[lS",
+        fn = function()
+          require("telescope.builtin").lsp_workspace_symbols()
+        end,
+      },
+      ["textDocument/references"] = {
+        key = "[lr",
+        fn = function()
+          require("telescope.builtin").lsp_references()
+        end,
+      },
+      ["textDocument/implementation"] = {
+        key = "[li",
+        fn = function()
+          require("telescope.builtin").lsp_implementations()
+        end,
+      },
+      ["textDocument/definition"] = {
+        key = "[gd",
+        fn = function()
+          require("telescope.builtin").lsp_definitions()
+        end,
+      },
+    }
+
+    for method, bind in pairs(method_map) do
+      if client.supports_method(method) then
+        vim.api.nvim_buf_set_keymap(args.buf, "n", bind.key, "", {
+          silent = true,
+          noremap = true,
+          callback = bind.fn,
+        })
+      end
+    end
+  end)
+end)
