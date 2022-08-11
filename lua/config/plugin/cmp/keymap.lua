@@ -31,6 +31,8 @@ function M.setup(cmp, snippet)
     ["<C-u>"] = map.scroll_docs(-4),
     ["<C-d>"] = map.scroll_docs(4),
     ["<C-l>"] = map.complete(),
+    ["<C-b>"] = map(map.abort(), { "i", "c" }),
+    ["<C-f>"] = map.confirm({ select = true }),
     ["<C-e>"] = map(map.abort(), { "i", "c" }),
     ["<C-y>"] = map.confirm({ select = true }),
     ["<CR>"] = map.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
