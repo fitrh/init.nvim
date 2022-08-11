@@ -32,9 +32,9 @@ function M.setup(cmp, snippet)
     ["<C-d>"] = map.scroll_docs(4),
     ["<C-l>"] = map.complete(),
     ["<C-b>"] = map(map.abort(), { "i", "c" }),
-    ["<C-f>"] = map.confirm({ select = true }),
+    ["<C-f>"] = map(map.confirm({ select = true }), { "i", "c" }),
     ["<C-e>"] = map(map.abort(), { "i", "c" }),
-    ["<C-y>"] = map.confirm({ select = true }),
+    ["<C-y>"] = map(map.confirm({ select = true }), { "i", "c" }),
     ["<CR>"] = map.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
     ["<C-j>"] = map(function(fallback)
       if snippet.expand_or_jumpable() then
