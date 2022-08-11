@@ -6,6 +6,7 @@ if FLUTTER_ROOT then
 end
 
 config.closing_tags = { prefix = "ﰪ " }
+config.dev_log = { open_cmd = "tabedit" }
 
 config.lsp = require("config.lsp.server").with("flutter")
 if not config.lsp then
