@@ -12,11 +12,11 @@ local function title(tabpage, bufnr, sel)
     or "[No Name]"
 
   if sel then
-    return table.concat({ "%#TabLineSel#", (" %s "):format(text) })
+    return table.concat({ "%#TabLineSel#", "%=", (" %s "):format(text) })
   end
 
   local id = vim.api.nvim_tabpage_get_number(tabpage)
-  return table.concat({ "%#TabLine#", ("%d:%s"):format(id, text) })
+  return table.concat({ "%#TabLine#", "%=", ("%d:%s"):format(id, text) })
 end
 
 local function modified(bufnr, sel)
@@ -48,6 +48,7 @@ function TabLine.draw()
     insert(label, separator(sel))
     insert(label, title(tabpage, bufnr, sel))
     insert(label, modified(bufnr, sel))
+    insert(label, "%=")
     insert(label, " %#TabLineFill#")
 
     insert(tabline, table.concat(label))
