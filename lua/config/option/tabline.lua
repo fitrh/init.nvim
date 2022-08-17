@@ -5,15 +5,18 @@ local function separator(sel)
 end
 
 local function title(tabpage, bufnr, sel)
-  local id = vim.api.nvim_tabpage_get_number(tabpage)
   local bufname = vim.api.nvim_buf_get_name(bufnr)
-  local fname = bufname ~= "" and vim.fn.fnamemodify(bufname, ":t") or "□"
+  local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+  local text = (bufname ~= "") and vim.fn.fnamemodify(bufname, ":t")
+    or (filetype ~= "") and filetype
+    or "[No Name]"
 
   if sel then
-    return table.concat({ "%#TabLineSel#", (" %s "):format(fname) })
+    return table.concat({ "%#TabLineSel#", (" %s "):format(text) })
   end
 
-  return table.concat({ "%#TabLine#", ("%d:%s"):format(id, fname) })
+  local id = vim.api.nvim_tabpage_get_number(tabpage)
+  return table.concat({ "%#TabLine#", ("%d:%s"):format(id, text) })
 end
 
 local function modified(bufnr, sel)
