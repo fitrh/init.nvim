@@ -36,6 +36,7 @@ set.guicursor = "n-c:hor50,i-ci-ve:ver25" -- horizontal in normal, vertical in i
 set.hidden = true -- enable switching unsaved buffer
 set.ignorecase = true -- use case-insensitive in search
 set.laststatus = 3 -- use global status line
+set.mouse = "" -- ignore mouse completely
 set.nrformats:append({ "alpha" }) -- increment/decrement for alphabet
 set.number = true -- enable line number
 set.pastetoggle = "<F2>" -- toggling paste mode when press this key
