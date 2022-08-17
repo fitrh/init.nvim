@@ -1,10 +1,10 @@
-if not os.getenv("LUALS") then
+local LUA_LS_SRC = os.getenv("LUA_LS")
+if not LUA_LS_SRC then
   return false
 end
 
-local src = os.getenv("LUALS")
-local bin = ("%s/bin/lua-language-server"):format(src)
-local main = ("%s/main.lua"):format(src)
+local bin = ("%s/bin/lua-language-server"):format(LUA_LS_SRC)
+local main = ("%s/main.lua"):format(LUA_LS_SRC)
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
