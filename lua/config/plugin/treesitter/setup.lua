@@ -57,6 +57,7 @@ config.setup({
       node_decremental = "<BS>",
     },
   },
+  indent = { enable = true },
 
   -- extra modules
 
