@@ -18,7 +18,7 @@ local plugins = {
   require("config.plugin.phpactor.packerspec"),
   require("config.plugin.null-ls.packerspec"),
   require("config.plugin.litee.packerspec"),
-  require("config.plugin.sandwich.packerspec"),
+  require("config.plugin.surround.packerspec"),
   require("config.plugin.kommentary.packerspec"),
   require("config.plugin.hop.packerspec"),
   require("config.plugin.cmp.packerspec"),
