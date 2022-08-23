@@ -15,6 +15,7 @@ local formatter = {
   "shfmt",
   "stylelint",
   "stylua",
+  "yamlfmt",
 }
 
 local diagnostic = {

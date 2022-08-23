@@ -135,4 +135,10 @@ With.write_good = {
   filetypes = plaintext,
 }
 
+With.yamlfmt = {
+  condition = function(u)
+    return u.root_has_file({ ".yamlfmt" })
+  end,
+}
+
 return With
