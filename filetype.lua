@@ -9,6 +9,7 @@ local extension = {
 local filename = {
   [".env"] = "config",
   [".envrc"] = "config",
+  [".yamlfmt"] = "yaml",
 }
 
 vim.filetype.add({
