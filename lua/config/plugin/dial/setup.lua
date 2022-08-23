@@ -21,6 +21,16 @@ require("dial.config").augends:register_group({
       cyclic = true,
     }),
     augend.constant.new({
+      elements = { "left", "right" },
+      word = true,
+      cyclic = true,
+    }),
+    augend.constant.new({
+      elements = { "up", "down" },
+      word = true,
+      cyclic = true,
+    }),
+    augend.constant.new({
       elements = { "&&", "||" },
       word = false,
       cyclic = true,
