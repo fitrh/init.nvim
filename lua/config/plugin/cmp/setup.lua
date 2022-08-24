@@ -74,6 +74,7 @@ config.window = {
     side_padding = 0,
   },
   documentation = {
+    border = "rounded",
     winhighlight = "Search:None",
     max_width = 80,
     max_height = 12,
