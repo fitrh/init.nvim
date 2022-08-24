@@ -1,12 +1,5 @@
-local config = {
-  style = "night",
-  darkFloat = false,
-  darkSidebar = false,
-}
-
+local config = { style = "night" }
 vim.g.tokyonight_style = config.style
-vim.g.tokyonight_dark_float = config.darkFloat
-vim.g.tokyonight_dark_sidebar = config.darkSidebar
 
 require("tokyonight").colorscheme()
 
@@ -22,6 +15,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("CursorColumn", { bg = blend(c.blue, c.bg, 0.05) })
   link("CursorLine", "CursorColumn")
   set("CursorLineNr", { fg = c.blue })
+  set("FloatBorder", { inherit = "NormalFloat", fg = bg("NormalFloat") })
   link("Folded", "LineNr")
   link("TabLineSel", "Normal")
   link("TabLine", "StatusLineNC")

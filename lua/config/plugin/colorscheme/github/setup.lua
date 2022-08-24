@@ -1,5 +1,5 @@
 local config = {}
-
+config.dark_float = true
 config.theme_style = "dark_default"
 
 require("github-theme").setup(config)
@@ -14,6 +14,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("CursorColumn", { bg = blend(p.bright_blue, p.bg, 0.03) })
   link("CursorLine", "CursorColumn")
   set("CursorLineNr", { fg = p.bright_blue })
+  set("FloatBorder", { inherit = "NormalFloat", fg = bg("NormalFloat") })
   link("Folded", "LineNr")
   set("NonText", { fg = p.fg_dark })
   set("StatusLine", { bg = p.bg2, fg = p.fg })

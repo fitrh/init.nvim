@@ -3,6 +3,8 @@ vim.g.material_style = "deep ocean" -- deep ocean, oceanic, palenight, darker
 require("material").setup({
   contrast = {
     sidebar = true,
+    floating_windows = true,
+    popup_menu = true,
   },
   italics = {
     comments = true,
@@ -25,6 +27,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("ColorColumn", { bg = blend(c.bg_alt, c.bg, 0.3) })
   set("CursorColumn", { bg = blend(c.highlight, c.bg, 0.3) })
   link("CursorLine", "CursorColumn")
+  set("FloatBorder", { inherit = "NormalFloat", fg = bg("NormalFloat") })
   set("StatusLine", { fg = c.text, bg = c.bg_alt })
   link("TabLine", "StatusLine")
   link("TablineFill", "TabLine")

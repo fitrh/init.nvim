@@ -28,6 +28,7 @@ require("sugar.highlight").colorscheme(function(h)
   link("CursorLine", "CursorColumn")
   set("CursorLineNr", { inherit = "CursorLineNr", bg = p.bg })
   set("Folded", { inherit = "Folded", bg = "NONE" })
+  set("FloatBorder", { inherit = "NormalFloat", fg = bg("NormalFloat") })
   link("TabLineFill", "TabLine")
   set("VertSplit", { fg = bg("StatusLine") })
 
