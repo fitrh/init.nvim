@@ -26,7 +26,6 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- plugin
   link("CmpCursorLine", "CursorLine")
-  link("CmpDocumentationBorder", "LineNr")
   set("HopNextKey", { fg = c.peachRed, bold = true })
   set("HopNextKey1", { fg = c.springGreen, bold = true })
   set("HopNextKey2", { fg = c.waveBlue2 })

@@ -27,7 +27,6 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- plugin
   link("CmpCursorLine", "CursorLine")
-  link("CmpDocumentationBorder", "LineNr")
   link("InclineNormal", "StatusLine")
   link("InclineNormalNC", "StatusLineNC")
   set("InclineSep", { fg = fg("LineNr"), bold = true })

@@ -24,8 +24,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("VertSplit", { fg = p.bg2 })
 
   -- plugin
-  set("CmpCursorLine", { bg = blend(p.cursor, p.pmenu.bg, 0.05) })
-  link("CmpDocumentationBorder", "LineNr")
+  link("CmpCursorLine", "Visual")
   set("FidgetTask", { inherit = "Comment", italic = false })
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("Comment") })
