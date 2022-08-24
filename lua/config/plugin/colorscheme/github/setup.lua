@@ -34,6 +34,7 @@ require("sugar.highlight").colorscheme(function(h)
     fg = p.bright_blue,
     bg = blend(p.bright_blue, p.bg2, 0.1),
   })
+  set("LspSignatureActiveParameter", { fg = p.syntax.param })
   link("LTSymbolDetail", "Comment")
   link("LTSymbolJump", "LspReferenceText")
   set("ModesCopy", { bg = p.warning })
