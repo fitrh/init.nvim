@@ -1,5 +1,16 @@
-vim.g.material_style = "deep ocean" -- deep ocean, oceanic, palenight, darker
+local function get_style()
+  local default = "deep ocean"
+  local styles = {
+    darker = "darker",
+    ["deep ocean"] = "deep ocean",
+    oceanic = "oceanic",
+    palenight = "palenight",
+  }
 
+  return styles[os.getenv("NVIM_MATERIAL_THEME_STYLE")] or default
+end
+
+vim.g.material_style = get_style()
 require("material").setup({
   contrast = {
     sidebar = true,
