@@ -16,7 +16,7 @@ end
 config.lsp.settings = { renameFilesWithClasses = "prompt" }
 config.lsp.color = {
   enabled = true,
-  virtual_text_str = "",
+  virtual_text_str = "▣",
 }
 
 require("flutter-tools").setup(config)
