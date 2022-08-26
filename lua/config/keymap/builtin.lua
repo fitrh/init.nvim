@@ -17,6 +17,10 @@ keymap.bind({
   nop(map("<Right>")),
   nop(i(map("<Right>"))),
 
+  -- g{j,k} move to the first non-blank character of the line
+  n(map("gj", "gj^")),
+  n(map("gk", "gk^")),
+
   -- prevent entering ex-mode
   nop(map("gQ")),
   nop(map("<M-Q>")),
