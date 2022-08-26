@@ -1,7 +1,7 @@
 local config = {}
 
 local FLUTTER_ROOT = os.getenv("FLUTTER_ROOT") or os.getenv("FLUTTER_SDK")
-if FLUTTER_ROOT then
+if FLUTTER_ROOT and FLUTTER_ROOT ~= "" then
   config.flutter_path = ("%s/bin/flutter"):format(FLUTTER_ROOT)
 end
 
