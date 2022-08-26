@@ -48,7 +48,9 @@ function M.attach(client, bufnr)
   end
 
   commands["textDocument/codeAction"] = function()
-    command.add("LspCodeAction", lsp.code_action, { buf = bufnr })
+    command.add("LspCodeAction", function()
+      lsp.code_action()
+    end, { buf = bufnr })
   end
 
   commands["textDocument/hover"] = function()
