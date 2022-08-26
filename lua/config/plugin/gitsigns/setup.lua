@@ -24,10 +24,10 @@ gitsigns.setup({
           bg = h.blend(h.fg(inherit), base, 0.15),
         })
         h.set(("GitSigns%sLn"):format(kind), {
-          bg = h.blend(h.fg(inherit), base, 0.1),
+          bg = h.blend(h.fg(inherit), base, 0.05),
         })
         h.set(("GitSigns%sInline"):format(kind), {
-          bg = h.blend(h.fg(inherit), base, 0.3),
+          bg = h.blend(h.fg(inherit), base, 0.35),
         })
       end
     end)
