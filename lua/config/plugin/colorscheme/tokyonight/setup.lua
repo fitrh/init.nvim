@@ -27,6 +27,7 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- plugin
   link("CmpCursorLine", "CursorLine")
+  link("FloatTitle", "Title")
   for i, p in ipairs({ "magenta", "cyan", "green", "yellow", "purple" }) do
     set(("HeadLine%d"):format(i), { fg = c[p], bg = blend(c[p], c.bg, 0.05) })
   end
