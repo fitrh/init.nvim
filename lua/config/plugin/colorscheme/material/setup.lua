@@ -58,6 +58,9 @@ require("sugar.highlight").colorscheme(function(h)
     fg = fg("CursorLineNr"),
     bg = blend(fg("CursorLineNr"), bg("StatusLine"), 0.1),
   })
+  for i, p in ipairs({ "purple", "cyan", "darkgreen", "yellow", "darkpurple" }) do
+    set(("HeadLine%d"):format(i), { fg = c[p], bg = blend(c[p], c.bg, 0.05) })
+  end
   link("LTSymbolDetail", "Comment")
   link("LTSymbolJump", "LspReferenceText")
   set("ModesCopy", { bg = c.darkyellow })

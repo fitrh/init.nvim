@@ -27,6 +27,9 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- plugin
   link("CmpCursorLine", "CursorLine")
+  for i, p in ipairs({ "magenta", "cyan", "green", "yellow", "purple" }) do
+    set(("HeadLine%d"):format(i), { fg = c[p], bg = blend(c[p], c.bg, 0.05) })
+  end
   link("InclineNormal", "StatusLine")
   link("InclineNormalNC", "StatusLineNC")
   set("InclineSep", { fg = fg("LineNr"), bold = true })

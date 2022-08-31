@@ -32,6 +32,9 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- plugin
   link("CmpCursorLine", "Visual")
+  for i, p in ipairs({ "iris", "foam", "gold", "rose", "pine" }) do
+    set(("HeadLine%d"):format(i), { fg = c[p], bg = blend(c[p], c.base, 0.05) })
+  end
   set("HopNextKey", { fg = c.love, bold = true })
   set("HopNextKey1", { fg = c.gold, bold = true })
   set("HopNextKey2", { fg = c.pine })
