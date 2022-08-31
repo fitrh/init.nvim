@@ -52,9 +52,9 @@ config.setup({
   incremental_selection = {
     enable = true,
     keymaps = {
-      node_incremental = "<CR>",
-      scope_incremental = "<S-CR>",
-      node_decremental = "<BS>",
+      node_incremental = "g)",
+      scope_incremental = "g}",
+      node_decremental = "g(",
     },
   },
   indent = { enable = true },
