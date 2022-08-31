@@ -8,11 +8,8 @@ function M.attach(client, bufnr)
   if support("textDocument/documentHighlight") then
     augroup({ "HighlightOnCursor", false }, function(autocmd)
       autocmd("CursorHold", bufnr, lsp.buf.document_highlight)
-      autocmd(
-        { "CursorMoved", "InsertEnter", "BufLeave" },
-        bufnr,
-        lsp.buf.clear_references
-      )
+      local event = { "CursorMoved", "InsertEnter", "BufLeave" }
+      autocmd(event, bufnr, lsp.buf.clear_references)
     end)
   end
 
@@ -36,11 +33,8 @@ function M.attach(client, bufnr)
 
   if support("textDocument/codeLens") then
     augroup({ "CodelensRefresh", false }, function(autocmd)
-      autocmd(
-        { "BufEnter", "BufLeave", "InsertEnter", "InsertLeave" },
-        bufnr,
-        lsp.codelens.refresh
-      )
+      local event = { "BufEnter", "BufLeave", "InsertEnter", "InsertLeave" }
+      autocmd(event, bufnr, lsp.codelens.refresh)
     end)
   end
 end
