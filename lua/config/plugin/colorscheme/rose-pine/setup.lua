@@ -15,7 +15,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("Comment", { inherit = "Comment", italic = true })
 
   -- highlight-default
-  set("ColorColumn", { bg = blend(bg("StatusLine"), bg("Normal"), 0.4) })
+  set("ColorColumn", { bg = blend(bg("StatusLine"), c.base, 0.4) })
   set("FloatBorder", { inherit = "NormalFloat", fg = bg("NormalFloat") })
   link("Folded", "LineNr")
   link("TabLineSel", "Normal")
@@ -75,5 +75,5 @@ require("sugar.highlight").colorscheme(function(h)
     inherit = "TreesitterContext",
     fg = fg("LineNr"),
   })
-  set("WinSeparatorZen", { fg = bg("Normal") })
+  set("WinSeparatorZen", { fg = c.base })
 end)
