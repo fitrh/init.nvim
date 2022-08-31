@@ -3,5 +3,5 @@ return {
   config = function()
     require("config.plugin.headlines.setup")
   end,
-  ft = "markdown",
+  ft = { "markdown", "norg", "org" },
 }
