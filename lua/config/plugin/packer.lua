@@ -41,7 +41,6 @@ local plugins = {
   require("config.plugin.headlines.packerspec"),
   require("config.plugin.notify.packerspec"),
   require("config.plugin.fidget.packerspec"),
-  { "baskerville/vim-sxhkdrc", ft = "sxhkdrc" },
 }
 
 local packer = require("packer")
