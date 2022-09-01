@@ -40,6 +40,7 @@ require("sugar.highlight").colorscheme(function(h)
   for i, p in ipairs({
     "bright_purple",
     "bright_aqua",
+    "bright_blue",
     "neutral_yellow",
     "neutral_green",
     "neutral_purple",

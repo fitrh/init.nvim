@@ -33,6 +33,7 @@ require("sugar.highlight").colorscheme(function(h)
     "waveAqua1",
     "boatYellow2",
     "oniViolet",
+    "waveAqua2",
   }) do
     set(("HeadLine%d"):format(i), { fg = c[p], bg = blend(c[p], c.bg, 0.05) })
   end
