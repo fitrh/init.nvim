@@ -1,16 +1,16 @@
-local function get_style()
-  local default = "deep ocean"
-  local styles = {
+local function get_variant()
+  local variants = {
+    lighter = "lighter",
     darker = "darker",
     ["deep ocean"] = "deep ocean",
     oceanic = "oceanic",
     palenight = "palenight",
   }
 
-  return styles[os.getenv("NVIM_MATERIAL_THEME_STYLE")] or default
+  return variants[os.getenv("NVIM_MATERIAL_VARIANT")] or "deep ocean"
 end
 
-vim.g.material_style = get_style()
+vim.g.material_style = get_variant()
 require("material").setup({
   contrast = {
     sidebar = true,

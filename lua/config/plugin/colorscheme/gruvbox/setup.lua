@@ -1,5 +1,16 @@
+local function get_mode()
+  local modes = { dark = "dark", light = "light" }
+  return modes[os.getenv("NVIM_GRUVBOX_MODE")] or "dark"
+end
+
+local function get_variant()
+  local variants = { soft = "soft", hard = "hard" }
+  return variants[os.getenv("NVIM_GRUVBOX_VARIANT")] or ""
+end
+
+vim.api.nvim_set_option("background", get_mode())
 local gruvbox = require("gruvbox")
-gruvbox.setup({ contrast = "hard" })
+gruvbox.setup({ contrast = get_variant() })
 gruvbox.load()
 
 require("sugar.highlight").colorscheme(function(h)

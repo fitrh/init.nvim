@@ -11,7 +11,14 @@ vim.g.doom_one_plugin_startify = false
 vim.g.doom_one_plugin_whichkey = false
 vim.g.doom_one_plugin_indent_blankline = false
 vim.g.doom_one_plugin_vim_illuminate = false
-vim.g.doom_one_plugin_lspsaga = true
+vim.g.doom_one_plugin_lspsaga = false
+
+local function get_mode()
+  local modes = { dark = "dark", light = "light" }
+  return modes[os.getenv("NVIM_DOOM_ONE_MODE")] or "dark"
+end
+
+vim.api.nvim_set_option("background", get_mode())
 vim.cmd.colorscheme("doom-one")
 
 require("sugar.highlight").colorscheme(function(h)
@@ -80,9 +87,9 @@ require("sugar.highlight").colorscheme(function(h)
   link("NotifyERRORIcon", "NotifyERRORBorder")
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = p.violet })
   set("StatusLineModified", { inherit = "StatusLine", fg = p.red })
-  link("StatusLinePath", "StatusLineNC")
+  set("StatusLinePath", { inherit = "StatusLine", fg = fg("StatusLineNC") })
   set("StatusLinePathSep", {
-    inherit = "StatusLineNC",
+    inherit = "StatusLine",
     fg = p.base7,
     bold = true,
   })

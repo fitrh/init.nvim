@@ -1,5 +1,17 @@
+local function get_mode()
+  local modes = { dark = "dark", light = "light" }
+  return modes[os.getenv("NVIM_ROSE_PINE_MODE")] or "dark"
+end
+
+local function get_variant()
+  local variants = { main = "main", moon = "moon" }
+  return variants[os.getenv("NVIM_ROSE_PINE_VARIANT")] or "main"
+end
+
+vim.api.nvim_set_option("background", get_mode())
+
 local config = {}
-config.dark_variant = "main"
+config.dark_variant = get_variant()
 config.disable_italics = true
 
 local theme = require("rose-pine")

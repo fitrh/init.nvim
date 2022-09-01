@@ -1,6 +1,20 @@
+local function get_variant()
+  local variants = {
+    dark = "dark",
+    dimmed = "dimmed",
+    dark_default = "dark_default",
+    dark_colorblind = "dark_colorblind",
+    light = "light",
+    light_default = "light_default",
+    light_colorblind = "light_colorblind",
+  }
+
+  return variants[os.getenv("NVIM_GITHUB_VARIANT")] or "dark_default"
+end
+
 local config = {}
 config.dark_float = true
-config.theme_style = "dark_default"
+config.theme_style = get_variant()
 
 require("github-theme").setup(config)
 

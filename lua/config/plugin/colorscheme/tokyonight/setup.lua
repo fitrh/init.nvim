@@ -1,4 +1,9 @@
-local config = { style = "night" }
+local function get_variant()
+  local variants = { storm = "storm", night = "night", day = "day" }
+  return variants[os.getenv("NVIM_TOKYONIGHT_VARIANT")] or "night"
+end
+
+local config = { style = get_variant() }
 vim.g.tokyonight_style = config.style
 
 require("tokyonight").colorscheme()

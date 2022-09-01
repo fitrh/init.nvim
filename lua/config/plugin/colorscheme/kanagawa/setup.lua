@@ -1,6 +1,12 @@
+local function get_mode()
+  local modes = { dark = "default", light = "light" }
+  return modes[os.getenv("NVIM_KANAGAWA_MODE")] or "default"
+end
+
 local config = {}
 
 config.globalStatus = true
+config.theme = get_mode()
 
 require("kanagawa").setup(config)
 
