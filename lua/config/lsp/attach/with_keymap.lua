@@ -21,7 +21,7 @@ function LspKeymap.attach(client, bufnr)
       }
     end,
     ["textDocument/codeLens"] = n(map("gcl", vim.lsp.codelens.run)),
-    ["textDocument/rename"] = n(map("grn", lsp.rename)),
+    ["textDocument/rename"] = n(map("cn", lsp.rename)),
     ["textDocument/signatureHelp"] = n(map("[s", lsp.signature_help)),
     ["textDocument/hover"] = n(map("K", lsp.hover)),
     ["textDocument/declaration"] = n(map("god", lsp.declaration)),
