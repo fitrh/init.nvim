@@ -6,6 +6,7 @@ local config = {
   preselect = cmp.PreselectMode.None,
   mapping = require("config.plugin.cmp.keymap").setup(cmp, snippet),
   experimental = { ghost_text = true },
+  completion = { keyword_length = 3 },
 }
 
 config.snippet = {
@@ -14,10 +15,7 @@ config.snippet = {
   end,
 }
 
-config.completion = { keyword_length = 3 }
-
 local COMPLETION_KIND = require("const.LSP_KIND").Completion
-
 local source_hl = {
   nvim_lua = "TSConstBuiltin",
   luasnip = "TSComment",
@@ -63,7 +61,7 @@ local half = math.floor(max / 2)
 config.sources = {
   { name = "nvim_lsp", max_item_count = max, group_index = 1 },
   { name = "luasnip", max_item_count = half, group_index = 2 },
-  { name = "path", max_item_count = max, group_index = 2 },
+  { name = "path", keyword_length = 1, max_item_count = max, group_index = 2 },
   { name = "buffer", max_item_count = half, group_index = 3 },
 }
 
