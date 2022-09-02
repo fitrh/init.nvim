@@ -14,13 +14,6 @@ end
 
 config.on_attach = function(client, bufnr)
   require("config.lsp.attach").with.all(client, bufnr)
-
-  local color = {}
-  color.ok, color.plugin = pcall(require, "tailwindcss-colors")
-  if color.ok then
-    color.plugin.setup()
-    color.plugin.buf_attach(bufnr)
-  end
 end
 
 return require("config.lsp.server").with("tailwindcss-language-server", config)
