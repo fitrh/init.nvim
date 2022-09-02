@@ -44,6 +44,7 @@ local bin = "jdtls"
 local jdtls_capability = jdtls.extendedClientCapabilities
 capabilities.workspace.configuration = true
 jdtls_capability.resolveAdditionalTextEditsSupport = true
+jdtls_capability.progressReportProvider = false -- use $/progress instead
 
 local cmd = { bin }
 if env.WORKSPACE then
