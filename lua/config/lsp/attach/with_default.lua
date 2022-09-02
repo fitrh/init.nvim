@@ -2,7 +2,7 @@ return function(client, bufnr)
   require("config.lsp.command.buffer").attach(client, bufnr)
   require("config.lsp.command.diagnostic").attach(bufnr)
 
-  if client.supports_method("textDocument/codeLens") then
+  if client.server_capabilities.codeLensProvider then
     vim.lsp.codelens.refresh()
     require("config.lsp.command.codelens").attach(bufnr)
   end

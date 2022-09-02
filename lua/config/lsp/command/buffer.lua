@@ -5,7 +5,7 @@ function M.attach(client, bufnr)
   local lsp = vim.lsp.buf
 
   local commands = {}
-  commands["textDocument/formatting"] = function()
+  commands.documentFormattingProvider = function()
     local default = 5000
 
     command.group({
@@ -29,7 +29,7 @@ function M.attach(client, bufnr)
     })
   end
 
-  commands["textDocument/rangeFormatting"] = function()
+  commands.documentRangeFormattingProvider = function()
     command.add(
       "LspFormatRange",
       lsp.range_formatting,
@@ -37,51 +37,51 @@ function M.attach(client, bufnr)
     )
   end
 
-  commands["textDocument/rename"] = function()
+  commands.renameProvider = function()
     command.add("LspRename", function()
       lsp.rename()
     end, { buf = bufnr })
   end
 
-  commands["textDocument/signatureHelp"] = function()
+  commands.signatureHelpProvider = function()
     command.add("LspSignatureHelp", lsp.signature_help, { buf = bufnr })
   end
 
-  commands["textDocument/codeAction"] = function()
+  commands.codeActionProvider = function()
     command.add("LspCodeAction", function()
       lsp.code_action()
     end, { buf = bufnr })
   end
 
-  commands["textDocument/hover"] = function()
+  commands.hoverProvider = function()
     command.add("LspHover", lsp.hover, { buf = bufnr })
   end
 
-  commands["textDocument/declaration"] = function()
+  commands.declarationProvider = function()
     command.add("LspGoToDeclaration", lsp.declaration, { buf = bufnr })
   end
 
-  commands["textDocument/definition"] = function()
+  commands.definitionProvider = function()
     command.add("LspGoToDefinition", lsp.definition, { buf = bufnr })
   end
 
-  commands["textDocument/typeDefinition"] = function()
+  commands.typeDefinitionProvider = function()
     command.add("LspGoToTypeDefinition", lsp.type_definition, { buf = bufnr })
   end
 
-  commands["textDocument/implementation"] = function()
+  commands.implementationProvider = function()
     command.add("LspListImplementation", lsp.implementation, { buf = bufnr })
   end
 
-  commands["textDocument/references"] = function()
+  commands.referencesProvider = function()
     command.add("LspListReferences", lsp.references, { buf = bufnr })
   end
 
-  commands["textDocument/documentSymbol"] = function()
+  commands.documentSymbolProvider = function()
     command.add("LspListSymbols", lsp.document_symbol, { buf = bufnr })
   end
 
-  commands["workspace/symbol"] = function()
+  commands.workspaceSymbolProvider = function()
     command.add(
       "LspListWorkspaceSymbols",
       lsp.workspace_symbol,
@@ -89,7 +89,7 @@ function M.attach(client, bufnr)
     )
   end
 
-  commands["textDocument/documentHighlight"] = function()
+  commands.documentHighlightProvider = function()
     command.group({
       prefix = "LspDocument",
       buf = bufnr,
@@ -100,7 +100,7 @@ function M.attach(client, bufnr)
     })
   end
 
-  commands["textDocument/prepareCallHierarchy"] = function()
+  commands.callHierarchyProvider = function()
     command.group({
       prefix = "LspList",
       buf = bufnr,
@@ -121,8 +121,8 @@ function M.attach(client, bufnr)
     })
   end
 
-  for request, fn in pairs(commands) do
-    if client.supports_method(request) then
+  for capability, fn in pairs(commands) do
+    if client.server_capabilities[capability] then
       fn()
     end
   end
