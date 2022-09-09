@@ -1,13 +1,13 @@
-local LUA_LS_SRC = os.getenv("LUA_LS")
-if not LUA_LS_SRC then
+local LUA_LS = os.getenv("LUA_LS")
+if not LUA_LS then
   return false
 end
 
-local bin = ("%s/bin/lua-language-server"):format(LUA_LS_SRC)
-local main = ("%s/main.lua"):format(LUA_LS_SRC)
+local bin = ("%s/bin/lua-language-server"):format(LUA_LS)
+local main = ("%s/main.lua"):format(LUA_LS)
 local runtime_path = vim.split(package.path, ";")
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
+runtime_path[#runtime_path + 1] = "lua/?.lua"
+runtime_path[#runtime_path + 1] = "lua/?/init.lua"
 
 return require("config.lsp.server").with(bin, {
   cmd = { bin, "-E", main },
@@ -19,10 +19,7 @@ return require("config.lsp.server").with(bin, {
       },
       diagnostics = { globals = { "vim" } },
       format = { enable = false },
-      hint = {
-        enable = true,
-        setType = true,
-      },
+      hint = { enable = true, setType = true },
       runtime = {
         path = runtime_path,
         version = "LuaJIT",
