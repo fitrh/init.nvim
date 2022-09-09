@@ -1,5 +1,3 @@
-local hi = require("sugar.highlight")
-
 local Git = {}
 
 local function when()
@@ -12,9 +10,9 @@ Git.diff = {
     return when().space_at_least(70)
   end,
   diff_color = {
-    added = { fg = hi.fg("GitSignsAdd", { "diffAdded" })() },
-    modified = { fg = hi.fg("GitSignsChange", { "diffChanged" })() },
-    removed = { fg = hi.fg("GitSignsDelete", { "diffRemoved" })() },
+    added = "StatusLineGitDiffAdd",
+    modified = "StatusLineGitDiffChange",
+    removed = "StatusLineGitDiffDelete",
   },
   symbols = { added = " ", modified = " ", removed = " " },
   source = function()
@@ -35,7 +33,7 @@ Git.branch = {
   cond = function()
     return when().space_at_least(70)
   end,
-  color = { fg = hi.fg("StatusLineGitBranch", { "StatusLine" })() },
+  color = "StatusLineGitBranch",
 }
 
 return Git

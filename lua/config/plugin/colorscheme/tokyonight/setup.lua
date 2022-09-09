@@ -67,6 +67,10 @@ require("sugar.highlight").colorscheme(function(h)
   link("NotifyERRORTitle", "NotifyERRORBorder")
   link("NotifyERRORIcon", "NotifyERRORBorder")
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.purple })
+  for _, kind in ipairs({ "Add", "Change", "Delete" }) do
+    local group = ("StatusLineGitDiff%s"):format(kind)
+    set(group, { inherit = "StatusLine", fg = c.gitSigns[kind:lower()] })
+  end
   set("StatusLineModified", { inherit = "StatusLine", fg = br_red })
   link("StatusLinePath", "StatusLineNC")
   set("StatusLinePathSep", {

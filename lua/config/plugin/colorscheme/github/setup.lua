@@ -70,6 +70,10 @@ require("sugar.highlight").colorscheme(function(h)
   set("ModesVisual", { bg = p.bright_magenta })
   set("ModesVisualCursorLineNr", { fg = bg("ModesVisual") })
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = p.magenta })
+  for _, kind in ipairs({ "Add", "Change", "Delete" }) do
+    local group = ("StatusLineGitDiff%s"):format(kind)
+    set(group, { inherit = "StatusLine", fg = p.git_signs[kind:lower()] })
+  end
   set("StatusLineModified", { inherit = "StatusLine", fg = p.bright_red })
   set("StatusLinePath", { inherit = "StatusLine", fg = p.black })
   set("StatusLinePathSep", {
