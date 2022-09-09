@@ -66,6 +66,7 @@ require("sugar.highlight").colorscheme(function(h)
   link("NotifyERRORBorder", "DiagnosticError")
   link("NotifyERRORTitle", "NotifyERRORBorder")
   link("NotifyERRORIcon", "NotifyERRORBorder")
+  set("StatusLineDim", { inherit = "StatusLine", fg = c.dark3 })
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.purple })
   for _, kind in ipairs({ "Add", "Change", "Delete" }) do
     local group = ("StatusLineGitDiff%s"):format(kind)
@@ -73,11 +74,7 @@ require("sugar.highlight").colorscheme(function(h)
   end
   set("StatusLineModified", { inherit = "StatusLine", fg = br_red })
   link("StatusLinePath", "StatusLineNC")
-  set("StatusLinePathSep", {
-    inherit = "StatusLineNC",
-    fg = c.dark3,
-    bold = true,
-  })
+  set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = c.red1 })
   set("StatusLineMNormal", { fg = c.blue })
   set("StatusLineMInsert", { fg = c.green })

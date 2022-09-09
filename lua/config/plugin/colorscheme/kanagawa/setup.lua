@@ -79,17 +79,14 @@ require("sugar.highlight").colorscheme(function(h)
   link("NotifyERRORBorder", "DiagnosticError")
   link("NotifyERRORTitle", "NotifyERRORBorder")
   link("NotifyERRORIcon", "NotifyERRORBorder")
+  set("StatusLineDim", { inherit = "StatusLine", fg = c.boatYellow1 })
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.springViolet1 })
   set("StatusLineGitDiffAdd", { inherit = "StatusLine", fg = c.git.added })
   set("StatusLineGitDiffChange", { inherit = "StatusLine", fg = c.git.changed })
   set("StatusLineGitDiffDelete", { inherit = "StatusLine", fg = c.git.removed })
   set("StatusLineModified", { inherit = "StatusLine", fg = c.autumnRed })
   set("StatusLinePath", { inherit = "StatusLine", fg = fg("Comment") })
-  set("StatusLinePathSep", {
-    inherit = "StatusLine",
-    fg = c.boatYellow1,
-    bold = true,
-  })
+  set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = c.samuraiRed })
   set("StatusLineMNormal", { fg = c.crystalBlue })
   set("StatusLineMInsert", { fg = c.autumnGreen })

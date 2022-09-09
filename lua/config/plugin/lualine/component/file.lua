@@ -1,5 +1,3 @@
-local hi = require("sugar.highlight")
-
 local File = {}
 
 local function when()
@@ -83,7 +81,7 @@ File.location = {
     local width = #tostring(vim.api.nvim_buf_get_option(0, "textwidth"))
     return ("%%%sl,%%-%sc"):format(length, width)
   end,
-  icon = { "ﰙ", color = { fg = hi.fg("NonText")() } },
+  icon = { "ﰙ", color = "StatusLineDim" },
   cond = function()
     return when().not_empty_buf()
   end,
@@ -93,7 +91,7 @@ File.lines = {
   function()
     return vim.api.nvim_buf_line_count(0)
   end,
-  icon = "",
+  icon = { "", color = "StatusLineDim" },
   cond = function()
     return when().not_empty_buf()
   end,
