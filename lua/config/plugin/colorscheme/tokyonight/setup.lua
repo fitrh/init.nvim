@@ -4,16 +4,14 @@ local function get_variant()
 end
 
 local config = { style = get_variant() }
-vim.g.tokyonight_style = config.style
-
-require("tokyonight").colorscheme()
+require("tokyonight").load(config)
 
 local c = require("tokyonight.colors").setup(config)
 local u = require("tokyonight.util")
 
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
-  local br_red = u.brighten(c.red, 0.2)
+  local br_red = u.lighten(c.red, 0.2, c.red)
 
   -- highlight-default
   set("ColorColumn", { bg = blend(c.bg_statusline, c.bg, 0.4) })
