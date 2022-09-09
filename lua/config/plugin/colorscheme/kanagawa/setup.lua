@@ -12,7 +12,8 @@ require("kanagawa").setup(config)
 
 vim.cmd.colorscheme("kanagawa")
 
-local c = require("kanagawa.colors").setup()
+---@type KanagawaColors|ThemeColors
+local c = require("kanagawa.colors").setup(config)
 
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
