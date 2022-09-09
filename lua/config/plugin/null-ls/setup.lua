@@ -37,6 +37,7 @@ local diagnostic = {
   "shellcheck",
   "staticcheck",
   "stylelint",
+  "tidy",
   "write_good",
 }
 
