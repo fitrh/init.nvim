@@ -54,5 +54,5 @@ return function(props)
   filename = path ~= "" and { filename, gui = "bold" } or filename
   table.insert(render_result, filename)
 
-  return render_result
+  return { render_result, " " }
 end

@@ -21,8 +21,8 @@ config.render = function(props)
 end
 
 config.window = {
-  margin = { horizontal = { left = 1, right = 0 } },
-  padding = { left = 0, right = 1 },
+  margin = { horizontal = { left = 0, right = 0 } },
+  padding = { left = 0, right = 0 },
   options = {
     winblend = vim.api.nvim_get_option("pumblend"),
   },

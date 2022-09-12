@@ -64,5 +64,5 @@ return function()
     result = { head, { "…", separator }, tail }
   end
 
-  return { " ", result }
+  return { " ", result, " " }
 end
