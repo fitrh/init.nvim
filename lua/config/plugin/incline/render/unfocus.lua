@@ -5,7 +5,7 @@ local function get_path(win, buf)
   file_path = vim.split(file_path, "/")
 
   if #file_path == 1 then
-    return ""
+    return false
   end
 
   local half_win_width = math.ceil(vim.api.nvim_win_get_width(win) / 2)
@@ -34,7 +34,9 @@ return function(props)
 
   local bufname = vim.api.nvim_buf_get_name(buf)
   local path = get_path(props.win, bufname)
-  table.insert(render_result, path)
+  if path then
+    table.insert(render_result, path)
+  end
 
   local const = require("const.ICON")
   local ICON = {
@@ -51,7 +53,7 @@ return function(props)
   end
 
   local filename = vim.fn.fnamemodify(bufname, ":t")
-  filename = path ~= "" and { filename, gui = "bold" } or filename
+  filename = path and { filename, gui = "bold" } or filename
   table.insert(render_result, filename)
 
   return { render_result, " " }
