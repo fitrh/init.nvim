@@ -13,7 +13,7 @@ local function get_path(win, buf)
   local path = table.concat(file_path, sep, 1, #file_path - 1) -- formatted relative path, but omit the filename
 
   if file_path_width > half_win_width then
-    local i = (file_path_width - half_win_width) + 4
+    local i = (file_path_width - half_win_width) + 7
     local trunc_char = (path:sub(i, i) == " ") and "…" or "… "
     path = ("%s%s"):format(trunc_char, path:sub(i))
   end
