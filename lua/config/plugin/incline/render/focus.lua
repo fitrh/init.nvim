@@ -50,12 +50,12 @@ return function()
       local tail = name:sub(name_width - 10, name_width)
       name = ("%s…%s"):format(head, tail)
     end
-    table.insert(item, { name, gui = "bold" })
+    item[#item + 1] = { name, gui = "bold" }
 
     if i < #symbols then
-      table.insert(item, separator)
+      item[#item + 1] = separator
     end
-    table.insert(result, item)
+    result[#result + 1] = item
   end
 
   if #result > 4 then

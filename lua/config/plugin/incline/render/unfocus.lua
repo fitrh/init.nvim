@@ -22,7 +22,7 @@ local function get_path(win, buf)
 end
 
 return function(props)
-  local render_result = {
+  local result = {
     {
       (" %d "):format(vim.api.nvim_win_get_number(props.win)),
       group = "InclineWinNr",
@@ -35,7 +35,7 @@ return function(props)
   local bufname = vim.api.nvim_buf_get_name(buf)
   local path = get_path(props.win, bufname)
   if path then
-    table.insert(render_result, path)
+    result[#result + 1] = path
   end
 
   local const = require("const.ICON")
@@ -45,16 +45,16 @@ return function(props)
   }
 
   if opt(buf, "readonly") or not opt(buf, "modifiable") then
-    table.insert(render_result, { ICON.RO, group = "StatusLineRO" })
+    result[#result + 1] = { ICON.RO, group = "StatusLineRO" }
   end
 
   if opt(buf, "modified") then
-    table.insert(render_result, { ICON.MO, group = "StatusLineModified" })
+    result[#result + 1] = { ICON.MO, group = "StatusLineModified" }
   end
 
   local filename = vim.fn.fnamemodify(bufname, ":t")
   filename = path and { filename, gui = "bold" } or filename
-  table.insert(render_result, filename)
+  result[#result + 1] = filename
 
-  return { render_result, " " }
+  return { result, " " }
 end
