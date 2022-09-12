@@ -3,7 +3,9 @@ local function get_variant()
   return variants[os.getenv("NVIM_TOKYONIGHT_VARIANT")] or "night"
 end
 
-local config = { style = get_variant() }
+local config = {}
+config.style = get_variant()
+config.sidebars = { "qf" }
 require("tokyonight").load(config)
 
 local c = require("tokyonight.colors").setup(config)
