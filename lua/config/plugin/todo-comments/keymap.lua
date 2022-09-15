@@ -2,6 +2,12 @@ local keymap = require("sugar.keymap")
 local map, n = keymap.map, keymap.mode.normal
 
 keymap.bind({
+  n(map("[tn", function()
+    require("todo-comments").jump_next()
+  end)),
+  n(map("[tp", function()
+    require("todo-comments").jump_prev()
+  end)),
   n(map("[tq", function()
     require("todo-comments.search").setqflist()
   end)),
