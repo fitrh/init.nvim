@@ -3,22 +3,21 @@ local todo = require("todo-comments")
 todo.setup({
   keywords = {
     FIX = { icon = " " },
-    TODO = { icon = " " },
-    DONE = { icon = " ", color = "success" },
-    HACK = { icon = " ", color = "hack" },
+    TODO = { icon = " ", alt = { "WIP" } },
     WARN = { icon = "裂" },
     PERF = { icon = "龍" },
     NOTE = { icon = " ", alt = { "INFO", "NB" } },
+    TEST = { icon = " " },
+    DONE = { icon = " ", color = "ok" },
     LINK = { icon = " ", color = "link", alt = { "SEE", "REF" } },
-    SUCCESS = { icon = " ", color = "success", alt = { "OK" } },
+    OK = { icon = " ", color = "ok", alt = { "SUCCESS" } },
     ERROR = { icon = " ", color = "error", alt = { "ERR" } },
   },
   highlight = { max_line_len = 120 },
   colors = {
-    hack = { "Function" },
-    link = { "FloatBorder" },
-    success = { "healthSuccess", "DiagnosticInfo" },
-    default = { "Identifier" },
+    test = { "TodoTest", "Comment" },
+    link = { "TodoLink", "Comment" },
+    ok = { "TodoOk", "Comment" },
   },
 })
 
@@ -27,7 +26,7 @@ todo.setup({
 -- TODO: that i never do  ﱔ   
 -- DONE: isn't it ?
 -- NOTE: i never read this    ﲀ 﨧
--- HACK: tricky      שּׂ ﭩ 
+-- TEST: test?
 -- PERF: this can be optimized    龍
 -- OK: it's okay  ﲏ
 -- ERR: boom  ﮏ 
