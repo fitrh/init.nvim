@@ -3,9 +3,15 @@ local function get_variant()
   return variants[os.getenv("NVIM_TOKYONIGHT_VARIANT")] or "night"
 end
 
+local function get_mode()
+  local modes = { dark = "dark", light = "light" }
+  return modes[os.getenv("NVIM_TOKYONIGHT_MODE")] or "dark"
+end
+
 local config = {}
 config.style = get_variant()
 config.sidebars = { "qf" }
+vim.api.nvim_set_option("background", get_mode())
 require("tokyonight").load(config)
 
 local c = require("tokyonight.colors").setup(config)
