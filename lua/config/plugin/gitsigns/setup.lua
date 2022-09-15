@@ -21,7 +21,7 @@ gitsigns.setup({
         local inherit = ("GitSigns%s"):format(kind)
         h.set(("GitSigns%sNr"):format(kind), {
           inherit = inherit,
-          bg = h.blend(h.fg(inherit), base, 0.15),
+          bg = h.blend(h.fg(inherit), base, 0.10),
         })
         h.set(("GitSigns%sLn"):format(kind), {
           bg = h.blend(h.fg(inherit), base, 0.05),
@@ -29,6 +29,11 @@ gitsigns.setup({
         h.set(("GitSigns%sInline"):format(kind), {
           bg = h.blend(h.fg(inherit), base, 0.35),
         })
+        if kind ~= "Change" then
+          h.set(("GitSigns%sPreview"):format(kind), {
+            bg = h.blend(h.fg(inherit), base, 0.10),
+          })
+        end
       end
     end)
   end,
