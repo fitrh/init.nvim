@@ -39,6 +39,11 @@ augroup("RelativeNumberOnCurrentWindow", function(autocmd)
   autocmd({ "BufLeave", "WinLeave" }, "*", function()
     vim.api.nvim_win_set_option(0, "relativenumber", false)
   end)
+
+  autocmd("OptionSet", "number", function()
+    local v = vim.api.nvim_win_get_option(0, "number")
+    vim.api.nvim_win_set_option(0, "relativenumber", v)
+  end)
 end)
 
 augroup("OnTerminalBuffer", function(autocmd)
