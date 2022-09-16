@@ -121,7 +121,12 @@ pickers.git_status = {
 }
 
 pickers.lsp_document_symbols = {
-  layout_config = { width = 0.50 },
+  layout_config = {
+    anchor = "N",
+    mirror = true,
+    width = 0.50,
+  },
+  previewer = false,
   prompt_prefix = "   ",
   theme = "dropdown",
 }
