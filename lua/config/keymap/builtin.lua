@@ -59,7 +59,7 @@ keymap.bind({
   n(map("<S-Tab>", ex("bprevious"))),
   n(map("<Tab>", ex("bnext"))),
   -- close buffer without close window
-  n(map(leader("bq"), ex("enew<BAR>bdelete #"))),
+  n(map("<C-w>C", ex("enew<BAR>bdelete #"))),
   -- delete current buffer and move to the previous buffer
   n(map(leader("bd"), ex("bprevious<BAR>bdelete #"))),
 
