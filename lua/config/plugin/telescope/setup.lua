@@ -15,6 +15,10 @@ config.defaults = {
       ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
     },
     i = {
+      ["<C-u>"] = false,
+      ["<C-d>"] = false,
+      ["<C-f>"] = require("telescope.actions").preview_scrolling_down,
+      ["<C-b>"] = require("telescope.actions").preview_scrolling_up,
       ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
       ["<C-[>"] = require("telescope.actions").close,
       ["<C-j>"] = require("telescope.actions").cycle_history_next,
