@@ -23,6 +23,7 @@ augroup("CursorlineOnCurrentWindow", function(autocmd)
   autocmd({ "BufEnter", "WinEnter" }, "*", function()
     vim.api.nvim_win_set_option(0, "cursorline", not vim.w.nocursorline)
   end)
+
   autocmd({ "BufLeave", "WinLeave" }, "*", function()
     vim.api.nvim_win_set_option(0, "cursorline", false)
   end)
@@ -34,6 +35,7 @@ augroup("RelativeNumberOnCurrentWindow", function(autocmd)
       vim.api.nvim_win_set_option(0, "relativenumber", true)
     end
   end)
+
   autocmd({ "BufLeave", "WinLeave" }, "*", function()
     vim.api.nvim_win_set_option(0, "relativenumber", false)
   end)
@@ -61,6 +63,7 @@ augroup("SetSynMaxCol", function(autocmd)
   autocmd("OptionSet", "textwidth", function()
     vim.api.nvim_buf_set_option(0, "synmaxcol", tonumber(vim.v.option_new))
   end)
+
   autocmd("BufEnter", "*", function()
     local textwidth = vim.api.nvim_buf_get_option(0, "textwidth")
     vim.api.nvim_buf_set_option(0, "synmaxcol", tonumber(textwidth))
@@ -69,10 +72,12 @@ end)
 
 augroup("MacroRecording", function(autocmd)
   local opts = { title = "Macro", icon = "", timeout = 250 }
+
   autocmd("RecordingEnter", "*", function()
     local msg = (" 壘Recording @%s"):format(vim.fn.reg_recording())
     vim.notify(msg, vim.log.levels.INFO, opts)
   end)
+
   autocmd("RecordingLeave", "*", function()
     local msg = ("  Recorded @%s"):format(vim.v.event.regname)
     vim.notify(msg, vim.log.levels.INFO, opts)
