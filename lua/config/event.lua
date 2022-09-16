@@ -25,6 +25,9 @@ augroup("CursorlineOnCurrentWindow", function(autocmd)
   end)
 
   autocmd({ "BufLeave", "WinLeave" }, "*", function()
+    if vim.b.keep_cursor_on_leave then
+      return
+    end
     vim.api.nvim_win_set_option(0, "cursorline", false)
   end)
 end)
