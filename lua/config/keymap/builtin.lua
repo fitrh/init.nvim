@@ -114,7 +114,7 @@ keymap.bind({
   i(map("<M-k>", "<Esc>:m .-2<CR>==gi", { silent = true })),
   v(map("K", ":m '<-2<CR>gv=gv", { silent = true })),
   -- join lines without changing cursor position
-  n(map("J", "mzJ`z")),
+  n(map("J", "'mz' . v:count1 . 'J`z'", { expr = true })),
 
   -- easy select-all
   n(map("gA", "ggVG", { silent = true })),
