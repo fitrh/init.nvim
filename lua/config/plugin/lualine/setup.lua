@@ -28,7 +28,7 @@ config.options = {
   section_separators = "",
   disabled_filetypes = { "Outline" },
   globalstatus = true,
-  refresh = { statusline = vim.api.nvim_get_option("updatetime") + 100 },
+  refresh = { statusline = vim.api.nvim_get_option("updatetime") },
 }
 
 config.extensions = { "quickfix" }
