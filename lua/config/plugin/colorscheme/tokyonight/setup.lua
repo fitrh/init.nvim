@@ -1,5 +1,10 @@
 local function get_variant()
-  local variants = { storm = "storm", night = "night", day = "day" }
+  local variants = {
+    storm = "storm",
+    night = "night",
+    moon = "moon",
+    day = "day",
+  }
   return variants[os.getenv("NVIM_TOKYONIGHT_VARIANT")] or "night"
 end
 
