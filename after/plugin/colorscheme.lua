@@ -1,6 +1,5 @@
-local group = vim.api.nvim_create_augroup("UseColorScheme", {})
 vim.api.nvim_create_autocmd("VimEnter", {
-  group = group,
+  group = vim.api.nvim_create_augroup("UseColorScheme", {}),
   callback = function()
     local default = "tokyonight"
     local colorschemes = {
