@@ -1,16 +1,9 @@
-local LUA_LS = os.getenv("LUA_LS")
-if not LUA_LS then
-  return false
-end
-
-local bin = ("%s/bin/lua-language-server"):format(LUA_LS)
-local main = ("%s/main.lua"):format(LUA_LS)
 local runtime_path = vim.split(package.path, ";")
 runtime_path[#runtime_path + 1] = "lua/?.lua"
 runtime_path[#runtime_path + 1] = "lua/?/init.lua"
 
-return require("config.lsp.server").with(bin, {
-  cmd = { bin, "-E", main },
+return require("config.lsp.server").with("lua-language-server", {
+  cmd = { "lua-language-server" },
   settings = {
     Lua = {
       completion = {
