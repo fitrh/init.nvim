@@ -39,6 +39,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("VertSplit", { fg = c.bg_statusline, cterm = { reverse = true } })
 
   -- treesitter
+  set("@text.literal.markdown_inline", { bg = c.bg_highlight, fg = c.fg_dark })
   set("TSConstBuiltin", { fg = c.red })
 
   -- plugin
