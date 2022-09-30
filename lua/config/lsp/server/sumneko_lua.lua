@@ -6,10 +6,6 @@ return require("config.lsp.server").with("lua-language-server", {
   cmd = { "lua-language-server" },
   settings = {
     Lua = {
-      completion = {
-        callSnippet = "Both",
-        keywordSnippet = "Both",
-      },
       diagnostics = { globals = { "vim" } },
       format = { enable = false },
       hint = { enable = true, setType = true },
