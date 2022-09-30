@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
     local colorscheme = colorschemes[os.getenv("NVIM_COLORSCHEME")] or default
     vim.api.nvim_exec_autocmds("ColorSchemePre", {})
-    vim.cmd.packadd(("colorscheme/%s"):format(colorscheme))
+    vim.cmd(("packadd! colorscheme/%s"):format(colorscheme))
     require(("config.plugin.colorscheme.%s.setup"):format(colorscheme))
     vim.api.nvim_exec_autocmds("ColorScheme", { pattern = colorscheme })
   end,
