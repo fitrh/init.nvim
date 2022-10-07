@@ -12,6 +12,16 @@ What's under my `$XDG_CONFIG_HOME/nvim`
     3. `git`
     4. A C compiler and libstdc++
 
+## Set up
+
+Run the [setup.sh](./script/setup.sh) script
+
+ ```sh
+ ./script/setup.sh # or ./script/setup.sh headless
+ ```
+
+ ---
+
 ## TODO
 
 - [ ] A nice README
