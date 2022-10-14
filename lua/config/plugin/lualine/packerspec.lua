@@ -7,5 +7,4 @@ return {
     require("config.plugin.lualine.setup")
   end,
   event = "ColorScheme",
-  module = "lualine",
 }
