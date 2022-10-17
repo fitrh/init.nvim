@@ -19,6 +19,7 @@ return {
       "go",
       "gomod",
       "graphql",
+      "help",
       "html",
       "java",
       "javascript",
