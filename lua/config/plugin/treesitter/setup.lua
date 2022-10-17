@@ -33,7 +33,6 @@ config.setup({
     "php",
     "python",
     "query",
-    "rasi",
     "regex",
     "rust",
     "scheme",

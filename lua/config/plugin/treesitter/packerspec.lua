@@ -33,7 +33,6 @@ return {
       "php",
       "python",
       "query",
-      "rasi",
       "rust",
       "scheme",
       "scss",
