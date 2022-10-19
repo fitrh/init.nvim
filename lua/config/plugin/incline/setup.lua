@@ -2,7 +2,7 @@ local config = {}
 
 config.render = function(props)
   if vim.api.nvim_buf_get_name(props.buf) == "" then
-    return "[No Name]"
+    return " [No Name] "
   end
 
   if props.focused then
