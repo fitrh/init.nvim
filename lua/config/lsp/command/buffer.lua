@@ -3,19 +3,18 @@ local M = {}
 function M.attach(client, bufnr)
   local command = require("sugar.command")
   local lsp = vim.lsp.buf
+  local formatting_timeout = 5000
 
   local commands = {}
   commands.documentFormattingProvider = function()
-    local default = 5000
-
     command.group({
       prefix = "LspFormat",
       opts = { nargs = "?" },
       buf = bufnr,
       cmds = {
         {
-          cmd = function(opts)
-            local timeout = tonumber(opts.fargs[1]) or default
+          cmd = function(args)
+            local timeout = tonumber(args.fargs[1]) or formatting_timeout
             lsp.format({ bufnr = bufnr, timeout_ms = timeout })
           end,
         },
@@ -30,11 +29,10 @@ function M.attach(client, bufnr)
   end
 
   commands.documentRangeFormattingProvider = function()
-    command.add(
-      "LspFormatRange",
-      lsp.range_formatting,
-      { buf = bufnr, opts = { range = true } }
-    )
+    command.add("LspFormatRange", function(args)
+      local timeout = tonumber(args.fargs[1]) or formatting_timeout
+      lsp.format({ bufnr = bufnr, timeout_ms = timeout })
+    end, { buf = bufnr, opts = { nargs = "?", range = true } })
   end
 
   commands.renameProvider = function()
