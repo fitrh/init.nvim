@@ -40,7 +40,7 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- treesitter
   set("@text.literal.markdown_inline", { bg = c.bg_highlight, fg = c.fg_dark })
-  set("TSConstBuiltin", { fg = c.red })
+  set("@constant.builtin.dart", { fg = c.red })
 
   -- plugin
   link("CmpCursorLine", "CursorLine")

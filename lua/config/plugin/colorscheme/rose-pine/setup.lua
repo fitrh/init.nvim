@@ -40,8 +40,8 @@ require("sugar.highlight").colorscheme(function(h)
   link("healthWarning", "DiagnosticWarn")
 
   -- treesitter
-  set("TSParameter", { inherit = "TSParameter", italic = true })
-  set("TSKeyword", { inherit = "TSKeyword", italic = true })
+  set("@parameter", { inherit = "@parameter", italic = true })
+  set("@keyword", { inherit = "@keyword", italic = true })
 
   -- plugin
   link("CmpCursorLine", "Visual")

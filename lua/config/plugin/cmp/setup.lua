@@ -17,9 +17,9 @@ config.snippet = {
 
 local COMPLETION_KIND = require("const.LSP_KIND").Completion
 local source_hl = {
-  nvim_lua = "TSConstBuiltin",
-  luasnip = "TSComment",
-  buffer = "TSString",
+  nvim_lua = "@constant.builtin",
+  luasnip = "@comment",
+  buffer = "@string",
   path = "Directory",
 }
 
@@ -28,7 +28,7 @@ require("sugar.highlight").colorscheme(function(h)
   for kind, _ in pairs(COMPLETION_KIND) do
     local inherit = ("CmpItemKind%s"):format(kind)
     local group = ("%sIcon"):format(inherit)
-    local fallback = { ("TS%s"):format(kind), "CmpItemKindDefault" }
+    local fallback = { ("@%s"):format(kind:lower()), "CmpItemKindDefault" }
     local bg = h.blend(h.fg(inherit, fallback), base, 0.15)
     h.set(group, { inherit = inherit, bg = bg })
   end
