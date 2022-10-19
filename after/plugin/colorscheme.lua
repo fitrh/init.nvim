@@ -1,4 +1,4 @@
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd("UIEnter", {
   group = vim.api.nvim_create_augroup("UseColorScheme", {}),
   callback = function()
     local default = "tokyonight"
