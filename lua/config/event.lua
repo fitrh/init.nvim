@@ -78,6 +78,12 @@ augroup("SetSynMaxCol", function(autocmd)
   end)
 end)
 
+augroup("SyncWithShiftwidth", function(autocmd)
+  autocmd("OptionSet", "shiftwidth", function()
+    vim.api.nvim_buf_set_option(0, "tabstop", tonumber(vim.v.option_new))
+  end)
+end)
+
 augroup("MacroRecording", function(autocmd)
   local opts = { title = "Macro", icon = "", timeout = 250 }
 
