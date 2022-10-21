@@ -1,5 +1,5 @@
 vim.api.nvim_create_autocmd("UIEnter", {
-  group = vim.api.nvim_create_augroup("UseColorScheme", {}),
+  group = vim.api.nvim_create_augroup("set_colorscheme", {}),
   callback = function()
     local default = "tokyonight"
     local colorschemes = {
