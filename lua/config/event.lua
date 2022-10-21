@@ -52,14 +52,12 @@ augroup("AlwaysRelativeNumber", function(autocmd)
 end)
 
 augroup("OnTerminalBuffer", function(autocmd)
-  autocmd("TermOpen", "*", {
-    function()
-      if vim.api.nvim_buf_get_option(0, "filetype") == "" then
-        vim.api.nvim_buf_set_option(0, "filetype", "terminal")
-      end
-    end,
-    "startinsert",
-  })
+  autocmd("TermOpen", "*", function()
+    if vim.api.nvim_buf_get_option(0, "filetype") == "" then
+      vim.api.nvim_buf_set_option(0, "filetype", "terminal")
+    end
+    vim.cmd.startinsert()
+  end)
 end)
 
 augroup("SetTabLine", function(autocmd)
