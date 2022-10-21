@@ -35,7 +35,7 @@ config.hide = {
 
 if config.hide and config.hide.cursorline then
   require("sugar.augroup")("incline_manage_cursor", function(autocmd)
-    autocmd({ "UIEnter", "BufRead" }, "*", function()
+    autocmd({ "UIEnter", "BufRead", "WinLeave" }, "*", function()
       if
         vim.api.nvim_win_get_cursor(0)[1] > 1
         or vim.api.nvim_buf_line_count(0) < 2
