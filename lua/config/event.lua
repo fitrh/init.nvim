@@ -20,15 +20,14 @@ augroup("HighlightOnYank", function(autocmd)
 end)
 
 augroup("CursorlineOnCurrentWindow", function(autocmd)
-  autocmd({ "BufEnter", "WinEnter" }, "*", function()
+  autocmd({ "BufWinEnter", "WinEnter" }, "*", function()
     vim.api.nvim_win_set_option(0, "cursorline", not vim.w.nocursorline)
   end)
 
-  autocmd({ "BufLeave", "WinLeave" }, "*", function()
-    if vim.b.keep_cursor_on_leave then
-      return
+  autocmd("WinLeave", "*", function()
+    if not vim.b.keep_cursor_on_leave then
+      vim.api.nvim_win_set_option(0, "cursorline", false)
     end
-    vim.api.nvim_win_set_option(0, "cursorline", false)
   end)
 end)
 
