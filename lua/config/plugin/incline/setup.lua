@@ -34,7 +34,7 @@ config.hide = {
 }
 
 if config.hide and config.hide.cursorline then
-  require("sugar.augroup")("InclineMoveToScondLine", function(autocmd)
+  require("sugar.augroup")("incline_manage_cursor", function(autocmd)
     autocmd({ "UIEnter", "BufRead" }, "*", function()
       if
         vim.api.nvim_win_get_cursor(0)[1] > 1

@@ -59,7 +59,7 @@ keymap.bind({
   end)),
 })
 
-require("sugar.augroup")("TelescopeLSPKeymap", function(autocmd)
+require("sugar.augroup")("attach_telescope_lsp_keymap", function(autocmd)
   autocmd("LspAttach", "*", function(args)
     if not args.data then
       return

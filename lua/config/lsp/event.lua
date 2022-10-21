@@ -6,7 +6,7 @@ function M.attach(client, bufnr)
   local augroup = require("sugar.augroup")
 
   if capable.documentHighlightProvider then
-    augroup({ "HighlightOnCursor", false }, function(autocmd)
+    augroup({ "highlight_references", false }, function(autocmd)
       autocmd("CursorHold", bufnr, lsp.buf.document_highlight)
       local event = { "CursorMoved", "InsertEnter", "BufLeave" }
       autocmd(event, bufnr, lsp.buf.clear_references)
@@ -14,7 +14,7 @@ function M.attach(client, bufnr)
   end
 
   if capable.documentFormattingProvider then
-    augroup({ "FormatOnSave", false }, function(autocmd)
+    augroup({ "format_on_save", false }, function(autocmd)
       autocmd("BufWritePre", bufnr, function()
         local format_on_save = vim.b[bufnr].format_on_save
         if format_on_save then
@@ -32,7 +32,7 @@ function M.attach(client, bufnr)
   end
 
   if capable.codeLensProvider then
-    augroup({ "CodelensRefresh", false }, function(autocmd)
+    augroup({ "codelens_refresh", false }, function(autocmd)
       local event = { "BufEnter", "BufLeave", "InsertEnter", "InsertLeave" }
       autocmd(event, bufnr, lsp.codelens.refresh)
     end)

@@ -9,7 +9,7 @@ return {
       end
 
     require("sugar.command").add("JdtStart", config)
-    require("sugar.augroup")("AttachJDTLS", function(autocmd)
+    require("sugar.augroup")("attach_jdtls", function(autocmd)
       autocmd("FileType", "java", config)
     end)
   end,

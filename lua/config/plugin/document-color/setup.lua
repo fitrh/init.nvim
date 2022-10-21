@@ -1,4 +1,4 @@
-require("sugar.augroup")("LspDocumentColorAttach", function(autocmd)
+require("sugar.augroup")("attach_document_color", function(autocmd)
   autocmd("LspAttach", "*", function(args)
     if not args.data or not args.data.client_id then
       return
