@@ -33,13 +33,13 @@ augroup("CursorlineOnCurrentWindow", function(autocmd)
 end)
 
 augroup("RelativeNumberOnCurrentWindow", function(autocmd)
-  autocmd({ "BufEnter", "WinEnter" }, "*", function()
+  autocmd({ "BufWinEnter", "WinEnter" }, "*", function()
     if vim.api.nvim_win_get_option(0, "number") then
       vim.api.nvim_win_set_option(0, "relativenumber", true)
     end
   end)
 
-  autocmd({ "BufLeave", "WinLeave" }, "*", function()
+  autocmd("WinLeave", "*", function()
     vim.api.nvim_win_set_option(0, "relativenumber", false)
   end)
 
