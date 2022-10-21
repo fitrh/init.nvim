@@ -61,9 +61,16 @@ augroup("OnTerminalBuffer", function(autocmd)
 end)
 
 augroup("SetTabLine", function(autocmd)
+  local tabline = [[%{%v:lua.require("config.option.tabline").draw()%}]]
+
+  autocmd("UIEnter", "*", function()
+    if #vim.api.nvim_list_tabpages() > 1 then
+      vim.api.nvim_set_option("tabline", tabline)
+    end
+  end)
+
   autocmd("TabNew", "*", function()
-    local value = [[%{%v:lua.require("config.option.tabline").draw()%}]]
-    vim.api.nvim_set_option("tabline", value)
+    vim.api.nvim_set_option("tabline", tabline)
   end)
 end)
 
