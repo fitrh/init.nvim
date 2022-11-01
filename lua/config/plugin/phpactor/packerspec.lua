@@ -5,9 +5,7 @@ return {
     { "neovim/nvim-lspconfig", module = "lspconfig" },
   },
   config = function()
-    require("phpactor").setup({
-      lspconfig = require("config.lsp.server").with("phpactor"),
-    })
+    require("config.plugin.phpactor.setup")
   end,
   ft = "php",
 }
