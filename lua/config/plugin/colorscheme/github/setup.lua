@@ -98,7 +98,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("TreesitterContext", { inherit = "TreesitterContext", bold = true })
   set("TreesitterContextLineNumber", {
     inherit = "TreesitterContext",
-    fg = fg("LineNr"),
+    fg = p.fg,
   })
   set("WinSeparatorZen", { fg = bg("Normal") })
 end)
