@@ -39,8 +39,10 @@ require("sugar.highlight").colorscheme(function(h)
   set("VertSplit", { fg = c.bg_statusline, cterm = { reverse = true } })
 
   -- treesitter
-  set("@text.literal.markdown_inline", { bg = c.bg_highlight, fg = c.fg_dark })
   set("@constant.builtin.dart", { fg = c.red })
+  link("@text.diff.add", "diffAdded")
+  link("@text.diff.delete", "diffRemoved")
+  set("@text.literal.markdown_inline", { bg = c.bg_highlight, fg = c.fg_dark })
 
   -- plugin
   link("CmpCursorLine", "CursorLine")
