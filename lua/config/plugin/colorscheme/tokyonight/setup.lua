@@ -46,7 +46,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("@namespace", { fg = c.magenta })
 
   -- plugin
-  link("CmpCursorLine", "CursorLine")
+  link("CmpCursorLine", "PmenuSel")
   link("FloatTitle", "Title")
   local p = { "magenta", "cyan", "green", "orange", "yellow", "purple" }
   for i, v in ipairs(p) do

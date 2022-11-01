@@ -44,7 +44,7 @@ require("sugar.highlight").colorscheme(function(h)
   link("healthWarning", "DiagnosticWarn")
 
   -- plugin
-  link("CmpCursorLine", "CursorLine")
+  link("CmpCursorLine", "Visual")
   link("FloatTitle", "Title")
   set("GitSignsAdd", { inherit = "GitSignsAdd", bg = "NONE" })
   set("GitSignsChange", { inherit = "GitSignsChange", bg = "NONE" })

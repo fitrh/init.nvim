@@ -46,7 +46,7 @@ require("sugar.highlight").colorscheme(function(h)
   link("DiagnosticHint", "DiagnosticDefaultHint")
 
   -- plugin
-  set("CmpCursorLine", { bg = p.bg })
+  link("CmpCursorLine", "Visual")
   link("FloatTitle", "Title")
   link("GitSignsAdd", "DiffAdd")
   link("GitSignsChange", "DiffChange")

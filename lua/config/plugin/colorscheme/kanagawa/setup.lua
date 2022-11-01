@@ -32,7 +32,7 @@ require("sugar.highlight").colorscheme(function(h)
   link("WinSeparator", "VertSplit")
 
   -- plugin
-  link("CmpCursorLine", "CursorLine")
+  link("CmpCursorLine", "PmenuSel")
   link("FloatTitle", "Title")
   for i, p in ipairs({
     "springViolet1",
