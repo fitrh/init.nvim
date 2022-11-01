@@ -43,6 +43,7 @@ require("sugar.highlight").colorscheme(function(h)
   link("@text.diff.add", "diffAdded")
   link("@text.diff.delete", "diffRemoved")
   set("@text.literal.markdown_inline", { bg = c.bg_highlight, fg = c.fg_dark })
+  set("@namespace", { fg = c.magenta })
 
   -- plugin
   link("CmpCursorLine", "CursorLine")
