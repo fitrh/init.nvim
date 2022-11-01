@@ -89,7 +89,10 @@ end)
 
 augroup("shiftwidth_sync", function(autocmd)
   autocmd("OptionSet", "shiftwidth", function()
-    vim.api.nvim_buf_set_option(0, "tabstop", tonumber(vim.v.option_new))
+    local shiftwidth = tonumber(vim.v.option_new)
+    if shiftwidth > 0 and shiftwidth < 10000 then
+      vim.api.nvim_buf_set_option(0, "tabstop", shiftwidth)
+    end
   end)
 end)
 
