@@ -94,7 +94,6 @@ require("sugar.highlight").colorscheme(function(h)
   set("TelescopeTitle", { inherit = "Visual", fg = fg("Normal"), bold = true })
   set("TelescopeBorder", { bg = bg("StatusLine"), fg = bg("StatusLine") })
   set("TodoLink", { fg = p.bg_visual_selection })
-  set("TodoOk", { fg = p.fg_dark })
   set("TodoTest", { fg = p.magenta })
   set("TreesitterContext", { inherit = "TreesitterContext", bold = true })
   set("TreesitterContextLineNumber", {

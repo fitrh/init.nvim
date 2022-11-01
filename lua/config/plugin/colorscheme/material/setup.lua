@@ -116,7 +116,6 @@ require("sugar.highlight").colorscheme(function(h)
   link("TelescopePreviewBorder", "TelescopeBorder")
   link("TelescopeResultsBorder", "TelescopeBorder")
   set("TodoLink", { fg = c.main.paleblue })
-  set("TodoOk", { fg = c.main.darkblue })
   set("TodoTest", { fg = c.main.darkpurple })
   set("TreesitterContext", { inherit = "ColorColumn", bold = true })
   set("TreesitterContextLineNumber", {
