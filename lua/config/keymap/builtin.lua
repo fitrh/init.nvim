@@ -121,6 +121,7 @@ keymap.bind({
   v(map("gA", "ggoG", { silent = true })),
 
   -- tab page
+  n(map("<C-w>O", ex("tabonly"))),
   n(map(leader("t"), ex("tabnew"))),
   n(map(leader("["), ex("-tabmove"))),
   n(map(leader("]"), ex("+tabmove"))),
