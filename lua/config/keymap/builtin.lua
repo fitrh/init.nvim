@@ -61,7 +61,7 @@ keymap.bind({
   -- close buffer without close window
   n(map("<C-w>C", ex("enew<BAR>bdelete #"))),
   -- delete current buffer and move to the previous buffer
-  n(map(leader("bd"), ex("bprevious<BAR>bdelete #"))),
+  n(map("<C-w>B", ex("bprevious<BAR>bdelete #"))),
 
   -- toggle cursorline or cursorcolumn
   n(map("<C-c>c", ex("set cursorcolumn!"))),
