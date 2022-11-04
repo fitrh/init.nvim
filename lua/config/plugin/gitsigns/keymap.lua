@@ -10,13 +10,15 @@ function M.attach(gitsigns, bufnr)
       if vim.wo.diff then
         return "]c"
       end
-      vim.schedule(gitsigns.next_hunk)
+      vim.schedule(function()
+        gitsigns.next_hunk({ navigation_message = false })
+      end)
       return "<Ignore>"
     end, { expr = true })),
 
     n(map("]C", function()
       vim.schedule(function()
-        gitsigns.next_hunk({ preview = true })
+        gitsigns.next_hunk({ navigation_message = false, preview = true })
       end)
       return "<Ignore>"
     end, { expr = true })),
@@ -25,13 +27,15 @@ function M.attach(gitsigns, bufnr)
       if vim.wo.diff then
         return "[c"
       end
-      vim.schedule(gitsigns.prev_hunk)
+      vim.schedule(function()
+        gitsigns.prev_hunk({ navigation_message = false })
+      end)
       return "<Ignore>"
     end, { expr = true })),
 
     n(map("[C", function()
       vim.schedule(function()
-        gitsigns.prev_hunk({ preview = true })
+        gitsigns.prev_hunk({ navigation_message = false, preview = true })
       end)
       return "<Ignore>"
     end, { expr = true })),
