@@ -51,7 +51,8 @@ function M.attach(gitsigns, bufnr)
     v(map("gsr", function()
       gitsigns.reset_hunk({ vim.fn.line("v"), vim.fn.line(".") })
     end)),
-    n(map("gsp", gitsigns.preview_hunk)),
+    n(map("gsp", gitsigns.preview_hunk_inline)),
+    n(map("gsP", gitsigns.preview_hunk)),
     n(map("gsb", gitsigns.blame_line)),
     n(map("gsB", function()
       gitsigns.blame_line({ full = true })
