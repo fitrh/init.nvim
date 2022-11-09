@@ -12,22 +12,6 @@ function Component.spacer(width)
   }
 end
 
----@alias StripAlignment
----| '"left"'
----| '"right"'
-
----@param alignment? StripAlignment @default "left"
----@return table component
-function Component.strip(alignment)
-  local char = require("const.LINE_CHAR").THIN[alignment or "left"]
-  return {
-    function()
-      return char
-    end,
-    padding = 0,
-  }
-end
-
 Component.mode = require("config.plugin.lualine.component.mode")
 Component.file = require("config.plugin.lualine.component.file")
 Component.state = require("config.plugin.lualine.component.state")

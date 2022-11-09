@@ -95,7 +95,6 @@ File.lines = {
   cond = function()
     return when().not_empty_buf()
   end,
-  padding = 0,
 }
 
 return File

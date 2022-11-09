@@ -3,20 +3,17 @@ local color = { fg = hl.fg("DiagnosticWarn")(), gui = "BOLD" }
 local mod = require("config.plugin.lualine.component.util.mod")
 local component = require("config.plugin.lualine.component")
 local diagnostic = component.diagnostic.workspace
-local strip = mod(component.strip(), { color = color })
 
 local title = {
   function()
     return "裂Troubles"
   end,
   color = color,
-  padding = { left = 0, right = 1 },
 }
 
 local components = {
-  active = { strip, title, diagnostic },
+  active = { title, diagnostic },
   inactive = {
-    mod(strip, { color = {} }),
     mod(title, { color = {} }),
     mod(diagnostic, { colored = false, update_in_insert = true }),
   },
