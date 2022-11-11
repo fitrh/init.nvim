@@ -94,30 +94,34 @@ augroup("set_tabline", function(autocmd)
 end)
 
 augroup("shiftwidth_sync", function(autocmd)
-  autocmd("OptionSet", "shiftwidth", function()
+  autocmd("OptionSet", "shiftwidth", function(args)
     local shiftwidth = tonumber(vim.v.option_new)
     if shiftwidth > 0 and shiftwidth < 10000 then
-      vim.api.nvim_buf_set_option(0, "tabstop", shiftwidth)
+      vim.api.nvim_buf_set_option(args.buf, "tabstop", shiftwidth)
     end
   end)
 end)
 
 augroup("terminalbuffer_action", function(autocmd)
-  autocmd("TermOpen", "*", function()
-    if vim.api.nvim_buf_get_option(0, "filetype") == "" then
-      vim.api.nvim_buf_set_option(0, "filetype", "terminal")
+  autocmd("TermOpen", "*", function(args)
+    if vim.api.nvim_buf_get_option(args.buf, "filetype") == "" then
+      vim.api.nvim_buf_set_option(args.buf, "filetype", "terminal")
     end
     vim.cmd.startinsert()
   end)
 end)
 
 augroup("textwidth_sync", function(autocmd)
-  autocmd("OptionSet", "textwidth", function()
-    vim.api.nvim_buf_set_option(0, "synmaxcol", tonumber(vim.v.option_new))
+  autocmd("OptionSet", "textwidth", function(args)
+    vim.api.nvim_buf_set_option(
+      args.buf,
+      "synmaxcol",
+      tonumber(vim.v.option_new)
+    )
   end)
 
-  autocmd({ "BufNewFile", "BufEnter" }, "*", function()
-    local textwidth = vim.api.nvim_buf_get_option(0, "textwidth")
-    vim.api.nvim_buf_set_option(0, "synmaxcol", tonumber(textwidth))
+  autocmd({ "BufNewFile", "BufEnter" }, "*", function(args)
+    local textwidth = vim.api.nvim_buf_get_option(args.buf, "textwidth")
+    vim.api.nvim_buf_set_option(args.buf, "synmaxcol", tonumber(textwidth))
   end)
 end)
