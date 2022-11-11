@@ -26,6 +26,9 @@ key.bind({
   n(map("[xt", function()
     require("trouble").toggle("lsp_type_definitions")
   end)),
+  n(map("[xi", function()
+    require("trouble").toggle("lsp_implementations")
+  end)),
   n(map("[xR", function()
     require("trouble").refresh()
   end)),
