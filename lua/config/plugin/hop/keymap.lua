@@ -11,6 +11,9 @@ local opts = {
 
 keymap.bind({
   map("f/", hop.hint_patterns),
+  map("F/", function()
+    hop.hint_patterns({ multi_windows = true })
+  end),
   map("ff", hop.hint_words),
   map("fw", function()
     hop.hint_words(opts.AC_LINE)
