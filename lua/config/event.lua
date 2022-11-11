@@ -7,6 +7,10 @@ local win_set_option = api.nvim_win_set_option
 local buf_get_option = api.nvim_buf_get_option
 local buf_set_option = api.nvim_buf_set_option
 
+local function is_normal_buf(nr)
+  return buf_get_option(nr, "buftype") == "" and buf_get_option(nr, "buflisted")
+end
+
 augroup("adaptive_scrolloff", function(autocmd)
   local events = { "BufWinEnter", "WinEnter", "WinScrolled", "VimResized" }
   autocmd(events, "*", function()
@@ -34,8 +38,8 @@ augroup("cursorline_on_current_window", function(autocmd)
     win_set_option(0, "cursorline", not vim.w.nocursorline)
   end)
 
-  autocmd("WinLeave", "*", function()
-    if not vim.b.keep_cursor_on_leave then
+  autocmd("WinLeave", "*", function(args)
+    if is_normal_buf(args.buf) and not vim.b.keep_cursor_on_leave then
       win_set_option(0, "cursorline", false)
     end
   end)
@@ -75,14 +79,16 @@ augroup("prewrite_action", function(autocmd)
 end)
 
 augroup("relativenumber_on_current_window", function(autocmd)
-  autocmd({ "BufWinEnter", "WinEnter" }, "*", function()
-    if win_get_option(0, "number") then
+  autocmd({ "BufWinEnter", "WinEnter" }, "*", function(args)
+    if is_normal_buf(args.buf) and win_get_option(0, "number") then
       win_set_option(0, "relativenumber", true)
     end
   end)
 
-  autocmd("WinLeave", "*", function()
-    win_set_option(0, "relativenumber", false)
+  autocmd("WinLeave", "*", function(args)
+    if is_normal_buf(args.buf) and win_get_option(0, "relativenumber") then
+      win_set_option(0, "relativenumber", false)
+    end
   end)
 end)
 
