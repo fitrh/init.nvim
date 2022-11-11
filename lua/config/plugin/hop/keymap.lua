@@ -13,7 +13,10 @@ keymap.bind({
   map("f/", hop.hint_patterns),
   map("ff", hop.hint_words),
   map("fw", function()
-    hop.hint_patterns({ multi_windows = true })
+    hop.hint_words(opts.AC_LINE)
+  end),
+  map("fb", function()
+    hop.hint_words(opts.BC_LINE)
   end),
   map("fj", function()
     hop.hint_char2(opts.AC)
