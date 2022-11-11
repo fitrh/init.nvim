@@ -11,9 +11,9 @@ local function is_normal_buf(nr)
   return buf_get_option(nr, "buftype") == "" and buf_get_option(nr, "buflisted")
 end
 
+local WinChanged = { "BufWinEnter", "WinEnter", "WinScrolled", "VimResized" }
 augroup("adaptive_scrolloff", function(autocmd)
-  local events = { "BufWinEnter", "WinEnter", "WinScrolled", "VimResized" }
-  autocmd(events, "*", function()
+  autocmd(WinChanged, "*", function()
     local height = math.ceil(api.nvim_win_get_height(0) / 4)
     local width = math.ceil(api.nvim_win_get_width(0) / 8)
 
@@ -23,6 +23,19 @@ augroup("adaptive_scrolloff", function(autocmd)
 
     if width ~= get_option("sidescrolloff") then
       set_option("sidescrolloff", math.max(width, 1))
+    end
+  end)
+end)
+
+augroup("adaptive_pumheight", function(autocmd)
+  autocmd(WinChanged, "*", function(args)
+    if not is_normal_buf(args.buf) then
+      return
+    end
+
+    local height = math.ceil(api.nvim_win_get_height(0) / 3)
+    if height ~= get_option("pumheight") then
+      set_option("pumheight", math.max(height, 3))
     end
   end)
 end)
