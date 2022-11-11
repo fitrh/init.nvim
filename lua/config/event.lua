@@ -3,10 +3,16 @@ local augroup = require("sugar.augroup")
 augroup("adaptive_scrolloff", function(autocmd)
   local events = { "BufWinEnter", "WinEnter", "WinScrolled", "VimResized" }
   autocmd(events, "*", function()
-    local height = math.floor(vim.api.nvim_win_get_height(0) / 4)
-    local width = math.floor(vim.api.nvim_win_get_width(0) / 4)
-    vim.api.nvim_set_option("scrolloff", math.max(height, 1))
-    vim.api.nvim_set_option("sidescrolloff", math.max(width, 1))
+    local height = math.ceil(vim.api.nvim_win_get_height(0) / 4)
+    local width = math.ceil(vim.api.nvim_win_get_width(0) / 8)
+
+    if height ~= vim.api.nvim_get_option("scrolloff") then
+      vim.api.nvim_set_option("scrolloff", math.max(height, 1))
+    end
+
+    if width ~= vim.api.nvim_get_option("sidescrolloff") then
+      vim.api.nvim_set_option("sidescrolloff", math.max(width, 1))
+    end
   end)
 end)
 
