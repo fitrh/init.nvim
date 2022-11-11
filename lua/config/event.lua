@@ -1,35 +1,42 @@
 local augroup = require("sugar.augroup")
+local api = vim.api
+local get_option = api.nvim_get_option
+local set_option = api.nvim_set_option
+local win_get_option = api.nvim_win_get_option
+local win_set_option = api.nvim_win_set_option
+local buf_get_option = api.nvim_buf_get_option
+local buf_set_option = api.nvim_buf_set_option
 
 augroup("adaptive_scrolloff", function(autocmd)
   local events = { "BufWinEnter", "WinEnter", "WinScrolled", "VimResized" }
   autocmd(events, "*", function()
-    local height = math.ceil(vim.api.nvim_win_get_height(0) / 4)
-    local width = math.ceil(vim.api.nvim_win_get_width(0) / 8)
+    local height = math.ceil(api.nvim_win_get_height(0) / 4)
+    local width = math.ceil(api.nvim_win_get_width(0) / 8)
 
-    if height ~= vim.api.nvim_get_option("scrolloff") then
-      vim.api.nvim_set_option("scrolloff", math.max(height, 1))
+    if height ~= get_option("scrolloff") then
+      set_option("scrolloff", math.max(height, 1))
     end
 
-    if width ~= vim.api.nvim_get_option("sidescrolloff") then
-      vim.api.nvim_set_option("sidescrolloff", math.max(width, 1))
+    if width ~= get_option("sidescrolloff") then
+      set_option("sidescrolloff", math.max(width, 1))
     end
   end)
 end)
 
 augroup("always_relativenumber", function(autocmd)
   autocmd("OptionSet", "number", function()
-    vim.api.nvim_win_set_option(0, "relativenumber", vim.v.option_new == "1")
+    win_set_option(0, "relativenumber", vim.v.option_new == "1")
   end)
 end)
 
 augroup("cursorline_on_current_window", function(autocmd)
   autocmd({ "BufWinEnter", "WinEnter" }, "*", function()
-    vim.api.nvim_win_set_option(0, "cursorline", not vim.w.nocursorline)
+    win_set_option(0, "cursorline", not vim.w.nocursorline)
   end)
 
   autocmd("WinLeave", "*", function()
     if not vim.b.keep_cursor_on_leave then
-      vim.api.nvim_win_set_option(0, "cursorline", false)
+      win_set_option(0, "cursorline", false)
     end
   end)
 end)
@@ -57,9 +64,9 @@ end)
 augroup("prewrite_action", function(autocmd)
   autocmd("BufWritePre", "*", {
     function()
-      local cursor = vim.api.nvim_win_get_cursor(0)
+      local cursor = api.nvim_win_get_cursor(0)
       vim.cmd([[:%s/\s\+$//e]])
-      vim.api.nvim_win_set_cursor(0, cursor)
+      api.nvim_win_set_cursor(0, cursor)
     end,
     function()
       require("helper.dir").mk()
@@ -69,13 +76,13 @@ end)
 
 augroup("relativenumber_on_current_window", function(autocmd)
   autocmd({ "BufWinEnter", "WinEnter" }, "*", function()
-    if vim.api.nvim_win_get_option(0, "number") then
-      vim.api.nvim_win_set_option(0, "relativenumber", true)
+    if win_get_option(0, "number") then
+      win_set_option(0, "relativenumber", true)
     end
   end)
 
   autocmd("WinLeave", "*", function()
-    vim.api.nvim_win_set_option(0, "relativenumber", false)
+    win_set_option(0, "relativenumber", false)
   end)
 end)
 
@@ -83,13 +90,13 @@ augroup("set_tabline", function(autocmd)
   local tabline = [[%{%v:lua.require("config.option.tabline").draw()%}]]
 
   autocmd("UIEnter", "*", function()
-    if #vim.api.nvim_list_tabpages() > 1 then
-      vim.api.nvim_set_option("tabline", tabline)
+    if #api.nvim_list_tabpages() > 1 then
+      set_option("tabline", tabline)
     end
   end)
 
   autocmd("TabNew", "*", function()
-    vim.api.nvim_set_option("tabline", tabline)
+    set_option("tabline", tabline)
   end)
 end)
 
@@ -97,15 +104,15 @@ augroup("shiftwidth_sync", function(autocmd)
   autocmd("OptionSet", "shiftwidth", function(args)
     local shiftwidth = tonumber(vim.v.option_new)
     if shiftwidth > 0 and shiftwidth < 10000 then
-      vim.api.nvim_buf_set_option(args.buf, "tabstop", shiftwidth)
+      buf_set_option(args.buf, "tabstop", shiftwidth)
     end
   end)
 end)
 
 augroup("terminalbuffer_action", function(autocmd)
   autocmd("TermOpen", "*", function(args)
-    if vim.api.nvim_buf_get_option(args.buf, "filetype") == "" then
-      vim.api.nvim_buf_set_option(args.buf, "filetype", "terminal")
+    if buf_get_option(args.buf, "filetype") == "" then
+      buf_set_option(args.buf, "filetype", "terminal")
     end
     vim.cmd.startinsert()
   end)
@@ -113,15 +120,11 @@ end)
 
 augroup("textwidth_sync", function(autocmd)
   autocmd("OptionSet", "textwidth", function(args)
-    vim.api.nvim_buf_set_option(
-      args.buf,
-      "synmaxcol",
-      tonumber(vim.v.option_new)
-    )
+    buf_set_option(args.buf, "synmaxcol", tonumber(vim.v.option_new))
   end)
 
   autocmd({ "BufNewFile", "BufEnter" }, "*", function(args)
-    local textwidth = vim.api.nvim_buf_get_option(args.buf, "textwidth")
-    vim.api.nvim_buf_set_option(args.buf, "synmaxcol", tonumber(textwidth))
+    local textwidth = buf_get_option(args.buf, "textwidth")
+    buf_set_option(args.buf, "synmaxcol", tonumber(textwidth))
   end)
 end)
