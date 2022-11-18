@@ -14,6 +14,30 @@ function M.attach(bufnr)
     buf = bufnr,
     cmds = {
       {
+        name = "Enable",
+        cmd = function()
+          api.enable(0)
+        end,
+      },
+      {
+        name = "EnableAll",
+        cmd = function()
+          api.enable()
+        end,
+      },
+      {
+        name = "Disable",
+        cmd = function()
+          api.disable(0)
+        end,
+      },
+      {
+        name = "DisableAll",
+        cmd = function()
+          api.disable()
+        end,
+      },
+      {
         name = "ShowInLine",
         cmd = function()
           api.open_float(0, opts(scope.line))
