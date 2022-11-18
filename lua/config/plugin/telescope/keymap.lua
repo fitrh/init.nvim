@@ -3,7 +3,10 @@ local map, leader, n = keymap.map, keymap.modifier.leader, keymap.mode.normal
 
 keymap.bind({
   n(map("gb", function()
-    require("telescope.builtin").buffers()
+    require("telescope.builtin").buffers({
+      ignore_current_buffer = true,
+      sort_mru = true,
+    })
   end)),
   n(map(leader("h"), function()
     require("telescope.builtin").help_tags()
