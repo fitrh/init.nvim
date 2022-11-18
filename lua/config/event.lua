@@ -44,6 +44,10 @@ augroup("always_relativenumber", function(autocmd)
   autocmd("OptionSet", "number", function()
     win_set_option(0, "relativenumber", vim.v.option_new == "1")
   end)
+
+  autocmd("OptionSet", "relativenumber", function()
+    win_set_option(0, "number", vim.v.option_new == "1")
+  end)
 end)
 
 augroup("cursorline_on_current_window", function(autocmd)
