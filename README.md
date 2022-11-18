@@ -5,8 +5,9 @@ What's under my `$XDG_CONFIG_HOME/nvim`
 ## Requirements
 
 1. Neovim nightly
-2. packer.nvim [requirements](https://github.com/wbthomason/packer.nvim#requirements)
-3. nvim-treesitter [requirements](https://github.com/nvim-treesitter/nvim-treesitter#requirements)
+2. `make` or `cmake`
+3. packer.nvim [requirements](https://github.com/wbthomason/packer.nvim#requirements)
+4. nvim-treesitter [requirements](https://github.com/nvim-treesitter/nvim-treesitter#requirements)
     1. `tar`
     2. `curl`
     3. `git`
