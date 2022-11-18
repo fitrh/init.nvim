@@ -18,12 +18,15 @@ keymap.bind({
     require("telescope.builtin").live_grep()
   end)),
   n(map(leader("e"), function()
-    require("telescope").extensions.file_browser.file_browser()
+    require("telescope").extensions.file_browser.file_browser({
+      grouped = true,
+    })
   end)),
   n(map(leader("k"), function()
     require("telescope").extensions.file_browser.file_browser(
       require("telescope.themes").get_dropdown({
         previewer = false,
+        grouped = true,
         files = false,
         display_stat = false,
       })
