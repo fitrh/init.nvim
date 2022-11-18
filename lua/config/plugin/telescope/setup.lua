@@ -78,7 +78,6 @@ local pickers = {}
 
 pickers.find_files = {
   layout_config = { height = 0.50 },
-  path_display = { "smart" },
   theme = "ivy",
   previewer = false,
 }
@@ -120,7 +119,7 @@ pickers.filetypes = {
   prompt_prefix = "   ",
 }
 
-pickers.git_files = { prompt_prefix = "   ", path_display = { "smart" } }
+pickers.git_files = { prompt_prefix = "   " }
 pickers.git_commits = {
   layout_config = pickers.live_grep.layout_config,
   prompt_prefix = "   ",
@@ -134,7 +133,6 @@ pickers.git_branches = {
 pickers.git_status = {
   layout_config = { horizontal = { preview_width = 0.55 } },
   prompt_prefix = "   ",
-  path_display = { "smart" },
 }
 
 pickers.lsp_document_symbols = {
