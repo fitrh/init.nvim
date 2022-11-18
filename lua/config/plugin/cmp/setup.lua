@@ -68,6 +68,7 @@ config.window = {
     winhighlight = "Normal:Pmenu,CursorLine:CmpCursorLine,Search:None",
     col_offset = -3,
     side_padding = 0,
+    scrollbar = false,
   },
   documentation = {
     border = "rounded",
