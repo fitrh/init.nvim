@@ -83,16 +83,11 @@ augroup("macro_recording", function(autocmd)
 end)
 
 augroup("prewrite_action", function(autocmd)
-  autocmd("BufWritePre", "*", {
-    function()
-      local cursor = api.nvim_win_get_cursor(0)
-      vim.cmd([[:%s/\s\+$//e]])
-      api.nvim_win_set_cursor(0, cursor)
-    end,
-    function()
-      require("helper.dir").mk()
-    end,
-  })
+  autocmd("BufWritePre", "*", function()
+    local cursor = api.nvim_win_get_cursor(0)
+    vim.cmd([[:%s/\s\+$//e]])
+    api.nvim_win_set_cursor(0, cursor)
+  end)
 end)
 
 augroup("relativenumber_on_current_window", function(autocmd)
