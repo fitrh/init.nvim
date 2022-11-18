@@ -16,13 +16,13 @@ local Command = {}
 
 ---@class CmdOpts
 ---@field buf boolean|number
----@field opts CmdAttrs
+---@field opts? CmdAttrs
 
 ---Create user command
 ---Use `nvim_add_user_command` or `nvim_buf_add_user_command`
 ---@param name string #command name, UpperCamelCase
 ---@param cmd string|fun(opts?: table) #command string or lua function
----@param opts CmdOpts #optional command attributes, see `:h command-attributes`
+---@param opts? CmdOpts #optional command attributes, see `:h command-attributes`
 function Command.add(name, cmd, opts)
   opts = opts or {}
   local options = opts.opts or { nargs = 0 }
@@ -45,7 +45,8 @@ end
 ---@class UserCommand
 ---@field name string
 ---@field cmd string|function
----@field opts CmdOpts
+---@field buf? number
+---@field opts? CmdAttrs
 
 ---Create group of user command
 ---@param args CommandGroup

@@ -1,5 +1,5 @@
 ---@param component string|table
----@param padding table
+---@param padding number|table
 ---@return table component
 local function alignment(component, padding)
   if type(component) == "string" then

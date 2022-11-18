@@ -20,7 +20,7 @@ Keymap.modifier = {}
 
 ---Create keymap definition
 ---@param key string
----@param fn string|function
+---@param fn? string|function
 ---@param opts? KeymapArgs
 ---@return KeymapDef definition
 function Keymap.map(key, fn, opts)
@@ -35,7 +35,7 @@ end
 
 ---`vim.keymap.set` wrapper
 ---@param keymap KeymapDef
----@param opts KeymapArgs
+---@param opts? KeymapArgs
 local function set(keymap, opts)
   keymap.mode = next(keymap.mode) and keymap.mode or ""
   keymap.opts = keymap.opts or opts or {}
@@ -45,7 +45,7 @@ end
 ---Bind @keymaps using `vim.keymap.set` API
 ---
 ---@param keymaps KeymapDef|KeymapDef[]
----@param opts KeymapArgs @global opts
+---@param opts? KeymapArgs @global opts
 function Keymap.bind(keymaps, opts)
   if not next(keymaps) then
     return

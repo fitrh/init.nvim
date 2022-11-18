@@ -15,8 +15,8 @@ local Server = {}
 
 ---Base configuration for `vim.lsp.start_client`
 ---@param bin string #binary executable name
----@param opts ServerConfig #`vim.lsp.start_client` config
----@return table ServerConfig
+---@param opts? ServerConfig #`vim.lsp.start_client` config
+---@return boolean|table ServerConfig
 function Server.with(bin, opts)
   if vim.fn.executable(bin) ~= 1 then
     return false

@@ -29,7 +29,7 @@ option.zen = {
 
 ---Manage option for zen window
 ---@param zen boolean @zen mode active state
----@param scope boolean|table @manage global and window option
+---@param scope? boolean|table @manage global and window option
 local function opt(zen, scope)
   scope = scope or { global = true, win = true }
   if type(scope) == "boolean" then
@@ -165,6 +165,7 @@ function Zen.enter(args)
 
   local show = opts.show or {}
   for _, zen_opt in ipairs(option.zen) do
+    ---@type boolean|number|string|table
     local opt_state = state[zen_opt.name]
 
     if state.zen then

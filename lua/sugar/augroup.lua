@@ -52,11 +52,11 @@ local function create_group(group)
   return group
 end
 
----@alias AuCallback fun(events:string|table, filter:number|string|table, action:string|function)
+---@alias AuCallback fun(events:string|table, filter:number|string|table, action:string|function|table)
 
 ---Create group of autocommand
 ---@param name string|table @if table, the structure is { group:string, clear:boolean }
----@param callback fun(au:AuCallback)
+---@param callback fun(autocmd:AuCallback)
 return function(name, callback)
   local group = create_group(name)
   callback(function(events, filter, action)
