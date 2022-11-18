@@ -168,6 +168,11 @@ config.extensions = {
     prompt_prefix = "   ",
     hide_parent_dir = true,
     collapse_dirs = true,
+    mappings = {
+      i = {
+        ["<M-f>"] = telescope.extensions.file_browser.actions.toggle_browser,
+      },
+    },
   },
   fzf = {},
 }
