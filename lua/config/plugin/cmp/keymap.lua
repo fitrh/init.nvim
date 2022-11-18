@@ -9,7 +9,13 @@ function M.setup(cmp, snippet)
 
   return {
     ["<C-p>"] = map({
-      i = map.select_prev_item(select_only),
+      i = function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item(select_only)
+        else
+          fallback()
+        end
+      end,
       c = function()
         if cmp.visible() then
           cmp.select_prev_item()
@@ -19,7 +25,13 @@ function M.setup(cmp, snippet)
       end,
     }),
     ["<C-n>"] = map({
-      i = map.select_next_item(select_only),
+      i = function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item(select_only)
+        else
+          fallback()
+        end
+      end,
       c = function()
         if cmp.visible() then
           cmp.select_next_item()
@@ -34,7 +46,16 @@ function M.setup(cmp, snippet)
     ["<C-b>"] = map(map.abort(), { "i", "c" }),
     ["<C-f>"] = map(map.confirm({ select = true }), { "i", "c" }),
     ["<C-e>"] = map(map.abort(), { "i", "c" }),
-    ["<C-y>"] = map(map.confirm({ select = true }), { "i", "c" }),
+    ["<C-y>"] = map({
+      i = map.confirm({ select = true }),
+      c = function(fallback)
+        if cmp.visible() then
+          cmp.confirm({ select = true })
+        else
+          fallback()
+        end
+      end,
+    }),
     ["<CR>"] = map.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
     ["<C-j>"] = map(function(fallback)
       if snippet.expand_or_jumpable() then
