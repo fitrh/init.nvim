@@ -138,6 +138,7 @@ pickers.git_status = {
 pickers.lsp_document_symbols = {
   layout_config = {
     anchor = "N",
+    height = 0.35,
     mirror = true,
     width = 0.50,
   },
