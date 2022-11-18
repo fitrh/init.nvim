@@ -43,7 +43,6 @@ set.pastetoggle = "<F2>" -- toggling paste mode when press this key
 set.path:remove({ "/usr/include" })
 set.path:append({ "**" }) -- search in current directory recursively
 set.pumblend = 10 -- pseudo-transparency for the popup-menu, value : 0 - 100
-set.pumheight = 10 -- maximum number of items to show in the pop-up menu
 set.relativenumber = true -- show line number relative to the line with the cursor
 set.ruler = false -- hide line & column information, use g Ctrl + g instead
 set.shell = "/usr/bin/bash" -- use absolute path to avoid using $SHELL
