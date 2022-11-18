@@ -1,4 +1,12 @@
 require("litee.lib").setup({
+  tree = {
+    icon_set_custom = {
+      Collapsed = "",
+      Expanded = "",
+      IndentGuide = " ",
+    },
+    icon_set = "nerd",
+  },
   panel = {
     orientation = "right",
     panel_size = math.ceil(vim.api.nvim_get_option("columns") / 4),
