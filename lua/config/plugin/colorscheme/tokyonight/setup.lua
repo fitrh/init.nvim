@@ -34,10 +34,9 @@ require("sugar.highlight").colorscheme(function(h)
   set("FloatBorder", { inherit = "NormalFloat", fg = bg("NormalFloat") })
   link("Folded", "LineNr")
   link("MatchParen", "LspReferenceText")
-  link("TabLineSel", "Normal")
   link("TabLine", "StatusLineNC")
   link("TabLineFill", "TabLine")
-  set("VertSplit", { fg = c.bg_statusline, cterm = { reverse = true } })
+  link("TabLineSel", "Normal")
 
   -- treesitter
   set("@constant.builtin.dart", { fg = c.red })
@@ -93,7 +92,6 @@ require("sugar.highlight").colorscheme(function(h)
   set("TelescopeBorder", { bg = c.bg_statusline, fg = c.bg_statusline })
   set("TodoLink", { fg = c.blue0 })
   set("TodoTest", { fg = c.magenta2 })
-  set("TreesitterContext", { inherit = "ColorColumn", bold = true })
   set("TreesitterContextLineNumber", {
     inherit = "TreesitterContext",
     fg = c.fg_dark,
