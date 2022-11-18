@@ -62,6 +62,7 @@ set.signcolumn = "no" -- disable signcolumn
 set.smartcase = true -- use case-sensitive when the search term contains an uppercase letter
 set.softtabstop = -1 -- number of spaces that a <Tab> counts for while performing editing operations, negative means use 'shiftwidth' value
 set.splitbelow = true -- when :split, put the new window below the current one
+set.splitkeep = "topline" -- when resizing or splitting a window, keep the top line the same
 set.splitright = true -- when :vsplit, put the new window right of the current one
 set.synmaxcol = 120 -- do syntax highlighting until synmaxcol character
 set.tabstop = 4 -- number of spaces that a <Tab> in the file counts for, controls how existing tab characters are displayed
