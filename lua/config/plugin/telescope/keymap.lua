@@ -41,8 +41,11 @@ keymap.bind({
   n(map(leader("gf"), function()
     require("telescope.builtin").git_files()
   end)),
-  n(map("gC", function()
+  n(map("gCc", function()
     require("telescope.builtin").git_commits()
+  end)),
+  n(map("gCb", function()
+    require("telescope.builtin").git_bcommits()
   end)),
   n(map("gB", function()
     require("telescope.builtin").git_branches()

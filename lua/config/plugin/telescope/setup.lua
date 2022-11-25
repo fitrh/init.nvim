@@ -125,6 +125,7 @@ pickers.git_commits = {
   prompt_prefix = "   ",
   theme = "dropdown",
 }
+pickers.git_bcommits = pickers.git_commits
 pickers.git_branches = {
   prompt_prefix = "   ",
   theme = "dropdown",
