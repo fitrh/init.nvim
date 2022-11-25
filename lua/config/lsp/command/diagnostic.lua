@@ -27,15 +27,35 @@ function M.attach(bufnr)
       },
       {
         name = "Disable",
-        cmd = function()
-          api.disable(0)
+        cmd = function(args)
+          local display_opts = {}
+          for _, arg in ipairs(args.fargs) do
+            display_opts[arg] = false
+          end
+
+          if next(display_opts) then
+            api.show(nil, 0, nil, display_opts)
+          else
+            api.disable(0)
+          end
         end,
+        opts = { nargs = "*" },
       },
       {
         name = "DisableAll",
-        cmd = function()
-          api.disable()
+        cmd = function(args)
+          local display_opts = {}
+          for _, arg in ipairs(args.fargs) do
+            display_opts[arg] = false
+          end
+
+          if next(display_opts) then
+            api.show(nil, nil, nil, display_opts)
+          else
+            api.disable()
+          end
         end,
+        opts = { nargs = "*" },
       },
       {
         name = "ShowInLine",
