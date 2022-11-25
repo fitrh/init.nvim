@@ -42,17 +42,9 @@ With.golangci_lint = {
   end,
 }
 
-With.isort = {
-  extra_args = { "--profile", "black" },
-}
-
-With.ktlint = {
-  timeout = 10000,
-}
-
-With.misspell = {
-  filetypes = plaintext,
-}
+With.isort = { extra_args = { "--profile", "black" } }
+With.ktlint = { timeout = 10000 }
+With.misspell = { filetypes = plaintext }
 
 With.mypy = {
   condition = function(u)
@@ -102,9 +94,7 @@ With.selene = {
   end,
 }
 
-With.shfmt = {
-  extra_args = { "-i", "4", "-ci" },
-}
+With.shfmt = { extra_args = { "-i", "4", "-ci" } }
 
 With.staticcheck = {
   condition = function(u)
@@ -131,9 +121,7 @@ With.stylua = {
   end,
 }
 
-With.write_good = {
-  filetypes = plaintext,
-}
+With.write_good = { filetypes = plaintext }
 
 With.yamlfmt = {
   condition = function(u)
