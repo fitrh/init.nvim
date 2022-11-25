@@ -8,6 +8,7 @@ function M.attach(client, bufnr)
   if capable.documentHighlightProvider then
     augroup({ "highlight_references", false }, function(autocmd)
       autocmd("CursorHold", bufnr, lsp.buf.document_highlight)
+
       local event = { "CursorMoved", "InsertEnter", "BufLeave" }
       autocmd(event, bufnr, lsp.buf.clear_references)
     end)
@@ -17,16 +18,18 @@ function M.attach(client, bufnr)
     augroup({ "format_on_save", false }, function(autocmd)
       autocmd("BufWritePre", bufnr, function()
         local format_on_save = vim.b[bufnr].format_on_save
-        if format_on_save then
-          if type(format_on_save) ~= "table" then
-            format_on_save = {}
-          end
-
-          lsp.buf.format({
-            timeout_ms = format_on_save.timeout_ms or 1000,
-            bufnr = bufnr,
-          })
+        if not format_on_save then
+          return
         end
+
+        if type(format_on_save) ~= "table" then
+          format_on_save = {}
+        end
+
+        lsp.buf.format({
+          timeout_ms = format_on_save.timeout_ms or 1000,
+          bufnr = bufnr,
+        })
       end)
     end)
   end
