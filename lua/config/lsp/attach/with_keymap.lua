@@ -4,7 +4,7 @@ function LspKeymap.attach(client, bufnr)
   local keymap = require("sugar.keymap")
   local map = keymap.map
   local leader, mode = keymap.modifier.leader, keymap.mode
-  local n, v = mode.normal, mode.vselect
+  local n, v, i = mode.normal, mode.vselect, mode.insert
 
   local lsp = vim.lsp.buf
   local capabilities_map = {
@@ -16,7 +16,13 @@ function LspKeymap.attach(client, bufnr)
     end,
     codeLensProvider = n(map("gcl", vim.lsp.codelens.run)),
     renameProvider = n(map("cn", lsp.rename)),
-    signatureHelpProvider = n(map("[s", lsp.signature_help)),
+    signatureHelpProvider = function()
+      local ctrl_slash = [[]]
+      return {
+        n(map("[s", lsp.signature_help)),
+        i(map(ctrl_slash, lsp.signature_help)),
+      }
+    end,
     hoverProvider = n(map("K", lsp.hover)),
     declarationProvider = n(map("goD", lsp.declaration)),
     definitionProvider = n(map("god", lsp.definition)),
