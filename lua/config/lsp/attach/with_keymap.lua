@@ -22,7 +22,7 @@ function LspKeymap.attach(client, bufnr)
     definitionProvider = n(map("god", lsp.definition)),
     typeDefinitionProvider = n(map("got", lsp.type_definition)),
     implementationProvider = n(map("gli", lsp.implementation)),
-    referencesProvider = n(map("glr", lsp.references)),
+    referencesProvider = n(map("[r", lsp.references)),
     documentSymbolProvider = n(map("gls", lsp.document_symbol)),
     workspaceSymbolProvider = n(map("glS", lsp.workspace_symbol)),
     callHierarchyProvider = function()
