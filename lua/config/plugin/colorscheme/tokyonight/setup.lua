@@ -19,16 +19,24 @@ config.sidebars = { "qf" }
 vim.api.nvim_set_option("background", get_mode())
 require("tokyonight").load(config)
 
-local c = require("tokyonight.colors").setup(config)
-local u = require("tokyonight.util")
-
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
-  local br_red = u.lighten(c.red, 0.2, c.red)
+  local c = require("tokyonight.colors").setup(config)
+  local util = require("tokyonight.util")
+
+  if get_mode() == "light" or get_variant() == "day" then
+    for key, value in pairs(c) do
+      c[key] = util.invert_colors(value)
+    end
+  end
+
+  local br_red = util.lighten(c.red, 0.2, c.red)
+  local base = bg("Normal")
+  local bg_statusline = bg("StatusLine")
 
   -- highlight-default
-  set("ColorColumn", { bg = blend(c.bg_statusline, c.bg, 0.4) })
-  set("CursorColumn", { bg = blend(c.blue, c.bg, 0.05) })
+  set("ColorColumn", { bg = blend(bg_statusline, base, 0.4) })
+  set("CursorColumn", { bg = blend(c.blue, base, 0.05) })
   link("CursorLine", "CursorColumn")
   set("CursorLineNr", { fg = c.blue })
   set("FloatBorder", { inherit = "NormalFloat", fg = bg("NormalFloat") })
@@ -55,7 +63,7 @@ require("sugar.highlight").colorscheme(function(h)
   link("InclineNormal", "StatusLine")
   link("InclineNormalNC", "StatusLineNC")
   set("InclineSep", { fg = fg("LineNr"), bold = true })
-  set("InclineWinNr", { fg = c.blue, bg = blend(c.blue, c.bg_statusline, 0.1) })
+  set("InclineWinNr", { fg = c.blue, bg = blend(c.blue, bg_statusline, 0.1) })
   set("LTSymbol", { fg = c.fg_dark })
   link("LTSymbolDetail", "Comment")
   link("LTSymbolJump", "LspReferenceText")
@@ -100,16 +108,16 @@ require("sugar.highlight").colorscheme(function(h)
   link("TabLineSep", "TabLine")
   set("TabLineModifiedSel", { inherit = "TabLineSel", fg = br_red })
   set("TabLineSepSel", { inherit = "TabLineSel", fg = c.blue })
-  set("TelescopeNormal", { bg = c.bg_statusline })
+  set("TelescopeNormal", { bg = bg_statusline })
   link("TelescopePreviewLine", "CursorLine")
   link("TelescopeSelection", "CursorLine")
   set("TelescopeTitle", { inherit = "Visual", fg = fg("Normal"), bold = true })
-  set("TelescopeBorder", { bg = c.bg_statusline, fg = c.bg_statusline })
+  set("TelescopeBorder", { bg = bg_statusline, fg = bg_statusline })
   set("TodoLink", { fg = c.blue0 })
   set("TodoTest", { fg = c.magenta2 })
   set("TreesitterContextLineNumber", {
     inherit = "TreesitterContext",
     fg = c.fg_dark,
   })
-  set("WinSeparatorZen", { fg = c.bg })
+  set("WinSeparatorZen", { fg = base })
 end)
