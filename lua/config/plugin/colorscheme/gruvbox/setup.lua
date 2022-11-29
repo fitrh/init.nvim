@@ -16,12 +16,28 @@ gruvbox.load()
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
   local c = require("gruvbox.palette")
+  local p = {}
+  p.red = c.bright_red
+  p.green = c.bright_green
+  p.blue = c.bright_blue
+  p.yellow = c.bright_yellow
+  p.orange = c.bright_orange
+  p.purple = c.bright_purple
+  p.aqua = c.bright_aqua
+
+  if get_mode() == "light" then
+    for key, _ in pairs(p) do
+      p[key] = c["faded_" .. key]
+    end
+  end
+
+  local base = { fg = fg("Normal"), bg = bg("Normal") }
 
   -- highlight-default
-  set("ColorColumn", { bg = blend(bg("ColorColumn"), bg("Normal"), 0.1) })
-  set("CursorColumn", { bg = blend(bg("CursorLine"), bg("Normal"), 0.3) })
+  set("ColorColumn", { bg = blend(bg("ColorColumn"), base.bg, 0.1) })
+  set("CursorColumn", { bg = blend(bg("CursorLine"), base.bg, 0.3) })
   link("CursorLine", "CursorColumn")
-  set("CursorLineNr", { fg = c.bright_yellow })
+  set("CursorLineNr", { fg = p.yellow })
   set("DiagnosticSignInfo", { inherit = "DiagnosticSignInfo", bg = "NONE" })
   set("DiagnosticSignWarn", { inherit = "DiagnosticSignWarn", bg = "NONE" })
   set("DiagnosticSignHint", { inherit = "DiagnosticSignHint", bg = "NONE" })
@@ -32,15 +48,15 @@ require("sugar.highlight").colorscheme(function(h)
   set("DiffText", { inherit = "DiffText", reverse = false })
   set("FloatBorder", { inherit = "NormalFloat", fg = bg("NormalFloat") })
   set("Folded", { inherit = "Folded", bg = "NONE" })
-  set("LineNr", { fg = c.light3 })
+  link("LineNr", "GruvboxFg3")
   link("SignColumn", "LineNr")
-  set("StatusLine", { bg = c.dark1, fg = c.light2 })
-  set("TabLineSel", { inherit = "TabLineSel", bg = bg("Normal") })
+  set("StatusLine", { bg = fg("GruvboxBg1"), fg = fg("GruvboxFg2") })
+  set("TabLineSel", { inherit = "TabLineSel", bg = base.bg })
   set("VertSplit", { fg = bg("StatusLine") })
 
   -- health
   link("healthError", "DiagnosticError")
-  set("healthSuccess", { fg = c.bright_green })
+  set("healthSuccess", { fg = p.green })
   link("healthWarning", "DiagnosticWarn")
 
   -- plugin
@@ -49,25 +65,22 @@ require("sugar.highlight").colorscheme(function(h)
   set("GitSignsAdd", { inherit = "GitSignsAdd", bg = "NONE" })
   set("GitSignsChange", { inherit = "GitSignsChange", bg = "NONE" })
   set("GitSignsDelete", { inherit = "GitSignsDelete", bg = "NONE" })
-  for i, p in ipairs({
-    "bright_purple",
-    "bright_aqua",
-    "bright_blue",
-    "neutral_yellow",
-    "neutral_green",
-    "neutral_purple",
+  for i, v in ipairs({
+    p.purple,
+    p.aqua,
+    p.blue,
+    c["neutral_yellow"],
+    c["neutral_green"],
+    c["neutral_purple"],
   }) do
-    set(("HeadLine%s"):format(i), {
-      fg = c[p],
-      bg = blend(c[p], bg("Normal"), 0.05),
-    })
+    set(("HeadLine%s"):format(i), { fg = v, bg = blend(v, base.bg, 0.05) })
   end
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("Comment") })
   set("InclineSep", { fg = fg("Comment"), bold = true })
   set("InclineWinNr", {
-    fg = c.bright_yellow,
-    bg = blend(c.bright_yellow, bg("StatusLine"), 0.1),
+    fg = p.yellow,
+    bg = blend(p.yellow, bg("StatusLine"), 0.1),
   })
   link("LspSignatureActiveParameter", "GruvboxYellow")
   link("LTSymbol", "GruvboxFg2")
@@ -89,11 +102,11 @@ require("sugar.highlight").colorscheme(function(h)
   link("LTURI", "@text.uri")
   set("ModesCopy", { bg = fg("IncSearch") })
   set("ModesCopyCursorLineNr", { fg = bg("ModesCopy") })
-  set("ModesDelete", { bg = c.bright_red })
+  set("ModesDelete", { bg = p.red })
   set("ModesDeleteCursorLineNr", { fg = bg("ModesDelete") })
-  set("ModesInsert", { bg = c.bright_blue })
+  set("ModesInsert", { bg = p.blue })
   set("ModesInsertCursorLineNr", { fg = bg("ModesInsert") })
-  set("ModesVisual", { bg = c.bright_purple })
+  set("ModesVisual", { bg = p.purple })
   set("ModesVisualCursorLineNr", { fg = bg("ModesVisual") })
   link("NotifyTRACEBorder", "DiagnosticHint")
   link("NotifyTRACETitle", "NotifyTRACEBorder")
@@ -110,8 +123,8 @@ require("sugar.highlight").colorscheme(function(h)
   link("NotifyERRORBorder", "DiagnosticError")
   link("NotifyERRORTitle", "NotifyERRORBorder")
   link("NotifyERRORIcon", "NotifyERRORBorder")
-  set("StatusLineDim", { inherit = "StatusLine", fg = c.light4 })
-  set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.bright_purple })
+  set("StatusLineDim", { inherit = "StatusLine", fg = fg("GruvboxFg4") })
+  set("StatusLineGitBranch", { inherit = "StatusLine", fg = p.purple })
   for _, kind in ipairs({ "Add", "Change", "Delete" }) do
     local group = ("StatusLineGitDiff%s"):format(kind)
     set(group, { inherit = "StatusLine", fg = fg(("GitSigns%s"):format(kind)) })
@@ -120,18 +133,18 @@ require("sugar.highlight").colorscheme(function(h)
   set("StatusLinePath", { inherit = "StatusLine", fg = fg("Comment") })
   set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = c.faded_red })
-  set("StatusLineMNormal", { fg = c.bright_yellow })
-  set("StatusLineMInsert", { fg = c.bright_blue })
-  set("StatusLineMVisual", { fg = c.bright_orange })
-  set("StatusLineMReplace", { fg = c.bright_aqua })
-  set("StatusLineMCommand", { fg = c.bright_red })
+  set("StatusLineMNormal", { fg = p.yellow })
+  set("StatusLineMInsert", { fg = p.blue })
+  set("StatusLineMVisual", { fg = p.orange })
+  set("StatusLineMReplace", { fg = p.aqua })
+  set("StatusLineMCommand", { fg = p.red })
   set("TabLineModified", { inherit = "TabLine", fg = c.bright_red })
   link("TabLineSep", "TabLine")
   set("TabLineModifiedSel", { inherit = "TabLineSel", fg = c.bright_red })
-  set("TabLineSepSel", { inherit = "TabLineSel", fg = c.bright_blue })
+  set("TabLineSepSel", { inherit = "TabLineSel", fg = p.blue })
   set("TelescopeNormal", { bg = bg("StatusLine") })
   link("TelescopePreviewLine", "CursorLine")
-  set("TelescopeTitle", { inherit = "Visual", fg = fg("Normal"), bold = true })
+  set("TelescopeTitle", { inherit = "Visual", fg = base.fg, bold = true })
   set("TelescopeBorder", { bg = bg("StatusLine"), fg = bg("StatusLine") })
   link("TelescopePromptBorder", "TelescopeBorder")
   link("TelescopePromptCounter", "StatusLine")
@@ -142,7 +155,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("TreesitterContext", { inherit = "ColorColumn", bold = true })
   set("TreesitterContextLineNumber", {
     inherit = "TreesitterContext",
-    fg = fg("Normal"),
+    fg = base.fg,
   })
-  set("WinSeparatorZen", { fg = bg("Normal") })
+  set("WinSeparatorZen", { fg = base.bg })
 end)
