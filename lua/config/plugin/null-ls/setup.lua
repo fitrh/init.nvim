@@ -11,6 +11,7 @@ local formatter = {
   "phpcbf",
   "pint",
   "prettierd",
+  "rustywind",
   "shfmt",
   "stylelint",
   "stylua",

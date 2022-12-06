@@ -77,6 +77,16 @@ With.revive = {
   end,
 }
 
+With.rustywind = {
+  condition = function(u)
+    return u.root_has_file({
+      "tailwind.config.js",
+      "tailwind.config.cjs",
+      "tailwind.config.ts",
+    })
+  end,
+}
+
 With.prettierd = {
   condition = function(u)
     return u.root_has_file({
