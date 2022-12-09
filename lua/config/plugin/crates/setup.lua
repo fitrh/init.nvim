@@ -21,6 +21,8 @@ require("crates").setup({
     min_width = 20,
     text = {
       title = " 📦 %s ",
+      pill_left = "",
+      pill_right = "",
       version = "   %s ",
       prerelease = " 裂%s ",
       yanked = " 戀%s ",
