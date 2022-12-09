@@ -1,12 +1,12 @@
 require("crates").setup({
   text = {
-    loading = "   Loading  ",
-    version = "  ﰖ %s  ",
-    prerelease = "  裂%s  ",
-    yanked = "  戀%s  ",
-    nomatch = "  𥉉No match  ",
-    upgrade = "  療%s  ",
-    error = "   Error fetching crate  ",
+    loading = "  Loading ",
+    version = " ﰖ %s ",
+    prerelease = " 裂%s ",
+    yanked = " 戀%s ",
+    nomatch = " 𥉉No match ",
+    upgrade = " 療%s ",
+    error = "  Error fetching crate ",
   },
   highlight = {
     loading = "DiagnosticVirtualTextHint",
