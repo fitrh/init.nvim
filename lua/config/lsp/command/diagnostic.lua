@@ -14,19 +14,19 @@ function M.attach(bufnr)
     buf = bufnr,
     cmds = {
       {
-        name = "Enable",
+        name = "BufEnable",
         cmd = function()
           api.enable(0)
         end,
       },
       {
-        name = "EnableAll",
+        name = "Enable",
         cmd = function()
           api.enable()
         end,
       },
       {
-        name = "Disable",
+        name = "BufDisable",
         cmd = function(args)
           local display_opts = {}
           for _, arg in ipairs(args.fargs) do
@@ -42,7 +42,7 @@ function M.attach(bufnr)
         opts = { nargs = "*" },
       },
       {
-        name = "DisableAll",
+        name = "Disable",
         cmd = function(args)
           local display_opts = {}
           for _, arg in ipairs(args.fargs) do
