@@ -50,13 +50,14 @@ return function()
       local tail = name:sub(name_width - 10, name_width)
       name = ("%s…%s"):format(head, tail)
     end
-    item[#item + 1] = { name, gui = "bold" }
+    item[#item + 1] = { name }
 
     if i < #symbols then
       item[#item + 1] = separator
     end
     result[#result + 1] = item
   end
+  result[#result].gui = "bold"
 
   if #result > 4 then
     local head = { result[1], result[2] }
