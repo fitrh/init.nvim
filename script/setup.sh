@@ -13,15 +13,13 @@ main() (
 
     case "$1" in
         "headless")
-            nvim --headless \
-                -u NONE \
+            nvim --headless -u NONE -i NONE \
                 -c 'autocmd User PackerComplete quitall' \
                 -c 'lua require("config.plugin.packer")' \
                 -c 'PackerSync'
             ;;
         *)
-            nvim \
-                -u NONE \
+            nvim -u NONE -i NONE \
                 -c 'set cmdheight=1' \
                 -c 'lua require("config.plugin.packer")' \
                 -c 'PackerSync'
