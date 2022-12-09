@@ -16,6 +16,7 @@ config.setup({
     "fennel",
     "fish",
     "git_rebase",
+    "gitcommit",
     "gitignore",
     "go",
     "gomod",

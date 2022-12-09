@@ -18,6 +18,7 @@ return {
       "dockerfile",
       "fish",
       "fennel",
+      "gitcommit",
       "gitignore",
       "gitrebase",
       "go",
