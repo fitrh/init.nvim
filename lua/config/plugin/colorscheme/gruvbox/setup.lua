@@ -50,7 +50,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("Folded", { inherit = "Folded", bg = "NONE" })
   link("LineNr", "GruvboxFg3")
   link("SignColumn", "LineNr")
-  set("StatusLine", { bg = fg("GruvboxBg1"), fg = fg("GruvboxFg2") })
+  set("StatusLine", { bg = fg("GruvboxBg1"), fg = fg("GruvboxFg3") })
   set("TabLineSel", { inherit = "TabLineSel", bg = base.bg })
   set("VertSplit", { fg = bg("StatusLine") })
 
