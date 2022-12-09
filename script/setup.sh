@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/bin/sh -e
+
+set -efu
 
 main() (
     [ -f ./init.lua ] && mv -v ./init.lua ./init.lua_"$(date +'%F_%H%M%S')".bak
