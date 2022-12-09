@@ -5,11 +5,17 @@ local pumblend = vim.api.nvim_get_option("pumblend")
 config.input = {
   insert_only = false,
   anchor = "NW",
-  winblend = pumblend,
+  win_options = {
+    winblend = pumblend,
+  },
 }
 
 config.select = {
-  winblend = pumblend,
+  builtin = {
+    win_options = {
+      winblend = pumblend,
+    },
+  },
   format_item_override = {
     codeaction = function(action_tuple)
       local title = action_tuple[2].title:gsub("\r\n", "\\r\\n")
