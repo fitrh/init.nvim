@@ -78,6 +78,7 @@ require("sugar.highlight").colorscheme(function(h)
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("Comment") })
   set("InclineSep", { fg = fg("Comment"), bold = true })
+  set("InclineTail", { fg = fg("GruvboxFg4"), bold = true })
   set("InclineWinNr", {
     fg = p.yellow,
     bg = blend(p.yellow, bg("StatusLine"), 0.1),

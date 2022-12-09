@@ -50,8 +50,9 @@ require("sugar.highlight").colorscheme(function(h)
   set("HopNextKey2", { fg = c.waveBlue2 })
   set("HopUnmatched", { fg = c.sumiInk4, special = c.sumiInk4 })
   link("InclineNormal", "StatusLine")
-  set("InclineNormalNC", { inherit = "StatusLineNC", fg = fg("NonText") })
+  set("InclineNormalNC", { inherit = "StatusLineNC", fg = c.sumiInk4 })
   set("InclineSep", { fg = fg("LineNr"), bold = true })
+  set("InclineTail", { fg = c.springViolet1, bold = true })
   set("InclineWinNr", {
     fg = fg("CursorLineNr"),
     bg = blend(fg("CursorLineNr"), bg("StatusLine"), 0.1),

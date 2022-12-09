@@ -52,8 +52,8 @@ return function(props)
     result[#result + 1] = { ICON.MO, group = "StatusLineModified" }
   end
 
-  local filename = vim.fn.fnamemodify(bufname, ":t")
-  filename = path and { filename, gui = "bold" } or filename
+  local filename = vim.split(bufname, "/")
+  filename = { filename[#filename], group = "InclineTail" }
   result[#result + 1] = filename
 
   return { result, " " }

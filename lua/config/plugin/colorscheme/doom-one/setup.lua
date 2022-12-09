@@ -61,6 +61,7 @@ require("sugar.highlight").colorscheme(function(h)
   link("InclineNormal", "StatusLine")
   link("InclineNormalNC", "StatusLineNC")
   set("InclineSep", { fg = fg("StatusLineNC"), bold = true })
+  set("InclineTail", { fg = p.base6, bold = true })
   set("InclineWinNr", {
     fg = p.blue,
     bg = blend(p.blue, bg("StatusLine"), 0.1),
