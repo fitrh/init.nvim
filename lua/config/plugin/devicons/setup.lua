@@ -9,6 +9,7 @@ icon.override = {
   ["Cargo.toml"] = { icon = "", color = "#dea584", name = "CargoTOML" },
   ["Cargo.lock"] = { icon = "", color = "#9e5f27", name = "CargoLock" },
   config = { icon = "", color = "#ececec", name = "Config" },
+  editorconfig = icon.default["conf"],
   fish = { icon = "", color = "#59ccff", name = "Fish" },
   gradlew = { icon = "ﳄ", name = "Gradle" },
   ["gradlew.bat"] = { icon = "ﳄ", name = "Gradle" },
