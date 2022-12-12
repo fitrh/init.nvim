@@ -28,9 +28,18 @@ function M.attach(bufnr)
   vim.diagnostic.config({
     virtual_text = false,
     float = {
-      source = "always",
       format = function(diagnostic)
         return trim(diagnostic.message)
+      end,
+      prefix = function(diagnostic, i, total)
+        local hl = "Comment"
+        local prefix = total > 1 and ("%d. "):format(i) or ""
+
+        if diagnostic.source then
+          prefix = ("%s%s: "):format(prefix, trim(diagnostic.source))
+        end
+
+        return prefix, hl
       end,
     },
     severity_sort = true,
