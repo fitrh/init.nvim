@@ -8,8 +8,8 @@ return function(client, bufnr)
   end
 
   require("config.lsp.attach.with_keymap").attach(client, bufnr)
-  require("config.lsp.attach.with_diagnostic_keymap").attach(bufnr)
   require("config.lsp.event").attach(client, bufnr)
-  require("config.lsp.diagnostic").attach()
+  require("config.lsp.diagnostic").attach(bufnr)
+
   vim.api.nvim_buf_set_var(bufnr, "lsp_attached", true)
 end

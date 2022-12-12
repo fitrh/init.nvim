@@ -15,23 +15,18 @@ end
 
 local M = {}
 
-function M.attach(args)
+function M.attach(bufnr)
   local sign = require("const.DIAGNOSTIC_SIGN")
-  local opts = args or {}
-  local diagnostics = {
-    Error = opts.e or sign.ERROR,
-    Warn = opts.w or sign.WARN,
-    Info = opts.i or sign.INFO,
-    Hint = opts.h or sign.HINT,
+  local severities = {
+    [vim.diagnostic.severity.ERROR] = { text = "Error", sign = sign.ERROR },
+    [vim.diagnostic.severity.WARN] = { text = "Warn", sign = sign.WARN },
+    [vim.diagnostic.severity.INFO] = { text = "Info", sign = sign.INFO },
+    [vim.diagnostic.severity.HINT] = { text = "Hint", sign = sign.HINT },
   }
 
-  for type, text in pairs(diagnostics) do
-    local diagnostic = ("DiagnosticSign%s"):format(type)
-    vim.fn.sign_define(diagnostic, {
-      text = text,
-      texthl = diagnostic,
-      numhl = diagnostic,
-    })
+  for _, severity in pairs(severities) do
+    local hl = ("DiagnosticSign%s"):format(severity.text)
+    vim.fn.sign_define(hl, { text = severity.sign, texthl = hl, numhl = hl })
   end
 
   vim.diagnostic.config({
@@ -42,6 +37,8 @@ function M.attach(args)
     },
     severity_sort = true,
   })
+
+  require("config.lsp.attach.with_diagnostic_keymap").attach(bufnr)
 
   require("sugar.augroup")("diagnostic_on_insert", function(autocmd)
     autocmd("InsertEnter", "*", function(args)
