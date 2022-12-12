@@ -1,16 +1,12 @@
-local function with_diagnostic_code(result)
-  local msg = result.message
-  local ends_w_dot = string.sub(msg, -1, -1) == "."
+local function trim(str)
+  str = str:gsub("^%s*(.-)%s*$", "%1")
 
-  if ends_w_dot then
-    msg = string.sub(msg, 1, -2)
+  if string.sub(str, -1, -1) == "." then
+    str = string.sub(str, 1, -2)
+    str = str:gsub("^%s*(.-)%s*$", "%1")
   end
 
-  if result.code then
-    return ("%s [%s]"):format(msg, result.code)
-  end
-
-  return msg
+  return str
 end
 
 local M = {}
@@ -33,7 +29,9 @@ function M.attach(bufnr)
     virtual_text = false,
     float = {
       source = "always",
-      format = with_diagnostic_code,
+      format = function(diagnostic)
+        return trim(diagnostic.message)
+      end,
     },
     severity_sort = true,
   })
