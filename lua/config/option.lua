@@ -44,7 +44,7 @@ set.path:append({ "**" }) -- search in current directory recursively
 set.pumblend = 10 -- pseudo-transparency for the popup-menu, value : 0 - 100
 set.relativenumber = true -- show line number relative to the line with the cursor
 set.ruler = false -- hide line & column information, use g Ctrl + g instead
-set.shell = "/usr/bin/bash" -- use absolute path to avoid using $SHELL
+set.shell = "/bin/sh" -- use absolute path to avoid using $SHELL
 set.shiftwidth = 0 -- number of spaces to use for each step of (auto)indent, 0 means use 'tabstop' value
 set.shortmess = { -- shorten message in prompt window
   a = true, -- enable 'filmnrwx' flag
