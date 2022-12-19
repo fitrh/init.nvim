@@ -48,10 +48,16 @@ set.shell = "/bin/sh" -- use absolute path to avoid using $SHELL
 set.shiftwidth = 0 -- number of spaces to use for each step of (auto)indent, 0 means use 'tabstop' value
 set.shortmess = { -- shorten message in prompt window
   a = true, -- enable 'filmnrwx' flag
+  o = true, -- overwrite message for writing a file with subsequent message for reading a file
   t = true, -- truncate file message at the start
+  s = true, -- don't give "search hit/continuing *" message
   T = true, -- truncate other messages in the middle
+  W = true, -- don't give "written" or "[w]" when writing a file
+  I = true, -- don't give the intro message when starting Vim
   c = true, -- don't give ins-completion-menu messages
+  C = true, -- don't give messages while scanning for ins-completion items
   F = true, -- don't give the file info when editing a file
+  S = true, -- don't show search count message when searching
 }
 set.showcmd = false -- hide (partial) command in the last line of the screen
 set.showmatch = true -- highlight matching <[{()}]>
