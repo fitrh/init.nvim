@@ -17,6 +17,9 @@ set.completeopt:append({
 set.conceallevel = 2 -- hide concealed text unless it has a custom replacement
 set.confirm = true -- raise a dialogue asking if you wish to save changed files
 set.cursorline = true -- highlight current line
+set.diffopt:append({
+  "linematch:60", -- enable a second stage diff on each generated hunk in order to align lines
+})
 set.expandtab = true -- by default, always use space!
 set.fillchars = {
   horiz = "━",
