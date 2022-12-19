@@ -4,10 +4,9 @@ set.backup = true -- always persist backup file
 set.backupcopy = "auto" -- best option for backup strategy
 set.backupdir = ("%s/backup//"):format(vim.fn.stdpath("state"))
 set.backupskip:append({ "*/.git/*" }) -- file patterns to ignore by 'backup'
-set.breakindent = true
+set.breakindent = true -- continue indenting wrapped lines
 set.colorcolumn = { "+1" } -- draw a vertical ruler at (textwidth + 1)th column
-set.complete:remove({
-  -- disable scan for
+set.complete:remove({ -- disable scan for
   "u", -- unload buffers
   "t", -- tag completion
 })
@@ -40,7 +39,7 @@ set.mouse = "" -- ignore mouse completely
 set.nrformats:append({ "alpha" }) -- increment/decrement for alphabet
 set.number = true -- enable line number
 set.pastetoggle = "<F2>" -- toggling paste mode when press this key
-set.path:remove({ "/usr/include" })
+set.path:remove({ "/usr/include" }) -- remove system header from search commands
 set.path:append({ "**" }) -- search in current directory recursively
 set.pumblend = 10 -- pseudo-transparency for the popup-menu, value : 0 - 100
 set.relativenumber = true -- show line number relative to the line with the cursor
