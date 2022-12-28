@@ -42,6 +42,10 @@ require("sugar.highlight").colorscheme(function(h)
   link("TabLineFill", "TabLine")
   set("VertSplit", { fg = bg("StatusLine") })
 
+  -- treesitter-highlight-groups
+  set("@text.diff.add", { inherit = "DiffAddedGutter", bold = false })
+  set("@text.diff.delete", { inherit = "DiffRemovedGutter", bold = false })
+
   -- diagnostic-highlights
   link("DiagnosticError", "DiagnosticDefaultError")
   link("DiagnosticWarn", "DiagnosticDefaultWarn")

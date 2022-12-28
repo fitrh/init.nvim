@@ -37,6 +37,10 @@ require("sugar.highlight").colorscheme(function(h)
   link("TabLineFill", "TabLine")
   set("VertSplit", { fg = p.bg2 })
 
+  -- treesitter-highlight-groups
+  set("@text.diff.add", { inherit = "diffAdded", bg = "NONE" })
+  set("@text.diff.delete", { inherit = "diffRemoved", bg = "NONE" })
+
   -- plugin
   link("CmpCursorLine", "Visual")
   set("FidgetTask", { inherit = "Comment", italic = false })

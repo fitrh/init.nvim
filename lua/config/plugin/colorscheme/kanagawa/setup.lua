@@ -32,6 +32,10 @@ require("sugar.highlight").colorscheme(function(h)
   set("VertSplit", { fg = bg("StatusLine") })
   link("WinSeparator", "VertSplit")
 
+  -- treesitter-highlight-groups
+  link("@text.diff.add", "diffAdded")
+  link("@text.diff.delete", "diffRemoved")
+
   -- plugin
   link("CmpCursorLine", "PmenuSel")
   link("FloatTitle", "Title")

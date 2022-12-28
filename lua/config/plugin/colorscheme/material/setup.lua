@@ -50,6 +50,10 @@ require("sugar.highlight").colorscheme(function(h)
   -- lsp-highlight
   set("LspSignatureActiveParameter", { fg = c.editor.accent })
 
+  -- treesitter-highlight-groups
+  link("@text.diff.add", "diffAdded")
+  link("@text.diff.delete", "diffRemoved")
+
   -- plugin
   link("CmpCursorLine", "CursorLine")
   link("FloatTitle", "Title")
