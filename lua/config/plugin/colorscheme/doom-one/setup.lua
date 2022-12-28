@@ -51,6 +51,10 @@ require("sugar.highlight").colorscheme(function(h)
   link("DiagnosticWarn", "DiagnosticDefaultWarn")
   link("DiagnosticInfo", "DiagnosticDefaultInfo")
   link("DiagnosticHint", "DiagnosticDefaultHint")
+  for _, v in ipairs({ "Error", "Warn", "Info", "Hint" }) do
+    local group = ("DiagnosticUnderline%s"):format(v)
+    set(group, { inherit = group, underline = false, undercurl = true })
+  end
 
   -- plugin
   link("CmpCursorLine", "Visual")
