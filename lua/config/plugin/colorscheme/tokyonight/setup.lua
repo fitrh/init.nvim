@@ -51,7 +51,10 @@ require("sugar.highlight").colorscheme(function(h)
   set("@constant.builtin.dart", { fg = c.red })
   link("@text.diff.add", "diffAdded")
   link("@text.diff.delete", "diffRemoved")
-  set("@text.literal.markdown_inline", { bg = c.bg_highlight, fg = c.fg_dark })
+  set("@text.literal.markdown_inline", {
+    fg = c.fg_dark,
+    bg = blend(c.fg_dark, c.bg, 0.05),
+  })
   set("@namespace", { fg = c.magenta })
 
   -- plugin
