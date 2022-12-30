@@ -1,7 +1,7 @@
 local crates = require("crates")
 local keymap = require("sugar.keymap")
 local map, mode = keymap.map, keymap.mode
-local n, v = mode.normal, mode.vselect
+local n, v = mode.normal, mode.visual
 
 keymap.bind({
   n(map("[cr", crates.update)),

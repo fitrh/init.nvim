@@ -2,7 +2,7 @@ local keymap = require("sugar.keymap")
 local map, mode, modifier = keymap.map, keymap.mode, keymap.modifier
 local nop, leader, ex = modifier.nop, modifier.leader, modifier.ex
 local n, i, v, s, c, t =
-  mode.normal, mode.insert, mode.vselect, mode.select, mode.cmd, mode.terminal
+  mode.normal, mode.insert, mode.visual, mode.select, mode.cmd, mode.terminal
 
 keymap.bind({
   -- TODO: add reload config keymap

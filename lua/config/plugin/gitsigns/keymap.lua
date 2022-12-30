@@ -3,7 +3,7 @@ local M = {}
 function M.attach(gitsigns, bufnr)
   local keymap = require("sugar.keymap")
   local map, mode = keymap.map, keymap.mode
-  local n, v = mode.normal, mode.vselect
+  local n, v = mode.normal, mode.visual
 
   keymap.bind({
     n(map("]c", function()

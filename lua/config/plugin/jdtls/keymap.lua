@@ -3,7 +3,7 @@ local M = {}
 function M.attach(jdtls, bufnr)
   local keymap = require("sugar.keymap")
   local map, mode, leader = keymap.map, keymap.mode, keymap.modifier.leader
-  local n, v = mode.normal, mode.vselect
+  local n, v = mode.normal, mode.visual
 
   keymap.bind({
     n(map("goi", jdtls.organize_imports)),

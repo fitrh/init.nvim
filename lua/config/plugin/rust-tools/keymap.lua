@@ -2,7 +2,7 @@ local M = {}
 
 function M.attach(bufnr)
   local keymap = require("sugar.keymap")
-  local map, n, v = keymap.map, keymap.mode.normal, keymap.mode.vselect
+  local map, n, v = keymap.map, keymap.mode.normal, keymap.mode.visual
 
   keymap.bind({
     n(map("[rw", function()
