@@ -3,7 +3,9 @@ set.colorcolumn = ""
 set.signcolumn = "yes"
 
 vim.api.nvim_buf_set_keymap(0, "n", "q", "", {
-  callback = vim.cmd.helpclose,
+  callback = function()
+    vim.api.nvim_buf_delete(0, { force = true })
+  end,
   silent = true,
   noremap = true,
 })
