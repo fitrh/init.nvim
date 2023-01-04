@@ -13,6 +13,7 @@ set.complete:remove({ -- disable scan for
 set.completeopt:append({
   "menuone", -- use the popup menu also when there is only one match
   "noinsert", -- do not insert any text for a match until the user selects a match from the menu
+  "noselect", -- do not selecr a match in the menu, forece the user to select one from the menu
 })
 set.conceallevel = 2 -- hide concealed text unless it has a custom replacement
 set.confirm = true -- raise a dialogue asking if you wish to save changed files
