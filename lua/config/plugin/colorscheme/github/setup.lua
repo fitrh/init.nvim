@@ -43,6 +43,7 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- plugin
   link("CmpCursorLine", "Visual")
+  set("CmpDoc", { inherit = "PmenuThumb", blend = 0 })
   set("FidgetTask", { inherit = "Comment", italic = false })
   link("FloatTitle", "Title")
   for i, c in ipairs({

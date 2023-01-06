@@ -38,6 +38,7 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- plugin
   link("CmpCursorLine", "PmenuSel")
+  set("CmpDoc", { inherit = "PmenuSel", blend = 0 })
   link("FloatTitle", "Title")
   for i, p in ipairs({
     "springViolet1",

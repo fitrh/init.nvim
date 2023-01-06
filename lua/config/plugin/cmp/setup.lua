@@ -71,8 +71,8 @@ config.window = {
     scrollbar = false,
   },
   documentation = {
-    border = "rounded",
-    winhighlight = "Search:None",
+    border = "solid",
+    winhighlight = "Normal:CmpDoc,FloatBorder:CmpDoc,Search:None",
     max_width = 80,
     max_height = 12,
   },

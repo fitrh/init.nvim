@@ -58,6 +58,7 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- plugin
   link("CmpCursorLine", "Visual")
+  set("CmpDoc", { inherit = "PmenuThumb", blend = 0 })
   link("FloatTitle", "Title")
   link("GitSignsAdd", "DiffAdd")
   link("GitSignsChange", "DiffChange")
