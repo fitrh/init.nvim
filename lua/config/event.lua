@@ -127,8 +127,7 @@ augroup("shiftwidth_sync", function(autocmd)
   end)
 
   autocmd("OptionSet", "tabstop", function(args)
-    local tabstop = tonumber(vim.v.option_new)
-    buf_set_option(args.buf, "shiftwidth", tabstop)
+    buf_set_option(args.buf, "shiftwidth", 0)
   end)
 end)
 
