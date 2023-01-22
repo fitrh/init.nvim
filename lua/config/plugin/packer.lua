@@ -2,7 +2,6 @@ vim.cmd.packadd("packer.nvim")
 
 local plugins = {
   { "nvim-lua/plenary.nvim", module = "plenary" },
-  { "gpanders/editorconfig.nvim", event = { "BufReadPost", "BufNewFile" } },
   { "ray-x/lsp_signature.nvim", module = "lsp_signature" },
   { "b0o/schemastore.nvim", ft = { "json", "jsonc" } },
   require("config.plugin.treesitter.packerspec"),
