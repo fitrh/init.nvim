@@ -1,5 +1,5 @@
 local config = {
-  level = "TRACE",
+  level = vim.log.levels.TRACE,
   timeout = 2500,
   max_width = function()
     return math.floor(math.max(vim.api.nvim_get_option("columns") / 2, 20))
