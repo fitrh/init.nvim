@@ -33,7 +33,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("TabLine", { inherit = "StatusLine", fg = c.fujiGray })
   link("TabLineFill", "TabLine")
   link("TabLineSel", "Normal")
-  set("VertSplit", { fg = bg("StatusLine") })
+  set("VertSplit", { fg = c.fg_border })
   link("WinSeparator", "VertSplit")
 
   -- treesitter-highlight-groups

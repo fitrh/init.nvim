@@ -42,7 +42,6 @@ require("sugar.highlight").colorscheme(function(h)
   set("StatusLine", { inherit = "StatusLine", fg = p.base7 })
   set("StatusLineNC", { inherit = "StatusLineNC", fg = p.base5 })
   link("TabLineFill", "TabLine")
-  set("VertSplit", { fg = bg("StatusLine") })
 
   -- treesitter-highlight-groups
   set("@text.diff.add", { inherit = "DiffAddedGutter", bold = false })

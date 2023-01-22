@@ -46,8 +46,6 @@ require("sugar.highlight").colorscheme(function(h)
   link("TabLine", "StatusLine")
   link("TablineFill", "TabLine")
   set("TabLineSel", { inherit = "Normal", fg = c.editor.accent })
-  set("VertSplit", { fg = bg("StatusLine"), cterm = { reverse = true } })
-  link("WinSeparator", "VertSplit")
 
   -- lsp-highlight
   set("LspSignatureActiveParameter", { fg = c.editor.accent })

@@ -48,6 +48,8 @@ require("sugar.highlight").colorscheme(function(h)
   link("TabLine", "StatusLineNC")
   link("TabLineFill", "TabLine")
   link("TabLineSel", "Normal")
+  set("VertSplit", { fg = c.bg_highlight })
+  link("WinSeparator", "VertSplit")
 
   -- treesitter
   set("@constant.builtin.dart", { fg = c.red })

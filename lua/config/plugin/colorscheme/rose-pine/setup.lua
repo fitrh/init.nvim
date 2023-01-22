@@ -34,7 +34,6 @@ require("sugar.highlight").colorscheme(function(h)
   link("MsgArea", "StatusLine")
   set("StatusLineNC", { fg = c.highlight_med, bg = c.base })
   link("TabLineSel", "Normal")
-  set("VertSplit", { fg = bg("StatusLine"), cterm = { reverse = true } })
 
   -- health
   link("healthError", "DiagnosticError")
