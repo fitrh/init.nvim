@@ -39,6 +39,12 @@ require("sugar.highlight").colorscheme(function(h)
   link("TabLineFill", "TabLine")
   set("VertSplit", { fg = p.fg_dark })
 
+  -- :h diagnostic-highlights
+  set("DiagnosticUnderlineHint", {
+    sp = fg("DiagnosticHint"),
+    undercurl = true,
+  })
+
   -- treesitter-highlight-groups
   set("@text.diff.add", { inherit = "diffAdded", bg = "NONE" })
   set("@text.diff.delete", { inherit = "diffRemoved", bg = "NONE" })
