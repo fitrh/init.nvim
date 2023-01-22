@@ -13,10 +13,10 @@ local api = {
 ---@param hex string @#RRGGBB
 ---@return RGBTable
 local function rgb(hex)
-  hex = hex:gsub("#", "")
-  local r = hex:sub(1, 2)
-  local g = hex:sub(3, 4)
-  local b = hex:sub(5, 6)
+  local rrggbb = string.gsub(hex, "#", "")
+  local r = rrggbb:sub(1, 2)
+  local g = rrggbb:sub(3, 4)
+  local b = rrggbb:sub(5, 6)
   return { r = tonumber(r, 16), g = tonumber(g, 16), b = tonumber(b, 16) }
 end
 
@@ -71,12 +71,12 @@ end
 ---@return fun():string @#RRGGBB
 function Highlight.blend(top, bottom, alpha)
   return function()
-    alpha = alpha > 1 and (alpha / 100) or alpha
-    bottom = rgb(type(bottom) == "function" and bottom() or bottom)
-    top = rgb(type(top) == "function" and top() or top)
+    local a = alpha > 1 and (alpha / 100) or alpha
+    local b = rgb(type(bottom) == "function" and bottom() or bottom)
+    local t = rgb(type(top) == "function" and top() or top)
 
     local function blend(c)
-      c = (alpha * top[c] + ((1 - alpha) * bottom[c]))
+      c = (a * t[c] + ((1 - a) * b[c]))
       return math.floor(math.min(math.max(0, c), 255) + 0.5)
     end
 
