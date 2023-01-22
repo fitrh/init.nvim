@@ -15,16 +15,22 @@ require("material").setup({
   contrast = {
     sidebar = true,
     floating_windows = true,
-    popup_menu = true,
   },
-  italics = {
-    comments = true,
-    keywords = true,
+  style = {
+    comments = { italic = true },
+    keywords = { italic = true },
   },
-  async_loading = false,
+  plugins = {
+    "gitsigns",
+    "nvim-cmp",
+    "nvim-web-devicons",
+    "telescope",
+    "trouble",
+  },
   disable = {
     colored_cursor = true,
   },
+  async_loading = false,
 })
 
 vim.cmd.colorscheme("material")
@@ -133,11 +139,9 @@ require("sugar.highlight").colorscheme(function(h)
   link("TabLineSep", "TabLine")
   set("TabLineModifiedSel", { inherit = "TabLineSel", fg = c.main.red })
   set("TabLineSepSel", { inherit = "TabLineSel", fg = c.editor.accent })
-  set("TelescopeNormal", { bg = bg("StatusLine") })
-  link("TelescopePreviewLine", "CursorLine")
-  link("TelescopeSelection", "CursorLine")
+  local telescope_bg = bg("TelescopeNormal")
   set("TelescopeTitle", { inherit = "Visual", fg = fg("Normal"), bold = true })
-  set("TelescopeBorder", { bg = bg("StatusLine"), fg = bg("StatusLine") })
+  set("TelescopeBorder", { bg = telescope_bg, fg = telescope_bg })
   link("TelescopePromptBorder", "TelescopeBorder")
   link("TelescopePreviewBorder", "TelescopeBorder")
   link("TelescopeResultsBorder", "TelescopeBorder")
