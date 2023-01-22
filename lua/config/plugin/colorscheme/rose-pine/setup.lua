@@ -86,6 +86,18 @@ require("sugar.highlight").colorscheme(function(h)
   set("ModesDeleteCursorLineNr", { fg = bg("ModesDelete") })
   set("ModesInsertCursorLineNr", { fg = bg("ModesInsert") })
   set("ModesVisualCursorLineNr", { fg = bg("ModesVisual") })
+
+  --- github.com/rcarriga/nvim-notify
+  for _, v in ipairs({ "TRACE", "DEBUG", "INFO", "WARN", "ERROR" }) do
+    local border = fmt("Notify%sBorder", v)
+    local title = fmt("Notify%sTitle", v)
+    local color = blend(fg(border), c.base, 0.05)
+    set(title, { inherit = border, bg = color })
+    link(fmt("Notify%sIcon", v), title)
+    link(fmt("Notify%sBody", v), title)
+    set(fmt("Notify%sBorder", v), { fg = color, bg = color })
+  end
+
   set("StatusLineDim", { inherit = "StatusLine", fg = c.muted })
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.iris })
   set("StatusLineGitDiffAdd", { inherit = "StatusLine", fg = c.foam })

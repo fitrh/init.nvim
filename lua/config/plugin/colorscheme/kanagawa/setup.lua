@@ -19,6 +19,8 @@ require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
   local fmt = string.format
 
+  local base = bg("Normal")
+
   -- highlight-default
   set("ColorColumn", { bg = blend(bg("StatusLine"), bg("Normal"), 0.3) })
   set("CursorColumn", { bg = blend(bg("CursorLine"), bg("Normal"), 0.2) })
@@ -88,6 +90,15 @@ require("sugar.highlight").colorscheme(function(h)
   set("ModesInsertCursorLineNr", { fg = bg("ModesInsert") })
   set("ModesVisual", { bg = c.oniViolet })
   set("ModesVisualCursorLineNr", { fg = bg("ModesVisual") })
+
+  --- github.com/rcarriga/nvim-notify
+  for _, v in ipairs({ "TRACE", "DEBUG", "INFO", "WARN", "ERROR" }) do
+    local title = fmt("Notify%sTitle", v)
+    local color = blend(fg(title), base, 0.05)
+    set(fmt("Notify%sBorder", v), { fg = color, bg = color })
+    set(fmt("Notify%sBody", v), { inherit = title, bg = color })
+  end
+
   set("StatusLineDim", { inherit = "StatusLine", fg = c.boatYellow1 })
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.springViolet1 })
   set("StatusLineGitDiffAdd", { inherit = "StatusLine", fg = c.git.added })
