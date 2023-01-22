@@ -22,6 +22,7 @@ local p = require("github-theme.palette").get_palette(config.theme_style)
 
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
+  local fmt = string.format
 
   -- highlight-default
   set("ColorColumn", { bg = blend(p.bg2, p.bg, 0.4) })
@@ -85,11 +86,16 @@ require("sugar.highlight").colorscheme(function(h)
   set("StatusLinePath", { inherit = "StatusLine", fg = p.black })
   set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = p.red })
-  set("StatusLineMNormal", { fg = p.bright_blue })
-  set("StatusLineMInsert", { fg = p.green })
-  set("StatusLineMVisual", { fg = p.bright_magenta })
-  set("StatusLineMReplace", { fg = p.red })
-  set("StatusLineMCommand", { fg = p.yellow })
+  for k, v in pairs({
+    Normal = p.bright_blue,
+    Insert = p.green,
+    Visual = p.bright_magenta,
+    Replace = p.red,
+    Command = p.yellow,
+  }) do
+    local def = { inherit = "StatusLine", fg = v, bold = true }
+    set(fmt("StatusLineM%s", k), def)
+  end
   set("TabLineModified", { inherit = "TabLine", fg = p.red })
   link("TabLineSep", "TabLine")
   set("TabLineModifiedSel", { inherit = "TabLineSel", fg = p.red })

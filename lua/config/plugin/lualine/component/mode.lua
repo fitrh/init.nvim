@@ -31,7 +31,6 @@ return {
     local mode = vim.api.nvim_get_mode().mode
     return modes[mode] or mode
   end,
-  color = { gui = "BOLD" },
   fmt = function(str)
     local fmt = require("config.plugin.lualine.component.util.fmt")
     return fmt.show_on(80, str, string.sub(str, 1, 1))

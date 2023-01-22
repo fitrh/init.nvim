@@ -22,6 +22,7 @@ local c = require("rose-pine.palette")
 
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
+  local fmt = string.format
 
   -- syntax, SEE: :help W18
   set("Comment", { inherit = "Comment", italic = true })
@@ -94,11 +95,18 @@ require("sugar.highlight").colorscheme(function(h)
   set("StatusLinePath", { inherit = "StatusLine", fg = c.highlight_high })
   set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = c.love })
-  set("StatusLineMNormal", { fg = c.rose })
-  set("StatusLineMInsert", { fg = c.foam })
-  set("StatusLineMVisual", { fg = c.iris })
-  set("StatusLineMReplace", { fg = c.pine })
-  set("StatusLineMCommand", { fg = c.love })
+
+  for k, v in pairs({
+    Normal = c.rose,
+    Insert = c.foam,
+    Visual = c.iris,
+    Replace = c.pine,
+    Command = c.love,
+  }) do
+    local def = { inherit = "StatusLine", fg = v, bold = true }
+    set(fmt("StatusLineM%s", k), def)
+  end
+
   set("TabLineModified", { inherit = "TabLine", fg = c.love })
   link("TabLineSep", "TabLine")
   set("TabLineModifiedSel", { inherit = "TabLineSel", fg = c.love })

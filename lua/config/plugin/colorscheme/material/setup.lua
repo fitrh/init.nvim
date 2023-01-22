@@ -33,6 +33,7 @@ local c = require("material.colors")
 
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
+  local fmt = string.format
 
   -- highlight-default
   set("ColorColumn", { bg = blend(c.editor.bg_alt, c.editor.bg, 0.3) })
@@ -120,11 +121,16 @@ require("sugar.highlight").colorscheme(function(h)
   set("StatusLinePath", { inherit = "StatusLine", fg = fg("Comment") })
   set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = c.main.darkred })
-  set("StatusLineMNormal", { fg = c.editor.accent })
-  set("StatusLineMInsert", { fg = c.main.green })
-  set("StatusLineMVisual", { fg = c.main.purple })
-  set("StatusLineMReplace", { fg = c.main.red })
-  set("StatusLineMCommand", { fg = c.main.yellow })
+  for k, v in pairs({
+    Normal = c.editor.accent,
+    Insert = c.main.green,
+    Visual = c.main.purple,
+    Replace = c.main.red,
+    Command = c.main.yellow,
+  }) do
+    local def = { inherit = "StatusLine", fg = v, bold = true }
+    set(fmt("StatusLineM%s", k), def)
+  end
   set("TabLineModified", { inherit = "TabLine", fg = c.main.red })
   link("TabLineSep", "TabLine")
   set("TabLineModifiedSel", { inherit = "TabLineSel", fg = c.main.red })

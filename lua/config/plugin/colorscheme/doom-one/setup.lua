@@ -25,6 +25,7 @@ require("sugar.highlight").colorscheme(function(h)
   local set, link = h.set, h.link
   local fg, bg = h.fg, h.bg
   local blend = h.blend
+  local fmt = string.format
   local p = require("doom-one.colors").get_palette(
     vim.api.nvim_get_option("background")
   )
@@ -124,11 +125,16 @@ require("sugar.highlight").colorscheme(function(h)
   set("StatusLinePath", { inherit = "StatusLine", fg = fg("StatusLineNC") })
   set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = p.red })
-  set("StatusLineMNormal", { fg = p.blue })
-  set("StatusLineMInsert", { fg = p.green })
-  set("StatusLineMVisual", { fg = p.magenta })
-  set("StatusLineMReplace", { fg = p.red })
-  set("StatusLineMCommand", { fg = p.yellow })
+  for k, v in pairs({
+    Normal = p.blue,
+    Insert = p.green,
+    Visual = p.magenta,
+    Replace = p.red,
+    Command = p.yellow,
+  }) do
+    local def = { inherit = "StatusLine", fg = v, bold = true }
+    set(fmt("StatusLineM%s", k), def)
+  end
   set("TabLineModified", { inherit = "TabLine", fg = p.red })
   link("TabLineSep", "TabLine")
   set("TabLineModifiedSel", { inherit = "TabLineSel", fg = p.red })

@@ -17,6 +17,7 @@ local c = require("kanagawa.colors").setup(config)
 
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
+  local fmt = string.format
 
   -- highlight-default
   set("ColorColumn", { bg = blend(bg("StatusLine"), bg("Normal"), 0.3) })
@@ -96,11 +97,16 @@ require("sugar.highlight").colorscheme(function(h)
   set("StatusLinePath", { inherit = "StatusLine", fg = fg("Comment") })
   set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = c.samuraiRed })
-  set("StatusLineMNormal", { fg = c.crystalBlue })
-  set("StatusLineMInsert", { fg = c.autumnGreen })
-  set("StatusLineMVisual", { fg = c.oniViolet })
-  set("StatusLineMReplace", { fg = c.autumnRed })
-  set("StatusLineMCommand", { fg = c.boatYellow2 })
+  for k, v in pairs({
+    Normal = c.crystalBlue,
+    Insert = c.autumnGreen,
+    Visual = c.oniViolet,
+    Replace = c.autumnRed,
+    Command = c.boatYellow2,
+  }) do
+    local def = { inherit = "StatusLine", fg = v, bold = true }
+    set(fmt("StatusLineM%s", k), def)
+  end
   set("TabLineModified", { inherit = "TabLine", fg = c.autumnRed })
   link("TabLineSep", "TabLine")
   set("TabLineModifiedSel", { inherit = "TabLineSel", fg = c.autumnRed })
