@@ -71,7 +71,7 @@ set.termguicolors = true -- enable 24-bit RGB color in the TUI
 set.textwidth = 80 -- set 80 character as default line length
 set.undofile = true -- save undo history to an undo file on BufWrite
 set.undolevels = 100 -- maximum number of changes than can be undone
-set.updatetime = 250 -- if this many ms nothing is typed, write the swap file
+set.updatetime = 500 -- if this many ms nothing is typed, write the swap file
 set.visualbell = true
 set.wildignore = { -- list of file patterns to ignore when expanding wildcards
   "*.o",
