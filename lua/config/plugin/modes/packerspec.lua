@@ -3,5 +3,5 @@ return {
   config = function()
     require("config.plugin.modes.setup")
   end,
-  event = "ColorScheme",
+  event = "ModeChanged",
 }
