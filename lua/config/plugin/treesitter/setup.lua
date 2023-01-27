@@ -23,6 +23,8 @@ config.setup({
     "gowork",
     "graphql",
     "html",
+    "htmldjango",
+    "ini",
     "java",
     "javascript",
     "jsdoc",
