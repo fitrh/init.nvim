@@ -22,7 +22,6 @@ set.cursorline = true -- highlight current line
 set.diffopt:append({
   "linematch:60", -- enable a second stage diff on each generated hunk in order to align lines
 })
-set.expandtab = true -- by default, always use space!
 set.fillchars = {
   foldopen = "",
   foldclose = "",
@@ -68,7 +67,6 @@ set.splitbelow = true -- when :split, put the new window below the current one
 set.splitkeep = "topline" -- when resizing or splitting a window, keep the top line the same
 set.splitright = true -- when :vsplit, put the new window right of the current one
 set.synmaxcol = 120 -- do syntax highlighting until synmaxcol character
-set.tabstop = 4 -- number of spaces that a <Tab> in the file counts for, controls how existing tab characters are displayed
 set.termguicolors = true -- enable 24-bit RGB color in the TUI
 set.textwidth = 80 -- set 80 character as default line length
 set.undofile = true -- save undo history to an undo file on BufWrite

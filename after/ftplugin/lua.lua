@@ -1,6 +1,6 @@
 local b = vim.b
 b.format_on_save = true
 
-local opt = vim.opt_local
-opt.shiftwidth = 2
-opt.tabstop = 2
+local set = vim.opt_local
+set.expandtab = true
+set.tabstop = 2
