@@ -24,13 +24,6 @@ set.diffopt:append({
 })
 set.expandtab = true -- by default, always use space!
 set.fillchars = {
-  horiz = "━",
-  horizup = "┻",
-  horizdown = "┳",
-  vert = "┃",
-  vertleft = "┫",
-  vertright = "┣",
-  verthoriz = "╋",
   foldopen = "",
   foldclose = "",
   diff = "/",
