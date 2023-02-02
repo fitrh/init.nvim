@@ -7,6 +7,7 @@ local M = {
     "bib",
     "cs",
     "css",
+    "fennel",
     "go",
     "gomod",
     "gotmpl",

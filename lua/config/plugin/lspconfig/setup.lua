@@ -6,6 +6,7 @@ local servers = {
   cssls = server_config.with("vscode-css-language-server"),
   denols = require("config.lsp.server.denols"),
   emmet_ls = require("config.lsp.server.emmet_ls"),
+  ["fennel-ls"] = server_config.with("fennel-ls"),
   gopls = require("config.lsp.server.gopls"),
   gradle_ls = server_config.with("gradle-language-server"),
   hls = require("config.lsp.server.hls"),
