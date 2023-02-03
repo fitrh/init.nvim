@@ -175,7 +175,7 @@ local function parse(hl)
 
   if hl.inherit then
     local ok, value = pcall(api.get, hl.inherit, true)
-    inherit = ok and value
+    inherit = (ok and value) and value or inherit
   end
 
   for _, attr in ipairs({ "fg", "bg", "sp" }) do
