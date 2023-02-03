@@ -1,5 +1,22 @@
 local Keymap = {}
+
+---@class KeymapModeSetter
+---@field normal fun(map: KeymapDef): KeymapDef Map in normal mode(`n`)
+---@field insert fun(map: KeymapDef): KeymapDef Map in insert mode(`i`)
+---@field visual fun(map: KeymapDef): KeymapDef Map in visual-select mode(`v`)
+---@field select fun(map: KeymapDef): KeymapDef Map in select mode(`s`)
+---@field vselect fun(map: KeymapDef): KeymapDef Map in visual mode(`x`)
+---@field opending fun(map: KeymapDef): KeymapDef Map in operator-pending mode(`o`)
+---@field cmd fun(map: KeymapDef): KeymapDef Map command-line mode(`c`)
+---@field icmd fun(map: KeymapDef): KeymapDef Map insert-commandline mode(`!`)
+---@field terminal fun(map: KeymapDef): KeymapDef Map terminal mode(`t`)
 Keymap.mode = {}
+
+---@class KeymapModifier
+---@field nop fun(map: KeymapDef): KeymapDef Disable the map
+---@field ex fun(excmd: string): string Surround the excmd with <Cmd> and <CR>
+---@field plug fun(excmd: string): string Prepend the excmd with <Plug>
+---@field leader fun(key: string): string Prepend the key with <Leader>
 Keymap.modifier = {}
 
 ---@class KeymapDef
@@ -43,7 +60,6 @@ local function set(keymap, opts)
 end
 
 ---Bind @keymaps using `vim.keymap.set` API
----
 ---@param keymaps KeymapDef|KeymapDef[]
 ---@param opts? KeymapArgs @global opts
 function Keymap.bind(keymaps, opts)
@@ -60,30 +76,18 @@ function Keymap.bind(keymaps, opts)
   end
 end
 
----Function modifier to wrap an ex/user command with `<Cmd>fn<CR>`
----@param fn string @ex command
----@return string
 function Keymap.modifier.ex(fn)
   return ("<Cmd>%s<CR>"):format(fn)
 end
 
----Function modifier to prepend `<Plug>` to `fn`
----@param fn string @ex command
----@return string
 function Keymap.modifier.plug(fn)
   return ("<Plug>%s"):format(fn)
 end
 
----Key modifier to prepend `<Leader>` to KeymapDef.lhs
----@param lhs string @KeymapDef.lhs
----@return string
 function Keymap.modifier.leader(lhs)
   return ("<Leader>%s"):format(lhs)
 end
 
----Keymap modifier to disable a keymap
----@param map KeymapDef
----@return KeymapDef definition
 function Keymap.modifier.nop(map)
   map.rhs = ""
   return map
@@ -98,65 +102,38 @@ local function mapmode(mode, map)
   return map
 end
 
----Assign normal mode(`n`) to @map
----@param map KeymapDef
----@return KeymapDef definition
 function Keymap.mode.normal(map)
   return mapmode("n", map)
 end
 
----Assign insert mode(`i`) to @map
----@param map KeymapDef
----@return KeymapDef definition
 function Keymap.mode.insert(map)
   return mapmode("i", map)
 end
 
----Assign visual-select mode(`v`) to @map
----@param map KeymapDef
----@return KeymapDef definition
 function Keymap.mode.vselect(map)
   return mapmode("v", map)
 end
 
----Assign select mode(`s`) to @map
----@param map KeymapDef
----@return KeymapDef definition
 function Keymap.mode.select(map)
   return mapmode("s", map)
 end
 
----Assign visual mode(`x`) to @map
----@param map KeymapDef
----@return KeymapDef definition
 function Keymap.mode.visual(map)
   return mapmode("x", map)
 end
 
----Assign operator-pending mode(`o`) to @map
----@param map KeymapDef
----@return KeymapDef definition
 function Keymap.mode.opending(map)
   return mapmode("o", map)
 end
 
----Assign command-line mode(`c`) to @map
----@param map KeymapDef
----@return KeymapDef definition
 function Keymap.mode.cmd(map)
   return mapmode("c", map)
 end
 
----Assign insert-commandline mode(`!`) to @map
----@param map KeymapDef
----@return KeymapDef definition
 function Keymap.mode.icmd(map)
   return mapmode("!", map)
 end
 
----Assign terminal mode(`t`) to @map
----@param map KeymapDef
----@return KeymapDef definition
 function Keymap.mode.terminal(map)
   return mapmode("t", map)
 end
