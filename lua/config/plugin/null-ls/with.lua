@@ -104,7 +104,7 @@ With.selene = {
   end,
 }
 
-With.shfmt = { extra_args = { "-i", "4", "-ci" } }
+With.shfmt = { extra_args = { "-p", "-ci" } }
 
 With.staticcheck = {
   condition = function(u)
