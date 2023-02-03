@@ -2,6 +2,7 @@ local config = require("nvim-treesitter.configs")
 
 config.setup({
   ensure_installed = {
+    "astro",
     "bash",
     "bibtex",
     "c",

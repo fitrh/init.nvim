@@ -6,6 +6,7 @@ return {
       require("config.plugin.treesitter.setup")
     end,
     ft = {
+      "astro",
       "bash",
       "bib",
       "c",
