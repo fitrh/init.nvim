@@ -108,9 +108,9 @@ end
 
 ---@class HighlightDef
 ---@field inherit string
----@field fg string|fun():string
----@field bg string|fun():string
----@field special string
+---@field fg string|"fg"|"NONE"|nil|fun():string
+---@field bg string|"bg"|"NONE"|nil|fun():string
+---@field sp string|"NONE"|nil|fun():string
 ---@field blend number
 ---@field italic boolean
 ---@field bold boolean
@@ -170,6 +170,7 @@ local function parse(hl)
     "cterm",
   }
 
+  ---@type boolean|table
   local inherit = {}
 
   if hl.inherit then
@@ -177,17 +178,13 @@ local function parse(hl)
     inherit = ok and value
   end
 
-  if type(hl.fg) == "function" then
-    hl.fg = hl.fg()
-  end
-
-  if type(hl.bg) == "function" then
-    hl.bg = hl.bg()
+  for _, attr in ipairs({ "fg", "bg", "sp" }) do
+    hl[attr] = type(hl[attr]) == "function" and hl[attr]() or hl[attr]
   end
 
   def.foreground = hl.fg or inherit.foreground or "NONE"
   def.background = hl.bg or inherit.background or "NONE"
-  def.special = hl.special or inherit.special or "NONE"
+  def.special = hl.sp or inherit.special or "NONE"
   def.italic = inherit.italic or false
   def.bold = inherit.bold or false
   def.underline = inherit.underline or false
