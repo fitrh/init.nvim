@@ -1,7 +1,11 @@
 local lsp = require("lspconfig")
+local root_pattern = require("lspconfig.util").root_pattern
 local server_config = require("config.lsp.server")
 
 local servers = {
+  astro = server_config.with("astro-ls", {
+    root_dir = root_pattern("astro.config.mjs"),
+  }),
   bashls = server_config.with("bash-language-server"),
   cssls = server_config.with("vscode-css-language-server"),
   denols = require("config.lsp.server.denols"),

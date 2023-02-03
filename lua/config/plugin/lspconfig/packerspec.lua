@@ -4,6 +4,7 @@ local M = {
     require("config.plugin.lspconfig.setup")
   end,
   ft = {
+    "astro",
     "bib",
     "cs",
     "css",
