@@ -3,5 +3,5 @@ return {
   config = function()
     require("config.plugin.fidget.setup")
   end,
-  event = { "LspAttach" },
+  event = { "DiagnosticChanged", "LspAttach" },
 }
