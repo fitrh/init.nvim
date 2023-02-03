@@ -4,5 +4,19 @@ return {
     require("config.plugin.hop.setup")
     require("config.plugin.hop.keymap")
   end,
-  keys = { "f", "F" },
+  keys = {
+    "f/",
+    "ff",
+    "fw",
+    "fb",
+    "fh",
+    "fj",
+    "fk",
+    "fl",
+    "F/",
+    "Fh",
+    "Fj",
+    "Fk",
+    "Fl",
+  },
 }
