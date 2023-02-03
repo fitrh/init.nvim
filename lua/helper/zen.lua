@@ -1,5 +1,4 @@
 local api = vim.api
-
 local state = {
   zen = false,
   partial = false,
@@ -9,7 +8,7 @@ local state = {
   signcolumn = api.nvim_win_get_option(0, "signcolumn"),
   winwidth = api.nvim_get_option("winwidth"),
 }
-
+local winhl = "VertSplit:WinSeparatorZen,WinSeparator:WinSeparatorZen"
 local option = {}
 
 option.global = {
@@ -59,7 +58,7 @@ local pad = {
   win = { left = nil, right = nil },
   cmd = { left = "leftabove", right = "rightbelow" },
   width = 0,
-  winhl = "VertSplit:WinSeparatorZen,WinSeparator:WinSeparatorZen",
+  winhl = string.format("%s,%s", "Normal:ZenPadNormal", winhl),
   opt = {
     buf = {
       { "bufhidden", "wipe" },
@@ -83,7 +82,7 @@ function win.main.create()
   vim.cmd("-tabe %")
   win.main.nr = api.nvim_get_current_win()
   win.main.buf = { nr = api.nvim_buf_get_number(0) }
-  api.nvim_win_set_option(win.main.nr, "winhighlight", pad.winhl)
+  api.nvim_win_set_option(win.main.nr, "winhighlight", winhl)
   api.nvim_win_set_cursor(win.main.nr, cursorpos)
   vim.cmd.normal({ "zz", bang = true })
   opt(true)
@@ -131,6 +130,8 @@ end
 local function zen(enter)
   local columns = api.nvim_get_option("columns")
   local textwidth = api.nvim_buf_get_option(0, "textwidth")
+
+  api.nvim_set_hl(0, "ZenPadNormal", { link = "StatusLine", default = true })
 
   if enter then
     win.main.create()
