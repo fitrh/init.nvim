@@ -180,12 +180,6 @@ config.extensions = {
 }
 
 telescope.setup(config)
-
-local extensions = {
-  "file_browser",
-  "fzf",
-}
-
-for _, extension in ipairs(extensions) do
+for extension, _ in pairs(config.extensions) do
   telescope.load_extension(extension)
 end
