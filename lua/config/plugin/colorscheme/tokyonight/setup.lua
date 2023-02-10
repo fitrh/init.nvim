@@ -59,6 +59,7 @@ require("sugar.highlight").colorscheme(function(h)
     fg = c.fg_dark,
     bg = blend(c.fg_dark, c.bg, 0.05),
   })
+  set("@text.todo.unchecked", { inherit = "@text.todo.unchecked", bold = true })
   set("@namespace", { fg = c.magenta })
 
   -- plugin
