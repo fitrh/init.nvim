@@ -10,7 +10,6 @@ todo.setup({
     TEST = { icon = " " },
     LINK = { icon = " ", color = "link", alt = { "SEE", "REF" } },
   },
-  highlight = { max_line_len = 120 },
   colors = {
     test = { "TodoTest", "Comment" },
     link = { "TodoLink", "Comment" },
