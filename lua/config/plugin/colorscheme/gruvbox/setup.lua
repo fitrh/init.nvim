@@ -8,31 +8,19 @@ local function get_variant()
   return variants[os.getenv("NVIM_GRUVBOX_VARIANT")] or ""
 end
 
-vim.api.nvim_set_option("background", get_mode())
+local mode = get_mode()
+local variant = get_variant()
+vim.api.nvim_set_option("background", mode)
 local gruvbox = require("gruvbox")
-gruvbox.setup({ contrast = get_variant() })
+gruvbox.setup({ contrast = variant })
 gruvbox.load()
 
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
   local fmt = string.format
-  local c = require("gruvbox.palette")
-  local p = {}
-  p.red = c.bright_red
-  p.green = c.bright_green
-  p.blue = c.bright_blue
-  p.yellow = c.bright_yellow
-  p.orange = c.bright_orange
-  p.purple = c.bright_purple
-  p.aqua = c.bright_aqua
-
-  if get_mode() == "light" then
-    for key, _ in pairs(p) do
-      p[key] = c["faded_" .. key]
-    end
-  end
-
-  local base = { fg = fg("Normal"), bg = bg("Normal") }
+  local c = require("gruvbox.palette").colors
+  local p = require("gruvbox.palette").get_base_colors(mode, variant)
+  local base = { fg = p.fg1, bg = p.bg0 }
 
   -- highlight-default
   set("ColorColumn", { bg = blend(bg("ColorColumn"), base.bg, 0.1) })
@@ -52,9 +40,9 @@ require("sugar.highlight").colorscheme(function(h)
   set("Folded", { inherit = "Folded", bg = "NONE" })
   link("MsgArea", "StatusLine")
   link("SignColumn", "LineNr")
-  set("StatusLine", { bg = fg("GruvboxBg1"), fg = fg("GruvboxFg3") })
+  set("StatusLine", { bg = p.bg1, fg = p.fg3 })
   set("TabLineSel", { inherit = "TabLineSel", bg = base.bg })
-  set("VertSplit", { fg = bg("StatusLine") })
+  set("VertSplit", { fg = p.bg1 })
 
   -- health
   link("healthError", "DiagnosticError")
@@ -72,22 +60,22 @@ require("sugar.highlight").colorscheme(function(h)
     p.purple,
     p.aqua,
     p.blue,
-    c["neutral_yellow"],
-    c["neutral_green"],
-    c["neutral_purple"],
+    p["neutral_yellow"],
+    p["neutral_green"],
+    p["neutral_purple"],
   }) do
     set(("HeadLine%s"):format(i), { fg = v, bg = blend(v, base.bg, 0.05) })
   end
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("Comment") })
   set("InclineSep", { fg = fg("Comment"), bold = true })
-  set("InclineTail", { fg = fg("GruvboxFg4"), bold = true })
+  set("InclineTail", { fg = p.fg4, bold = true })
   set("InclineWinNr", {
     fg = p.yellow,
     bg = blend(p.yellow, bg("StatusLine"), 0.1),
   })
-  link("LspSignatureActiveParameter", "GruvboxYellow")
-  link("LTSymbol", "GruvboxFg2")
+  set("LspSignatureActiveParameter", { fg = p.yellow })
+  set("LTSymbol", { fg = p.fg2 })
   link("LTSymbolDetail", "Comment")
   link("LTSymbolJump", "LspReferenceText")
   link("LTBoolean", "@boolean")
@@ -126,7 +114,7 @@ require("sugar.highlight").colorscheme(function(h)
     set(fmt("Notify%sBorder", v), { fg = color, bg = color })
   end
 
-  set("StatusLineDim", { inherit = "StatusLine", fg = fg("GruvboxFg4") })
+  set("StatusLineDim", { inherit = "StatusLine", fg = p.fg4 })
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = p.purple })
   for _, kind in ipairs({ "Add", "Change", "Delete" }) do
     local group = ("StatusLineGitDiff%s"):format(kind)
