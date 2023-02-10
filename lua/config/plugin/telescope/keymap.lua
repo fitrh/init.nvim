@@ -20,6 +20,7 @@ keymap.bind({
   n(map(leader("e"), function()
     require("telescope").extensions.file_browser.file_browser({
       grouped = true,
+      auto_depth = true,
     })
   end)),
   n(map(leader("k"), function()
