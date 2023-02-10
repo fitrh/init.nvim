@@ -25,6 +25,7 @@ return {
       "gitrebase",
       "go",
       "gomod",
+      "gosum",
       "graphql",
       "help",
       "html",

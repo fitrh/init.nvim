@@ -21,6 +21,7 @@ config.setup({
     "gitignore",
     "go",
     "gomod",
+    "gosum",
     "gowork",
     "graphql",
     "html",
