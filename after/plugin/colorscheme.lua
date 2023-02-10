@@ -9,7 +9,13 @@ local colorschemes = {
   tokyonight = "TokyoNightPre",
 }
 
-local NVIM_COLORSCHEME = os.getenv("NVIM_COLORSCHEME") or default
+local NVIM_COLORSCHEME = os.getenv("NVIM_COLORSCHEME")
+local colorscheme = colorschemes[NVIM_COLORSCHEME]
+if not colorscheme then
+  NVIM_COLORSCHEME = default
+  colorscheme = colorschemes[NVIM_COLORSCHEME]
+end
+
 vim.api.nvim_exec_autocmds("ColorSchemePre", {})
-vim.api.nvim_exec_autocmds("User", { pattern = colorschemes[NVIM_COLORSCHEME] })
+vim.api.nvim_exec_autocmds("User", { pattern = colorscheme })
 vim.api.nvim_exec_autocmds("ColorScheme", { pattern = NVIM_COLORSCHEME })
