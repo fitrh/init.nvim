@@ -8,7 +8,7 @@ local config = {
     return math.floor(math.max(vim.api.nvim_get_option("lines") / 3, 4))
   end,
   render = "minimal",
-  minimum_width = 30,
+  minimum_width = 1,
   top_down = false,
 }
 
