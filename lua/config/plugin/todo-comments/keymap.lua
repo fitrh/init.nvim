@@ -20,7 +20,7 @@ keymap.bind({
   n(map("[lc", function()
     require("telescope").extensions["todo-comments"].todo(
       require("telescope.themes").get_ivy({
-        layout_config = { height = 0.5 },
+        layout_config = { height = 0.4 },
         prompt_prefix = "   ",
         previewer = false,
       })
