@@ -171,6 +171,7 @@ config.extensions = {
     hide_parent_dir = true,
     mappings = {
       i = {
+        ["<C-e>"] = telescope.extensions.file_browser.actions.goto_parent_dir,
         ["<M-f>"] = telescope.extensions.file_browser.actions.toggle_browser,
       },
     },
