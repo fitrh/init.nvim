@@ -78,7 +78,7 @@ config.defaults = {
 local pickers = {}
 
 pickers.find_files = {
-  layout_config = { height = 0.50 },
+  layout_config = { height = 0.4 },
   theme = "ivy",
   previewer = false,
 }
@@ -149,7 +149,7 @@ pickers.lsp_document_symbols = {
   theme = "dropdown",
 }
 pickers.lsp_workspace_symbols = {
-  layout_config = { height = 0.5 },
+  layout_config = { height = 0.4 },
   prompt_prefix = "   ",
   theme = "ivy",
 }
@@ -158,7 +158,7 @@ pickers.lsp_implementations = pickers.lsp_references
 pickers.lsp_definitions = pickers.lsp_references
 
 pickers.diagnostics = {
-  layout_config = { height = 0.5 },
+  layout_config = { height = 0.4 },
   prompt_prefix = "   ",
   theme = "ivy",
   previewer = false,
