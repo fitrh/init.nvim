@@ -44,6 +44,10 @@ require("sugar.highlight").colorscheme(function(h)
   set("TabLineSel", { inherit = "TabLineSel", bg = base.bg })
   set("VertSplit", { fg = p.bg1 })
 
+  -- :h treesitter-highlight-groups
+  set("@text.todo.checked", { fg = fg("Done") })
+  set("@text.todo.unchecked", { fg = fg("Todo"), bold = true })
+
   -- health
   link("healthError", "DiagnosticError")
   set("healthSuccess", { fg = p.green })
