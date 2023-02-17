@@ -65,6 +65,7 @@ require("sugar.highlight").colorscheme(function(h)
   -- plugin
   link("CmpCursorLine", "PmenuSel")
   set("CmpDoc", { inherit = "PmenuSel", blend = 0 })
+  set("CmpItemKindFile", { fg = c.fg_dark })
   link("FloatTitle", "Title")
   local p = { "magenta", "cyan", "green", "orange", "yellow", "purple" }
   for i, v in ipairs(p) do

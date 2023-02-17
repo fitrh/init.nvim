@@ -63,6 +63,7 @@ require("sugar.highlight").colorscheme(function(h)
   -- plugin
   link("CmpCursorLine", "CursorLine")
   set("CmpDoc", { inherit = "PmenuSbar", blend = 0 })
+  set("CmpItemKindFile", { fg = c.editor.fg })
   link("FloatTitle", "Title")
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("NonText") })
