@@ -1,18 +1,24 @@
+---@param name string
+---@return string
+local function cmp(name)
+  return table.concat({ "CmpItemKind", name })
+end
+
 local hl = {
   File = "CmpItemKindFile",
   Module = "CmpItemKindModule",
   Namespace = "@namespace",
   Package = "CmpItemKindModule",
   Class = "CmpItemKindClass",
-  Method = "@method",
+  Method = cmp("Method"),
   Property = "@property",
-  Field = "@field",
-  Constructor = "@constructor",
+  Field = cmp("Field"),
+  Constructor = cmp("Constructor"),
   Enum = "CmpItemKindEnum",
   Interface = "CmpItemKindInterface",
-  Function = "@function",
-  Variable = "@variable",
-  Constant = "@constant",
+  Function = cmp("Function"),
+  Variable = cmp("Variable"),
+  Constant = cmp("Constant"),
   String = "@string",
   Number = "@number",
   Boolean = "@boolean",
@@ -23,7 +29,7 @@ local hl = {
   EnumMember = "CmpItemKindEnumMember",
   Struct = "CmpItemKindStruct",
   Event = "CmpItemKindEvent",
-  Operator = "@operator",
+  Operator = cmp("Operator"),
   TypeParameter = "CmpItemKindTypeParameter",
 }
 
