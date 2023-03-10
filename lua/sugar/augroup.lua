@@ -9,10 +9,21 @@ local ACTION_TYPE = {
   ["table"] = "action_list",
 }
 
+---@class AuCmdCallbackArgs
+---@field id integer
+---@field event string Name of the triggered event
+---@field group integer|nil Augroup id
+---@field match string Expanded value of `<amatch>`
+---@field buf integer Expanded value of `<abuf>`
+---@field file string Expanded value of `<afile>`
+---@field data any Arbitary data passed from `nvim_exec_autocmds()`
+
+---@alias AuAction string|string[]|fun(args: AuCmdCallbackArgs): boolean?|fun(args: AuCmdCallbackArgs): boolean?[]
+
 ---Create autocmd specification
 ---@param events string|table @autocmd-events
 ---@param filter number|string|table @autocmd-pattern | buffer number of autocmd-buflocal
----@param action string|function|table @ex-command | callback | or list of both
+---@param action AuAction @ex-command | callback | or list of both
 local function autocmd(events, filter, action, group)
   vim.api.nvim_clear_autocmds({
     event = events,
@@ -52,7 +63,7 @@ local function create_group(group)
   return group
 end
 
----@alias AuCallback fun(events:string|table, filter:number|string|table, action:string|function|table)
+---@alias AuCallback fun(events:string|table, filter:number|string|table, action: AuAction)
 
 ---Create group of autocommand
 ---@param name string|table @if table, the structure is { group:string, clear:boolean }
