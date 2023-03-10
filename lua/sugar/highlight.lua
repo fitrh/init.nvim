@@ -228,6 +228,7 @@ end
 ---@param dest string #highlight group name
 ---@param source string #highlight group name to be linked
 function Highlight.link(dest, source)
+  api.set(0, dest, {})
   api.set(0, dest, { link = source })
 end
 
