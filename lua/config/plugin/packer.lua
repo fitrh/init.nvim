@@ -35,7 +35,6 @@ local plugins = {
   require("config.plugin.modes.packerspec"),
   require("config.plugin.todo-comments.packerspec"),
   require("config.plugin.trouble.packerspec"),
-  require("config.plugin.headlines.packerspec"),
   require("config.plugin.notify.packerspec"),
   require("config.plugin.fidget.packerspec"),
 }
