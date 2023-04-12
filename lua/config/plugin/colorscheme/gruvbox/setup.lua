@@ -60,16 +60,6 @@ require("sugar.highlight").colorscheme(function(h)
   set("GitSignsAdd", { inherit = "GitSignsAdd", bg = "NONE" })
   set("GitSignsChange", { inherit = "GitSignsChange", bg = "NONE" })
   set("GitSignsDelete", { inherit = "GitSignsDelete", bg = "NONE" })
-  for i, v in ipairs({
-    p.purple,
-    p.aqua,
-    p.blue,
-    p["neutral_yellow"],
-    p["neutral_green"],
-    p["neutral_purple"],
-  }) do
-    set(("HeadLine%s"):format(i), { fg = v, bg = blend(v, base.bg, 0.05) })
-  end
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("Comment") })
   set("InclineSep", { fg = fg("Comment"), bold = true })

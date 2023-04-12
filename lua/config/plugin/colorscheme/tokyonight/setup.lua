@@ -67,10 +67,6 @@ require("sugar.highlight").colorscheme(function(h)
   set("CmpDoc", { inherit = "PmenuSel", blend = 0 })
   set("CmpItemKindFile", { fg = c.fg_dark })
   link("FloatTitle", "Title")
-  local p = { "magenta", "cyan", "green", "orange", "yellow", "purple" }
-  for i, v in ipairs(p) do
-    set(("HeadLine%d"):format(i), { fg = c[v], bg = blend(c[v], c.bg, 0.05) })
-  end
   link("InclineNormal", "StatusLine")
   link("InclineNormalNC", "StatusLineNC")
   set("InclineSep", { fg = fg("LineNr"), bold = true })

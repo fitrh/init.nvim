@@ -54,16 +54,6 @@ require("sugar.highlight").colorscheme(function(h)
   set("CmpDoc", { inherit = "PmenuThumb", blend = 0 })
   set("FidgetTask", { inherit = "Comment", italic = false })
   link("FloatTitle", "Title")
-  for i, c in ipairs({
-    "bright_magenta",
-    "cyan",
-    "bright_red",
-    "magenta",
-    "green",
-    "yellow",
-  }) do
-    set(("HeadLine%d"):format(i), { fg = p[c], bg = blend(p[c], p.bg, 0.05) })
-  end
   link("InclineNormal", "StatusLine")
   set("InclineNormalNC", { inherit = "StatusLine", fg = fg("Comment") })
   set("InclineSep", { fg = fg("LineNr"), bold = true })

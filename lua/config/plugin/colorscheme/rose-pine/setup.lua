@@ -50,9 +50,6 @@ require("sugar.highlight").colorscheme(function(h)
   set("CmpCursorLine", { bg = bg("PmenuSel") })
   set("CmpDoc", { inherit = "PmenuSel", blend = 0 })
   link("FloatTitle", "Title")
-  for i, p in ipairs({ "iris", "foam", "gold", "rose", "pine", "subtle" }) do
-    set(("HeadLine%d"):format(i), { fg = c[p], bg = blend(c[p], c.base, 0.05) })
-  end
   set("HopNextKey", { fg = c.love, bold = true })
   set("HopNextKey1", { fg = c.gold, bold = true })
   set("HopNextKey2", { fg = c.pine })

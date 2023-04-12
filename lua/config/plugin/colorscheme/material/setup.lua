@@ -73,11 +73,6 @@ require("sugar.highlight").colorscheme(function(h)
     fg = fg("CursorLineNr"),
     bg = blend(fg("CursorLineNr"), bg("StatusLine"), 0.1),
   })
-  local p = { "purple", "cyan", "darkgreen", "yellow", "darkpurple", "gray" }
-  for i, v in ipairs(p) do
-    local group = ("HeadLine%d"):format(i)
-    set(group, { fg = c.main[v], bg = blend(c.main[v], c.editor.bg, 0.05) })
-  end
   set("LTSymbol", { fg = c.main.paleblue })
   link("LTSymbolDetail", "Comment")
   link("LTSymbolJump", "LspReferenceText")

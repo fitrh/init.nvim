@@ -65,10 +65,6 @@ require("sugar.highlight").colorscheme(function(h)
   link("GitSignsAdd", "DiffAdd")
   link("GitSignsChange", "DiffChange")
   link("GitSignsDelete", "DiffDelete")
-  local c = { "magenta", "cyan", "yellow", "green", "violet", "dark_cyan" }
-  for i, v in ipairs(c) do
-    set(("HeadLine%d"):format(i), { fg = p[v], bg = blend(p[v], p.bg, 0.05) })
-  end
   link("InclineNormal", "StatusLine")
   link("InclineNormalNC", "StatusLineNC")
   set("InclineSep", { fg = fg("StatusLineNC"), bold = true })
