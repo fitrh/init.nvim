@@ -66,6 +66,7 @@ set.softtabstop = -1 -- number of spaces that a <Tab> counts for while performin
 set.splitbelow = true -- when :split, put the new window below the current one
 set.splitkeep = "topline" -- when resizing or splitting a window, keep the top line the same
 set.splitright = true -- when :vsplit, put the new window right of the current one
+set.statusline = " %(%r %)%{%&bt==''?&ft==''?'%f':'%f %LL %m%=%l,%-2c':''%} "
 set.synmaxcol = 120 -- do syntax highlighting until synmaxcol character
 set.termguicolors = true -- enable 24-bit RGB color in the TUI
 set.textwidth = 80 -- set 80 character as default line length
