@@ -121,16 +121,6 @@ require("sugar.highlight").colorscheme(function(h)
   set("StatusLinePath", { inherit = "StatusLine", fg = fg("Comment") })
   set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = c.main.darkred })
-  for k, v in pairs({
-    Normal = c.editor.accent,
-    Insert = c.main.green,
-    Visual = c.main.purple,
-    Replace = c.main.red,
-    Command = c.main.yellow,
-  }) do
-    local def = { inherit = "StatusLine", fg = v, bold = true }
-    set(fmt("StatusLineM%s", k), def)
-  end
   set("TabLineModified", { inherit = "TabLine", fg = c.main.red })
   link("TabLineSep", "TabLine")
   set("TabLineModifiedSel", { inherit = "TabLineSel", fg = c.main.red })
