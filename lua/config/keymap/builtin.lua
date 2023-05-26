@@ -98,7 +98,9 @@ keymap.bind({
   n(map("<M-`>", ex("botright 14split term://$SHELL"))),
 
   --- search Behaviour
-  -- Map "/" to Search current selected text
+  -- Map "/" to include the last search pattern
+  n(map("/", "/<C-r>/")),
+  -- Map "/" in visual mode to search current selected text
   v(map("/", [[y/<C-r>"<CR>]])),
   -- centering window when hit n/N
   n(map("n", "mnnzz")),
