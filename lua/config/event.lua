@@ -50,6 +50,16 @@ augroup("always_relativenumber", function(autocmd)
   end)
 end)
 
+augroup("colorcolumn_on_insert", function(autocmd)
+  autocmd("InsertEnter", "*", function()
+    vim.api.nvim_set_option_value("colorcolumn", "+1", { win = 0 })
+  end)
+
+  autocmd("InsertLeave", "*", function()
+    vim.api.nvim_set_option_value("colorcolumn", "", { win = 0 })
+  end)
+end)
+
 augroup("cursorline_on_current_window", function(autocmd)
   autocmd({ "BufWinEnter", "WinEnter" }, "*", function()
     win_set_option(0, "cursorline", not vim.w.nocursorline)

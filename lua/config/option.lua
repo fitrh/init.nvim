@@ -6,7 +6,6 @@ set.backupdir = ("%s/backup//"):format(vim.fn.stdpath("state"))
 set.backupskip:append({ "*/.git/*", "*.gpg" }) -- file patterns to ignore by 'backup'
 set.breakindent = true -- continue indenting wrapped lines
 set.cmdheight = 0 -- disable command-line when not being used
-set.colorcolumn = { "+1" } -- draw a vertical ruler at (textwidth + 1)th column
 set.complete:remove({ -- disable scan for
   "u", -- unload buffers
   "t", -- tag completion
