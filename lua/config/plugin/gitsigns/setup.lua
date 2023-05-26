@@ -41,4 +41,5 @@ gitsigns.setup({
   preview_config = { border = "rounded", focusable = false },
   current_line_blame_opts = { delay = vim.api.nvim_get_option("updatetime") },
   current_line_blame_formatter = " ﰖ <abbrev_sha> by <author>, <author_time:%R> - <summary>",
+  trouble = false,
 })
