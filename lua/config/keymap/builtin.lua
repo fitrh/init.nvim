@@ -74,7 +74,12 @@ keymap.bind({
   -- cursor movements
   map("H", "^"), -- To the first non-blank character of the line
   map("L", "g_"), -- To the last non-blank character of the line
-  --
+  -- a la GNU Readline
+  i(map("<C-b>", "<Left>")), -- cursor one character left
+  i(map("<C-e>", "<End>")), -- cursor to the end of line
+  i(map("<C-f>", "<Right>")), -- cursor one character right
+  i(map("<C-a>", "<Home>")), -- cursor to the start of line
+
   --- window
   -- easy next window jumping
   n(map("<M-Tab>", "<C-w>w")),
