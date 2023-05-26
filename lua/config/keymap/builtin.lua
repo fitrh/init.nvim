@@ -128,7 +128,7 @@ keymap.bind({
 
   -- Paste-Yank behavior
   -- By default, in visual-line mode, the selected line will be yanked,
-  -- and replace the previous yanked line. This map to imporve that behaviour,
+  -- and replace the previous yanked line. This map to improve that behaviour,
   -- after paste, select the yanked line, so it's easy to yank that line again
   v(map("p", "pgv")),
   -- yank-Paste from clipboard
