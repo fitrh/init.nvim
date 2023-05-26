@@ -64,12 +64,12 @@ keymap.bind({
   n(map("<C-w>B", ex("bprevious<BAR>bdelete #"))),
 
   -- toggle cursorline or cursorcolumn
-  n(map("<C-c>c", ex("set cursorcolumn!"))),
-  n(map("<C-c>l", ex("set cursorline!"))),
+  n(map("<C-c>c", ex("setlocal cursorcolumn!"))),
+  n(map("<C-c>l", ex("setlocal cursorline!"))),
 
   -- toggle number
-  map(leader("nn"), ex("set relativenumber!")),
-  map(leader("ln"), ex("set number!")),
+  map(leader("nn"), ex("setlocal relativenumber!")),
+  map(leader("ln"), ex("setlocal number!")),
 
   -- cursor movements
   map("H", "^"), -- To the first non-blank character of the line
