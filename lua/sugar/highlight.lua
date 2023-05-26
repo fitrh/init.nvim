@@ -30,7 +30,7 @@ end
 ---@param attr HighlightAttribute
 ---@param groups table @highlight group list
 ---@param color? number|string
----@return string hex @#RRGGBB attr value
+---@return number|string hex @#RRGGBB attr value
 local function fallback(attr, groups, color)
   for _, group in ipairs(groups or {}) do
     local valid, value = pcall(api.get, group, true)
@@ -51,7 +51,7 @@ end
 ---@param group string
 ---@param fallbacks? table @highlight group list
 ---@param color? number|string @fallback color
----@return string ##RRGGBB | NONE
+---@return number|string ##RRGGBB | NONE
 local function get(attr, group, fallbacks, color)
   local valid, value = pcall(api.get, group, true)
   if not valid then
@@ -88,7 +88,7 @@ end
 ---@param from_group string
 ---@param or_fallbacks? table @list of fallback highlight groups
 ---@param or_color? string @fallback color
----@return fun():string ##RRGGBB | NONE
+---@return fun():number|string ##RRGGBB | NONE
 function Highlight.fg(from_group, or_fallbacks, or_color)
   return function()
     return get("foreground", from_group, or_fallbacks, or_color)
@@ -99,7 +99,7 @@ end
 ---@param from_group string
 ---@param or_fallbacks? table @list of fallback highlight groups
 ---@param or_color? string @fallback color
----@return fun():string ##RRGGBB | NONE
+---@return fun():number|string ##RRGGBB | NONE
 function Highlight.bg(from_group, or_fallbacks, or_color)
   return function()
     return get("background", from_group, or_fallbacks, or_color)
