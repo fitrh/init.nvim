@@ -3,5 +3,6 @@ return {
   config = function()
     require("config.plugin.modes.setup")
   end,
+  keys = { "d", "y" },
   event = "ModeChanged",
 }
