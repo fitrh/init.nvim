@@ -6,7 +6,7 @@ function DiagnosticKeymap.attach(bufnr)
       buffer = bufnr,
       scope = scope,
       focusable = false,
-      border = "rounded",
+      border = "solid",
     }
   end
   local scope = { cursor = "cursor", line = "line" }

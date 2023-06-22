@@ -14,15 +14,14 @@ end
 
 M.signature_help = {
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
+    border = "solid",
   }),
 }
 
 M.hover = {
-  ["textDocument/hover"] = vim.lsp.with(
-    vim.lsp.handlers.hover,
-    { border = "rounded" }
-  ),
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "solid",
+  }),
 }
 
 return M

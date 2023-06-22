@@ -1,7 +1,7 @@
 local M = {}
 
 local function opts(scope)
-  return { scope = scope, focusable = false, border = "rounded" }
+  return { scope = scope, focusable = false, border = "solid" }
 end
 
 local scope = { cursor = "cursor", line = "line" }

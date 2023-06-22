@@ -5,6 +5,7 @@ local M = {
   hint_enable = false,
   hint_prefix = " () ",
   hint_scheme = "DiagnosticHint",
+  handler_opts = { border = "solid" },
   extra_trigger_chars = { "(", "{", "," },
   padding = " ",
   transparency = vim.api.nvim_get_option("pumblend"),
