@@ -119,13 +119,17 @@ augroup("set_tabline", function(autocmd)
 
   autocmd("UIEnter", "*", function()
     if #api.nvim_list_tabpages() > 1 then
-      set_option("tabline", tabline)
+      if api.nvim_get_option_value("tabline", {}) == "" then
+        set_option("tabline", tabline)
+      end
     end
     return true
   end)
 
   autocmd("TabNew", "*", function()
-    set_option("tabline", tabline)
+    if api.nvim_get_option_value("tabline", {}) == "" then
+      set_option("tabline", tabline)
+    end
     return true
   end)
 end)
