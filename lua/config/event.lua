@@ -121,10 +121,12 @@ augroup("set_tabline", function(autocmd)
     if #api.nvim_list_tabpages() > 1 then
       set_option("tabline", tabline)
     end
+    return true
   end)
 
   autocmd("TabNew", "*", function()
     set_option("tabline", tabline)
+    return true
   end)
 end)
 
