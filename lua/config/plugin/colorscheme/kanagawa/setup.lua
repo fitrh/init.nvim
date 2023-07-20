@@ -41,10 +41,6 @@ require("sugar.highlight").colorscheme(function(h)
   link("TabLineFill", "TabLine")
   link("TabLineSel", "Normal")
 
-  -- treesitter-highlight-groups
-  link("@text.diff.add", "diffAdded")
-  link("@text.diff.delete", "diffRemoved")
-
   -- plugin
   link("CmpCursorLine", "PmenuSel")
   set("CmpDoc", { inherit = "PmenuSel", blend = 0 })
@@ -111,7 +107,6 @@ require("sugar.highlight").colorscheme(function(h)
   set("TabLineSepSel", { inherit = "TabLineSel", fg = c.syn.fun })
   set("TelescopeNormal", { bg = bg("StatusLine") })
   link("TelescopePreviewLine", "CursorLine")
-  link("TelescopeSelection", "CursorLine")
   set("TelescopeTitle", { inherit = "Visual", fg = fg("Normal"), bold = true })
   set("TelescopeBorder", { bg = bg("StatusLine"), fg = bg("StatusLine") })
   set("TreesitterContext", { inherit = "ColorColumn", bold = true })
