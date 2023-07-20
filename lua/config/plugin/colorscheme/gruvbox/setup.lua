@@ -96,11 +96,6 @@ require("sugar.highlight").colorscheme(function(h)
   set("ModesVisualCursorLineNr", { fg = bg("ModesVisual") })
 
   --- github.com/rcarriga/nvim-notify
-  link("NotifyTRACETitle", "DiagnosticHint")
-  set("NotifyDEBUGTitle", { fg = c.gray })
-  link("NotifyINFOTitle", "DiagnosticInfo")
-  link("NotifyWARNTitle", "DiagnosticWarn")
-  link("NotifyERRORTitle", "DiagnosticError")
   for _, v in ipairs({ "TRACE", "DEBUG", "INFO", "WARN", "ERROR" }) do
     local title = fmt("Notify%sTitle", v)
     local color = blend(fg(title), base.bg, 0.05)
