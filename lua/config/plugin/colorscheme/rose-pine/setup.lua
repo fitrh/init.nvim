@@ -4,7 +4,7 @@ local function get_mode()
 end
 
 local function get_variant()
-  local variants = { main = "main", moon = "moon" }
+  local variants = { main = "main", moon = "moon", dawn = "dawn" }
   return variants[os.getenv("NVIM_ROSE_PINE_VARIANT")] or "main"
 end
 
