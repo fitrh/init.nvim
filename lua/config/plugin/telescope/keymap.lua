@@ -92,7 +92,10 @@ require("sugar.augroup")("attach_telescope_lsp_keymap", function(autocmd)
       referencesProvider = {
         key = "[lr",
         fn = function()
-          require("telescope.builtin").lsp_references()
+          require("telescope.builtin").lsp_references({
+            fname_width = 50,
+            trim_text = true,
+          })
         end,
       },
       implementationProvider = {
