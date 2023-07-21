@@ -153,7 +153,16 @@ pickers.lsp_workspace_symbols = {
   prompt_prefix = "   ",
   theme = "ivy",
 }
-pickers.lsp_references = { theme = "dropdown" }
+pickers.lsp_references = {
+  layout_strategy = "vertical",
+  layout_config = {
+    preview_cutoff = 10,
+    preview_height = 0.55,
+    anchor = "S",
+    width = 0.7,
+    height = 0.9,
+  },
+}
 pickers.lsp_implementations = pickers.lsp_references
 pickers.lsp_definitions = pickers.lsp_references
 
