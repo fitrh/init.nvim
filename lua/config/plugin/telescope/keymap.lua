@@ -19,7 +19,6 @@ keymap.bind({
   end)),
   n(map(leader("e"), function()
     require("telescope").extensions.file_browser.file_browser({
-      grouped = true,
       auto_depth = true,
     })
   end)),
@@ -27,7 +26,6 @@ keymap.bind({
     require("telescope").extensions.file_browser.file_browser(
       require("telescope.themes").get_dropdown({
         previewer = false,
-        grouped = true,
         files = false,
         display_stat = false,
       })
