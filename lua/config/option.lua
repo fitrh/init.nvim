@@ -34,7 +34,6 @@ set.laststatus = 3 -- use global status line
 set.mouse = "" -- ignore mouse completely
 set.nrformats:append({ "alpha" }) -- increment/decrement for alphabet
 set.number = true -- enable line number
-set.pastetoggle = "<F2>" -- toggling paste mode when press this key
 set.path:remove({ "/usr/include" }) -- remove system header from search commands
 set.path:append({ "**" }) -- search in current directory recursively
 set.pumblend = 10 -- pseudo-transparency for the popup-menu, value : 0 - 100
