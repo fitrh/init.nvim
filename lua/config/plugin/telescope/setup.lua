@@ -178,12 +178,14 @@ config.extensions = {
   file_browser = {
     prompt_prefix = "   ",
     hide_parent_dir = true,
+    prompt_path = true,
     mappings = {
       i = {
         ["<C-e>"] = telescope.extensions.file_browser.actions.goto_parent_dir,
         ["<M-f>"] = telescope.extensions.file_browser.actions.toggle_browser,
       },
     },
+    git_status = false,
   },
   fzf = {},
 }
