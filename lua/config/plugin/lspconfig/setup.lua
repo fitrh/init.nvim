@@ -7,6 +7,7 @@ local servers = {
     root_dir = root_pattern("astro.config.mjs"),
   }),
   bashls = server_config.with("bash-language-server"),
+  clangd = require("config.lsp.server.clangd"),
   cssls = server_config.with("vscode-css-language-server"),
   denols = require("config.lsp.server.denols"),
   emmet_ls = require("config.lsp.server.emmet_ls"),

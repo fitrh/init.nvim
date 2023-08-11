@@ -6,6 +6,8 @@ local M = {
   ft = {
     "astro",
     "bib",
+    "c",
+    "cpp",
     "cs",
     "css",
     "fennel",
