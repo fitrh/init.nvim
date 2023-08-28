@@ -3,9 +3,9 @@ local Keymap = {}
 ---@class KeymapModeSetter
 ---@field normal fun(map: KeymapDef): KeymapDef Map in normal mode(`n`)
 ---@field insert fun(map: KeymapDef): KeymapDef Map in insert mode(`i`)
----@field visual fun(map: KeymapDef): KeymapDef Map in visual-select mode(`v`)
+---@field visual fun(map: KeymapDef): KeymapDef Map in visual mode(`x`)
 ---@field select fun(map: KeymapDef): KeymapDef Map in select mode(`s`)
----@field vselect fun(map: KeymapDef): KeymapDef Map in visual mode(`x`)
+---@field vselect fun(map: KeymapDef): KeymapDef Map in visual-select mode(`v`)
 ---@field opending fun(map: KeymapDef): KeymapDef Map in operator-pending mode(`o`)
 ---@field cmd fun(map: KeymapDef): KeymapDef Map command-line mode(`c`)
 ---@field icmd fun(map: KeymapDef): KeymapDef Map insert-commandline mode(`!`)
