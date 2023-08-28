@@ -45,6 +45,7 @@ return {
       "python",
       "query",
       "rust",
+      "scfg",
       "scheme",
       "scss",
       "sh",
