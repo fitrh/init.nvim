@@ -65,6 +65,7 @@ config.setup({
   incremental_selection = {
     enable = true,
     keymaps = {
+      init_selection = false,
       node_incremental = "g)",
       scope_incremental = "g}",
       node_decremental = "g(",
