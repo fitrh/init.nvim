@@ -23,17 +23,17 @@ Keymap.modifier = {}
 ---@field mode string|table
 ---@field lhs string
 ---@field rhs string|function
----@field opts table
+---@field opts? table
 
 ---@class KeymapArgs
----@field buffer boolean|number
----@field nowait boolean
----@field silent boolean
----@field script boolean
----@field expr boolean
----@field unique boolean
----@field replace_keycodes boolean @default true
----@field remap boolean @default false
+---@field buffer? boolean|number
+---@field nowait? boolean
+---@field silent? boolean
+---@field script? boolean
+---@field expr? boolean
+---@field unique? boolean
+---@field replace_keycodes? boolean @default true
+---@field remap? boolean @default false
 
 ---Create keymap definition
 ---@param key string

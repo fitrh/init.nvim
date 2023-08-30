@@ -1,18 +1,18 @@
 local Command = {}
 
 ---@class CmdAttrs
----@field nargs number|string
----@field complete string|function
----@field range boolean|number|string
----@field count number
----@field addr string|function
----@field bang boolean
----@field bar boolean
----@field register string
----@field buffer boolean
----@field keepscript boolean
----@field desc string
----@field force boolean @default true
+---@field nargs? number|string
+---@field complete? string|function
+---@field range? boolean|number|string
+---@field count? number
+---@field addr? string|function
+---@field bang? boolean
+---@field bar? boolean
+---@field register? string
+---@field buffer? boolean
+---@field keepscript? boolean
+---@field desc? string
+---@field force? boolean @default true
 
 ---@class CmdOpts
 ---@field buf boolean|number
@@ -38,12 +38,12 @@ end
 
 ---@class CommandGroup
 ---@field prefix string
----@field opts table
----@field buf number|boolean
+---@field opts? table
+---@field buf? number|boolean
 ---@field cmds UserCommand[]
 
 ---@class UserCommand
----@field name string
+---@field name? string
 ---@field cmd string|function
 ---@field buf? number
 ---@field opts? CmdAttrs

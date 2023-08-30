@@ -26,7 +26,7 @@ local function hex(dec)
 end
 
 ---@param attr HighlightAttribute
----@param groups table @highlight group list
+---@param groups? table @highlight group list
 ---@param color? number|string
 ---@return number|string hex @#RRGGBB attr value
 local function fallback(attr, groups, color)
@@ -105,27 +105,27 @@ function Highlight.bg(from_group, or_fallbacks, or_color)
 end
 
 ---@class HighlightDef
----@field inherit string
----@field fg string|"fg"|"NONE"|nil|fun():string
----@field bg string|"bg"|"NONE"|nil|fun():string
----@field sp string|"NONE"|nil|fun():string
----@field blend number
----@field italic boolean
----@field bold boolean
----@field underline boolean
----@field underdouble boolean
----@field undercurl boolean
----@field underdotted boolean
----@field underdashed boolean
----@field strikethrough boolean
----@field reverse boolean
----@field standout boolean
----@field default boolean
----@field nocombine boolean
----@field ctermfg number
----@field ctermbg number
----@field cterm table
----@field link boolean|string
+---@field inherit? string
+---@field fg? string|"fg"|"NONE"|nil|fun():string
+---@field bg? string|"bg"|"NONE"|nil|fun():string
+---@field sp? string|"NONE"|nil|fun():string
+---@field blend? number
+---@field italic? boolean
+---@field bold? boolean
+---@field underline? boolean
+---@field underdouble? boolean
+---@field undercurl? boolean
+---@field underdotted? boolean
+---@field underdashed? boolean
+---@field strikethrough? boolean
+---@field reverse? boolean
+---@field standout? boolean
+---@field default? boolean
+---@field nocombine? boolean
+---@field ctermfg? number
+---@field ctermbg? number
+---@field cterm? table
+---@field link? boolean|string
 
 ---Parse HighlightDef into highlight definition map to be used by `nvim_set_hl`
 ---@param hl HighlightDef
