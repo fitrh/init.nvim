@@ -7,9 +7,8 @@ return {
       module = "telescope._extensions.file_browser",
     },
     {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      run = "make",
-      module = "telescope._extensions.fzf",
+      "natecraddock/telescope-zf-native.nvim",
+      module = "telescope._extensions.zf-native",
     },
   },
   config = function()
