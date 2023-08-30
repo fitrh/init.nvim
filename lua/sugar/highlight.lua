@@ -1,8 +1,6 @@
 local Highlight = {}
-local api = {
-  set = vim.api.nvim_set_hl,
-  get = vim.api.nvim_get_hl_by_name,
-}
+local a = vim.api
+local hi = { set = a.nvim_set_hl, get = a.nvim_get_hl_by_name }
 
 ---@class RGBTable
 ---@field r number
@@ -33,7 +31,7 @@ end
 ---@return number|string hex @#RRGGBB attr value
 local function fallback(attr, groups, color)
   for _, group in ipairs(groups or {}) do
-    local valid, value = pcall(api.get, group, true)
+    local valid, value = pcall(hi.get, group, true)
     if valid and value[attr] then
       return hex(value[attr])
     end
@@ -53,7 +51,7 @@ end
 ---@param color? number|string @fallback color
 ---@return number|string ##RRGGBB | NONE
 local function get(attr, group, fallbacks, color)
-  local valid, value = pcall(api.get, group, true)
+  local valid, value = pcall(hi.get, group, true)
   if not valid then
     if not fallbacks and color then
       return color
@@ -141,11 +139,7 @@ local function parse(hl)
     end
   end
 
-  if
-    hl.link
-    and type(hl.link) == "string"
-    and pcall(api.get, hl.link, true)
-  then
+  if hl.link and type(hl.link) == "string" and pcall(hi.get, hl.link, true) then
     def.link = hl.link
     return def
   end
@@ -174,7 +168,7 @@ local function parse(hl)
   local inherit = {}
 
   if hl.inherit then
-    local ok, value = pcall(api.get, hl.inherit, true)
+    local ok, value = pcall(hi.get, hl.inherit, true)
     inherit = (ok and value) and value or inherit
   end
 
@@ -221,15 +215,15 @@ end
 ---@param name string #highlight group name
 ---@param def HighlightDef #table of HighlightDef
 function Highlight.set(name, def)
-  api.set(0, name, parse(def))
+  hi.set(0, name, parse(def))
 end
 
 ---Link `dest` to `source` highlight group
 ---@param dest string #highlight group name
 ---@param source string #highlight group name to be linked
 function Highlight.link(dest, source)
-  api.set(0, dest, {})
-  api.set(0, dest, { link = source })
+  hi.set(0, dest, {})
+  hi.set(0, dest, { link = source })
 end
 
 ---@class HighlightCallbackParam
