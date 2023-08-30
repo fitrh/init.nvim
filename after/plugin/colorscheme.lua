@@ -25,4 +25,5 @@ a.nvim_create_autocmd("UIEnter", {
     a.nvim_exec_autocmds("User", { pattern = colorscheme })
     a.nvim_exec_autocmds("ColorScheme", { pattern = NVIM_COLORSCHEME })
   end,
+  once = true,
 })
