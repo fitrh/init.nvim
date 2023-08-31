@@ -9,12 +9,6 @@ M.init = {
     prompt_border = "solid",
     keybindings = { quit = "<M-q>" },
   },
-  profile = {
-    enable = true,
-    -- integer in milliseconds, plugins which load faster than this
-    -- won't be shown in profile output
-    threshold = 1,
-  },
 }
 
 function M.use(plugins)
