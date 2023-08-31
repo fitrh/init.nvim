@@ -187,7 +187,7 @@ config.extensions = {
     },
     git_status = false,
   },
-  fzf = {},
+  ["zf-native"] = {},
 }
 
 telescope.setup(config)
