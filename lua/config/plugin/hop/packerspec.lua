@@ -1,5 +1,5 @@
 return {
-  "phaazon/hop.nvim",
+  "smoka7/hop.nvim",
   config = function()
     require("config.plugin.hop.setup")
     require("config.plugin.hop.keymap")
