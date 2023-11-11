@@ -1,5 +1,4 @@
 local config = {
-  level = vim.log.levels.TRACE,
   timeout = 2500,
   max_width = function()
     return math.floor(math.max(vim.api.nvim_get_option("columns") / 2, 20))
@@ -10,15 +9,6 @@ local config = {
   render = "minimal",
   minimum_width = 1,
   top_down = false,
-}
-
-local sign = require("const.DIAGNOSTIC_SIGN")
-config.icons = {
-  ERROR = sign.ERROR,
-  WARN = sign.WARN,
-  INFO = sign.INFO,
-  DEBUG = "",
-  TRACE = "",
 }
 
 local notify = require("notify")
