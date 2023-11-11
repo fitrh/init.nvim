@@ -3,5 +3,10 @@ return {
   config = function()
     require("config.plugin.notify.setup")
   end,
-  event = { "BufNew", "BufNewFile", "BufRead" },
+  setup = function()
+    vim.notify = function(...)
+      return require("notify")(...)
+    end
+  end,
+  module = "notify",
 }

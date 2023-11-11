@@ -11,6 +11,4 @@ local config = {
   top_down = false,
 }
 
-local notify = require("notify")
-notify.setup(config)
-vim.notify = notify
+require("notify").setup(config)
