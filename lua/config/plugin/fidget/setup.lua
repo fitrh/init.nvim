@@ -1,14 +1,15 @@
-local fidget = require("fidget")
 local config = {}
 
-config.text = {
-  spinner = "dots",
-  done = "✓",
+config.progress = {
+  display = {
+    done_icon = "✓",
+  },
 }
 
-config.window = {
-  relative = "editor",
-  blend = vim.api.nvim_get_option("pumblend"),
+config.notification = {
+  view = {
+    group_separator = "─────", -- digraph `hh`
+  },
 }
 
-fidget.setup(config)
+require("fidget").setup(config)
