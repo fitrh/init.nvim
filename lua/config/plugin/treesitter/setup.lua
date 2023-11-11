@@ -49,6 +49,7 @@ config.setup({
     "scfg",
     "scheme",
     "scss",
+    "ssh_config",
     "sql",
     "svelte",
     "toml",

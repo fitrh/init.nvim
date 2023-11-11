@@ -49,6 +49,7 @@ return {
       "scheme",
       "scss",
       "sh",
+      "sshconfig",
       "sql",
       "svelte",
       "tex",
