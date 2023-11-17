@@ -42,11 +42,11 @@ end)
 
 augroup("always_relativenumber", function(autocmd)
   autocmd("OptionSet", "number", function()
-    win_set_option(0, "relativenumber", vim.v.option_new == "1")
+    win_set_option(0, "relativenumber", vim.v.option_new)
   end)
 
   autocmd("OptionSet", "relativenumber", function()
-    win_set_option(0, "number", vim.v.option_new == "1")
+    win_set_option(0, "number", vim.v.option_new)
   end)
 end)
 
@@ -136,7 +136,7 @@ end)
 
 augroup("shiftwidth_sync", function(autocmd)
   autocmd("OptionSet", "shiftwidth", function(args)
-    local shiftwidth = tonumber(vim.v.option_new)
+    local shiftwidth = vim.v.option_new
     if shiftwidth > 0 and shiftwidth < 10000 then
       buf_set_option(args.buf, "tabstop", shiftwidth)
     end
@@ -158,11 +158,11 @@ end)
 
 augroup("textwidth_sync", function(autocmd)
   autocmd("OptionSet", "textwidth", function(args)
-    buf_set_option(args.buf, "synmaxcol", tonumber(vim.v.option_new))
+    buf_set_option(args.buf, "synmaxcol", vim.v.option_new)
   end)
 
   autocmd({ "BufNewFile", "BufEnter" }, "*", function(args)
     local textwidth = buf_get_option(args.buf, "textwidth")
-    buf_set_option(args.buf, "synmaxcol", tonumber(textwidth))
+    buf_set_option(args.buf, "synmaxcol", textwidth)
   end)
 end)
