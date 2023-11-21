@@ -65,6 +65,9 @@ config.setup({
   highlight = { enable = true },
   incremental_selection = {
     enable = true,
+    -- SEE: https://github.com/nvim-treesitter/nvim-treesitter/issues/4945
+    -- SEE: https://github.com/UserNobody14/tree-sitter-dart/issues/48
+    disable = { "dart" },
     keymaps = {
       init_selection = false,
       node_incremental = "g)",
@@ -72,7 +75,10 @@ config.setup({
       node_decremental = "g(",
     },
   },
-  indent = { enable = true },
+  indent = {
+    enable = true,
+    disable = { "dart" },
+  },
 
   -- extra modules
 
@@ -80,6 +86,8 @@ config.setup({
   textobjects = {
     select = {
       enable = true,
+      -- for `zig`, SEE: https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/461
+      disable = { "dart", "zig" },
       lookahead = true,
       keymaps = {
         ["aB"] = "@block.outer",
