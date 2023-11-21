@@ -81,10 +81,10 @@ pickers.find_files = {
   layout_config = { height = 0.4 },
   theme = "ivy",
   previewer = false,
+  disable_devicons = true, -- SEE: https://github.com/nvim-telescope/telescope.nvim/issues/1222
 }
 
 pickers.buffers = {
-  prompt_prefix = "   ",
   path_display = { "smart" },
   theme = "dropdown",
   previewer = false,
@@ -93,10 +93,10 @@ pickers.buffers = {
       ["<C-d>"] = require("telescope.actions").delete_buffer,
     },
   },
+  disable_devicons = true,
 }
 
 pickers.help_tags = {
-  prompt_prefix = " 龎 ",
   theme = "dropdown",
   previewer = false,
 }
@@ -108,8 +108,8 @@ pickers.live_grep = {
     mirror = true,
     width = 0.55,
   },
-  prompt_prefix = "   ",
   theme = "dropdown",
+  disable_devicons = true,
 }
 
 pickers.filetypes = {
@@ -117,18 +117,14 @@ pickers.filetypes = {
     width = 0.25,
     height = 0.5,
   },
-  prompt_prefix = "   ",
 }
 
-pickers.git_files = { prompt_prefix = "   " }
 pickers.git_commits = {
   layout_config = pickers.live_grep.layout_config,
-  prompt_prefix = "   ",
   theme = "dropdown",
 }
 pickers.git_bcommits = pickers.git_commits
 pickers.git_branches = {
-  prompt_prefix = "   ",
   theme = "dropdown",
   previewer = false,
 }
@@ -145,12 +141,10 @@ pickers.lsp_document_symbols = {
     width = 0.50,
   },
   previewer = false,
-  prompt_prefix = "   ",
   theme = "dropdown",
 }
 pickers.lsp_workspace_symbols = {
   layout_config = { height = 0.4 },
-  prompt_prefix = "   ",
   theme = "ivy",
 }
 pickers.lsp_references = {
@@ -168,7 +162,6 @@ pickers.lsp_definitions = pickers.lsp_references
 
 pickers.diagnostics = {
   layout_config = { height = 0.4 },
-  prompt_prefix = "   ",
   theme = "ivy",
   previewer = false,
 }
@@ -176,7 +169,6 @@ pickers.diagnostics = {
 config.pickers = pickers
 config.extensions = {
   file_browser = {
-    prompt_prefix = "   ",
     hide_parent_dir = true,
     prompt_path = true,
     mappings = {
@@ -186,6 +178,7 @@ config.extensions = {
       },
     },
     git_status = false,
+    disable_devicons = true,
   },
   ["zf-native"] = {},
 }
