@@ -4,7 +4,7 @@ local config = {}
 config.defaults = {
   layout_strategy = "flex",
   layout_config = {
-    horizontal = { preview_width = 80 },
+    horizontal = { preview_width = 0.6 },
   },
   prompt_prefix = "   ",
   selection_caret = "  ", -- SEE: https://github.com/nvim-telescope/telescope.nvim/issues/1841
