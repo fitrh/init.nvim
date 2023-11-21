@@ -6,7 +6,7 @@ config.defaults = {
   layout_config = {
     horizontal = { preview_width = 0.6 },
   },
-  prompt_prefix = "   ",
+  prompt_prefix = " → ", -- digraph: ->
   selection_caret = "  ", -- SEE: https://github.com/nvim-telescope/telescope.nvim/issues/1841
   dynamic_preview_title = true,
   results_title = false,
