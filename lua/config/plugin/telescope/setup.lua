@@ -28,6 +28,7 @@ config.defaults = {
   },
   -- SEE: https://developer.roblox.com/en-us/articles/string-patterns-reference
   file_ignore_patterns = {
+    "%.bmp$",
     "%.class$",
     "%.dmg$",
     "%.gif$",
@@ -35,6 +36,7 @@ config.defaults = {
     "%.iso$",
     "%.jar$",
     "%.jpg$",
+    "%.JPG$",
     "%.jpeg$",
     "%.JPEG$",
     "%.mkv$",
@@ -47,6 +49,7 @@ config.defaults = {
     "%.PNG$",
     "%.pyc$",
     "%.pyi$",
+    "%.svg$",
     "%.tar",
     "%.torrent$",
     "%.ttf$",
