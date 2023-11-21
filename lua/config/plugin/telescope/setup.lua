@@ -129,8 +129,10 @@ pickers.git_branches = {
   previewer = false,
 }
 pickers.git_status = {
-  layout_config = { horizontal = { preview_width = 0.55 } },
-  prompt_prefix = "   ",
+  layout_config = { horizontal = { preview_width = 0.6 } },
+  git_icons = {
+    renamed = "→",
+  },
 }
 
 pickers.lsp_document_symbols = {
