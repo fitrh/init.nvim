@@ -87,6 +87,14 @@ pickers.find_files = {
   disable_devicons = true, -- SEE: https://github.com/nvim-telescope/telescope.nvim/issues/1222
 }
 
+pickers.quickfix = {
+  layout_config = { height = 0.4 },
+  theme = "ivy",
+  disable_devicons = true,
+  fname_width = 60,
+}
+pickers.loclist = pickers.quickfix
+
 pickers.buffers = {
   layout_config = { height = 0.4 },
   theme = "dropdown",
