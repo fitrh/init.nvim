@@ -85,7 +85,7 @@ pickers.find_files = {
 }
 
 pickers.buffers = {
-  path_display = { "smart" },
+  layout_config = { height = 0.4 },
   theme = "dropdown",
   previewer = false,
   mappings = {
