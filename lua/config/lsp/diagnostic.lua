@@ -12,21 +12,9 @@ end
 local M = {}
 
 function M.attach(bufnr)
-  local sign = require("const.DIAGNOSTIC_SIGN")
-  local severities = {
-    [vim.diagnostic.severity.ERROR] = { text = "Error", sign = sign.ERROR },
-    [vim.diagnostic.severity.WARN] = { text = "Warn", sign = sign.WARN },
-    [vim.diagnostic.severity.INFO] = { text = "Info", sign = sign.INFO },
-    [vim.diagnostic.severity.HINT] = { text = "Hint", sign = sign.HINT },
-  }
-
-  for _, severity in pairs(severities) do
-    local hl = ("DiagnosticSign%s"):format(severity.text)
-    vim.fn.sign_define(hl, { text = severity.sign, texthl = hl, numhl = hl })
-  end
-
   vim.diagnostic.config({
     virtual_text = false,
+    signs = false,
     float = {
       format = function(diagnostic)
         return trim(diagnostic.message)
