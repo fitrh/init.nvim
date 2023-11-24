@@ -1,11 +1,16 @@
 vim.cmd.packadd("packer.nvim")
 
+local function spec(name)
+  return require("config.plugin." .. name .. ".packerspec")
+end
+
 local plugins = {
   { "nvim-lua/plenary.nvim", module = "plenary" },
   { "ray-x/lsp_signature.nvim", module = "lsp_signature" },
   { "b0o/schemastore.nvim", ft = { "json", "jsonc" } },
   require("config.plugin.treesitter.packerspec"),
   require("config.plugin.treesitter-context.packerspec"),
+  spec("ts-context-commentstring"),
   require("config.plugin.lspconfig.packerspec"),
   require("config.plugin.clangd_extensions.packerspec"),
   require("config.plugin.jdtls.packerspec"),
