@@ -37,11 +37,15 @@ function M.attach(bufnr)
 
   require("sugar.augroup")("diagnostic_on_insert", function(autocmd)
     autocmd("InsertEnter", "*", function(args)
-      vim.diagnostic.hide(nil, args.buf)
+      if not vim.diagnostic.is_disabled(args.buf) then
+        vim.diagnostic.hide(nil, args.buf)
+      end
     end)
 
     autocmd("InsertLeave", "*", function(args)
-      vim.diagnostic.show(nil, args.buf)
+      if not vim.diagnostic.is_disabled(args.buf) then
+        vim.diagnostic.show(nil, args.buf)
+      end
     end)
   end)
 end
