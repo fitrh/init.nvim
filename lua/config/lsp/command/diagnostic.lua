@@ -4,7 +4,7 @@ local function opts(scope)
   return { scope = scope, focusable = false, border = "solid" }
 end
 
-local scope = { cursor = "cursor", line = "line" }
+local scope = { cursor = "cursor", line = "line", buffer = "buffer" }
 
 function M.attach(bufnr)
   local api = vim.diagnostic
@@ -56,6 +56,12 @@ function M.attach(bufnr)
           end
         end,
         opts = { nargs = "*" },
+      },
+      {
+        name = "BufShow",
+        cmd = function()
+          api.open_float(0, opts(scope.buffer))
+        end,
       },
       {
         name = "ShowInLine",
