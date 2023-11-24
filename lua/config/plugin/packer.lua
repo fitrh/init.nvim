@@ -32,7 +32,6 @@ local plugins = {
   require("config.plugin.numb.packerspec"),
   require("config.plugin.dial.packerspec"),
   require("config.plugin.colorscheme.packerspec"),
-  require("config.plugin.devicons.packerspec"),
   require("config.plugin.incline.packerspec"),
   require("config.plugin.navic.packerspec"),
   require("config.plugin.colorizer.packerspec"),
