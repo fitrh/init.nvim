@@ -65,7 +65,6 @@ set.splitkeep = "topline" -- when resizing or splitting a window, keep the top l
 set.splitright = true -- when :vsplit, put the new window right of the current one
 set.statusline = " %(%r %)%{%&bt==''?&ft==''?'%f':'%f %LL %m%=%l,%-2c':''%} "
 set.synmaxcol = 120 -- do syntax highlighting until synmaxcol character
-set.termguicolors = true -- enable 24-bit RGB color in the TUI
 set.textwidth = 80 -- set 80 character as default line length
 set.undofile = true -- save undo history to an undo file on BufWrite
 set.undolevels = 100 -- maximum number of changes than can be undone
