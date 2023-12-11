@@ -15,7 +15,6 @@ set.completeopt:append({
   "noinsert", -- do not insert any text for a match until the user selects a match from the menu
   "noselect", -- do not select a match in the menu, force the user to select one from the menu
 })
-set.conceallevel = 2 -- hide concealed text unless it has a custom replacement
 set.confirm = true -- raise a dialogue asking if you wish to save changed files
 set.cursorline = true -- highlight current line
 set.diffopt:append({
