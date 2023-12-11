@@ -2,7 +2,10 @@ local config = {}
 
 config.progress = {
   display = {
-    done_icon = "✓",
+    done_icon = "✓", -- digraph `OK`
+    done_style = "DiagnosticOk",
+    progress_style = "DiagnosticInfo",
+    icon_style = "Number",
   },
 }
 
