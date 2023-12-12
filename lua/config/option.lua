@@ -34,7 +34,6 @@ set.nrformats:append({ "alpha" }) -- increment/decrement for alphabet
 set.number = true -- enable line number
 set.path:remove({ "/usr/include" }) -- remove system header from search commands
 set.path:append({ "**" }) -- search in current directory recursively
-set.pumblend = 10 -- pseudo-transparency for the popup-menu, value : 0 - 100
 set.relativenumber = true -- show line number relative to the line with the cursor
 set.ruler = false -- hide line & column information, use g Ctrl + g instead
 set.shell = "/bin/sh" -- use absolute path to avoid using $SHELL
