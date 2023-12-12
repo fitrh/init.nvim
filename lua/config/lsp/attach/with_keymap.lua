@@ -23,7 +23,6 @@ function LspKeymap.attach(client, bufnr)
         i(map(ctrl_slash, lsp.signature_help)),
       }
     end,
-    hoverProvider = n(map("K", lsp.hover)),
     declarationProvider = n(map("goD", lsp.declaration)),
     definitionProvider = n(map("god", lsp.definition)),
     typeDefinitionProvider = n(map("got", lsp.type_definition)),
