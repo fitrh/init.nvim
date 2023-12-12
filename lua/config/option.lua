@@ -1,7 +1,7 @@
 local set = vim.opt
 
 set.backup = true -- always persist backup file
-set.backupcopy = "auto" -- best option for backup strategy
+set.backupcopy = "no" -- rename the file and write a new one
 set.backupdir = ("%s/backup//"):format(vim.fn.stdpath("state"))
 set.backupskip:append({ "*/.git/*", "*.gpg" }) -- file patterns to ignore by 'backup'
 set.breakindent = true -- continue indenting wrapped lines
