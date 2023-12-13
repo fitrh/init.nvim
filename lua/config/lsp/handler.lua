@@ -21,6 +21,7 @@ M.signature_help = {
 M.hover = {
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "solid",
+    silent = true, -- Disable `No information available` notification
   }),
 }
 
