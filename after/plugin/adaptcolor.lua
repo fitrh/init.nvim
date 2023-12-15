@@ -15,9 +15,9 @@ a.nvim_create_autocmd("ColorScheme", {
     local exec = os.execute
     if os.getenv("TMUX") then
       -- NOTE: tmux requires `set -g allow-passthrough on`
-      exec('printf "\\ePtmux;\\e\\033]10;' .. fg .. '\\007\\e\\\\"')
-      exec('printf "\\ePtmux;\\e\\033]11;' .. bg .. '\\007\\e\\\\"')
-      exec('printf "\\ePtmux;\\e\\033]12;' .. fg .. '\\007\\e\\\\"')
+      exec('printf "\\033Ptmux;\\033\\033]10;' .. fg .. '\\007\\033\\\\"')
+      exec('printf "\\033Ptmux;\\033\\033]11;' .. bg .. '\\007\\033\\\\"')
+      exec('printf "\\033Ptmux;\\033\\033]12;' .. fg .. '\\007\\033\\\\"')
     else
       exec('printf "\\033]10;' .. fg .. '\\007"')
       exec('printf "\\033]11;' .. bg .. '\\007"')
@@ -30,9 +30,9 @@ a.nvim_create_autocmd("VimLeavePre", {
   group = group,
   callback = function(_)
     if os.getenv("TMUX") then
-      os.execute('printf "\\ePtmux;\\e\\033]110\\007\\e\\\\"')
-      os.execute('printf "\\ePtmux;\\e\\033]111\\007\\e\\\\"')
-      os.execute('printf "\\ePtmux;\\e\\033]112\\007\\e\\\\"')
+      os.execute('printf "\\033Ptmux;\\e\\033]110\\007\\033\\\\"')
+      os.execute('printf "\\033Ptmux;\\e\\033]111\\007\\033\\\\"')
+      os.execute('printf "\\033Ptmux;\\e\\033]112\\007\\033\\\\"')
       return
     end
 
