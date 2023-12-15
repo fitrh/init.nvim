@@ -29,10 +29,12 @@ a.nvim_create_autocmd("VimLeavePre", {
   callback = function(_)
     if os.getenv("TMUX") then
       os.execute('printf "\\ePtmux;\\e\\033]111\\007\\e\\\\"')
+      os.execute('printf "\\ePtmux;\\e\\033]112\\007\\e\\\\"')
       return
     end
 
     os.execute('printf "\\033]111\\007"')
+    os.execute('printf "\\033]112\\007"')
   end,
   once = true,
 })
