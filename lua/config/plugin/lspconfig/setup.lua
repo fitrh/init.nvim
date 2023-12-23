@@ -9,7 +9,16 @@ local servers = {
   bashls = server_config.with("bash-language-server"),
   clangd = require("config.lsp.server.clangd"),
   cssls = server_config.with("vscode-css-language-server"),
-  denols = require("config.lsp.server.denols"),
+  denols = require("config.lsp.server.denols").config({
+    root_dir = root_pattern(
+      "mod.ts",
+      "mod.js",
+      "deps.ts",
+      "deps.js",
+      "deno.json",
+      "deno.jsonc"
+    ),
+  }),
   emmet_ls = require("config.lsp.server.emmet_ls"),
   fennel_ls = server_config.with("fennel-ls"),
   gopls = require("config.lsp.server.gopls"),
@@ -25,7 +34,13 @@ local servers = {
   pyright = require("config.lsp.server.pyright"),
   lua_ls = require("config.lsp.server.lua_ls"),
   svelte = require("config.lsp.server.svelte"),
-  tailwindcss = require("config.lsp.server.tailwindcss"),
+  tailwindcss = server_config.with("tailwindcss-language-server", {
+    root_dir = root_pattern(
+      "tailwind.config.js",
+      "tailwind.config.cjs",
+      "tailwind.config.ts"
+    ),
+  }),
   taplo = server_config.with("taplo"),
   texlab = require("config.lsp.server.texlab"),
   yamlls = server_config.with("yaml-language-server"),

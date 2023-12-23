@@ -1,22 +1,16 @@
-local ok, util = pcall(require, "lspconfig.util")
-local config = {}
+local M = {}
 
-if ok then
-  config.root_dir = util.root_pattern(
-    "mod.ts",
-    "mod.js",
-    "deps.ts",
-    "deps.js",
-    "deno.json",
-    "deno.jsonc"
-  )
+function M.config(config)
+  config = config or {}
+
+  config.init_options = {
+    enable = true,
+    lint = true,
+  }
+
+  config.single_file_support = false
+
+  return require("config.lsp.server").with("deno", config)
 end
 
-config.init_options = {
-  enable = true,
-  lint = true,
-}
-
-config.single_file_support = false
-
-return require("config.lsp.server").with("deno", config)
+return M
