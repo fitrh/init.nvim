@@ -22,18 +22,21 @@ function Server.with(bin, opts)
     return false
   end
 
-  local config = {
-    capabilities = require("config.lsp.capability"),
-    handlers = require("config.lsp.handler").default(),
-    on_attach = function(client, bufnr)
-      require("config.lsp.attach").with.all(client, bufnr)
-    end,
-  }
+  local config = {}
+  for k, v in pairs(opts or {}) do
+    config[k] = v
+  end
 
-  if opts then
-    for key, value in pairs(opts) do
-      config[key] = value
-    end
+  if not config.capabilities then
+    config.capabilities = require("config.lsp.capability")
+  end
+
+  if not config.handlers then
+    config.handlers = require("config.lsp.handler").default()
+  end
+
+  if not config.on_attach then
+    config.on_attach = require("config.lsp.attach").with.all
   end
 
   return config
