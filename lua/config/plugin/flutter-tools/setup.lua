@@ -5,6 +5,7 @@ if FLUTTER_ROOT and FLUTTER_ROOT ~= "" then
   config.flutter_path = ("%s/bin/flutter"):format(FLUTTER_ROOT)
 end
 
+config.root_patterns = { "pubspec.yaml" }
 config.closing_tags = { prefix = "ﰪ " }
 config.dev_log = { open_cmd = "tabedit" }
 
