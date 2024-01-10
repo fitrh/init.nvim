@@ -7,7 +7,7 @@ end
 
 config.root_patterns = { "pubspec.yaml" }
 config.closing_tags = { prefix = "ﰪ " }
-config.dev_log = { open_cmd = "tabedit" }
+config.dev_log = { open_cmd = "botright 10new" }
 
 config.lsp = require("config.lsp.server").with("flutter")
 if not config.lsp then
