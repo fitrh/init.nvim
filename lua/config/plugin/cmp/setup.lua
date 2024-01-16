@@ -16,13 +16,6 @@ config.snippet = {
 }
 
 local COMPLETION_KIND = require("const.LSP_KIND").Completion
-local source_hl = {
-  nvim_lua = "@constant.builtin",
-  luasnip = "@comment",
-  buffer = "@string",
-  path = "Directory",
-}
-
 require("sugar.highlight").colorscheme(function(h)
   local base = h.bg("Pmenu", { "NormalFloat", "Normal" })
   for kind, _ in pairs(COMPLETION_KIND) do
@@ -43,7 +36,12 @@ formatting.format = function(entry, item)
   item.kind_hl_group = ("%sIcon"):format(kind_hl_group)
   item.kind = (" %s "):format(COMPLETION_KIND[kind].icon)
 
-  item.menu_hl_group = source_hl[entry.source.name] or kind_hl_group
+  local source = entry.source.name
+  if source == "nvim_lsp" or source == "path" then
+    item.menu_hl_group = kind_hl_group
+  else
+    item.menu_hl_group = "Comment"
+  end
   item.menu = kind
 
   local half_win_width = math.floor(vim.api.nvim_win_get_width(0) * 0.5)
