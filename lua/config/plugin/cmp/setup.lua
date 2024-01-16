@@ -7,6 +7,9 @@ local config = {
   mapping = require("config.plugin.cmp.keymap").setup(cmp, snippet),
   experimental = { ghost_text = true },
   completion = { keyword_length = 3 },
+  matching = {
+    disallow_partial_fuzzy_matching = false,
+  },
 }
 
 config.snippet = {
