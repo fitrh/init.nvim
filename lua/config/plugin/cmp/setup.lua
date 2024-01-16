@@ -90,7 +90,7 @@ cmp.setup.filetype("lua", {
   },
 })
 
-cmp.setup.cmdline("/", {
+cmp.setup.cmdline({ "/", "?" }, {
   completion = { keyword_length = 1 },
   sources = {
     { name = "nvim_lsp_document_symbol" },
