@@ -53,7 +53,10 @@ formatting.format = function(entry, item)
   if vim.api.nvim_strwidth(item.abbr) > half_win_width then
     item.abbr = ("%s…"):format(item.abbr:sub(1, half_win_width))
   end
-  item.abbr = ("%s "):format(item.abbr)
+
+  if item.menu then -- Add exta space to visually differentiate `abbr` and `menu`
+    item.abbr = ("%s "):format(item.abbr)
+  end
 
   return item
 end
