@@ -44,6 +44,11 @@ formatting.format = function(entry, item)
   end
   item.menu = kind
 
+  if source == "buffer" then
+    item.menu_hl_group = nil
+    item.menu = nil
+  end
+
   local half_win_width = math.floor(vim.api.nvim_win_get_width(0) * 0.5)
   if vim.api.nvim_strwidth(item.abbr) > half_win_width then
     item.abbr = ("%s…"):format(item.abbr:sub(1, half_win_width))
