@@ -75,10 +75,7 @@ config.setup({
       node_decremental = "g(",
     },
   },
-  indent = {
-    enable = true,
-    disable = { "dart" },
-  },
+  indent = { enable = true },
 
   -- extra modules
 
