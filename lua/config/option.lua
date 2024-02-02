@@ -26,6 +26,7 @@ set.fillchars = {
   diff = "/",
   eob = " ", -- use 'space' for lines after the last buffer line in a window
 }
+set.foldtext = "" -- disable foldtext, show folded line with normal syntax highlight a.k.a transparent foldtext
 set.guicursor = "n-c:hor50,i-ci-ve:ver25" -- horizontal in normal, vertical in insert
 set.ignorecase = true -- use case-insensitive in search
 set.laststatus = 3 -- use global status line
