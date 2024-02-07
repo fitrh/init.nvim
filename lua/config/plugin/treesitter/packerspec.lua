@@ -21,6 +21,7 @@ return {
       "fish",
       "fennel",
       "gitcommit",
+      "gitconfig",
       "gitignore",
       "gitrebase",
       "go",
