@@ -55,7 +55,6 @@ set.shortmess = { -- shorten message in prompt window
 set.showcmd = false -- hide (partial) command in the last line of the screen
 set.showmatch = true -- highlight matching <[{()}]>
 set.showmode = false -- hide current mode in command-line window
-set.showtabline = 1 -- show tab-page only if there are at least 2 tab pages
 set.signcolumn = "no" -- disable signcolumn
 set.smartcase = true -- use case-sensitive when the search term contains an uppercase letter
 set.softtabstop = -1 -- number of spaces that a <Tab> counts for while performing editing operations, negative means use 'shiftwidth' value
@@ -99,4 +98,3 @@ set.wildignore = { -- list of file patterns to ignore when expanding wildcards
 set.wildmode = { "longest", "full" }
 set.wildoptions:remove({ "tagfile" })
 set.wrap = false -- disable line wrap
-set.writebackup = true -- protect against crash during write
