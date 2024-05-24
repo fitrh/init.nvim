@@ -5,6 +5,11 @@ a.nvim_create_autocmd("UIEnter", {
   callback = function()
     local env = os.getenv
 
+    local background = env("NVIM_BACKGROUND")
+    if background and (background == "light" or background == "dark") then
+      a.nvim_set_option_value("background", background, {})
+    end
+
     local colorscheme = env("NVIM_COLORSCHEME")
     if not colorscheme then
       a.nvim_exec_autocmds("ColorScheme", { pattern = "default" })
