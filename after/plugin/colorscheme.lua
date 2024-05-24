@@ -11,7 +11,7 @@ a.nvim_create_autocmd("UIEnter", {
     end
 
     local colorscheme = env("NVIM_COLORSCHEME")
-    if not colorscheme then
+    if not colorscheme or not a.nvim_get_option_value("termguicolors", {}) then
       a.nvim_exec_autocmds("ColorScheme", { pattern = "default" })
       return true
     end
