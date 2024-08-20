@@ -6,7 +6,7 @@ if FLUTTER_ROOT and FLUTTER_ROOT ~= "" then
 end
 
 config.root_patterns = { "pubspec.yaml" }
-config.closing_tags = { prefix = "ﰪ " }
+config.closing_tags = { prefix = "󰜬 " }
 config.dev_log = { open_cmd = "botright 10new" }
 
 config.lsp = require("config.lsp.server").with("flutter")
