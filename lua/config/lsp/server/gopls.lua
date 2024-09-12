@@ -20,6 +20,7 @@ return require("config.lsp.server").with(bin, {
         -- SEE: https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
         fieldalignment = true, -- find structs that would use less memory if their fields were sorted
         shadow = true, -- check for possible unintended shadowing of variables
+        unusedvariable = true, -- check for unused variables
         useany = true, -- check for constraints that could be simplified to "any"
       },
     },
