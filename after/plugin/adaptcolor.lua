@@ -26,7 +26,7 @@ a.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
-a.nvim_create_autocmd("VimLeavePre", {
+a.nvim_create_autocmd("UILeave", {
   group = group,
   callback = function(_)
     if os.getenv("TMUX") then
