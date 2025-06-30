@@ -11,11 +11,15 @@ config.render = function(props)
       return nil
     end
 
-    return require("config.plugin.incline.render.focus")()
+    return require("config.plugin.incline.render.focus")(props)
+  end
+
+  if vim.api.nvim_get_option_value("laststatus", {}) ~= 3 then
+    return nil
   end
 
   if vim.api.nvim_buf_get_name(props.buf) == "" then
-    return " [No Name] "
+    return nil
   end
 
   return require("config.plugin.incline.render.unfocus")(props)

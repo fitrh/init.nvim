@@ -25,15 +25,22 @@ vim.api.nvim_cmd({ cmd = "colorscheme", args = { theme } }, {})
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
   local fmt = string.format
+  local concat = table.concat
 
+  local is_light = vim.api.nvim_get_option_value("background", {}) == "light"
+  local function lightdark(light, dark)
+    return is_light and light or dark
+  end
   local p = require("github-theme.palette").load(theme)
   local scale = p.scale
   local spec = p.generate_spec(p)
   local base = p.canvas.default
 
   -- highlight-default
-  set("ColorColumn", { bg = blend(spec.bg2, base, 0.4) })
-  set("CursorColumn", { bg = blend(p.blue.bright, base, 0.03) })
+  set("ColorColumn", { bg = blend(spec.bg2, base, lightdark(1.0, 0.4)) })
+  set("CursorColumn", {
+    bg = blend(p.blue.bright, base, lightdark(0.1, 0.03)),
+  })
   link("CursorLine", "CursorColumn")
   set("CursorLineNr", { fg = p.blue.bright })
   set("DiffAdd", { inherit = "DiffAdd", bg = "NONE" })
@@ -43,11 +50,18 @@ require("sugar.highlight").colorscheme(function(h)
   link("Folded", "LineNr")
   link("MsgArea", "StatusLine")
   set("NonText", { fg = spec.fg3 })
-  set("StatusLine", { fg = p.fg.muted, bg = spec.bg0 })
+  set("StatusLine", {
+    fg = lightdark(spec.fg2, p.fg.muted),
+    bg = lightdark(scale.blue[2], spec.bg0),
+  })
+  set("StatusLineNC", {
+    inherit = "StatusLine",
+    fg = lightdark(p.white.bright, scale.gray[5]),
+  })
   link("TabLineSel", "Normal")
   set("TabLine", { inherit = "StatusLine", fg = spec.fg3 })
   link("TabLineFill", "TabLine")
-  set("VertSplit", { fg = spec.fg3 })
+  set("VertSplit", { fg = lightdark(spec.fg0, spec.fg3) })
 
   -- :h diagnostic-highlights
   set("DiagnosticUnderlineHint", {
@@ -58,6 +72,10 @@ require("sugar.highlight").colorscheme(function(h)
   -- treesitter-highlight-groups
   set("@text.diff.add", { inherit = "diffAdded", bg = "NONE" })
   set("@text.diff.delete", { inherit = "diffRemoved", bg = "NONE" })
+
+  -- :h lsp-semantic-highlight
+  link("@lsp.type.property", "@field")
+  link("@lsp.typemod.function.defaultLibrary", "@function.builtin")
 
   -- plugin
   link("CmpCursorLine", "PmenuSel")
@@ -86,15 +104,16 @@ require("sugar.highlight").colorscheme(function(h)
   --- github.com/rcarriga/nvim-notify
   for _, v in ipairs({ "TRACE", "DEBUG", "INFO", "WARN", "ERROR" }) do
     local title = fmt("Notify%sTitle", v)
-    local color = blend(fg(title), base, 0.05)
+    local color = blend(fg(title), base, lightdark(0.1, 0.05))
     set(fmt("Notify%sBorder", v), { fg = color, bg = color })
     set(fmt("Notify%sBody", v), { inherit = title, bg = color })
+    link(concat({ "Notify", v, "Icon" }), title)
   end
 
-  set("StatusLineDim", { inherit = "StatusLine", fg = scale.gray[5] })
-  set("StatusLineGitBranch", { inherit = "StatusLine", fg = p.magenta })
-  for _, kind in ipairs({ "Add", "Change", "Delete" }) do
-    local group = ("StatusLineGitDiff%s"):format(kind)
+  set("StatusLineDim", {
+    inherit = "StatusLine",
+    fg = lightdark(p.black.bright, scale.gray[5]),
+  })
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = p.magenta.base })
   local gitspec = spec.git
   for k, v in pairs({ add = "Add", changed = "Change", removed = "Delete" }) do
@@ -104,7 +123,7 @@ require("sugar.highlight").colorscheme(function(h)
   set("StatusLineModified", { inherit = "StatusLine", fg = p.red.bright })
   set("StatusLinePath", {
     inherit = "StatusLine",
-    fg = scale.gray[variant == "dark" and 5 or 6],
+    fg = lightdark(p.white.base, scale.gray[variant == "dark" and 5 or 6]),
   })
   set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = p.red.base })

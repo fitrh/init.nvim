@@ -2,6 +2,10 @@ local M = {
   "neovim/nvim-lspconfig",
   config = function()
     require("config.plugin.lspconfig.setup")
+    vim.api.nvim_exec_autocmds("FileType", {
+      pattern = vim.bo.filetype,
+      modeline = false,
+    }) -- SEE: https://github.com/neovim/neovim/issues/23368
   end,
   ft = {
     "astro",

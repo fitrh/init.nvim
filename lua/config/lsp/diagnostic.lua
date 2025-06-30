@@ -13,7 +13,7 @@ local M = {}
 
 function M.attach(bufnr)
   vim.diagnostic.config({
-    virtual_text = false,
+    virtual_text = false, -- Already false by default in https://github.com/neovim/neovim/pull/32079
     signs = false,
     float = {
       format = function(diagnostic)
@@ -29,6 +29,7 @@ function M.attach(bufnr)
 
         return prefix, hl
       end,
+      border = "solid",
     },
     severity_sort = true,
   })

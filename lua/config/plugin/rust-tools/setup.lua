@@ -3,6 +3,15 @@ local config = {}
 
 config.settings = {
   ["rust-analyzer"] = {
+    check = {
+      command = "clippy",
+    },
+    diagnostics = {
+      experimental = { enable = true },
+    },
+    files = {
+      watcher = "server",
+    },
     hoverActions = { references = true },
     rustfmt = { enableRangeFormatting = true },
   },

@@ -233,6 +233,9 @@ end
 ---@field bg fun(group:string, fallback_groups?:table, fallback_color?:string)
 ---@field blend fun(top:string|fun(), bottom:string|fun(), alpha:number)
 
+-- TODO: Put `callback` in `ColorScheme` autocmd
+-- - `colorscheme()` accepts `(color_name:string, callback:function)`
+-- - Use `"*"` for `color_name` if not used for colorscheme overriding, e.g. in config.plugin.gitsigns
 ---Set colorscheme
 ---@param callback fun(h:HighlightCallbackParam)
 function Highlight.colorscheme(callback)

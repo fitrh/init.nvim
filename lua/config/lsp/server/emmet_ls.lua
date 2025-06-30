@@ -1,3 +1,4 @@
+-- local bin = "emmet-language-server"
 local bin = "ls_emmet"
 
 return require("config.lsp.server").with(bin, {

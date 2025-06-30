@@ -9,7 +9,7 @@ config.root_patterns = { "pubspec.yaml" }
 config.closing_tags = { prefix = "󰜬 " }
 config.dev_log = { open_cmd = "botright 10new" }
 
-config.lsp = require("config.lsp.server").with("flutter")
+config.lsp = require("config.lsp.server").with("flutter") ---@type ServerConfig|boolean|{ color: { enabled: boolean, virtual_text_str: string } }
 if not config.lsp then
   return false
 end
@@ -22,6 +22,7 @@ config.lsp.color = {
 
 require("flutter-tools").setup(config)
 
+-- TODO: Remove `pcall` after adding `telescope` as dependency
 local ok, telescope = pcall(require, "telescope")
 if ok and telescope.load_extension then
   telescope.load_extension("flutter")

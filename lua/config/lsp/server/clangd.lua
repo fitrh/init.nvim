@@ -10,6 +10,7 @@ config.cmd = {
   "--completion-style=bundled",
   "--cross-file-rename",
   "--header-insertion=iwyu",
+  -- TODO: --compile-commands-dir=
 }
 
 config.init_options = {

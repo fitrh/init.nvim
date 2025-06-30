@@ -2,5 +2,8 @@ column_width = 80
 line_endings = "Unix"
 indent_type = "Spaces"
 indent_width = 2
+# TODO: Manual quote styles
 quote_style = "AutoPreferDouble"
 call_parentheses = "Always"
+# TODO: Allows inline block (e.g. function, if-statement)
+# collapse_simple_statement = "Always"

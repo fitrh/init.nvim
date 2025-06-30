@@ -1,6 +1,6 @@
 local M = {}
 
-function M.config(config)
+function M.set(config)
   config = config or {}
 
   config.init_options = {

@@ -18,26 +18,34 @@ local function get_mode()
   return modes[os.getenv("NVIM_DOOM_ONE_MODE")] or "dark"
 end
 
-vim.api.nvim_set_option("background", get_mode())
+vim.api.nvim_set_option_value("background", get_mode(), {})
 vim.cmd.colorscheme("doom-one")
 
 require("sugar.highlight").colorscheme(function(h)
   local set, link = h.set, h.link
   local fg, bg = h.fg, h.bg
   local blend = h.blend
-  local fmt = string.format
-  local p = require("doom-one.colors").get_palette(
-    vim.api.nvim_get_option("background")
-  )
+  local fmt, concat = string.format, table.concat
+  local background = vim.api.nvim_get_option_value("background", {})
+
+  local function lightdark(use_this, else_this)
+    return background == "light" and use_this or else_this
+  end
+
+  local p = require("doom-one.colors").get_palette(background)
 
   -- highlight-default
-  set("ColorColumn", { bg = blend(bg("ColorColumn"), p.bg, 0.4) })
-  set("CursorColumn", { bg = blend(bg("CursorColumn"), p.bg, 0.5) })
+  set("ColorColumn", {
+    bg = blend(bg("ColorColumn"), p.bg, lightdark(0.8, 0.4)),
+  })
+  set("CursorColumn", {
+    bg = blend(bg("CursorColumn"), p.bg, lightdark(1, 0.5)),
+  })
   link("CursorLine", "CursorColumn")
-  set("CursorLineNr", { inherit = "CursorLineNr", bg = p.bg })
+  set("CursorLineNr", { fg = p.base7 })
   set("Folded", { inherit = "Folded", bg = "NONE" })
   set("FloatBorder", { inherit = "NormalFloat", fg = bg("NormalFloat") })
-  set("LineNr", { fg = p.base5 })
+  set("LineNr", { fg = p[lightdark("base4", "base5")] })
   link("MatchParen", "LspReferenceText")
   link("MsgArea", "StatusLine")
   set("StatusLine", { inherit = "StatusLine", fg = p.base7 })
@@ -45,8 +53,8 @@ require("sugar.highlight").colorscheme(function(h)
   link("TabLineFill", "TabLine")
 
   -- treesitter-highlight-groups
-  set("@text.diff.add", { inherit = "DiffAddedGutter", bold = false })
-  set("@text.diff.delete", { inherit = "DiffRemovedGutter", bold = false })
+  set("@diff.plus", { inherit = "DiffAddedGutter", bold = false })
+  set("@diff.minus", { inherit = "DiffRemovedGutter", bold = false })
 
   -- diagnostic-highlights
   link("DiagnosticError", "DiagnosticDefaultError")
@@ -61,6 +69,31 @@ require("sugar.highlight").colorscheme(function(h)
   -- plugin
   link("CmpCursorLine", "Visual")
   set("CmpDoc", { inherit = "PmenuThumb", blend = 0 })
+  set("CmpItemKindInterface", { fg = p.dark_blue })
+  set("CmpItemKindColor", { fg = p.yellow })
+  set("CmpItemKindTypeParameter", { fg = p.yellow })
+  set("CmpItemKindText", { fg = p.yellow })
+  set("CmpItemKindEnum", { fg = p.orange })
+  set("CmpItemKindKeyword", { fg = p.blue })
+  set("CmpItemKindConstant", { fg = p.violet })
+  set("CmpItemKindConstructor", { fg = p.red })
+  set("CmpItemKindReference", { fg = p.dark_cyan })
+  set("CmpItemKindFunction", { fg = p.magenta })
+  set("CmpItemKindStruct", { fg = p.blue })
+  set("CmpItemKindClass", { fg = p.dark_blue })
+  set("CmpItemKindModule", { fg = p.teal })
+  set("CmpItemKindOperator", { fg = p.blue })
+  set("CmpItemKindField", { fg = p.teal })
+  set("CmpItemKindProperty", { fg = p.magenta })
+  set("CmpItemKindEvent", { fg = p.orange })
+  set("CmpItemKindUnit", { fg = p.orange })
+  set("CmpItemKindSnippet", { fg = p[lightdark("base5", "fg_alt")] })
+  set("CmpItemKindFolder", { fg = p.blue })
+  set("CmpItemKindVariable", { fg = p.violet })
+  set("CmpItemKindFile", { fg = p.fg })
+  set("CmpItemKindMethod", { fg = p.cyan })
+  set("CmpItemKindValue", { fg = p.fg })
+  set("CmpItemKindEnumMember", { fg = p.red })
   link("FloatTitle", "Title")
   link("GitSignsAdd", "DiffAdd")
   link("GitSignsChange", "DiffChange")
@@ -107,9 +140,10 @@ require("sugar.highlight").colorscheme(function(h)
   link("NotifyERRORTitle", "DiagnosticError")
   for _, v in ipairs({ "TRACE", "DEBUG", "INFO", "WARN", "ERROR" }) do
     local title = fmt("Notify%sTitle", v)
-    local color = blend(fg(title), p.bg, 0.05)
+    local color = blend(fg(title), p.bg, lightdark(0.1, 0.05))
     set(fmt("Notify%sBody", v), { inherit = title, bg = color })
     set(fmt("Notify%sBorder", v), { fg = color, bg = color })
+    link(concat({ "Notify", v, "Icon" }), title)
   end
 
   set("StatusLineDim", { inherit = "StatusLine", fg = p.base5 })

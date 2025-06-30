@@ -1,10 +1,31 @@
 local M = {}
 
+---@param client vim.lsp.Client
+---@param bufnr number
 function M.attach(client, bufnr)
   local capable = client.server_capabilities
+  if not capable then
+    return
+  end
+
+  local support = client.supports_method
   local lsp = vim.lsp
   local augroup = require("sugar.augroup")
 
+  if capable.semanticTokensProvider then
+    augroup({ "semantic_token_mod", false }, function(autocmd)
+      autocmd("LspTokenUpdate", bufnr, function()
+        local hi = vim.api.nvim_set_hl
+        hi(0, "@lsp.type.comment.dart", {})
+        hi(0, "@lsp.type.comment.go", {})
+        hi(0, "@lsp.type.comment.lua", {})
+        hi(0, "@lsp.type.comment.zig", {})
+        return true
+      end)
+    end)
+  end
+
+  -- TODO: remove, use keymap instead
   if capable.documentHighlightProvider then
     augroup({ "highlight_references", false }, function(autocmd)
       autocmd("CursorHold", bufnr, lsp.buf.document_highlight)
@@ -34,10 +55,13 @@ function M.attach(client, bufnr)
     end)
   end
 
-  if capable.codeLensProvider then
+  if support("textDocument/codeLens", { bufnr = bufnr }) then
+    -- if capable.codeLensProvider then
     augroup({ "codelens_refresh", false }, function(autocmd)
       local event = { "BufEnter", "BufLeave", "InsertEnter", "InsertLeave" }
-      autocmd(event, bufnr, lsp.codelens.refresh)
+      autocmd(event, bufnr, function(args)
+        lsp.codelens.refresh({ bufnr = args.buf }) -- set bufnr opts to avoid refreshing all buffer
+      end)
     end)
   end
 end

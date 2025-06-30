@@ -1,10 +1,31 @@
 local config = require("nvim-treesitter.configs")
+local parser = require("nvim-treesitter.parsers").get_parser_configs()
+
+-- TODO: Remove, upstreamed. SEE: https://github.com/nvim-treesitter/nvim-treesitter/pull/7693
+parser.blade = {
+  install_info = {
+    url = "https://github.com/EmranMR/tree-sitter-blade",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "blade",
+}
+
+parser.plantuml = {
+  install_info = {
+    url = "https://github.com/cathaysia/tree-sitter-plantuml",
+    files = { "src/parser.c" },
+    branch = "master",
+  },
+  filetype = "plantuml",
+}
 
 config.setup({
   ensure_installed = {
     "astro",
     "bash",
     "bibtex",
+    "blade",
     "c",
     "cmake",
     "comment",
@@ -46,16 +67,19 @@ config.setup({
     "php",
     "php_only",
     "phpdoc",
+    "plantuml",
     "python",
     "query",
     "regex",
     "rust",
+    "scala",
     "scfg",
     "scheme",
     "scss",
     "ssh_config",
     "sql",
     "svelte",
+    "tmux",
     "toml",
     "tsx",
     "typescript",
@@ -91,22 +115,49 @@ config.setup({
       disable = { "dart", "zig" },
       lookahead = true,
       keymaps = {
+        ["aA"] = "@assignment.outer",
+        ["iA"] = "@assignment.inner",
+        ["aa"] = "@attribute.outer",
+        ["ia"] = "@attribute.inner",
+        ["aP"] = "@parameter.outer",
+        ["iP"] = "@parameter.inner",
         ["aB"] = "@block.outer",
         ["iB"] = "@block.inner",
         ["ic"] = "@conditional.inner",
         ["ac"] = "@conditional.outer",
+        ["ii"] = "@call.inner", -- i for invoke
+        ["ai"] = "@call.outer",
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["al"] = "@loop.outer",
         ["il"] = "@loop.inner",
-        ["is"] = "@statement.inner",
-        ["as"] = "@statement.outer",
+        ["iS"] = "@statement.inner",
+        ["aS"] = "@statement.outer",
         ["aC"] = "@class.outer",
         ["iC"] = "@class.inner",
+        ["ar"] = "@return.outer",
+        ["ir"] = "@return.inner",
+      },
+    },
+    lsp_interop = {
+      enable = true,
+      floating_preview_opts = { border = "solid" },
+      peek_definition_code = {
+        ["gKf"] = "@function.outer",
+        ["gKc"] = "@class.outer",
       },
     },
   },
 
-  -- nvim-ts-autotag
-  autotag = { enable = true },
+  -- nvim-treesitter-pairs
+  pairs = {
+    enable = true,
+    disable = { "svelte" },
+    highlight_pair_events = { "CursorHold" },
+    highlight_self = false,
+    fallback_cmd_normal = false,
+    keymaps = {
+      goto_partner = "g%",
+    },
+  },
 })

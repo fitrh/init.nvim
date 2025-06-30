@@ -1,0 +1,40 @@
+*init.todo.txt*
+
+TODO                                                              TODO
+
+LEGEND
+	┌───┬────────────────────────────┐
+	│ • │ Done, not committed to git │
+	├───┼────────────────────────────┤
+	│ ✓ │ Done and committed         │
+	└───┴────────────────────────────┘
+
+## CONFIG
+
+- [ ] Show 'macro recording' state in buffer
+	- Cursor color
+	- Virtual text
+- [ ] Detect .{ft}.draft file
+	- the 'filetype' should be set to {ft}
+- [ ] Bind `q` to `:lclose`|`:cclose`
+- [ ] Add gaps around telescope `ivy` theme
+- [ ] Make `<Tab>` behave as space a.k.a. `'expandtab'` when typed
+  after indent
+- [•] Rename `init.lua.example` to ~~`init.def.lua`~~ `init.lua.in`
+	- [ ] Update `script/setup`
+- [ ] Configure `'findexpr'`|`'findfunc'`
+- [ ] Configure `'formatoptions'` to do not 'auto linebreak'
+  at `'textwidth'`
+- [•] Setup keymap for intro screen
+        dashboard plugins-like behavior
+- [ ] Setup `vale`
+
+## PLUGIN REVIEW
+
+- [ ] [zenbones.nvim](https://github.com/zenbones-theme/zenbones.nvim)
+- [ ] [quicker.nvim](https://github.com/stevearc/quicker.nvim)
+- [ ] [nvim-vtsls](https://github.com/yioneko/nvim-vtsls)
+- [ ] [substrata.nvim](https://github.com/kvrohit/substrata.nvim)
+
+                                      updated 2024-11-08T10:39:37+0800
+

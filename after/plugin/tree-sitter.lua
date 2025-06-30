@@ -1,0 +1,26 @@
+-- NOTE: For nvim-treesitter main branch
+-- Conditionally enable tree-sitter features based on queries existance
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "*" },
+--   callback = function(ctx)
+--     local lang = vim.treesitter.language.get_lang(ctx.match)
+--     if not lang then
+--       return
+--     end
+--
+--     if not vim.treesitter.language.add(lang) then
+--       return
+--     end
+--
+--     local buf = ctx.buf
+--     local rt_f = vim.api.nvim_get_runtime_file
+--
+--     if #rt_f("queries/" .. lang .. "/highlights.scm", false) > 0 then
+--       vim.treesitter.start(buf, lang)
+--     end
+--
+--     if #rt_f("queries/" .. lang .. "/indents.scm", false) > 0 then
+--       vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+--     end
+--   end,
+-- })

@@ -1,0 +1,50 @@
+*init.COMMIT_STYLE.txt*
+
+
+
+
+
+
+.with.dot.separator
+	-> changes for lua module
+
+prefix.with.[multiple,module]
+	-> changes that affect multiple modules
+
+preifx.with(addiional context)
+	-> changes within a module with multiple context
+
+prefix/with/slash/separator
+	-> changes for outside lua module
+
+module: Format
+	-> formatting changes
+
+Example:
+
+config.event(adaptive_scrolloff): Message
+	-> the module contains several context, this changes only affect an augroup names adaptive_scrolloff
+
+config.[lsp,plugin]: Message
+	-> changes for both lsp and plugin module
+
+plugin.treesitter: Message
+	-> changes for lua/plugin/treesitter/setup.lua
+
+plugin.treesitter.packerspec: Message
+	-> changes for lua/plugin/treesitter/packerspec.lua
+
+plugin.lualine.component.file: Message
+	-> changes for lua/plugin/lualine/componenty/file.lua
+after/ftplugin/markdown: Message
+	-> changes for after/ftplugin/markdown.{lua,vim}
+
+All other than the above using the following convention
+
+(TYPE) Message
+	-> Uppercase prefix with parentheses, no semicolon before message
+
+Example:
+
+(CHORE) Move a to b
+(FORMAT) Convert tabs to space

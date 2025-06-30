@@ -5,6 +5,12 @@ local M = {
   hint_enable = false,
   hint_prefix = " () ",
   hint_scheme = "DiagnosticHint",
+  -- hint_enable = true,
+  -- hint_prefix = "",
+  -- hint_scheme = "NonText",
+  -- hint_inline = function()
+  --   return true
+  -- end,
   handler_opts = { border = "solid" },
   extra_trigger_chars = { "(", "{", "," },
   padding = " ",

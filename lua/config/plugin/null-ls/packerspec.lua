@@ -32,10 +32,12 @@ return {
     "scss",
     "sh",
     "svelte",
+    "toml",
     "txt",
     "typescript",
     "typescriptreact",
     "vue",
+    "xml",
     "yaml",
   },
 }

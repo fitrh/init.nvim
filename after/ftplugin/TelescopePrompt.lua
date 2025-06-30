@@ -1,5 +1,3 @@
-local w = vim.w
-w.nocursorline = true
-
-local set = vim.opt_local
-set.cursorline = false
+local set = vim.api.nvim_set_option_value
+-- set("cursorline", false, { scope = "local", win = 0 })
+set("winhighlight", "Search:None", { scope = "local", win = 0 })

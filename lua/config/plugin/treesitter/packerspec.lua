@@ -4,11 +4,16 @@ return {
     run = ":TSUpdate",
     config = function()
       require("config.plugin.treesitter.setup")
+      vim.api.nvim_exec_autocmds("FileType", {
+        pattern = vim.bo.filetype,
+        modeline = false,
+      }) -- SEE: https://github.com/neovim/neovim/issues/23368
     end,
     ft = {
       "astro",
       "bash",
       "bib",
+      "blade",
       "c",
       "cmake",
       "cpp",
@@ -43,9 +48,12 @@ return {
       "meson",
       "ninja",
       "php",
+      "plantuml",
       "python",
       "query",
       "rust",
+      "sbt",
+      "scala",
       "scfg",
       "scheme",
       "scss",
@@ -53,7 +61,9 @@ return {
       "sshconfig",
       "sql",
       "svelte",
+      "TelescopePrompt",
       "tex",
+      "tmux",
       "toml",
       "typescript",
       "typescriptreact",
@@ -69,5 +79,5 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
     after = "nvim-treesitter",
   },
-  { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
+  { "theHamsta/nvim-treesitter-pairs", after = "nvim-treesitter" },
 }

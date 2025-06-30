@@ -1,0 +1,293 @@
+-- local function override()
+--   ---@param c number|string 24-bit RGB value or color name
+--   ---@return string "#rrggbb"
+--   local function hex(c)
+--     if type(c) ~= "string" then
+--       return string.format("%06X", c)
+--     end
+--
+--     local named_color = vim.api.nvim_get_color_by_name(c)
+--     if named_color ~= -1 then
+--       c = named_color
+--     end
+--
+--     return string.format("%06X", c)
+--   end
+--
+--   ---@param c string "#rrggbb" color format
+--   ---@return { r: number, g: number, b: number }
+--   local function rgb(c)
+--     local rrggbb = string.gsub(c, "#", "")
+--     local r = rrggbb:sub(1, 2)
+--     local g = rrggbb:sub(3, 4)
+--     local b = rrggbb:sub(5, 6)
+--     return { r = tonumber(r, 16), g = tonumber(g, 16), b = tonumber(b, 16) }
+--   end
+--
+--   local function blend(top, bottom, alpha)
+--     local a = alpha > 1 and (alpha / 100) or alpha
+--     local b = rgb(hex(bottom))
+--     local t = rgb(hex(top))
+--
+--     local function channel(c)
+--       c = (a * t[c] + ((1 - a) * b[c]))
+--       return math.floor(math.min(math.max(0, c), 255) + 0.5)
+--     end
+--
+--     return ("#%02X%02X%02X"):format(channel("r"), channel("g"), channel("b"))
+--   end
+--
+--   local api = vim.api
+--   local theme = { fg = "Light", bg = "Dark" }
+--   local light = api.nvim_get_option_value("background", {}) == "light"
+--   if light then
+--     theme = { fg = "Dark", bg = "Light" }
+--   end
+--
+--   ---@alias Grey "Grey1" | "Grey2" | "Grey3" | "Grey4"
+--   ---@alias Color "Red" | "Green" | "Blue" | "Yellow" | "Cyan" | "Magenta" | Grey
+--   ---@type table<Color, { fg: string, bg: string }>
+--   local c = {}
+--   for i = 1, 4 do
+--     c["Grey" .. i] = {
+--       fg = "Nvim" .. theme.fg .. "Grey" .. i,
+--       bg = "Nvim" .. theme.bg .. "Grey" .. i,
+--     }
+--   end
+--   for _, v in ipairs({ "Blue", "Cyan", "Green", "Magenta", "Red", "Yellow" }) do
+--     c[v] = {
+--       fg = "Nvim" .. theme.fg .. v,
+--       bg = "Nvim" .. theme.bg .. v,
+--     }
+--   end
+--
+--   local get_hl = api.nvim_get_hl
+--   local function get(group)
+--     return get_hl(0, { name = group, link = false })
+--   end
+--   local Normal = get("Normal")
+--   local function nblend(top, alpha)
+--     return blend(top, Normal.bg, alpha)
+--   end
+--   local function fblend(fg, bottom, alpha, attr)
+--     if not attr and alpha and type(alpha) == "table" then
+--       attr = alpha
+--       alpha = nil
+--     end
+--     if not alpha and type(bottom) == "number" then
+--       alpha = bottom
+--       bottom = Normal.bg
+--     end
+--
+--     local def = { fg = fg, bg = blend(fg, bottom, alpha) }
+--     for k, v in pairs(attr or {}) do
+--       def[k] = v
+--     end
+--
+--     return def
+--   end
+--
+--   local set_hl = api.nvim_set_hl
+--   local function hi(group, def)
+--     set_hl(0, group, def)
+--   end
+--
+--   -- :h terminal-config
+--   local g = api.nvim_set_var
+--   g("terminal_color_0", c.Grey2.bg)
+--   g("terminal_color_1", c.Red.fg)
+--   g("terminal_color_2", c.Green.fg)
+--   g("terminal_color_3", c.Yellow.fg)
+--   g("terminal_color_4", c.Blue.fg)
+--   g("terminal_color_5", c.Magenta.fg)
+--   g("terminal_color_6", c.Cyan.fg)
+--   g("terminal_color_7", c.Grey2.fg)
+--   g("terminal_color_8", c.Grey2.bg)
+--   g("terminal_color_9", c.Red.fg)
+--   g("terminal_color_10", c.Green.fg)
+--   g("terminal_color_11", c.Yellow.fg)
+--   g("terminal_color_12", c.Blue.fg)
+--   g("terminal_color_13", c.Magenta.fg)
+--   g("terminal_color_14", c.Cyan.fg)
+--   g("terminal_color_15", c.Grey2.fg)
+--
+--   -- :h group-name
+--   -- hi("Type", { bold = true })
+--
+--   -- :h highlight-default
+--   hi("PmenuSel", { bg = c.Grey4.bg })
+--   hi("StatusLine", { fg = c.Grey3.fg, bg = c.Grey1.bg })
+--   hi("StatusLineNC", { fg = c.Grey4.bg, bg = c.Grey1.bg })
+--   if api.nvim_get_option_value("laststatus", {}) == 3 then
+--     hi("WinSeparator", { fg = c.Grey1.bg })
+--   else
+--     hi("WinSeparator", { fg = c.Grey1.bg, bg = c.Grey1.bg })
+--   end
+--
+--   -- :h diagnostic-highlights
+--   for _, v in ipairs({ "Ok", "Hint", "Info", "Warn", "Error" }) do
+--     local group = "DiagnosticUnderline" .. v
+--     local def = get(group)
+--     def.underline = false
+--     def.bg = nblend(def.sp, 0.15)
+--     -- def.undercurl = true
+--     hi(group, def)
+--   end
+--   hi("DiagnosticDeprecated", { undercurl = true })
+--
+--   -- :h treesitter-highlight-groups
+--   -- comment annotation test
+--   -- TODO: comment contents
+--   -- NOTE: comment contents
+--   -- WIP: comment contents
+--   -- FIXME: comment contents
+--   -- WARNING: comment contents
+--   hi("@keyword.import", { fg = c.Grey3.fg })
+--   -- hi("@markup.link", { fg = c.Green.fg, underline = true })
+--   hi("@markup.link", fblend(c.Green.fg, 0.1))
+--   hi("@variable", { fg = c.Grey2.fg })
+--   hi("@tag", { fg = c.Grey3.fg })
+--   hi("@tag.attribute", { fg = c.Grey3.fg, bold = true })
+--   hi("@diff.plus", { fg = c.Green.fg })
+--   hi("@diff.minus", { fg = c.Red.fg })
+--
+--   -- lsp-semantic-highlight
+--   -- hi("@lsp.type.variable", { link = "@variable" }) -- upstreamed, SEE: https://github.com/neovim/neovim/pull/22981
+--
+--   -- :h lsp-highlight
+--   hi("LspCodeLens", { link = "LineNr" })
+--   hi("LspReferenceRead", { bg = c.Grey4.bg })
+--   hi("LspReferenceWrite", { bg = c.Grey4.bg, bold = true })
+--   hi("LspSignatureActiveParameter", { fg = c.Grey1.fg, bg = c.Yellow.bg })
+--
+--   -- ft:diff
+--   hi("diffAdded", { fg = c.Green.fg })
+--   hi("diffChanged", { fg = c.Blue.fg })
+--   hi("diffRemoved", { fg = c.Red.fg })
+--
+--   -- ft:man
+--   hi("manReference", { link = "Identifier" })
+--
+--   -- cmp
+--   hi("CmpCursorLine", { link = "PmenuSel" })
+--   hi("CmpDoc", { link = "NormalFloat" })
+--   hi("CmpItemAbbrMatch", { fg = c.Yellow.fg })
+--   hi("CmpItemAbbrMatchFuzzy", { link = "Special" })
+--
+--   -- gitsigns
+--   hi("GitSignsAdd", { fg = c.Green.fg })
+--   hi("GitSignsChange", { fg = c.Blue.fg })
+--   hi("GitSignsDelete", { fg = c.Red.fg })
+--
+--   -- incline
+--   hi("InclineNormalNc", { link = "StatusLineNC" })
+--   hi("InclineSep", { link = "StatusLineDim" })
+--   hi("InclineTail", { bold = true })
+--   hi("InclineWinNr", {
+--     fg = c.Yellow.fg,
+--     bg = blend(c.Yellow.bg, Normal.bg, light and 0.3 or 0.15),
+--   })
+--
+--   -- modes
+--   hi("ModesCopy", { bg = c.Yellow.fg })
+--   hi("ModesCopyCursorLine", {
+--     bg = blend(c.Yellow.bg, Normal.bg, light and 0.3 or 0.15),
+--   })
+--   hi("ModesCopyCursorLineNr", { fg = c.Yellow.fg, bold = true })
+--   hi("ModesInsert", { bg = c.Green.fg })
+--   hi("ModesInsertCursorLineNr", { fg = c.Green.fg, bold = true })
+--   hi("ModesVisual", { bg = c.Grey4.fg })
+--   hi("ModesVisualCursorLineNr", { fg = c.Grey4.fg, bold = true })
+--   hi("ModesDelete", { bg = c.Red.fg })
+--   hi("ModesDeleteCursorLineNr", { fg = c.Red.fg, bold = true })
+--
+--   -- neotest
+--   hi("NeotestAdapterName", { fg = c.Red.fg, bold = true })
+--   hi("NeotestDir", { fg = c.Blue.fg, bold = true })
+--   hi("NeotestFile", { fg = c.Cyan.fg })
+--   hi("NeotestTest", { fg = c.Grey1.fg })
+--   hi("NeotestUnknown", { fg = c.Grey3.fg })
+--   hi("NeotestPassed", { fg = c.Green.fg })
+--   hi("NeotestNamespace", { fg = c.Magenta.fg })
+--
+--   -- notify
+--   local alpha = light and 0.3 or 0.15
+--   hi("NotifyTRACETitle", {
+--     fg = c.Magenta.fg,
+--     bg = nblend(c.Magenta.bg, alpha),
+--   })
+--   hi("NotifyDEBUGTitle", {
+--     fg = c.Grey4.fg,
+--     bg = nblend(c.Grey4.bg, alpha),
+--   })
+--   hi("NotifyINFOTitle", {
+--     fg = c.Blue.fg,
+--     bg = nblend(c.Blue.bg, alpha),
+--   })
+--   hi("NotifyWARNTitle", {
+--     fg = c.Yellow.fg,
+--     bg = nblend(c.Yellow.bg, alpha),
+--   })
+--   hi("NotifyERRORTitle", {
+--     fg = c.Red.fg,
+--     bg = nblend(c.Red.bg, alpha),
+--   })
+--   for _, v in ipairs({ "TRACE", "DEBUG", "INFO", "WARN", "ERROR" }) do
+--     local link = "Notify" .. v .. "Title"
+--     hi("Notify" .. v .. "Body", { link = link })
+--     hi("Notify" .. v .. "Icon", { link = link })
+--
+--     local notify = get(link)
+--     hi("Notify" .. v .. "Border", { fg = notify.bg, bg = notify.bg })
+--   end
+--
+--   -- statusline
+--   local StatusLine = get("StatusLine")
+--   local function statusline(group, def)
+--     group = "StatusLine" .. group
+--     for _, attr in ipairs({ "fg", "bg" }) do
+--       if not def[attr] then
+--         def[attr] = StatusLine[attr]
+--       end
+--     end
+--     hi(group, def)
+--   end
+--   for _, v in ipairs({ "Hint", "Info", "Warn", "Error" }) do
+--     local d = get("Diagnostic" .. v)
+--     statusline("Diagnostic" .. v .. "Count", { fg = d.fg, bold = true })
+--     local dim_fg = blend(d.fg, StatusLine.bg, 0.75)
+--     statusline("Diagnostic" .. v .. "Sign", { fg = dim_fg })
+--   end
+--   statusline("Dim", { fg = c.Grey4.bg })
+--   statusline("Filename", { bold = true })
+--   statusline("GitDiffAdd", { fg = c.Green.fg })
+--   statusline("GitDiffChange", { fg = c.Blue.fg })
+--   statusline("GitDiffDelete", { fg = c.Red.fg })
+--   statusline("Modified", { fg = c.Blue.fg })
+--   statusline("Path", { fg = c.Grey4.fg })
+--   statusline("PathSep", { fg = c.Grey4.bg })
+--   statusline("RO", { fg = get("DiagnosticError").fg })
+--   statusline("WinNr", { fg = c.Yellow.fg, bold = true })
+--
+--   -- tabline
+--   -- hi("TabLineModified", { link = "TabLine" })
+--   -- hi("TabLineSep", { link = "TabLine" })
+--   -- hi("TabLineModifiedSel", { link = "TabLineSel" })
+--   -- hi("TabLineSepSel", { link = "TabLineSel" })
+--
+--   -- telescope
+--   hi("TelescopeNormal", { link = "StatusLine" })
+--   hi("TelescopeBorder", { fg = c.Grey1.bg, bg = c.Grey1.bg })
+--   hi("TelescopeTitle", { fg = c.Grey3.fg, bg = c.Grey3.bg })
+-- end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("override_default_colorscheme", {}),
+  pattern = "default",
+  -- callback = override,
+  callback = function()
+    local mod = "config.colorscheme.default"
+    package.loaded[mod] = nil
+    require(mod)
+  end,
+})

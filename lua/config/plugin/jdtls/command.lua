@@ -52,6 +52,8 @@ function M.attach(jdtls, bufnr)
           jdtls.update_projects_config(opts.fargs[1])
         end,
       },
+      -- TODO: https://github.com/mfussenegger/nvim-jdtls/pull/526
+      -- TODO: https://github.com/mfussenegger/nvim-jdtls/pull/527
     },
   })
 end

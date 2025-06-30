@@ -1,0 +1,31 @@
+*init.note.txt*
+
+Plugin structure idea, RTP based plugin configuration
+	Plugin {p} load user configuration from
+
+		lua/{p}/config.lua
+		-- or
+		lua/{p}/config/*.lua
+
+	The file contains
+
+		return {
+			...
+		}
+
+	Every config fields use `{field}_extra` pattern for extending
+	default value, setting {field} means override the default
+
+	For extensibility reason, plugn author may put their internal
+	code under lua/{p}/internal/, this gives a room for user to
+	use lua/{p}/ as to configure the plugin
+
+Terminology:
+	- Inline: merge function/module logic directly to the code
+	- Abstract: extract logic into function/module
+	- Bound check
+
+The latter is faster
+
+	- `table.concat` > `..` > `string:format` > `string.format`
+	- `t[#t+1] = v` > `table.insert(t, v)`

@@ -6,9 +6,10 @@ local state = {
   laststatus = api.nvim_get_option("laststatus"),
   showtabline = api.nvim_get_option("showtabline"),
   signcolumn = api.nvim_win_get_option(0, "signcolumn"),
+  statuscolumn = api.nvim_win_get_option(0, "statuscolumn"),
   winwidth = api.nvim_get_option("winwidth"),
 }
-local winhl = "VertSplit:WinSeparatorZen,WinSeparator:WinSeparatorZen"
+local winhl = "WinSeparator:ZenWinSeparator"
 local option = {}
 
 option.global = {
@@ -20,6 +21,7 @@ option.win = {
   { name = "number" },
   { name = "relativenumber" },
   { name = "signcolumn", disable_value = "no" },
+  { name = "statuscolumn", disable_value = "" },
 }
 
 option.zen = {
@@ -132,6 +134,11 @@ local function zen(enter)
   local textwidth = api.nvim_buf_get_option(0, "textwidth")
 
   api.nvim_set_hl(0, "ZenPadNormal", { link = "StatusLine", default = true })
+  api.nvim_set_hl(0, "ZenWinSeparator", {
+    fg = "bg",
+    bg = "bg",
+    default = true,
+  })
 
   if enter then
     win.main.create()

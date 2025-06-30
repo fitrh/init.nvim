@@ -1,26 +1,51 @@
 local keymap = require("sugar.keymap")
-local map, leader, n = keymap.map, keymap.modifier.leader, keymap.mode.normal
+local map, leader = keymap.map, keymap.modifier.leader
+local mode = keymap.mode
+local n, x = mode.normal, mode.visual
 
 keymap.bind({
+  n(map(leader("r"), function()
+    require("telescope.builtin").resume()
+  end)),
   n(map("gb", function()
-    require("telescope.builtin").buffers({
-      ignore_current_buffer = true,
-      sort_mru = true,
-    })
+    local bufs = vim
+      .iter(vim.api.nvim_list_bufs())
+      :filter(function(buf)
+        return vim.api.nvim_get_option_value("buflisted", { buf = buf })
+      end)
+      :totable()
+    require("telescope.builtin").buffers(
+      require("telescope.themes").get_dropdown({
+        -- layout_config = { anchor = "N", anchor_padding = 0, height = #bufs + 3 },
+        -- TODO: add limit of 30% of screen height
+        layout_config = { anchor = "S", height = #bufs + 3 },
+        ignore_current_buffer = true,
+        sort_mru = true,
+      })
+    )
   end)),
   n(map(leader("h"), function()
     require("telescope.builtin").help_tags()
   end)),
-  n(map("gf", function()
+  n(map("gf", function() -- NOTE: Potential candidates: g/ go
     require("telescope.builtin").find_files()
   end)),
   n(map("gF", function()
     require("telescope.builtin").live_grep()
   end)),
+  -- TODO: open file_browser in current buffer directory
   n(map(leader("e"), function()
-    require("telescope").extensions.file_browser.file_browser({
-      auto_depth = true,
-    })
+    local height = vim.v.count / 10
+    require("telescope").extensions.file_browser.file_browser(
+      require("telescope.themes").get_ivy({
+        layout_config = {
+          height = (height > 0 and height < 1) and height or 0.5,
+          horizontal = { preview_width = 0.5 },
+        },
+        previewer = false,
+        git_status = true,
+      })
+    )
   end)),
   n(map(leader("k"), function()
     require("telescope").extensions.file_browser.file_browser(
@@ -46,11 +71,17 @@ keymap.bind({
   n(map("gCb", function()
     require("telescope.builtin").git_bcommits()
   end)),
+  n(map("gCl", function()
+    require("telescope.builtin").git_bcommits_range() -- https://github.com/nvim-telescope/telescope.nvim/pull/2398
+  end)),
+  x(map("gC", function()
+    require("telescope.builtin").git_bcommits_range()
+  end)),
   n(map("gB", function()
     require("telescope.builtin").git_branches()
   end)),
   n(map("gS", function()
-    require("telescope.builtin").git_status()
+    require("telescope.builtin").git_status({ on_complete = {} }) -- Override `on_complete` to silence the "No change found" notification
   end)),
   n(map(leader("m"), function()
     require("telescope.builtin").keymaps()
@@ -67,6 +98,7 @@ keymap.bind({
   end)),
 })
 
+-- TODO: remove, use built-in mechanism, i.e. quickfix list
 require("sugar.augroup")("attach_telescope_lsp_keymap", function(autocmd)
   autocmd("LspAttach", "*", function(args)
     if not args.data then
@@ -74,6 +106,9 @@ require("sugar.augroup")("attach_telescope_lsp_keymap", function(autocmd)
     end
 
     local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client then
+      return
+    end
     local capabilities_map = {
       documentSymbolProvider = {
         key = "[ls",

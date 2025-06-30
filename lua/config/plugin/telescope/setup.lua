@@ -6,7 +6,7 @@ config.defaults = {
   layout_config = {
     horizontal = { preview_width = 0.6 },
   },
-  prompt_prefix = " → ", -- digraph: ->
+  prompt_prefix = " → ", -- digraph: `->`
   selection_caret = "  ", -- SEE: https://github.com/nvim-telescope/telescope.nvim/issues/1841
   dynamic_preview_title = true,
   results_title = false,
@@ -15,10 +15,18 @@ config.defaults = {
       ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
     },
     i = {
+      -- TODO The delete keymaps (<C-u>, <C-w>, etc.) should close the window if pressed at an empty prompt
       ["<C-u>"] = false,
       ["<C-d>"] = false,
+      ["<C-o>"] = "select_drop",
+      -- TODO remove `require`, use action name directly
       ["<C-f>"] = require("telescope.actions").preview_scrolling_down,
       ["<C-b>"] = require("telescope.actions").preview_scrolling_up,
+      -- SEE https://github.com/nvim-telescope/telescope.nvim/pull/2437
+      ["<M-h>"] = "preview_scrolling_left",
+      ["<M-j>"] = "results_scrolling_left",
+      ["<M-k>"] = "results_scrolling_right",
+      ["<M-l>"] = "preview_scrolling_right",
       ["<C-s>"] = require("telescope.actions").select_horizontal,
       ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
       ["<C-[>"] = require("telescope.actions").close,
@@ -81,10 +89,32 @@ config.defaults = {
 local pickers = {}
 
 pickers.find_files = {
-  layout_config = { height = 0.4 },
-  theme = "ivy",
+  -- TODO: Remove border between prompt and results
+  sorting_strategy = "ascending",
+  layout_strategy = "center",
+  layout_config = { anchor = "S", height = 0.3, preview_cutoff = 10 },
+  -- layout_strategy = "horizontal",
+  -- layout_config = {
+  --   anchor = "S",
+  --   prompt_position = "top",
+  --   height = 0.4,
+  --   width = { padding = 2 },
+  --   preview_width = 0.5,
+  -- },
+  -- borderchars = {
+  --   prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+  --   results = { " " },
+  --   preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+  -- },
+  -- TODO: Add padding for 'bottom_pane' strategy/'iyv' theme
+  -- layout_config = { height = 0.4 },
+  -- theme = "ivy",
+  -- path_display = {
+  --   "filename_first", -- SEE https://github.com/nvim-telescope/telescope.nvim/pull/3010
+  -- },
   previewer = false,
   disable_devicons = true, -- SEE: https://github.com/nvim-telescope/telescope.nvim/issues/1222
+  hidden = true,
 }
 
 pickers.quickfix = {
@@ -96,7 +126,14 @@ pickers.quickfix = {
 pickers.loclist = pickers.quickfix
 
 pickers.buffers = {
-  layout_config = { height = 0.4 },
+  layout_config = {
+    anchor = "N",
+    anchor_padding = 0,
+    height = 0.3,
+  },
+  -- path_display = {
+  --   "filename_first", -- SEE https://github.com/nvim-telescope/telescope.nvim/pull/3010
+  -- },
   theme = "dropdown",
   previewer = false,
   mappings = {
@@ -112,12 +149,17 @@ pickers.help_tags = {
   previewer = false,
 }
 
+-- TODO configure `current_buffer_fuzzy_find` picker
+-- TODO configure `grep_string` picker
 pickers.live_grep = {
   layout_config = {
     anchor = "N",
     height = 0.35,
     mirror = true,
     width = 0.55,
+  },
+  path_display = {
+    "filename_first", -- SEE https://github.com/nvim-telescope/telescope.nvim/pull/3010
   },
   theme = "dropdown",
   disable_devicons = true,
@@ -134,7 +176,8 @@ pickers.git_commits = {
   layout_config = pickers.live_grep.layout_config,
   theme = "dropdown",
 }
-pickers.git_bcommits = pickers.git_commits
+pickers.git_bcommits = pickers.git_commits -- TODO <C-s> to opens a diff in a horizontal split
+pickers.git_bcommits_range = pickers.git_commits
 pickers.git_branches = {
   theme = "dropdown",
   previewer = false,
@@ -182,12 +225,35 @@ pickers.diagnostics = {
 config.pickers = pickers
 config.extensions = {
   file_browser = {
+    auto_depth = true,
     hide_parent_dir = true,
     prompt_path = true,
     mappings = {
       i = {
         ["<C-e>"] = telescope.extensions.file_browser.actions.goto_parent_dir,
+        ["<C-u>"] = telescope.extensions.file_browser.actions.goto_cwd,
+        ["<C-w>"] = function(buf, baypass)
+          local state = require("telescope.actions.state")
+          local picker = state.get_current_picker(buf)
+          if picker:_get_prompt() == "" then
+            require("telescope").extensions.file_browser.actions.goto_parent_dir(
+              buf,
+              baypass
+            )
+          else
+            vim.api.nvim_feedkeys(
+              vim.api.nvim_replace_termcodes("<C-s-w>", true, false, true),
+              "tn",
+              true
+            )
+          end
+        end,
         ["<M-f>"] = telescope.extensions.file_browser.actions.toggle_browser,
+        ["<M-i>"] = telescope.extensions.file_browser.actions.toggle_respect_gitignore, -- SEE https://github.com/nvim-telescope/telescope-file-browser.nvim/pull/292
+        -- TODO use `attach_mappings`, SEE `:h telescope.mappings`
+        -- TODO <C-v>: open or create in vert split
+        -- TODO <C-s>: open or create in split
+        -- TODO <CR>|<S-CR>: supports brace expansion
       },
     },
     git_status = false,

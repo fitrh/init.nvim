@@ -23,9 +23,8 @@ require("material").setup({
   plugins = {
     "gitsigns",
     "nvim-cmp",
-    "nvim-web-devicons",
+    -- "nvim-web-devicons",
     "telescope",
-    "trouble",
   },
   disable = {
     colored_cursor = true,
@@ -35,20 +34,36 @@ require("material").setup({
 
 vim.cmd.colorscheme("material")
 
-local c = require("material.colors")
-
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
+  local concat = table.concat
   local fmt = string.format
+  local background = vim.api.nvim_get_option_value("background", {})
+  local function lightdark(light, dark)
+    return background == "light" and light or dark
+  end
+  local c = require("material.colors")
 
   -- highlight-default
-  set("ColorColumn", { bg = blend(c.editor.bg_alt, c.editor.bg, 0.3) })
-  set("CursorColumn", { bg = blend(c.editor.highlight, c.editor.bg, 0.3) })
+  set("ColorColumn", {
+    bg = blend(c.editor.bg_alt, c.editor.bg, lightdark(0.6, 0.3)),
+  })
+  set("CursorColumn", {
+    bg = blend(c.editor.highlight, c.editor.bg, lightdark(0.6, 0.3)),
+  })
   link("CursorLine", "CursorColumn")
   set("FloatBorder", { inherit = "NormalFloat", fg = bg("NormalFloat") })
   link("MatchParen", "LspReferenceText")
   link("MsgArea", "StatusLine")
-  set("StatusLine", { fg = c.editor.fg_dark, bg = c.editor.bg_alt })
+  local stl_bg = c.editor[lightdark("border", "bg_alt")]
+  set("StatusLine", {
+    fg = c.editor[lightdark("gray", "fg_dark")],
+    bg = stl_bg,
+  })
+  set("StatusLineNC", {
+    fg = lightdark(c.syntax.comments, c.editor.disabled),
+    bg = stl_bg,
+  })
   link("TabLine", "StatusLine")
   link("TablineFill", "TabLine")
   set("TabLineSel", { inherit = "Normal", fg = c.editor.accent })
@@ -57,8 +72,8 @@ require("sugar.highlight").colorscheme(function(h)
   set("LspSignatureActiveParameter", { fg = c.editor.accent })
 
   -- treesitter-highlight-groups
-  link("@text.diff.add", "diffAdded")
-  link("@text.diff.delete", "diffRemoved")
+  link("@diff.plus", "diffAdded")
+  link("@diff.minus", "diffRemoved")
 
   -- plugin
   link("CmpCursorLine", "CursorLine")
@@ -107,18 +122,35 @@ require("sugar.highlight").colorscheme(function(h)
   link("NotifyERRORTitle", "DiagnosticError")
   for _, v in ipairs({ "TRACE", "DEBUG", "INFO", "WARN", "ERROR" }) do
     local title = fmt("Notify%sTitle", v)
-    local color = blend(fg(title), c.editor.bg, 0.05)
+    local color = blend(fg(title), c.editor.bg, lightdark(0.15, 0.05))
     set(fmt("Notify%sBorder", v), { fg = color, bg = color })
     set(fmt("Notify%sBody", v), { inherit = title, bg = color })
   end
 
-  set("StatusLineDim", { inherit = "StatusLine", fg = c.editor.line_numbers })
+  for _, severity in ipairs({ "Error", "Warn", "Info", "Hint" }) do
+    local count = concat({ "StatusLineDiagnostic", severity, "Count" })
+    local sign = concat({ "StatusLineDiagnostic", severity, "Sign" })
+    local sign_hl = concat({ "Diagnostic", "Sign", severity })
+    set(count, { inherit = "StatusLine", fg = fg(sign_hl) })
+    set(sign, {
+      inherit = "StatusLine",
+      fg = blend(fg(sign_hl), bg("StatusLine"), 0.7),
+    })
+  end
+  set("StatusLineDim", {
+    inherit = "StatusLine",
+    fg = c.editor[lightdark("fg_dark", "line_numbers")],
+  })
+  set("StatusLineFilename", { inherit = "StatusLine", bold = true })
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.main.purple })
   set("StatusLineGitDiffAdd", { inherit = "StatusLine", fg = c.main.green })
   set("StatusLineGitDiffChange", { inherit = "StatusLine", fg = c.main.blue })
   set("StatusLineGitDiffDelete", { inherit = "StatusLine", fg = c.main.red })
   set("StatusLineModified", { inherit = "StatusLine", fg = c.main.red })
-  set("StatusLinePath", { inherit = "StatusLine", fg = fg("Comment") })
+  set("StatusLinePath", {
+    inherit = "StatusLine",
+    fg = lightdark(c.main.paleblue, fg("Comment")),
+  })
   set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = c.main.darkred })
   set("TabLineModified", { inherit = "TabLine", fg = c.main.red })
@@ -126,7 +158,15 @@ require("sugar.highlight").colorscheme(function(h)
   set("TabLineModifiedSel", { inherit = "TabLineSel", fg = c.main.red })
   set("TabLineSepSel", { inherit = "TabLineSel", fg = c.editor.accent })
   local telescope_bg = bg("TelescopeNormal")
+  set("TelescopeSelection", {
+    inherit = "TelescopeSelection",
+    fg = lightdark(c.editor.gray, c.main.green),
+    -- bg = if_light(c.syntax.comments, c.editor.selection),
+  })
   set("TelescopeTitle", { inherit = "Visual", fg = fg("Normal"), bold = true })
+  link("TelescopePromptTitle", "TelescopeTitle")
+  link("TelescopeResultsTitle", "TelescopeTitle")
+  link("TelescopePreviewTitle", "TelescopeTitle")
   set("TelescopeBorder", { bg = telescope_bg, fg = telescope_bg })
   link("TelescopePromptBorder", "TelescopeBorder")
   link("TelescopePreviewBorder", "TelescopeBorder")

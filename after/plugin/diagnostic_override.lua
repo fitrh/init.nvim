@@ -1,0 +1,22 @@
+-- local open_float = vim.diagnostic.open_float
+-- vim.diagnostic.open_float = function(opts)
+--   opts = opts or {}
+--
+--   local cursor = { scope = "cursor", header = "Cursor Diagnostic" }
+--   for key, value in pairs(opts) do
+--     cursor[key] = value
+--   end
+--   local buf, win = open_float(cursor)
+--   if buf then
+--     return buf, win
+--   end
+--
+--   local line = { scope = "line", header = "Line Diagnostic" }
+--   for key, value in pairs(opts) do
+--     line[key] = value
+--   end
+--   buf, win = open_float(line)
+--   if buf then
+--     return buf, win
+--   end
+-- end

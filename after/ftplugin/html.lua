@@ -1,0 +1,48 @@
+-- local root_files = {
+--   "index.html",
+-- }
+
+-- local paths = vim.fs.find(root_files, { stop = vim.env.HOME })
+-- local root_dir = vim.fs.dirname(paths[1])
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.completion.dynamicRegistration = false
+-- capabilities.textDocument.completion.contextSupport = true
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.textDocument.completion.completionItem.documentationFormat = {
+--   "markdown",
+--   "plaintext",
+-- }
+-- capabilities.textDocument.completion.completionItem.commitCharactersSupport =
+--   true
+-- capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+-- capabilities.textDocument.completion.completionItem.preselectSupport = true
+-- capabilities.textDocument.completion.completionItem.tagSupport =
+--   { valueSet = { 1 } }
+-- capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+-- capabilities.textDocument.completion.completionItem.resolveSupport = {
+--   properties = {
+--     "documentation",
+--     "detail",
+--     "additionalTextEdits",
+--   },
+-- }
+-- capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+
+-- if root_dir then
+--   vim.lsp.start({
+--     name = "web-lsp",
+--     filetypes = { "html", "css", "javascript" },
+--     cmd = { "emmet-language-server", "--stdio" },
+--     capabilities = require("cmp_nvim_lsp").default_capabilities(),
+--     on_attach = require("config.lsp.attach").with.all,
+--     handlers = require("config.lsp.handler").default(),
+--     root_dir = root_dir,
+--     -- before_init = function(p, conf)
+--     --   p.capabilities.textDocument.completion.resolveSupport = false
+--     -- end,
+--     -- on_init = function(c, r)
+--     --   vim.print(r)
+--     -- end,
+--     -- single_file_support = true,
+--   })
+-- end

@@ -1,19 +1,20 @@
+local background = vim.api.nvim_get_option_value("background", {})
 local function get_variant()
   local variants = { wave = "wave", dragon = "dragon", lotus = "lotus" }
   return variants[os.getenv("NVIM_KANAGAWA_VARIANT")] or "wave"
 end
 
 local function get_mode()
-  local modes = { dark = "wave", light = "lotus" }
-  return modes[os.getenv("NVIM_KANAGAWA_MODE")] or "wave"
+  return ({
+    dark = "wave",
+    light = "lotus",
+  })[os.getenv("NVIM_KANAGAWA_MODE") or background]
 end
 
 local config = {
   theme = get_mode() == "lotus" and "lotus" or get_variant(),
 }
 
-local background = config.theme == "lotus" and "light" or "dark"
-vim.api.nvim_set_option_value("background", background, {})
 local kanagawa = require("kanagawa")
 kanagawa.setup(config)
 kanagawa.load(config.theme)
@@ -21,6 +22,11 @@ kanagawa.load(config.theme)
 require("sugar.highlight").colorscheme(function(h)
   local set, link, fg, bg, blend = h.set, h.link, h.fg, h.bg, h.blend
   local fmt = string.format
+  local concat = table.concat
+
+  local function lightdark(light, dark)
+    return background == "light" and light or dark
+  end
 
   local base = bg("Normal")
   ---@type ThemeColors
@@ -28,7 +34,9 @@ require("sugar.highlight").colorscheme(function(h)
 
   -- highlight-default
   set("ColorColumn", { bg = blend(bg("StatusLine"), base, 0.3) })
-  set("CursorColumn", { bg = blend(bg("CursorLine"), base, 0.3) })
+  set("CursorColumn", {
+    bg = blend(bg("CursorLine"), base, lightdark(0.6, 0.3)),
+  })
   link("CursorLine", "CursorColumn")
   set("CursorLineNr", { inherit = "CursorLineNr", bg = "NONE", bold = false })
   set("FloatBorder", { inherit = "NormalFloat", fg = bg("NormalFloat") })
@@ -37,6 +45,10 @@ require("sugar.highlight").colorscheme(function(h)
   link("MatchParen", "LspReferenceText")
   link("MsgArea", "StatusLine")
   set("NonText", { inherit = "NonText", bold = false })
+  set("StatusLine", {
+    inherit = "StatusLine",
+    fg = c.syn[lightdark("regex", "comment")],
+  })
   link("TabLine", "StatusLine")
   link("TabLineFill", "TabLine")
   link("TabLineSel", "Normal")
@@ -53,10 +65,10 @@ require("sugar.highlight").colorscheme(function(h)
   set("InclineNormalNC", { inherit = "StatusLineNC", fg = c.ui.whitespace })
   set("InclineSep", { fg = fg("LineNr"), bold = true })
   set("InclineTail", { fg = c.ui.special, bold = true })
-  local fg_cul_nr = fg("CursorLineNr")
+  local fg_number = fg("Number")
   set("InclineWinNr", {
-    fg = fg_cul_nr,
-    bg = blend(fg_cul_nr, bg("StatusLine"), 0.1),
+    fg = fg_number,
+    bg = blend(fg_number, bg("StatusLine"), 0.1),
   })
   set("LTSymbol", { fg = c.ui.fg_dim })
   link("LTSymbolDetail", "Comment")
@@ -87,18 +99,36 @@ require("sugar.highlight").colorscheme(function(h)
   --- github.com/rcarriga/nvim-notify
   for _, v in ipairs({ "TRACE", "DEBUG", "INFO", "WARN", "ERROR" }) do
     local title = fmt("Notify%sTitle", v)
-    local color = blend(fg(title), base, 0.05)
+    local color = blend(fg(title), base, lightdark(0.1, 0.05))
     set(fmt("Notify%sBorder", v), { fg = color, bg = color })
     set(fmt("Notify%sBody", v), { inherit = title, bg = color })
+    link(concat({ "Notify", v, "Icon" }), title)
   end
 
-  set("StatusLineDim", { inherit = "StatusLine", fg = c.ui.nontext })
+  set("StatusLineDim", {
+    inherit = "StatusLine",
+    fg = lightdark(c.term[9], c.ui.nontext),
+  })
+  for _, severity in ipairs({ "Error", "Warn", "Info", "Hint" }) do
+    local count = concat({ "StatusLineDiagnostic", severity, "Count" })
+    local sign = concat({ "StatusLineDiagnostic", severity, "Sign" })
+    local sign_hl = concat({ "Diagnostic", "Sign", severity })
+    set(count, { inherit = "StatusLine", fg = fg(sign_hl) })
+    set(sign, {
+      inherit = "StatusLine",
+      fg = blend(fg(sign_hl), bg("StatusLine"), 0.7),
+    })
+  end
+  set("StatusLineFilename", { inherit = "StatusLine", bold = true })
   set("StatusLineGitBranch", { inherit = "StatusLine", fg = c.ui.special })
   set("StatusLineGitDiffAdd", { inherit = "StatusLine", fg = c.vcs.added })
   set("StatusLineGitDiffChange", { inherit = "StatusLine", fg = c.vcs.changed })
   set("StatusLineGitDiffDelete", { inherit = "StatusLine", fg = c.vcs.removed })
   set("StatusLineModified", { inherit = "StatusLine", fg = c.vcs.removed })
-  set("StatusLinePath", { inherit = "StatusLine", fg = c.diff.text })
+  set("StatusLinePath", {
+    inherit = "StatusLine",
+    fg = lightdark(c.ui.float.fg_border, c.diff.text),
+  })
   set("StatusLinePathSep", { inherit = "StatusLineDim", bold = true })
   set("StatusLineRO", { inherit = "StatusLine", fg = c.diag.error })
   set("TabLineModified", { inherit = "TabLine", fg = c.vcs.added })

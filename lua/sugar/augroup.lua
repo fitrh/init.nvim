@@ -70,6 +70,7 @@ end
 ---@param callback fun(autocmd:AuCallback)
 return function(name, callback)
   local group = create_group(name)
+  -- TODO: add `opts`
   callback(function(events, filter, action)
     return autocmd(events, filter, action, group)
   end)

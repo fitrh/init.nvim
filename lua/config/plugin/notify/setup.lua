@@ -1,5 +1,6 @@
 local config = {
-  timeout = 2500,
+  level = vim.log.levels.TRACE,
+  timeout = 5000,
   max_width = function()
     local columns = vim.api.nvim_get_option_value("columns", {}) * 0.4
     return math.ceil(math.max(columns, 20))
@@ -8,6 +9,7 @@ local config = {
     local lines = vim.api.nvim_get_option_value("lines", {}) * 0.3
     return math.ceil(math.max(lines, 4))
   end,
+  -- stages = "static",
   render = "minimal",
   minimum_width = 1,
   top_down = false,

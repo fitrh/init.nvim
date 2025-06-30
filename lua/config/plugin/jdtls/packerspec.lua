@@ -12,6 +12,10 @@ return {
     require("sugar.augroup")("attach_jdtls", function(autocmd)
       autocmd("FileType", "java", config)
     end)
+    vim.api.nvim_exec_autocmds("FileType", {
+      pattern = vim.bo.filetype,
+      modeline = false,
+    }) -- SEE: https://github.com/neovim/neovim/issues/23368
   end,
   ft = { "java" },
 }

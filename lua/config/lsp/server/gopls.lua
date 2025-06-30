@@ -11,10 +11,21 @@ return require("config.lsp.server").with(bin, {
         generate = true, -- Runs go generate for a given directory
         regenerate_cgo = true, -- Regenerates cgo definitions
         test = true, -- Runs go test for a specific set of test or benchmark functions
+        run_govulncheck = true, -- Run vulnerability check (govulncheck)
         tidy = true, -- Runs go mod tidy for a module
         upgrade_dependency = true, -- Upgrades a dependency in the go.mod file for a module
         vendor = true, -- Runs go mod vendor for a module
       },
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+      semanticTokens = true,
       usePlaceholders = true, -- enables placeholders for function parameters or struct fields in completion responses
       analyses = {
         -- SEE: https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
@@ -23,6 +34,7 @@ return require("config.lsp.server").with(bin, {
         unusedvariable = true, -- check for unused variables
         useany = true, -- check for constraints that could be simplified to "any"
       },
+      vulncheck = "Imports",
     },
   },
 })

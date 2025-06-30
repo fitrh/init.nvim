@@ -10,6 +10,14 @@ local function get_path(win, buf)
 
   local half_win_width = math.ceil(vim.api.nvim_win_get_width(win) / 2)
   local file_path_width = strwidth(table.concat(file_path, sep))
+  -- local p = {}
+  -- local p_width = 0
+  -- local sep_width = strwidth(sep)
+  -- for _, v in ipairs(file_path) do
+  --   p[#p+1] = { v }
+  --   p[#p+1] = { sep }
+  --   p_width = p_width + strwidth(v) + strwidth(sep) + sep_width
+  -- end
   local path = table.concat(file_path, sep, 1, #file_path - 1) -- formatted relative path, but omit the filename
 
   if file_path_width > half_win_width then
@@ -22,6 +30,7 @@ local function get_path(win, buf)
 end
 
 return function(props)
+  ---@type string[]|table[]
   local result = {
     {
       (" %d "):format(vim.api.nvim_win_get_number(props.win)),

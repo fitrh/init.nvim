@@ -1,0 +1,57 @@
+#!/bin/sh -eu
+
+printf "\e[1m%s\e[0m\n" "MANDATORY DEPENDENCIES"
+if ! command -v git >/dev/null; then
+	printf "\t\e[91m%s\e[0m " ✗
+	printf "\e[93%s\e[0m %s\n" "git" "command not found"
+	exit 1
+fi
+printf "\t\e[92m%s\e[0m " ✓
+printf "\e[93m%s\e[0m %s\n" "git" "command available"
+
+compilers="cc gcc clang cl zig"
+compiler_exist=false
+for c in $compilers; do
+	if command -v "$c" >/dev/null; then
+		compiler_exist=true
+		COMPILER="$c"
+		break
+	fi
+done
+
+if ! "$compiler_exist"; then
+	printf "\t\e[91m%s\e[0m " ✗
+	printf "%s\n" "no compiler found"
+	exit 1
+fi
+printf "\t\e[92m%s\e[0m " ✓
+printf "\e[93m%s\e[0m %s\n" "$COMPILER" "compiler available"
+
+build_tools="make cmake"
+build_tool_exist=false
+for b in $build_tools; do
+	if command -v "$b" >/dev/null; then
+		build_tool_exist=true
+		build_tool="$b"
+		break
+	fi
+done
+if ! "$build_tool_exist"; then
+	printf "\t\e[91m%s\e[0m " ✗
+	printf "%s\n" "no build tool found"
+	exit 1
+fi
+printf "\t\e[92m%s\e[0m " ✓
+printf "\e[93m%s\e[0m %s\n" "$build_tool" "build tool available"
+
+printf "\n\e[1m%s\e[0m\n" "OPTIONAL DEPENDENCIES"
+optional="tree-sitter fd rg"
+for o in $optional; do
+	if command -v "$o" >/dev/null; then
+		printf "\t\e[92m%s\e[0m " ✓
+		printf "\e[93m%s\e[0m %s\n" "$o" "command available"
+	else
+		printf "\t\e[93m%s\e[0m " !
+		printf "%s %s\n" "$o" "command not found"
+	fi
+done

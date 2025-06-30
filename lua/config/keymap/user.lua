@@ -24,4 +24,15 @@ keymap.bind({
   n(map("gzz", function()
     require("helper.zen").toggle({ laststatus = true })
   end)),
+
+  -- :terminal
+  n(map([[<C-\>]], function()
+    local height = vim.api.nvim_get_vvar("count")
+    if height < 1 then
+      height = math.ceil(vim.api.nvim_get_option_value("lines", {}) * 0.3) -- 30% of editor height
+    end
+
+    require("helper.terminal").toggle(height)
+  end)),
+  -- TODO: <C-|> (Ctrl+Shift \): open new terminal
 })

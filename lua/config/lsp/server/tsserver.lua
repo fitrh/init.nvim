@@ -14,6 +14,7 @@ return require("config.lsp.server").with("typescript-language-server", {
       includeInlayEnumMemberValueHints = true,
     },
   },
+  single_file_support = false,
   on_attach = function(client, bufnr)
     require("config.lsp.attach").with.all(client, bufnr)
   end,

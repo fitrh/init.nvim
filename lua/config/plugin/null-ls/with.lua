@@ -21,6 +21,8 @@ With.djlint = {
 With.eslint_d = {
   condition = function(u)
     return u.root_has_file({
+      "eslint.config.js",
+      "eslint.config.cjs",
       ".eslintrc.js",
       ".eslintrc.cjs",
       ".eslintrc.yaml",
@@ -43,6 +45,7 @@ With.golangci_lint = {
 }
 
 With.isort = { extra_args = { "--profile", "black" } }
+With.jq = { extra_args = { "--tab", "--indent", 4 } } -- TODO: Do not run when prettier exist
 With.ktlint = { timeout = 10000 }
 With.misspell = { filetypes = plaintext }
 
@@ -77,16 +80,6 @@ With.revive = {
   end,
 }
 
-With.rustywind = {
-  condition = function(u)
-    return u.root_has_file({
-      "tailwind.config.js",
-      "tailwind.config.cjs",
-      "tailwind.config.ts",
-    })
-  end,
-}
-
 With.prettierd = {
   condition = function(u)
     return u.root_has_file({
@@ -95,7 +88,7 @@ With.prettierd = {
       ".prettierrc.json",
     })
   end,
-  extra_filetypes = { "svelte" },
+  extra_filetypes = { "svelte", "xml" },
 }
 
 With.selene = {
@@ -135,7 +128,13 @@ With.write_good = { filetypes = plaintext }
 
 With.yamlfmt = {
   condition = function(u)
-    return u.root_has_file({ ".yamlfmt" })
+    return u.root_has_file({
+      ".yamlfmt",
+      ".yamlfmt.yml",
+      ".yamlfmt.yaml",
+      "yamlfmt.yml",
+      "yamlfmt.yaml",
+    })
   end,
 }
 

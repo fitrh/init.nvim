@@ -1,3 +1,4 @@
+# TODO: inline into selene.toml
 [selene]
 base = "lua51"
 name = "neovim"

@@ -1,6 +1,13 @@
+-- Use OSC escape sequence to set terminal color to follow nvim color
+-- Currently set OSC 10, 11, 12 (fg, bg, cursor)
 local a = vim.api
 local group = a.nvim_create_augroup("adaptcolor", {})
 
+-- TODO: Wrap the callback with `vim.schedule_wrap`
+-- TODO: Replace `os.execute('printf...` with `io.write`
+-- TODO: Fix https://github.com/neovim/neovim/pull/31350
+-- TODO: set color0 - color15 using terminal_color_*
+-- FIXME: On focused window, the terminal color doesn't adapted
 a.nvim_create_autocmd("ColorScheme", {
   group = group,
   callback = function(_)
@@ -26,6 +33,7 @@ a.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
+-- TODO: Handle `Vim{Resume,Suspend}`?
 a.nvim_create_autocmd("UILeave", {
   group = group,
   callback = function(_)

@@ -7,6 +7,14 @@ return {
     end,
     event = { "User TokyoNightPre" },
   },
+  -- {
+  --   "akinsho/horizon.nvim",
+  --   as = "colorscheme/horizon",
+  --   config = function()
+  --     require("config.plugin.colorscheme.horizon.setup")
+  --   end,
+  --   event = { "User HorizonPre" },
+  -- },
   {
     "rebelot/kanagawa.nvim",
     as = "colorscheme/kanagawa",
@@ -54,5 +62,13 @@ return {
       require("config.plugin.colorscheme.doom-one.setup")
     end,
     event = { "User DoomOnePre" },
+  },
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+    as = "colorscheme/oxocarbon",
+    config = function()
+      require("config.plugin.colorscheme.oxocarbon.setup")
+    end,
+    event = { "User OxocarbonPre" },
   },
 }

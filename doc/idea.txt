@@ -1,0 +1,11 @@
+*init.idea.txt*
+
+IDEA                                                              IDEA
+
+- Make use of `:h ui-message` to silent message, but provides a way to
+  see the messages via UI component like statusline, maybe a
+  notification icon with counter for each message severity level, like
+  the diagnostic indicator
+
+                                      updated 2024-10-14T11:23:10+0800
+

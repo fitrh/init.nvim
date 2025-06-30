@@ -5,6 +5,9 @@ function M.attach(gitsigns, bufnr)
   local map, mode = keymap.map, keymap.mode
   local n, v = mode.normal, mode.visual
 
+  -- TODO: migrate {next,prev}_hunk to nav_hunk
+  -- TODO: Add keymap for set{loc,qf}list API
+  --       gsq and gsQ?
   keymap.bind({
     n(map("]c", function()
       if vim.wo.diff then
@@ -57,8 +60,39 @@ function M.attach(gitsigns, bufnr)
     n(map("gsB", function()
       gitsigns.blame_line({ full = true })
     end)),
-    n(map("gst", gitsigns.toggle_signs)),
-    n(map("gsn", gitsigns.toggle_numhl)),
+    -- FIXME: Maybe same issue with lua/config/event.lua#L332
+    n(map("gst", function()
+      local a = vim.api
+      local bufwin = a.nvim_win_get_buf
+      local wins = a.nvim_list_wins
+      if gitsigns.toggle_signs() then
+        for _, win in ipairs(wins()) do
+          if a.nvim_get_option_value("buflisted", { buf = bufwin(win) }) then
+            a.nvim_set_option_value("signcolumn", "yes", { win = win })
+          end
+        end
+        gitsigns.toggle_numhl(false)
+      else
+        for _, win in ipairs(wins()) do
+          if a.nvim_get_option_value("buflisted", { buf = bufwin(win) }) then
+            a.nvim_set_option_value("signcolumn", "no", { win = win })
+          end
+        end
+      end
+    end)),
+    n(map("gsn", function()
+      if gitsigns.toggle_numhl() then
+        gitsigns.toggle_signs(false)
+        local a = vim.api
+        local bufwin = a.nvim_win_get_buf
+        local wins = a.nvim_list_wins
+        for _, win in ipairs(wins()) do
+          if a.nvim_get_option_value("buflisted", { buf = bufwin(win) }) then
+            a.nvim_set_option_value("signcolumn", "no", { win = win })
+          end
+        end
+      end
+    end)),
     n(map("gsl", gitsigns.toggle_current_line_blame)),
     n(map("gsL", gitsigns.toggle_linehl)),
     n(map("gsd", gitsigns.toggle_deleted)),

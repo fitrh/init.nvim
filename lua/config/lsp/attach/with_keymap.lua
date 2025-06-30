@@ -7,6 +7,8 @@ function LspKeymap.attach(client, bufnr)
   local n, v, i = mode.normal, mode.visual, mode.insert
 
   local lsp = vim.lsp.buf
+  local ms = vim.lsp.protocol.Methods
+  -- TODO: Consolidate with `:h lsp-defaults`
   local capabilities_map = {
     codeActionProvider = function()
       return {
@@ -16,7 +18,7 @@ function LspKeymap.attach(client, bufnr)
     end,
     codeLensProvider = n(map("gcl", vim.lsp.codelens.run)),
     renameProvider = n(map("cn", lsp.rename)),
-    signatureHelpProvider = function()
+    signatureHelpProvider = function() -- TODO: remove, use CTRL-S from `:h lsp-defaults`
       local ctrl_slash = [[]]
       return {
         n(map("[s", lsp.signature_help)),
@@ -24,19 +26,19 @@ function LspKeymap.attach(client, bufnr)
       }
     end,
     declarationProvider = n(map("goD", lsp.declaration)),
-    definitionProvider = n(map("god", lsp.definition)),
+    definitionProvider = n(map("god", lsp.definition)), -- TODO: remove, see `:h vim.lsp.tagfunc()
     typeDefinitionProvider = n(map("got", lsp.type_definition)),
     implementationProvider = n(map("gli", lsp.implementation)),
     referencesProvider = n(map("[r", lsp.references)),
-    documentSymbolProvider = n(map("gls", lsp.document_symbol)),
-    workspaceSymbolProvider = n(map("glS", lsp.workspace_symbol)),
+    documentSymbolProvider = n(map("gls", lsp.document_symbol)), -- TODO: change to gO, also SEE: https://github.com/neovim/neovim/pull/30781
+    workspaceSymbolProvider = n(map("glS", lsp.workspace_symbol)), -- TODO: remove, see `:h vim.lsp.tagfunc()
     callHierarchyProvider = function()
       return {
         n(map("gci", lsp.incoming_calls)),
         n(map("gco", lsp.outgoing_calls)),
       }
     end,
-    documentFormattingProvider = n(map(leader("<CR>"), function()
+    [ms.textDocument_formatting] = n(map(leader("<CR>"), function()
       lsp.format({ bufnr = bufnr, timeout_ms = 5000 })
       vim.schedule(function()
         vim.cmd.update()
@@ -49,7 +51,11 @@ function LspKeymap.attach(client, bufnr)
 
   local keymaps = {}
   for capability, keydef in pairs(capabilities_map) do
-    if client.server_capabilities[capability] then
+    -- TODO: handle dynamic capability
+    if
+      client.server_capabilities[capability]
+      or client.supports_method(capability)
+    then
       if type(keydef) == "function" then
         for _, def in ipairs(keydef()) do
           table.insert(keymaps, def)
